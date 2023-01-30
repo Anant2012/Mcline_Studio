@@ -1,0 +1,23 @@
+/* .search-icon {
+    position: absolute;
+    right: 30px;
+    top: 13px;
+} */
+
+.table-container {
+    margin: 1%;
+    border-radius: 7px;
+    border: 1px solid gray;
+}
+
+.data-table {
+    font-weight: bold;
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    padding: 0px 10px;
+}
+
+.table-title {
+    margin: 1%;
+    padding: 5px 0;
+}
