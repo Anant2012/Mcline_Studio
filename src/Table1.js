@@ -1,56 +1,56 @@
 import { useEffect, useState } from "react";
-import Table from "./constant/Table";
-import EditButton from "./constant/ActionsButtons/EditButton";
-import DeleteButton from "./constant/ActionsButtons/DeleteButton";
-const Table1 = () => {
+import Table from "./constant/Table/Table"
+import { FaUserEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
+const CouponCodesList = () => {
     const [data, setData] = useState();
     const [filteredData, setFilteredData] = useState(data);
     const handleOpen = () => {
         // to do
     };
     const onSearch = (val) => {
-        console.log("called onsearch fun", val);
         setFilteredData(
             data.filter((x) => x.name.toLowerCase().match(val.toLowerCase()))
         );
     };
     const columns = [
-        { name: "Full Name", selector: (row) => row.full_name, sortable: true },
-        { name: "User Name ", selector: (row) => row.user_name, sortable: true },
-        { name: "User ID", selector: (row) => row.id, sortable: true },
+        { name: "Sub Admin Name", selector: (row) => row.name, sortable: true },
+        { name: "Email ", selector: (row) => row.name, sortable: true },
+        { name: "Admin Type", selector: (row) => row.capital, sortable: true },
         {
-            name: "Email",
-            selector: (row) => row.email,
+            name: "Last Login Date",
+            selector: (row) => row.population,
+            sortable: true,
+        },
+        {
+            name: "Last Logout Date",
+            selector: (row) => row.population,
+            sortable: true,
+        },
+        {
+            name: "Last Login IP",
+            selector: (row) => row.population,
             sortable: true,
         },
         {
             name: "Status",
-            selector: (row) =>
-                row.status === "Active" ? (
-                    <button className="btn btn-success">Active</button>
-                ) : (
-                    <button className="btn">Inactive</button>
-                ),
-            sortable: true,
-        },
-        {
-            name: "Is Offline",
-            selector: (row) => row.is_offline_user,
+            selector: (row) => <button className="btn btn-success">Active</button>,
             sortable: true,
         },
         {
             name: "Action",
             selector: (row) => (
-                <div style={{display:"flex"}}>
-                    <EditButton />
-                    <DeleteButton />
+                <div style={{ display: "flex" }}>
+                    <FaUserEdit title="Edit" style={{ color: "blue",fontSize:"Large" }} />
+                    <MdDelete title="Delete" style={{color:"red",marginLeft:"10px",fontSize:"Large"}}/>
                 </div>
             ),
         },
     ];
 
     const getData = async () => {
-        fetch("http://178.128.221.126:5000/api/user")
+        fetch("https://restcountries.com/v2/all")
             .then((res) => res.json())
             .then((data) => setData(data))
             .catch((err) => console.log("errorr", err));
@@ -70,9 +70,9 @@ const Table1 = () => {
                 columns={columns}
                 data={filteredData}
                 onSearch={onSearch}
-                title="Selling Product List"
+                title="COUPON CODES LIST"
             />
         </div>
     );
 };
-export default Table1;
+export default CouponCodesList;

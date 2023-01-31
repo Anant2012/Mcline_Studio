@@ -12,10 +12,10 @@ import SignUp from './components/auth/SignUp';
 import FrontPage from './components/frontpage/FrontPage';
 import Addnewlead from './components/operation/Add New/Addnewlead';
 import Addnewproject from './components/operation/Add New/Addnewproject';
-import ViewProject from './components/operation/View/ViewProject';
-import ViewLead from './components/operation/View/ViewLead';
 import Footer from './components/footer/Footer';
 import Table1 from './Table1';
+import Lead from './components/operation/View/Lead/Lead';
+import Project from './components/operation/View/Project/Project';
 
 
 function App() {
@@ -26,8 +26,8 @@ function App() {
         <Route exact path="/" element={<FrontPage/>} />
         <Route exact path="/operation/addnew/lead" element={<Addnewlead/>} />
         <Route exact path="/operation/addnew/project" element={<Addnewproject/>} />
-        <Route exact path="/operation/view/lead" element={<ViewLead/>} />
-        <Route exact path="/operation/view/project" element={<ViewProject/>} />
+        <Route exact path="/operation/view/lead" element={<Lead/>} />
+        <Route exact path="/operation/view/project" element={<Project/>} />
         <Route exact path="/login" element={<Login/>} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/table1" element={<Table1 />} />
