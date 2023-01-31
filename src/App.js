@@ -13,9 +13,9 @@ import FrontPage from './components/frontpage/FrontPage';
 import Addnewlead from './components/operation/Add New/Addnewlead';
 import Addnewproject from './components/operation/Add New/Addnewproject';
 import Footer from './components/footer/Footer';
-import Table1 from './Table1';
 import Lead from './components/operation/View/Lead/Lead';
 import Project from './components/operation/View/Project/Project';
+import Table1 from './Table1';
 
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
         <Route exact path="/operation/view/project" element={<Project/>} />
         <Route exact path="/login" element={<Login/>} />
         <Route exact path="/signup" element={<SignUp />} />
-        <Route exact path="/table1" element={<Table1 />} />
+        {/* <Route exact path="/table1" element={<Table1 />} /> */}
       </Routes>
       <Footer/>
     </Router>
