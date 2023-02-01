@@ -15,26 +15,46 @@ function Project() {
     );
   };
   const columns = [
-    { name: "Sub Admin Name", selector: (row) => row.name, sortable: true },
-    { name: "Email ", selector: (row) => row.name, sortable: true },
-    { name: "Admin Type", selector: (row) => row.capital, sortable: true },
+    { name: "Date", selector: (row) => row.name, sortable: true },
+    { name: "Code", selector: (row) => row.name, sortable: true },
+    { name: "Company", selector: (row) => row.capital, sortable: true },
     {
-      name: "Last Login Date",
+      name: "Person",
       selector: (row) => row.population,
       sortable: true,
     },
     {
-      name: "Last Logout Date",
+      name: "Project Status",
       selector: (row) => row.population,
       sortable: true,
     },
     {
-      name: "Last Login IP",
+      name: "Description",
       selector: (row) => row.population,
       sortable: true,
     },
     {
-      name: "Status",
+      name: "Invoice Amount",
+      selector: (row) => <button className="btn btn-success">Active</button>,
+      sortable: true,
+    },
+    {
+      name: "Invoice Date",
+      selector: (row) => <button className="btn btn-success">Active</button>,
+      sortable: true,
+    },
+    {
+      name: "Invoice Status",
+      selector: (row) => <button className="btn btn-success">Active</button>,
+      sortable: true,
+    },
+    {
+      name: "Payment Number",
+      selector: (row) => <button className="btn btn-success">Active</button>,
+      sortable: true,
+    },
+    {
+      name: "Invoice Due Date",
       selector: (row) => <button className="btn btn-success">Active</button>,
       sortable: true,
     },
@@ -71,11 +91,6 @@ function Project() {
           <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
             View Project
           </h1>
-          <p class="lg:w-2/3 mx-auto Projecting-relaxed text-base">
-            Banh mi cornhole echo park skateboard authentic crucifix neutra
-            tilde lyft biodiesel artisan direct trade mumblecore 3 wolf moon
-            twee
-          </p>
         </div>
         <div className="mt-3">
           <Table

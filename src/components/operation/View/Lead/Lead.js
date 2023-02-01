@@ -15,27 +15,17 @@ function Lead() {
     );
   };
   const columns = [
-    { name: "Sub Admin Name", selector: (row) => row.name, sortable: true },
-    { name: "Email ", selector: (row) => row.name, sortable: true },
-    { name: "Admin Type", selector: (row) => row.capital, sortable: true },
+    { name: "Date", selector: (row) => row.name, sortable: true },
+    { name: "Company ", selector: (row) => row.name, sortable: true },
+    { name: "Person", selector: (row) => row.capital, sortable: true },
     {
-      name: "Last Login Date",
+      name: "Lead Status",
       selector: (row) => row.population,
       sortable: true,
     },
     {
-      name: "Last Logout Date",
+      name: "Description",
       selector: (row) => row.population,
-      sortable: true,
-    },
-    {
-      name: "Last Login IP",
-      selector: (row) => row.population,
-      sortable: true,
-    },
-    {
-      name: "Status",
-      selector: (row) => <button className="btn btn-success">Active</button>,
       sortable: true,
     },
     {
@@ -71,11 +61,6 @@ function Lead() {
           <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
             View Lead
           </h1>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Banh mi cornhole echo park skateboard authentic crucifix neutra
-            tilde lyft biodiesel artisan direct trade mumblecore 3 wolf moon
-            twee
-          </p>
         </div>
         <div className="mt-3">
           <Table
