@@ -5,7 +5,6 @@ import{
   Routes,
   Route,
 } from "react-router-dom";
-import HRend from './components/hrend/HRend';
 import Profile from './components/profile/Profile';
 import Login from './components/auth/Login';
 import SignUp from './components/auth/SignUp';
@@ -15,7 +14,10 @@ import Addnewproject from './components/operation/Add New/Addnewproject';
 import Footer from './components/footer/Footer';
 import Table1 from './Table1';
 import Lead from './components/operation/View/Lead/Lead';
-import Project from './components/operation/View/Project/Project';
+import Leave from './components/hrend/Leave';
+import Tickets from './components/hrend/Tickets';
+import Grievance from './components/hrend/Grievance';
+import Policy from './components/hrend/Policy';
 
 
 function App() {
@@ -27,7 +29,10 @@ function App() {
         <Route exact path="/operation/addnew/lead" element={<Addnewlead/>} />
         <Route exact path="/operation/addnew/project" element={<Addnewproject/>} />
         <Route exact path="/operation/view/lead" element={<Lead/>} />
-        <Route exact path="/operation/view/project" element={<Project/>} />
+        <Route exact path="/hr/leaves" element={<Leave/>} />
+        <Route exact path="/hr/tickets" element={<Tickets/>} />
+        <Route exact path="/hr/grievance" element={<Grievance/>} />
+        <Route exact path="/hr/policy" element={<Policy/>} />
         <Route exact path="/login" element={<Login/>} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/table1" element={<Table1 />} />
