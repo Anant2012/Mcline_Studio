@@ -31,6 +31,7 @@ function App() {
         <Route exact path="/login" element={<Login/>} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/table1" element={<Table1 />} />
+          
       </Routes>
       <Footer/>
     </Router>
