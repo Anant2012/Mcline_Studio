@@ -12,8 +12,8 @@ const SignUp = () => {
 
   return (
     <>
-      <div className='h-[700px] w-full sm:w-3/4 flex mx-auto sm:shadow-xl my-11'>
-        <div className="d-none lg:w-1/2  flex  justify-center items-center" style={styles}>
+      <div className='h-[700px] w-full sm:w-3/4 flex mx-auto sm:shadow-md  my-12 '>
+        <div className=" lg:w-1/2  flex  justify-center items-center" style={styles}>
             <div className="w-3/4 backdrop-opacity-30 blur-[1px] h-3/4 mx-auto backdrop-grayscale-10 bg-slate-800/40"></div>
         </div>
         <div className='w-full lg:w-1/2 my-auto'>
