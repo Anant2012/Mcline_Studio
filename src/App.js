@@ -18,6 +18,7 @@ import Leave from './components/hrend/Leave';
 import Tickets from './components/hrend/Tickets';
 import Grievance from './components/hrend/Grievance';
 import Policy from './components/hrend/Policy';
+import Project from './components/operation/View/Project/Project';
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
         <Route exact path="/" element={<FrontPage/>} />
         <Route exact path="/operation/addnew/lead" element={<Addnewlead/>} />
         <Route exact path="/operation/addnew/project" element={<Addnewproject/>} />
-        <Route exact path="/operation/view/lead" element={<Lead/>} />
+        <Route exact path="/operation/view/lead" element={<Lead />} />
+        <Route exact path="/operation/view/project" element={<Project />} />
         <Route exact path="/hr/leaves" element={<Leave/>} />
         <Route exact path="/hr/tickets" element={<Tickets/>} />
         <Route exact path="/hr/grievance" element={<Grievance/>} />
