@@ -6,12 +6,17 @@ import { MdDelete } from "react-icons/md";
 function Project() {
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
+  const [totalPurchasedItems, setTotalPurchasedItems] = useState(0);
   const handleOpen = () => {
     // to do
   };
   const onSearch = (val) => {
-    setFilteredData(
-      data.filter((x) => x.name.toLowerCase().match(val.toLowerCase()))
+    const updatedData = data.filter((x) =>
+      x.name.toLowerCase().match(val.toLowerCase())
+    );
+    setFilteredData(updatedData);
+    setTotalPurchasedItems(
+      updatedData?.reduce((acc, item) => acc + item.population, 0)
     );
   };
   const columns = [
@@ -82,6 +87,9 @@ function Project() {
 
   useEffect(() => {
     setFilteredData(data);
+    setTotalPurchasedItems(
+      data?.reduce((acc, item) => acc + item.population, 0)
+    );
   }, [data]);
 
   return (
@@ -97,10 +105,13 @@ function Project() {
             columns={columns}
             data={filteredData}
             onSearch={onSearch}
-            title="COUPON CODES LIST"
+            title="Selling Product List"
           />
-        </div>
 
+        </div>
+          <span style={{ marginLeft: "10px" }}>
+            Total Payment : {totalPurchasedItems}
+          </span>
       </div>
     </section>
   );

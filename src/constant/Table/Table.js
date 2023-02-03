@@ -83,49 +83,7 @@ const Table = ({
     const handleRowsSelect = (selected) => {
         setIsRowsSelected(Boolean(selected.selectedCount));
     };
-    // return (
-    //     <div className="w-full">
-    //         <div className="w-[90%] flex flex-col  mx-auto">
-    //             <div className="p-3 font-lora font-semibold tracking-wider text-2xl bg-baby_blue text-white ">
-    //                 <span style={{ marginLeft: "10px" }}>{title}</span>
-    //             </div>
 
-    //             <DataTable
-    //                 title={isRowsSelected ? title : ""}
-    //                 columns={columns}
-    //                 data={data}
-    //                 pagination
-    //                 selectableRows={selectableRows}
-    //                 onSelectedRowsChange={(selected) => handleRowsSelect(selected)}
-    //                 contextActions={actionButtons}
-    //                 selectableRowsHighlight
-    //                 highlightOnHover
-    //                 customStyles={customStyles}
-    //                 subHeader
-    //                 subHeaderComponent={
-    //                     <div
-    //                         className={
-    //                             extraSubHeader
-    //                                 ? "flex w-[100%] justify-content-between"
-    //                                 : "flex w-[100%] justify-content-end"
-    //                         }
-    //                     >
-    //                         {extraSubHeader ? extraSubHeader : null}
-    //                         <div className="flex items-center  px-2 py-1 rounded-md bg-slate-100">
-    //                             <input
-    //                                 type="text"
-    //                                 onChange={(e) => onSearch(e.target.value)}
-    //                                 placeholder="Search"
-    //                                 className="flex flex-grow bg-slate-100 text-lg tracking-wide font-lora outline-none"
-    //                             />
-    //                             <AiOutlineSearch className="text-gray-800" fontSize="large" />
-    //                         </div>
-    //                     </div>
-    //                 }
-    //             />
-    //         </div>
-    //     </div>
-    // );
     return (
         <div className="table-container">
             <div>
