@@ -1,42 +1,90 @@
 import React from 'react'
 
+
 function Footer() {
+
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer class="text-gray-600 mt-12 bg-gray-100 body-font">
-  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-    <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-      </svg>
-      <span class="ml-3 text-xl">Mclinear Access Portal</span>
-    </a>
-    <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 MAP —
-      <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@map</a>
-    </p>
-    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-      <a class="text-gray-500">
-        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+    <footer class=" w-full bg-gray-800 text-gray-600 body-font">
+  <div class="container px-5 w-full py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+    {/* <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
+      <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
         </svg>
+        <span class="ml-3 text-xl">Tailblocks</span>
       </a>
-      <a class="ml-3 text-gray-500">
-        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-        </svg>
-      </a>
-      <a class="ml-3 text-gray-500">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-        </svg>
-      </a>
-      <a class="ml-3 text-gray-500">
-        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-          <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-          <circle cx="4" cy="4" r="2" stroke="none"></circle>
-        </svg>
-      </a>
-    </span>
+      <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+    </div> */}
+    <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
+      <div class="md:w-1/2 w-full px-4">
+        <h2 class="title-font font-medium text-white tracking-widest text-xl mb-3">ABOUT</h2>
+        <nav class="list-none mb-10 text-slate-100 text-justify w-full md:w-3/4">
+          Architecture provides an opportunity to improve the conditions for people, communities, society, businesses and the environment.
+
+
+          <nav class="list-none mt-4 leading-loose">
+          <li>
+            <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-solid fa-envelope mr-4"></i>info@mclinestudios.com</a>
+          </li>
+          <li>
+            <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-solid fa-phone mr-4"></i>+1 929-341-4154</a>
+          </li>
+          <li>
+            <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-sharp fa-solid fa-location-dot mr-4"></i>600 N Broad St Suite 5 #3441, Middletown, DE 19709</a>
+          </li>
+        </nav>
+        </nav>
+      </div>
+      
+      {/* <div class="lg:w-1/4 md:w-1/2 flex justify-center  w-full px-4">
+        <nav class="list-none mb-10">
+        <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">OPERATION</h2>
+          <li>
+            <Link to="/operation/addnew/lead" class="text-gray-600 hover:text-gray-800">Add New-Lead</Link>
+          </li>
+          <li>
+            <Link to="/operation/addnew/project" class="text-gray-600 hover:text-gray-800">Add New-Project</Link>
+          </li>
+          <li>
+            <Link to="/operation/view/lead" class="text-gray-600 hover:text-gray-800">View-Lead</Link>
+          </li>
+          <li>
+            <Link to="/operation/view/project" class="text-gray-600 hover:text-gray-800">View-Project</Link>
+          </li>
+        </nav>
+      </div> */}
+      
+      
+      
+    </div>
+  </div>
+  <div class="bg-gray-600">
+    <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+      <p class="text-sm text-center sm:text-left text-slate-100">Copyright © {currentYear} McLine Studios by McLine Web Studios. All Rights Reserved.
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+          <svg onClick={() => window.location.href = 'https://www.facebook.com/mclinestudios'} fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-3 text-slate-100 cursor-pointer  w-5 h-5" viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        
+          <svg onClick={() => window.location.href = 'https://twitter.com/MclineStudios'} fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-3  text-slate-100 cursor-pointer  w-5 h-5" viewBox="0 0 24 24">
+            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+          </svg>
+        
+          <svg  onClick={() => window.location.href = 'https://www.instagram.com/mclinestudios'} fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="ml-3 w-5 h-5 cursor-pointer  text-slate-100" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+
+        
+          <svg  onClick={() => window.location.href = 'https://www.linkedin.com/company/71505148/admin/'}  fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="ml-3 text-slate-100 cursor-pointer w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+      </span>
+    </div>
   </div>
 </footer>
   )

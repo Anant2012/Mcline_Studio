@@ -12,7 +12,7 @@ const Login = () => {
 
   return (
     <>
-      <div className='h-[500px]  w-full sm:w-3/4 flex mx-auto sm:shadow-xl my-11'>
+      <div className='h-[500px]  w-full sm:w-3/4 flex mx-auto sm:shadow-md my-12'>
         
         <div className='w-full lg:w-1/2 my-auto'>
           <div className='w-3/4 mx-auto'>
