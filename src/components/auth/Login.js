@@ -12,9 +12,11 @@ const Login = () => {
 
   return (
     <>
+
       <div className='h-[500px]  w-full sm:w-3/4 flex mx-auto sm:shadow-md my-12'>
         
         <div className='w-full lg:w-1/2 my-auto'>
+          <form>
           <div className='w-3/4 mx-auto'>
             <h2 className="text-gray-900 text-2xl mb-1 font-medium title-font">LogIn</h2>
             <p className="leading-relaxed mb-5 text-gray-600">Please fill out the form to login</p>
@@ -29,6 +31,7 @@ const Login = () => {
             <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">LogIn</button>
             <p className="text-xs text-gray-500 mt-7 flex justify-center mx-auto"><a href='/' className='text-[16px] text-blue-700'>Create Account</a></p>
           </div>
+          </form>
           </div>
           <div className="d-none lg:w-1/2  flex  justify-center items-center" style={styles}>
             <div className="w-3/4 backdrop-opacity-30 blur-[1px] h-3/4 mx-auto backdrop-grayscale bg-slate-800/40"></div>

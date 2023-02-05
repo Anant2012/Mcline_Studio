@@ -1,6 +1,6 @@
 import React from "react";
 
-const Profile = () => {
+const ViewProfile = () => {
   return (
     <div class="overflow-hidden bg-white w-3/4 mx-auto mt-12 mb-12 shadow-md sm:rounded-lg border border-gray-300">
       <div class="px-4 py-5 sm:px-6">
@@ -87,4 +87,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ViewProfile;

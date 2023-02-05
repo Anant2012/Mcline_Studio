@@ -1,15 +1,17 @@
 import React from "react";
-import{
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const FrontPage = () => {
+const AdminFrontPage = () => {
   return (
     <>
-<div class="flex flex-col text-center w-full mt-20">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Manage Your Workspace</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">Creating a Productive and Organized Environment</p>
-    </div>
+      <div class="flex flex-col text-center w-full mt-20">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+          Manage Your Workspace
+        </h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
+          Creating a Productive and Organized Environment
+        </p>
+      </div>
 
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
@@ -34,16 +36,14 @@ const FrontPage = () => {
                     Operations
                   </h2>
                   <p className="leading-relaxed text-sm text-base">
-                  VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.
+                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
+                    Kinfolk bespoke try-hard cliche palo santo offal.
                   </p>
                   <div className="p-2 sm:w-1/2 w-full">
                     <section className="text-gray-600 body-font">
                       <div className="container px-5 pt-14 pb-0 mx-auto flex flex-wrap">
                         <div className="flex flex-wrap w-full">
-                          <div className="flex relative pb-12">
-                            <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
-                              <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
-                            </div>
+                          <div className="flex relative pb-[107px]">
                             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
                               <svg
                                 fill="none"
@@ -51,67 +51,38 @@ const FrontPage = () => {
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
                                 stroke-width="2"
-                                className="w-5 h-5"
+                                class="w-5 h-5"
                                 viewBox="0 0 24 24"
                               >
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <circle cx="12" cy="5" r="3"></circle>
+                                <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
                               </svg>
-                            </div>
-                            <div className="flex-grow pl-4">
-                              <h2 className="font-medium title-font text-md text-gray-900 tracking-wider">
-                                Add New
-                              </h2>
-                              <p className="leading-relaxed text-sm">Choose Option</p>
-                              <div className="flex mt-2">
-                                <Link to="/operation/addnew/lead">
-                                    <button
-                                    type="button"
-                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-3"
-                                    >
-                                    Lead
-                                    </button>
-                                </Link>
-                                <Link to="/operation/addnew/project">
-                                    <button
-                                    type="button"
-                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-3"
-                                    >
-                                    Project
-                                    </button>
-                                </Link>
-                                    </div>
-                            </div>
-                          </div>
-                          <div className="flex relative pb-16">
-                            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <circle cx="12" cy="5" r="3"></circle>
-              <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
-            </svg>
                             </div>
                             <div className="flex-grow pl-4">
                               <h2 className="font-medium title-font text-md text-gray-900 mb-1 tracking-wider">
                                 View
                               </h2>
-                              <p className="leading-relaxed text-sm">Choose Option</p>
-                              <div className="flex mt-2">
-                                <Link to="/operation/view/lead">
-                                    <button
+                              <p className="leading-relaxed text-sm">
+                                Choose Option
+                              </p>
+                              <div className="flex flex-col mt-2">
+                                <Link to="/admin/operation/view/lead">
+                                  <button
                                     type="button"
-                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-3"
-                                    >
+                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-3"
+                                  >
                                     Lead
-                                    </button>
-                                  </Link>
-                                  <Link to="/operation/view/project">
-                                    <button
+                                  </button>
+                                </Link>
+                                <Link to="/admin/operation/view/project">
+                                  <button
                                     type="button"
-                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-3"
-                                    >
+                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                  >
                                     Project
-                                    </button>
-                                    </Link>
-                            </div>
+                                  </button>
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -142,7 +113,8 @@ const FrontPage = () => {
                     HR
                   </h2>
                   <p className="leading-relaxed text-sm text-base">
-                  VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.
+                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
+                    Kinfolk bespoke try-hard cliche palo santo offal.
                   </p>
                   <div className="p-2 sm:w-1/2 w-full">
                     <section className="text-gray-600 body-font">
@@ -150,61 +122,63 @@ const FrontPage = () => {
                         <div className="flex flex-wrap w-full">
                           <div className="flex relative pb-2">
                             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-              <path d="M22 4L12 14.01l-3-3"></path>
-            </svg>
+                              <svg
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                class="w-5 h-5"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                              </svg>
                             </div>
                             <div className="flex-grow pl-4">
                               <h2 className="font-medium title-font text-md text-gray-900 mb-1 tracking-wider">
                                 Manage
                               </h2>
-                              <p className="leading-relaxed text-sm">Choose Option</p>
+                              <p className="leading-relaxed text-sm">
+                                Choose Option
+                              </p>
                               <div className="flex mt-2 flex-col">
-                                <Link to="/fillprofile">
-                                    <button
+                                <Link to="/admin/hr/profiles">
+                                  <button
                                     type="button"
                                     class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                    >
-                                    Edit Profile
-                                    </button>
-                                  </Link>
+                                  >
+                                    Profiles
+                                  </button>
+                                </Link>
 
-                                    <Link to="/hr/leaves"><button
+                                <Link to="/admin/hr/profiles">
+                                  <button
                                     type="button"
                                     class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
-                                    >
+                                  >
                                     Leaves
-                                    </button>
-                                    </Link>
+                                  </button>
+                                </Link>
 
-
-                                    <Link to="/hr/tickets"><button
+                                <Link to="/admin/hr/tickets">
+                                  <button
                                     type="button"
                                     class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
-                                    >
+                                  >
                                     Tickets
-                                    </button>
-                                    </Link>
+                                  </button>
+                                </Link>
 
-
-                                    <Link to="/hr/grievance"><button
+                                <Link to="/admin/hr/grievance">
+                                  <button
                                     type="button"
                                     class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
-                                    >
+                                  >
                                     Grievance
-                                    </button>
-                                    </Link>
-
-
-                                    <Link to="/hr/policy"><button
-                                    type="button"
-                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
-                                    >
-                                    Policy
-                                    </button>
-                                    </Link>
-                            </div>
+                                  </button>
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -221,4 +195,4 @@ const FrontPage = () => {
   );
 };
 
-export default FrontPage;
+export default AdminFrontPage;
