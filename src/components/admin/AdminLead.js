@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Table from "../../../../constant/Table/Table"
+import Table from "../../constant/Table/Table"
 import { FaUserEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
-function Lead() {
+function AdminLead() {
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const handleOpen = () => {
@@ -15,6 +15,7 @@ function Lead() {
     );
   };
   const columns = [
+    { name: "Username", selector: (row) => row.population, sortable: true },
     { name: "Date", selector: (row) => row.name, sortable: true },
     { name: "Company ", selector: (row) => row.name, sortable: true },
     { name: "Person", selector: (row) => row.capital, sortable: true },
@@ -76,4 +77,4 @@ function Lead() {
   );
 }
 
-export default Lead;
+export default AdminLead;

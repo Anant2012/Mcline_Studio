@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Table from "../../../../constant/Table/Table"
+import Table from "../../constant/Table/Table"
 import { FaUserEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
-function Project() {
+function AdminProject() {
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [totalPurchasedItems, setTotalPurchasedItems] = useState(0);
@@ -20,6 +20,7 @@ function Project() {
     );
   };
   const columns = [
+    { name: "Username", selector: (row) => row.capital, sortable: true },
     { name: "Date", selector: (row) => row.name, sortable: true },
     { name: "Code", selector: (row) => row.name, sortable: true },
     { name: "Company", selector: (row) => row.capital, sortable: true },
@@ -117,4 +118,4 @@ function Project() {
   );
 }
 
-export default Project;
+export default AdminProject;

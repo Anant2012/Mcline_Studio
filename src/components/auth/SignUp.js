@@ -17,6 +17,7 @@ const SignUp = () => {
             <div className="w-3/4 backdrop-opacity-30 blur-[1px] h-3/4 mx-auto backdrop-grayscale-10 bg-slate-800/40"></div>
         </div>
         <div className='w-full lg:w-1/2 my-auto'>
+          <form>
           <div className='w-3/4 mx-auto'>
             <h2 className="text-gray-900 text-2xl mb-1 font-medium title-font">SignUp</h2>
             <p className="leading-relaxed mb-5 text-gray-600">Please fill out the form below to create your account</p>
@@ -39,6 +40,7 @@ const SignUp = () => {
             <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">SignUp</button>
             <p className="text-xs text-gray-500 mt-3">Don't worry! We will keep your data safe</p>
           </div>
+          </form>
           </div>
       </div>
     </>
