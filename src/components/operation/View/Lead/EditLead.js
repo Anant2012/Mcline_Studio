@@ -1,7 +1,22 @@
-import React from "react";
-import background from './AddNewBanner.jpg';
+import React, { useState, useEffect } from "react";
+import background from '../../Add New/AddNewBanner.jpg';
+import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
+import { useParams } from "react-router";
 
 function EditLead() {
+    const URL = window.location.href;
+    const params = useParams();
+    const leadId = params.leadId;
+    console.log("Lead", leadId);
+
+    const [date, setDate] = useState("");
+    const [person, setPerson] = useState("");
+    const [company, setCompany] = useState("");
+    const [email, setEmail] = useState("");
+    const [contact_no, setContact_no] = useState("");
+    const [lead_status, setLead_Status] = useState("");
+    const [description, setDescription] = useState("");
+
 
     const styles = {
         backgroundImage: `url(${background})`,
@@ -9,7 +24,65 @@ function EditLead() {
         backgroundPosition: 'center',
         filter: 'grayscale(20%)'
     };
+    console.log("fgh",leadId)
+    const getLead = async (e) => {
+        AxiosInstance.get(`/api/leads/get/${leadId}`)
+            .then((data) => {
+                console.log(data)
+                setDate(data.data.data.date);
+                setCompany(data.data.data.company);
+                setContact_no(data.data.data.contact_no);
+                setPerson(data.data.data.name);
+                setDescription(data.data.data.description);
+                setEmail(data.data.data.email);
+                setLead_Status(data.data.data.status);
+                alert("✅ Lead Edited SuccesFully");
+            }
+            )
+            .catch((err) => {
+                console.log("errorr", err);
+                alert(err);
+            });
+    }
+    const EditLead = async (e) => {
+        e.preventDefault();
+        try {
+            const data = {
+                date: date,
+                name: person,
+                company: company,
+                email: email,
+                contact_no: contact_no,
+                status: lead_status,
+                description: description,
+            }
+            const response = await AxiosInstance.put(`/api/superapi/leads/update/${leadId}`, data);
+            if (response.status === 200) {
+                setDate("");
+                setCompany("");
+                setContact_no("");
+                setPerson("");
+                setDescription("");
+                setEmail("");
+                setLead_Status("");
+                alert("✅Lead updated successfully!!");
+            }
+        } catch (err) {
+            console.log(err);
+            setDate("");
+            setCompany("");
+            setContact_no("")
+            setPerson("");
+            setDescription("");
+            setEmail("");
+            setLead_Status("");
+            alert("Something went wrong!!");
+        }
+    }
 
+    useEffect(() => {
+        // getLead();
+    }, []);
 
     return (
         <div className="flex flex-nowrap">
@@ -19,7 +92,7 @@ function EditLead() {
                     <div class="container px-5 py-20 mx-auto">
                         <div class="flex flex-col text-center w-full mb-4">
                             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                                Edit Your Lead Form
+                                Edit Lead Form
                             </h1>
                             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
                         </div>
@@ -34,6 +107,8 @@ function EditLead() {
                                             <input
                                                 type="date"
                                                 required
+                                                value={date}
+                                                onChange={(e) => setDate(e.target.value)}
                                                 id="date"
                                                 name="date"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -49,6 +124,8 @@ function EditLead() {
                                             <input
                                                 type="text"
                                                 required
+                                                value={person}
+                                                onChange={(e) => setPerson(e.target.value)}
                                                 id="person"
                                                 name="person"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -64,6 +141,8 @@ function EditLead() {
                                             <input
                                                 type="text"
                                                 required
+                                                value={company}
+                                                onChange={(e) => setCompany(e.target.value)}
                                                 id="company"
                                                 name="company"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -79,6 +158,8 @@ function EditLead() {
                                             <input
                                                 type="tel"
                                                 required
+                                                value={contact_no}
+                                                onChange={(e) => setContact_no(e.target.value)}
                                                 id="number"
                                                 name="number"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -94,6 +175,8 @@ function EditLead() {
                                             <input
                                                 type="email"
                                                 required
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
                                                 id="email"
                                                 name="email"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -105,7 +188,8 @@ function EditLead() {
                                         <div class="relative">
                                             <label for="cars" class="leading-7 text-sm text-gray-600">Lead Status</label>
 
-                                            <select name="cars" id="cars" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <select value={lead_status}
+                                                onChange={(e) => setLead_Status(e.target.value)} name="lead_status" id="lead_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <option value="" class="leading-7 text-sm text-gray-500" disabled selected>Select</option>
                                                 <option value="Lead" class="leading-7 text-sm text-gray-600">Lead</option>
                                                 <option value="Hot" class="leading-7 text-sm text-gray-600">Hot</option>
@@ -125,13 +209,15 @@ function EditLead() {
                                             <textarea
                                                 id="message"
                                                 required
+                                                value={description}
+                                                onChange={(e) => setDescription(e.target.value)}
                                                 name="message"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                                             ></textarea>
                                         </div>
                                     </div>
                                     <div class="p-2 w-full">
-                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditLead}>
                                             Submit
                                         </button>
                                     </div>

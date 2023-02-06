@@ -28,6 +28,7 @@ import AdminLeaves from './components/admin/AdminLeaves';
 import AdminTickets from './components/admin/AdminTickets';
 import AdminGrievance from './components/admin/AdminGrievance';
 import AdminProfile from './components/admin/AdminProfile';
+import EditLead from './components/operation/View/Lead/EditLead';
 
 
 
@@ -41,9 +42,9 @@ function App() {
         <Route exact path="/fillprofile" element={<FillProfile/>} />
         <Route exact path="/operation/addnew/lead" element={<Addnewlead/>} />
         <Route exact path="/operation/addnew/project" element={<Addnewproject/>} />
-
+        <Route exact path="/operation/view/project" element={<Project />} />
         <Route exact path="/operation/view/lead" element={<Lead/>} />
-        <Route exact path="/operation/view/project" element={<Project/>} />
+        <Route exact path="/user/edit_lead_form/:leadId" element={<EditLead/>} />
 
         <Route exact path="/hr/leaves" element={<Leave/>} />
         <Route exact path="/hr/tickets" element={<Tickets/>} />
