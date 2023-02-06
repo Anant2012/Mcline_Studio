@@ -10,7 +10,7 @@ function Addnewproject() {
   const [company, setCompany] = useState("");
   const [approvalData, setApprovalData] = useState("");
   const [submissionDate, setSubmissionDate] = useState("");
-  const [project_status, setProject_Status] = useState("");
+  const [project_status, setProject_status] = useState("");
   const [description, setDescription] = useState("");
 
   const styles = {
@@ -41,6 +41,7 @@ function Addnewproject() {
       setSubmissionDate("")
       setCompany("");
       setDescription("");
+      setProject_status("");
       setApprovalData("");
     } catch (error) {
       alert(error);
@@ -113,7 +114,7 @@ function Addnewproject() {
                   <div class="p-2 w-full sm:w-1/2">
                     <div class="relative">
                       <label for="clientName" class="leading-7 text-sm text-gray-600">
-                        ClientName
+                        Client Name
                       </label>
                       <input
                         type="text"
