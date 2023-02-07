@@ -29,6 +29,7 @@ import AdminTickets from './components/admin/AdminTickets';
 import AdminGrievance from './components/admin/AdminGrievance';
 import AdminProfile from './components/admin/AdminProfile';
 import EditLead from './components/operation/View/Lead/EditLead';
+import AdminTableFrontPage from './components/admin/AdminTableFrontPage';
 
 
 
@@ -64,8 +65,10 @@ function App() {
 
 
         {/* Admin Section   */}
-        <Route exact path="/admin" element={<AdminFrontPage/>} />
+        <Route exact path="/admin" element={<AdminTableFrontPage/>} />
 
+        <Route exact path="/admin/operation" element={<AdminFrontPage/>} />
+        <Route exact path="/admin/hrend" element={<AdminFrontPage/>} />
         <Route exact path="/admin/operation/view/lead" element={<AdminLead/>} />
         <Route exact path="/admin/operation/view/project" element={<AdminProject/>} />
 

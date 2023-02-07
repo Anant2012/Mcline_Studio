@@ -64,7 +64,7 @@ function AdminLead() {
           </h1>
         </div>
         <div class="flex mx-4 flex-wrap ">
-                        <div class="w-full flex-col sm:flex-row p-2 mb-4 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+                        <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
                             <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">Filter:</div>
                             <div class="flex flex-row justify-center item-center relative">
                                 <label for="name" class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white">

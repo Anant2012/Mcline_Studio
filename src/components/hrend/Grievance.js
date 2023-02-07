@@ -64,6 +64,23 @@ function Grievance() {
           </div>
           <div class="w-full xl:w-3/5 mx-auto">
             <div class="flex flex-wrap -m-2">
+            <div class="p-2 w-full">
+                  <div class="relative">
+                    <label
+                      for="message"
+                      class="leading-7 text-sm text-gray-600"
+                    >
+                      Send Email To
+                    </label>
+                    <input
+                      type="email"
+                      id="date_to"
+                      name="date"
+                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      required
+                    />
+                  </div>
+                </div>
               <div class="p-2 w-full">
                 <div class="relative">
                   <label for="message" class="leading-7 text-sm text-gray-600">
@@ -93,7 +110,8 @@ function Grievance() {
                   List of all Grievance
                 </h1>
 
-                <section class="text-gray-600 body-font">
+                <section class="text-gray-600 mt-8 body-font">
+                  
                 <div class="container mx-auto w-full mt-4">
                     <div>
                       <Table
