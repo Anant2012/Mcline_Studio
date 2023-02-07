@@ -85,6 +85,33 @@ function Lead() {
             View Lead
           </h1>
         </div>
+        <div class="flex mx-4 flex-wrap ">
+                        <div class="w-full flex-col sm:flex-row p-2 mb-4 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+                            <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">Filter:</div>
+                            <div class="flex flex-row justify-center item-center relative">
+                                <label for="name" class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white">
+                                    Date_from
+                                </label>
+                                <input
+                                    type="date"
+                                    id="name"
+                                    name="name"
+                                    class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                                />
+                            </div>
+                            <div class="flex flex-row justify-center item-center relative">
+                                <label for="name" class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white">
+                                    Date_to
+                                </label>
+                                <input
+                                    type="date"
+                                    id="name"
+                                    name="name"
+                                    class="w-full focus:bg-opacity-5 bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                                />
+                            </div>
+                        </div>
+                    </div>
         <div>
           <Table
             columns={columns}
