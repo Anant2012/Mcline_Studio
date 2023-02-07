@@ -16,12 +16,12 @@ function Tickets() {
     );
   };
   const columns = [
-    { name: "To", selector: (row) => row.name, sortable: true },
-    { name: "From", selector: (row) => row.name, sortable: true },
+    { name: "Date", selector: (row) => row.name, sortable: true },
+    { name: "Has Issue With", selector: (row) => row.name, sortable: true },
     { name: "Description", selector: (row) => row.capital, sortable: true },
     {
       name: "Status",
-      selector: (row) => <input type="checkbox" />,
+      selector: (row) => row.capital, sortable: true 
     },
   ];
 
@@ -113,6 +113,12 @@ function Tickets() {
                         Headphones
                       </label>
                     </div>
+                    <div className="flex items-center">
+                      <input type="checkbox" id="box" name="box" />
+                      <label class="ml-2 leading-7 text-sm text-gray-600">
+                        Other
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -124,7 +130,7 @@ function Tickets() {
                   <textarea
                     id="message"
                     name="message"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 sm:h-48 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 sm:h-56 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   ></textarea>
                 </div>
               </div>
