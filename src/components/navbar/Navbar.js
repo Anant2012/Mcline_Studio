@@ -21,16 +21,16 @@ const Navbar = () => {
               <div className="relative">
                 <div className={`${loggedIn ? "hidden" : "block"}`}>
                   <Link to="/login">
-                    <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-5 focus:outline-none hover:bg-indigo-600 rounded-full text-sm mr-3">
+                    <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-600 rounded-full text-sm mr-3">
                       LogIn
                     </button>
                   </Link>
 
-                  <Link to="/signup">
+                  {/* <Link to="/signup">
                     <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-5 focus:outline-none hover:bg-indigo-600 rounded-full text-sm">
                       SignUp
                     </button>
-                  </Link>
+                  </Link> */}
                 </div>
 
                 <div className={`${!loggedIn ? "hidden" : "block"}`}>
@@ -77,7 +77,7 @@ const Navbar = () => {
                 >
                   {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
                   <Link
-                    to="/viewprofile"
+                    to="/hr/viewprofile"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
                     tabindex="-1"
