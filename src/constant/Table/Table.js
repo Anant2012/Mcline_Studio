@@ -96,8 +96,8 @@ const Table = ({
                     columns={columns}
                     data={data}
                     pagination
-                    selectableRows
-                    selectableRowsHighlight
+                    // selectableRows
+                    // selectableRowsHighlight
                     highlightOnHover
                     customStyles={customStyles}
                     subHeader

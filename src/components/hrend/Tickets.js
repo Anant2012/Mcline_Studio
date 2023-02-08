@@ -1,23 +1,39 @@
 import React from "react";
 import background from './ticketsimg.jpg';
-
+import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 
 function Tickets() {
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
+  const [description, setDescription] = useState("");
+  const [email, setEmail] = useState("");
+  const [mouse, setMouse] = useState("");
+  const [keyboard, setKeyBoard] = useState("");
+  const [laptop, setLaptop] = useState("");
+  const [swipecard, setSwipe_Card] = useState("");
+  const [id_card, setId_card] = useState("");
+  const [chair, setChair] = useState("");
+  const [headphone, setHeadphone] = useState("");
+  const [other, setother] = useState("");
+  
   const handleOpen = () => {
     // to do
   };
   const onSearch = (val) => {
     setFilteredData(
-      data.filter((x) => x.name.toLowerCase().match(val.toLowerCase()))
+      data?.filter(
+        (x) =>
+          x.date.toLowerCase().match(val.toLowerCase()) ||
+          x.date_from.toLowerCase().match(val.toLowerCase()) ||
+          x.description.toLowerCase().match(val.toLowerCase())
+      )
     );
   };
   const columns = [
     { name: "Date", selector: (row) => row.name, sortable: true },
-    { name: "Has Issue With", selector: (row) => row.name, sortable: true },
+    { name: "Has Issue With", selector: (row) => (row.name), sortable: true },
     { name: "Description", selector: (row) => row.capital, sortable: true },
     {
       name: "Status",
@@ -28,27 +44,46 @@ function Tickets() {
             className="btn btn-secondary"
             // onClick={() => handlePublishButton(row)}
           >
-            UNPUBLISH
+            Resolved
           </button>
         ) : (
           <button
             className="btn btn-success"
             // onClick={() => handlePublishButton(row)}
           >
-            Publish
+            Sent
           </button>
         )}
       </div>), sortable: true
     },
   ];
 
+  const AddTicket = async (e) => {
+    e.preventDefault();
+    const data = {
+      user_id: "63bbebd43e8e148ba852fd86",
+      description: description,
+    }
+    try {
+      const response = await AxiosInstance.post(`/api/leads/create`, data)
+      if (response.status === 200) {
+        alert("✅ Leave Sent SuccesFully");
+      }
+      
+      setDescription("");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
+
   const getData = async () => {
-    fetch("https://restcountries.com/v2/all")
-      .then((res) => res.json())
-      .then((data) => setData(data))
+    AxiosInstance.get("/api/leads/get/63bbebd43e8e148ba852fd86")
+      .then((data) =>
+        setData(data.data.data)
+      )
       .catch((err) => console.log("errorr", err));
   };
-
   useEffect(() => {
     getData();
   }, []);
@@ -90,7 +125,8 @@ function Tickets() {
                     </label>
                     <div className="flex ml-2 flex-col">
                       <div className="flex items-center">
-                        <input type="checkbox" id="box" name="box" />
+                        <input value={mouse}
+                          onChange={(e) =>  setMouse(!mouse) }type="checkbox" id="box" name="box" />
                         <label class="ml-2 leading-7 text-sm text-gray-600">
                           Mouse
                         </label>
@@ -165,13 +201,15 @@ function Tickets() {
                     <textarea
                       id="message"
                       name="message"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 sm:h-40 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     ></textarea>
                   </div>
                 </div>
 
                 <div class="p-2 w-full">
-                  <button class="flex mx-auto mt-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  <button onClick={AddTicket} class="flex mx-auto mt-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                     Submit
                   </button>
                 </div>

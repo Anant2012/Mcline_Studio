@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useEffect, useState } from "react";
-import Table from "../../constant/Table/Table";
+import Table from "../../../constant/Table/Table";
 
 function AdminGrievance() {
   const [data, setData] = useState();
@@ -43,24 +43,24 @@ function AdminGrievance() {
   return (
     <>
 
-    <section class="text-gray-600 body-font">
-      <div class="container px-5 py-20 mx-auto">
-        <div class="flex flex-col text-center w-full mb-12">
-          <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900">
-          List of all Grievance
-          </h1>
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-20 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900">
+              List of all Grievance
+            </h1>
+          </div>
+          <div>
+            <Table
+              columns={columns}
+              data={filteredData}
+              onSearch={onSearch}
+              title="COUPON CODES LIST"
+            />
+          </div>
+
         </div>
-        <div>
-        <Table
-                        columns={columns}
-                        data={filteredData}
-                        onSearch={onSearch}
-                        title="COUPON CODES LIST"
-                      />
-        </div>
-        
-      </div>
-    </section>
+      </section>
     </>
   );
 }

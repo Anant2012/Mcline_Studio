@@ -1,18 +1,26 @@
 import React from "react";
 import background from "./grievanceimg.jpg";
-
+import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 
 function Grievance() {
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
+  const [email, setEmail] = useState("");
+  const [statement, setStatement] = useState("");
+
   const handleOpen = () => {
     // to do
   };
   const onSearch = (val) => {
     setFilteredData(
-      data.filter((x) => x.name.toLowerCase().match(val.toLowerCase()))
+      data?.filter(
+        (x) =>
+          x.date_to.toLowerCase().match(val.toLowerCase()) ||
+          x.date_from.toLowerCase().match(val.toLowerCase()) ||
+          x.description.toLowerCase().match(val.toLowerCase())
+      )
     );
   };
   const columns = [
@@ -21,14 +29,51 @@ function Grievance() {
     { name: "Statement", selector: (row) => row.capital, sortable: true },
     {
       name: "Status",
-      selector: (row) => <input type="checkbox" />,
+      selector: (row) => (
+        <div>
+          {row.status === "Publish" ? (
+            <button
+              className="btn btn-secondary"
+            // onClick={() => handlePublishButton(row)}
+            >
+              Resolved
+            </button>
+          ) : (
+            <button
+              className="btn btn-success"
+            // onClick={() => handlePublishButton(row)}
+            >
+              Sent
+            </button>
+          )}
+        </div>), sortable: true
     },
   ];
 
+  const AddGrievance = async (e) => {
+    e.preventDefault();
+    const data = {
+      user_id: "63bbebd43e8e148ba852fd86",
+      statement: statement,
+    }
+    try {
+      const response = await AxiosInstance.post(`/api/leads/create`, data)
+      if (response.status === 200) {
+        alert("✅ Grievance Sent SuccesFully");
+      }
+      setEmail("")
+      setStatement("");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
+
   const getData = async () => {
-    fetch("https://restcountries.com/v2/all")
-      .then((res) => res.json())
-      .then((data) => setData(data))
+    AxiosInstance.get("/api/leads/get/63bbebd43e8e148ba852fd86")
+      .then((data) =>
+        setData(data.data.data)
+      )
       .catch((err) => console.log("errorr", err));
   };
 
@@ -73,9 +118,11 @@ function Grievance() {
                       Send Email To
                     </label>
                     <input
-                      type="email"
+                      type="text"
                       id="date_to"
-                      name="date"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      name="email"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required
                     />
@@ -88,13 +135,15 @@ function Grievance() {
                   </label>
                   <textarea
                     id="message"
-                    name="message"
+                      name="message"
+                      value={statement}
+                      onChange={(e) => setStatement(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   ></textarea>
                 </div>
               </div>
               <div class="p-2 w-full">
-                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                <button onClick={AddGrievance} class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                   Submit
                 </button>
               </div>

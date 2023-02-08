@@ -1,34 +1,85 @@
 import React from "react";
 import background from "./leaveimg.jpg";
-
+import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 
 function Leave() {
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
+  const [date_to, setDate_to] = useState("");
+  const [date_from, setDate_from] = useState("");
+  const [email, setEmail] = useState("");
+  const [description, setDescription] = useState("");
+
   const handleOpen = () => {
     // to do
   };
   const onSearch = (val) => {
     setFilteredData(
-      data.filter((x) => x.name.toLowerCase().match(val.toLowerCase()))
+      data?.filter(
+        (x) =>
+          x.date_to.toLowerCase().match(val.toLowerCase()) ||
+          x.date_from.toLowerCase().match(val.toLowerCase()) ||
+          x.description.toLowerCase().match(val.toLowerCase()) 
+      )
     );
   };
   const columns = [
     { name: "To", selector: (row) => row.name, sortable: true },
     { name: "From", selector: (row) => row.name, sortable: true },
-    { name: "Description", selector: (row) => row.capital, sortable: true },
+    { name: "Description", selector: (row) => row.description, sortable: true },
     {
       name: "Status",
-      selector: (row) => <input type="checkbox" />,
+      selector: (row) => (
+        <div>
+          {row.status === "Publish" ? (
+            <button
+              className="btn btn-secondary"
+            // onClick={() => handlePublishButton(row)}
+            >
+              Granted
+            </button>
+          ) : (
+            <button
+              className="btn btn-success"
+            // onClick={() => handlePublishButton(row)}
+            >
+              Applied
+            </button>
+          )}
+        </div>), sortable: true
     },
   ];
+  
+  const AddLeave = async (e) => {
+    e.preventDefault();
+    const data = {
+      user_id: "63bbebd43e8e148ba852fd86",
+      date_to: date_to,
+      date_from: date_from,
+      description: description,
+    }
+    try {
+      const response = await AxiosInstance.post(`/api/leads/create`, data)
+      if (response.status === 200) {
+        alert("✅ Leave Sent SuccesFully");
+      }
+      setDate_to("");
+      setDate_from("");
+      setEmail("")
+      setDescription("");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
 
   const getData = async () => {
-    fetch("https://restcountries.com/v2/all")
-      .then((res) => res.json())
-      .then((data) => setData(data))
+    AxiosInstance.get("/api/leads/get/63bbebd43e8e148ba852fd86")
+      .then((data) =>
+        setData(data.data.data)
+      )
       .catch((err) => console.log("errorr", err));
   };
 
@@ -71,11 +122,13 @@ function Leave() {
                 <div class="p-2 w-1/2">
                   <div class="relative">
                     <label for="date" class="leading-7 text-sm text-gray-600">
-                      To
+                      Date To
                     </label>
                     <input
                       type="date"
-                      id="date_from"
+                      id="date_to"
+                      value={date_to}
+                      onChange={(e) => setDate_to(e.target.value)}
                       name="date"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required
@@ -85,11 +138,13 @@ function Leave() {
                 <div class="p-2 w-1/2">
                   <div class="relative">
                     <label for="date" class="leading-7 text-sm text-gray-600">
-                      From
+                      Date From
                     </label>
                     <input
                       type="date"
                       id="date_to"
+                      value={date_from}
+                      onChange={(e) => setDate_from(e.target.value)}
                       name="date"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required
@@ -105,8 +160,10 @@ function Leave() {
                       Send Email To
                     </label>
                     <input
-                      type="email"
-                      id="date_to"
+                      type="text"
+                      id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       name="date"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required
@@ -124,13 +181,15 @@ function Leave() {
                     <textarea
                       id="message"
                       name="message"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                       required
                     ></textarea>
                   </div>
                 </div>
                 <div class="p-2 w-full">
-                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  <button onClick={AddLeave} class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                     Submit
                   </button>
                 </div>
