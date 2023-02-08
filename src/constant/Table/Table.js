@@ -21,6 +21,7 @@ const Table = ({
                 borderRightStyle: "solid",
                 borderRightWidth: "1px",
                 justifyContent: "center",
+                
             },
         },
         contextMenu: {

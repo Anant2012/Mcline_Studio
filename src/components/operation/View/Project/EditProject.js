@@ -1,16 +1,83 @@
-import React from "react";
-import background from './AddNewBanner.jpg';
+import React, { useState,useEffect } from 'react'
+import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
+import background from '../../Add New/AddNewProject.jpg';
+import { useParams } from "react-router"; 
 
-function EditProject() {
+function Addnewproject() {
+    const URL = window.location.href;
+    const params = useParams();
+    const projectId = params.projectId;
+    // console.log("Project", projectId);
+
+    const [projectName, setProjectName] = useState("");
+    const [person, setPerson] = useState("");
+    const [company, setCompany] = useState("");
+    const [approvalDate, setapprovalDate] = useState("");
+    const [submissionDate, setSubmissionDate] = useState("");
+    const [project_status, setProject_status] = useState("");
+    const [description, setDescription] = useState("");
 
     const styles = {
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        filter: 'grayscale(20%)'
+        filter: 'grayscale(0%)'
     };
+    
+    const getProject = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await AxiosInstance.post(`/api/projects/get/${projectId}`)
+            if (response.status === 200) {
+                setPerson(response.data.data.person);
+                setSubmissionDate(response.data.data.submission_date)
+                setCompany(response.data.data.company);
+                setDescription(response.data.data.description);
+                setProject_status(response.data.data.status);
+                setProjectName(response.data.data.project_name);
+                setapprovalDate(response.data.data.approval_date);
+            }
+            // setCode("");
+        } catch (error) {
+            alert(error);
+            console.log(error);
+        };
+    }
+    const EditProject = async (e) => {
+        e.preventDefault();
+        const data = {
+            // user_id: "63bbebd43e8e148ba852fd86",
+            // code: code,
+            client_name: company,
+            person: person,
+            status: project_status,
+            project_name: projectName,
+            approval_date: approvalDate,
+            submission_date: submissionDate,
+            description: description,
+        }
+        try {
+            const response = await AxiosInstance.post(`/api/projects/update/${projectId}`, data)
+            if (response.status === 200) {
+                alert("✅ Project Added SuccesFully");
+            }
+            // setCode("");
+            setPerson("");
+            setSubmissionDate("")
+            setCompany("");
+            setDescription("");
+            setProject_status("");
+            setProjectName("");
+            setapprovalDate("");
+        } catch (error) {
+            alert(error);
+            console.log(error);
+        };
+    }
 
-
+    useEffect(() => {
+        getProject();
+    }, []);
     return (
         <div className="flex flex-nowrap">
             <div className=" bg-slate-700 m-2 rounded-lg hidden sm:block sm:w-1/4" style={styles}></div>
@@ -19,7 +86,7 @@ function EditProject() {
                     <div class="container px-5 py-20 mx-auto">
                         <div class="flex flex-col text-center w-full mb-4">
                             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                                Edit Your Project
+                                Edit Project
                             </h1>
                             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Projects from Multiple Sources</p>
                         </div>
@@ -29,18 +96,35 @@ function EditProject() {
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
                                             <label for="date" class="leading-7 text-sm text-gray-600">
-                                                Date
+                                                Approval Date
                                             </label>
                                             <input
                                                 type="date"
                                                 required
+                                                value={approvalDate}
+                                                onChange={(e) => setapprovalDate(e.target.value)}
                                                 id="date"
                                                 name="date"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
                                     </div>
-
+                                    <div class="p-2 w-full sm:w-1/2">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                Submission Date
+                                            </label>
+                                            <input
+                                                type="date"
+                                                required
+                                                value={submissionDate}
+                                                onChange={(e) => setSubmissionDate(e.target.value)}
+                                                id="date"
+                                                name="date"
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
                                             <label for="person" class="leading-7 text-sm text-gray-600">
@@ -49,23 +133,26 @@ function EditProject() {
                                             <input
                                                 type="text"
                                                 required
+                                                value={person}
+                                                onChange={(e) => setPerson(e.target.value)}
                                                 id="person"
                                                 name="person"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
                                     </div>
-
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
-                                            <label for="company" class="leading-7 text-sm text-gray-600">
-                                                Company
+                                            <label for="clientName" class="leading-7 text-sm text-gray-600">
+                                                Client Name
                                             </label>
                                             <input
                                                 type="text"
                                                 required
-                                                id="company"
-                                                name="company"
+                                                value={company}
+                                                onChange={(e) => setCompany(e.target.value)}
+                                                id="clientName"
+                                                name="clientName"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -73,14 +160,16 @@ function EditProject() {
 
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
-                                            <label for="code" class="leading-7 text-sm text-gray-600">
-                                                Code
+                                            <label for="projectName" class="leading-7 text-sm text-gray-600">
+                                                Project Name
                                             </label>
                                             <input
-                                                type="tel"
+                                                type="text"
                                                 required
-                                                id="code"
-                                                name="code"
+                                                value={projectName}
+                                                onChange={(e) => setProjectName(e.target.value)}
+                                                id="projectName"
+                                                name="projectName"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -90,84 +179,15 @@ function EditProject() {
                                         <div class="relative">
                                             <label for="cars" class="leading-7 text-sm text-gray-600">Project Status</label>
 
-                                            <select name="project_status" id="project_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <select value={project_status}
+                                                onChange={(e) => setProject_status(e.target.value)} name="project_status" id="project_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <option value="" class="leading-7 text-sm text-gray-500" disabled selected>Select</option>
-                                                <option value="Lead" class="leading-7 text-sm text-gray-600">Lead</option>
+                                                <option value="Cold" class="leading-7 text-sm text-gray-600">Cold</option>
                                                 <option value="Hot" class="leading-7 text-sm text-gray-600">Hot</option>
                                                 <option value="Warm" class="leading-7 text-sm text-gray-600">Warm</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="invoice_amount" class="leading-7 text-sm text-gray-600">
-                                                Invoice Amount
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="invoice_amount"
-                                                name="invoice_amount"
-                                                value="Anant"
-                                                readonly
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="invoice_date" class="leading-7 text-sm text-gray-600">
-                                                Invoice Date
-                                            </label>
-                                            <input
-                                                type="date"
-                                                id="invoice_date"
-                                                name="invoice_date"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="invoice_status" class="leading-7 text-sm text-gray-600">
-                                                Invoice Status
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="invoice_status"
-                                                name="invoice_status"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="pay_amount" class="leading-7 text-sm text-gray-600">
-                                                Payment Amount
-                                            </label>
-                                            <input
-                                                type="number"
-                                                id="pay_amount"
-                                                name="pay_amount"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="invoice_due_date" class="leading-7 text-sm text-gray-600">
-                                                Invoice Due Date
-                                            </label>
-                                            <input
-                                                type="date"
-                                                id="invoice_due_date"
-                                                name="invoice_due_date"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-
                                     <div class="p-2 w-full">
                                         <div class="relative">
                                             <label
@@ -179,13 +199,15 @@ function EditProject() {
                                             <textarea
                                                 id="message"
                                                 required
+                                                value={description}
+                                                onChange={(e) => setDescription(e.target.value)}
                                                 name="message"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                                             ></textarea>
                                         </div>
                                     </div>
                                     <div class="p-2 w-full">
-                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                        <button onClick={EditProject} class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                                             Submit
                                         </button>
                                     </div>
@@ -199,4 +221,4 @@ function EditProject() {
     );
 }
 
-export default EditProject;
+export default Addnewproject

@@ -16,9 +16,9 @@ function Grievance() {
     );
   };
   const columns = [
-    { name: "To", selector: (row) => row.name, sortable: true },
-    { name: "From", selector: (row) => row.name, sortable: true },
-    { name: "Description", selector: (row) => row.capital, sortable: true },
+    { name: "Date", selector: (row) => row.name, sortable: true },
+    // { name: "From", selector: (row) => row.name, sortable: true },
+    { name: "Statement", selector: (row) => row.capital, sortable: true },
     {
       name: "Status",
       selector: (row) => <input type="checkbox" />,

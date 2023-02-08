@@ -31,6 +31,7 @@ import AdminProfile from './components/admin/AdminProfile';
 import EditLead from './components/operation/View/Lead/EditLead';
 import AdminTableFrontPage from './components/admin/AdminTableFrontPage';
 
+import EditProject from './components/operation/View/Project/EditProject';
 
 
 function App() {
@@ -45,8 +46,8 @@ function App() {
         <Route exact path="/operation/addnew/project" element={<Addnewproject/>} />
         <Route exact path="/operation/view/project" element={<Project />} />
         <Route exact path="/operation/view/lead" element={<Lead/>} />
-        <Route exact path="/user/edit_lead_form/:leadId" element={<EditLead/>} />
-
+        <Route exact path="/user/edit_lead/:leadId" element={<EditLead/>} />
+        <Route exact path="/user/edit_project/:projectId" element={<EditProject />} />
         <Route exact path="/hr/leaves" element={<Leave/>} />
         <Route exact path="/hr/tickets" element={<Tickets/>} />
         <Route exact path="/hr/grievance" element={<Grievance/>} />

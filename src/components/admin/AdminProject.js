@@ -20,48 +20,57 @@ function AdminProject() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.capital, sortable: true },
-    { name: "Date", selector: (row) => row.name, sortable: true },
-    { name: "Code", selector: (row) => row.name, sortable: true },
-    { name: "Company", selector: (row) => row.capital, sortable: true },
+    { name: "Date", selector: (row) => row.approval_date, sortable: true },
+    { name: "Code", selector: (row) => row.code, sortable: true },
+    { name: "Company", selector: (row) => row.company, sortable: true },
     {
       name: "Person",
-      selector: (row) => row.population,
+      selector: (row) => row.person,
+      sortable: true,
+    },
+    {
+      name: "Project Name",
+      selector: (row) => row.project_name,
       sortable: true,
     },
     {
       name: "Project Status",
-      selector: (row) => row.population,
+      selector: (row) => row.status,
       sortable: true,
     },
     {
       name: "Description",
-      selector: (row) => row.population,
+      selector: (row) => row.description,
       sortable: true,
     },
     {
       name: "Invoice Amount",
-      selector: (row) => <button className="btn btn-success">Active</button>,
+      selector: (row) => row.invoice.amount,
       sortable: true,
     },
     {
       name: "Invoice Date",
-      selector: (row) => <button className="btn btn-success">Active</button>,
+      selector: (row) => row.invoice.amount,
       sortable: true,
     },
     {
       name: "Invoice Status",
-      selector: (row) => <button className="btn btn-success">Active</button>,
+      selector: (row) => row.invoice.status,
       sortable: true,
     },
     {
-      name: "Payment Number",
-      selector: (row) => <button className="btn btn-success">Active</button>,
+      name: "Payment Status",
+      selector: (row) => row.invoice.payment_status,
+      sortable: true,
+    },
+    {
+      name: "Invoice Number",
+      selector: (row) => row.invoice.invoive_number,
       sortable: true,
     },
     {
       name: "Invoice Due Date",
-      selector: (row) => <button className="btn btn-success">Active</button>,
+      selector: (row) => row.invoice.status,
       sortable: true,
     },
     {

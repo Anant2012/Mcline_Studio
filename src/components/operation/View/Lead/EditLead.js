@@ -7,7 +7,7 @@ function EditLead() {
     const URL = window.location.href;
     const params = useParams();
     const leadId = params.leadId;
-    console.log("Lead", leadId);
+    // console.log("Lead", leadId);
 
     const [date, setDate] = useState("");
     const [person, setPerson] = useState("");
@@ -24,11 +24,11 @@ function EditLead() {
         backgroundPosition: 'center',
         filter: 'grayscale(20%)'
     };
-    console.log("fgh",leadId)
+    
     const getLead = async (e) => {
         AxiosInstance.get(`/api/leads/get/${leadId}`)
             .then((data) => {
-                console.log(data)
+                console.log(data,"hjk")
                 setDate(data.data.data.date);
                 setCompany(data.data.data.company);
                 setContact_no(data.data.data.contact_no);
@@ -36,7 +36,7 @@ function EditLead() {
                 setDescription(data.data.data.description);
                 setEmail(data.data.data.email);
                 setLead_Status(data.data.data.status);
-                alert("✅ Lead Edited SuccesFully");
+                // alert("✅ Lead Edited SuccesFully");
             }
             )
             .catch((err) => {
@@ -44,6 +44,7 @@ function EditLead() {
                 alert(err);
             });
     }
+    
     const EditLead = async (e) => {
         e.preventDefault();
         try {
@@ -56,7 +57,7 @@ function EditLead() {
                 status: lead_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/api/superapi/leads/update/${leadId}`, data);
+            const response = await AxiosInstance.put(`/api/leads/update/${leadId}`, data);
             if (response.status === 200) {
                 setDate("");
                 setCompany("");
@@ -81,7 +82,7 @@ function EditLead() {
     }
 
     useEffect(() => {
-        // getLead();
+        getLead();
     }, []);
 
     return (
@@ -106,6 +107,7 @@ function EditLead() {
                                             </label>
                                             <input
                                                 type="date"
+                                                // placeholder={date}
                                                 required
                                                 value={date}
                                                 onChange={(e) => setDate(e.target.value)}
