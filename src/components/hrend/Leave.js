@@ -205,6 +205,7 @@ function Leave() {
         </h1>
 
         <section class="text-gray-600 body-font mt-8">
+        <div className="bg-indigo-500 pb-2 pt-4">
           <div class="flex flex-wrap mx-4">
             <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded ">
               <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
@@ -249,6 +250,7 @@ function Leave() {
                 title="COUPON CODES LIST"
               />
             </div>
+          </div>
           </div>
         </section>
       </div>

@@ -160,7 +160,7 @@ function Grievance() {
                 </h1>
 
                 <section class="text-gray-600 mt-8 body-font">
-                  
+                <div className="bg-indigo-500 pb-2 pt-2">    
                 <div class="container mx-auto w-full mt-4">
                     <div>
                       <Table
@@ -170,6 +170,7 @@ function Grievance() {
                         title="COUPON CODES LIST"
                       />
                     </div>
+                  </div>
                   </div>
                 </section>
               </div>

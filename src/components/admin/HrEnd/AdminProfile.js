@@ -24,6 +24,11 @@ const AdminProfile = () => {
   }, []);
 
 
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
+
   return (
     <>
       <div class="flex flex-wrap mx-auto mt-20 w-3/4">
@@ -47,14 +52,18 @@ const AdminProfile = () => {
               </div> 
           </div>
         </div>
+
+        <section class="text-gray-600 w-3/4 mx-auto body-font">
+                <div class="container px-5 py-10 mx-auto">
+                  <div class="flex flex-wrap -m-4">
+                    
+                  
       {
          filteredData?.map((data, index) => {
           return (
             <>
-              <section class="text-gray-600 w-3/4 mx-auto body-font">
-                <div class="container px-5 py-10 mx-auto">
-                  <div class="flex flex-wrap -m-4">
-                    <div class="p-4 md:w-1/3">
+
+            <div class="p-4 md:w-1/3">
                       <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <div class="p-6">
                           <div className="flex w-full">
@@ -136,13 +145,17 @@ const AdminProfile = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </section>
+            
             </>
           )
         })
+
       }
+
+
+</div>
+                </div>
+              </section>
       
     </>
   );

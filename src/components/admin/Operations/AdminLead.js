@@ -57,12 +57,14 @@ function AdminLead() {
 
   return (
     <section class="text-gray-600 body-font">
+      
       <div class="container px-5 py-20 mx-auto">
         <div class="flex flex-col text-center w-full mb-12">
           <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900">
             View Lead
           </h1>
         </div>
+        <div className="bg-indigo-500 pb-2 pt-4">    
         <div class="flex mx-4 flex-wrap ">
           <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
             <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">Filter:</div>
@@ -99,6 +101,7 @@ function AdminLead() {
           />
         </div>
 
+      </div>
       </div>
     </section>
   );

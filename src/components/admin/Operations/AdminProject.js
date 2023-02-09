@@ -110,6 +110,7 @@ function AdminProject() {
             View Project
           </h1>
         </div>
+        <div className="bg-indigo-500 pb-2 pt-4">    
         <div class="flex mx-4 flex-wrap ">
           <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded ">
             <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">Filter:</div>
@@ -168,9 +169,10 @@ function AdminProject() {
           />
 
         </div>
-        <span style={{ marginLeft: "10px" }}>
+        <span className="w-full flex justify-center text-slate-100">
           Total Payment : {totalPurchasedItems}
         </span>
+        </div>
       </div>
     </section>
   );

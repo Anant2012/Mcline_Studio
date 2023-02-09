@@ -102,6 +102,7 @@ function Tickets() {
 
   return (
     <>
+    
       <div className="flex flex-row">
         <div className="d-none xl:w-1/4 m-2 bg-slate-700 rounded-lg" style={styles}></div>
         <section class="text-gray-600 w-full xl:w-3/4 body-font relative">
@@ -227,7 +228,8 @@ function Tickets() {
         </h1>
 
         <section class="text-gray-600 mt-[40px] body-font">
-          <div class="container mx-auto w-full mt-4">
+        <div className="bg-indigo-500 pb-2 pt-2">    
+      <div class="container mx-auto w-full mt-4">
             <div>
               <Table
                 columns={columns}
@@ -236,6 +238,7 @@ function Tickets() {
                 title="COUPON CODES LIST"
               />
             </div>
+          </div>
           </div>
         </section>
       </div>
