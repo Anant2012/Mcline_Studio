@@ -21,8 +21,8 @@ function AdminGrievance() {
     { name: "Description", selector: (row) => row.capital, sortable: true },
     {
       name: "Status",
-      selector: (row) => <input type="checkbox" />,
-    },
+      selector: (row) => row.capital, sortable: true 
+    }
   ];
 
   const getData = async () => {
@@ -50,6 +50,7 @@ function AdminGrievance() {
               List of all Grievance
             </h1>
           </div>
+          <div className="bg-indigo-500 pb-2 pt-4">    
           <div>
             <Table
               columns={columns}
@@ -57,6 +58,7 @@ function AdminGrievance() {
               onSearch={onSearch}
               title="COUPON CODES LIST"
             />
+          </div>
           </div>
 
         </div>

@@ -1,11 +1,12 @@
 import React from "react";
 
-const FillProfile = () => {
+const FillProfile = (props) => {
   return (
     <>
+    <div className={`${(props.viewFillProfile)?"block":"hidden"}`}>
     <div class="flex flex-col text-center w-full my-8">
           <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900">
-            Edit Profile
+            Submit Profile
           </h1>
         </div>
     <div class="overflow-hidden bg-white w-11/12 sm:w-3/4 mx-auto shadow-md sm:rounded-lg border border-gray-300">
@@ -153,6 +154,7 @@ const FillProfile = () => {
     </div>
     <div className="w-full flex justify-center">
     <button className="mx-auto w-11/12 sm:w-3/4 text-white bg-indigo-500 mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+    </div>
     </div>
     </>
   );

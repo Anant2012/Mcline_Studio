@@ -21,7 +21,7 @@ function AdminTickets() {
     { name: "Description", selector: (row) => row.capital, sortable: true },
     {
       name: "Status",
-      selector: (row) => <input type="checkbox" />,
+      selector: (row) => row.capital, sortable: true 
     },
   ];
 
@@ -51,6 +51,7 @@ function AdminTickets() {
               List of all Raised Tickets
             </h1>
           </div>
+          <div className="bg-indigo-500 pb-2 pt-2">    
           <div>
             <Table
               columns={columns}
@@ -60,7 +61,7 @@ function AdminTickets() {
             />
 
           </div>
-
+    </div>
         </div>
       </section>
 

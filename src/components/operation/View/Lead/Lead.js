@@ -109,7 +109,8 @@ function Lead() {
             View Lead
           </h1>
         </div>
-        <div class="flex mx-4 flex-wrap ">
+        <div className="bg-indigo-500 pb-2 pt-4">    
+          <div class="flex mx-4 flex-wrap ">
                         <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
                             <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">Filter:</div>
                             <div class="flex flex-row justify-center item-center relative">
@@ -143,6 +144,7 @@ function Lead() {
             onSearch={onSearch}
             title="COUPON CODES LIST"
           />
+        </div>
         </div>
 
       </div>

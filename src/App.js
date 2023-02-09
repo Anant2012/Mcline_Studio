@@ -21,7 +21,6 @@ import Policy from './components/hrend/Policy';
 
 import Project from './components/operation/View/Project/Project';
 import FillProfile from './components/hrend/profile/FillProfile';
-import AdminFrontPage from './components/admin/AdminFrontPage';
 import AdminLead from './components/admin/Operations/AdminLead';
 import AdminProject from './components/admin/Operations/AdminProject';
 import AdminLeaves from './components/admin/HrEnd/AdminLeaves';
@@ -30,18 +29,21 @@ import AdminGrievance from './components/admin/HrEnd/AdminGrievance';
 import AdminProfile from './components/admin/HrEnd/AdminProfile';
 import EditLead from './components/operation/View/Lead/EditLead';
 import AdminTableFrontPage from './components/admin/HomePage/AdminTableFrontPage';
+import PersonalDetails from './components/personal_details/PersonalDetails';
 
 import EditProject from './components/operation/View/Project/EditProject';
-
+import AdminHRFrontPage from './components/admin/HrEnd/AdminHRFrontPage';
+import AdminOperationFrontPage from './components/admin/Operations/AdminOperationFrontPage';
+import Timeline from './components/timeline/Timeline'
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<FrontPage />} />
-        <Route exact path="/hr/viewprofile" element={<ViewProfile />} />
-        <Route exact path="/hr/fillprofile" element={<FillProfile />} />
+        <Route exact path="/" element={<FrontPage/>} />
+        {/* <Route exact path="/hr/viewprofile" element={<ViewProfile />} /> */}
+        <Route exact path="/hr/personaldetails" element={<PersonalDetails />} />
         <Route exact path="/operation/addnew/lead" element={<Addnewlead />} />
         <Route exact path="/operation/addnew/project" element={<Addnewproject />} />
         <Route exact path="/operation/view/project" element={<Project />} />
@@ -59,6 +61,11 @@ function App() {
 
 
 
+        <Route exact path="/timeline" element={<Timeline />} />
+
+
+
+
 
 
 
@@ -68,8 +75,8 @@ function App() {
         {/* Admin Section   */}
         <Route exact path="/admin" element={<AdminTableFrontPage />} />
 
-        <Route exact path="/admin/operation" element={<AdminFrontPage />} />
-        <Route exact path="/admin/hrend" element={<AdminFrontPage />} />
+        <Route exact path="/admin/hrend" element={<AdminHRFrontPage />} />
+        <Route exact path="/admin/operation" element={<AdminOperationFrontPage />} />
         <Route exact path="/admin/operation/view/lead" element={<AdminLead />} />
         <Route exact path="/admin/operation/view/project" element={<AdminProject />} />
 

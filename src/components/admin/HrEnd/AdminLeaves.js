@@ -21,7 +21,7 @@ function AdminLeaves() {
     { name: "Description", selector: (row) => row.capital, sortable: true },
     {
       name: "Status",
-      selector: (row) => <input type="checkbox" />,
+      selector: (row) => row.capital, sortable: true 
     },
   ];
 
@@ -51,6 +51,7 @@ function AdminLeaves() {
               List of all Applied Leaves
             </h1>
           </div>
+          <div className="bg-indigo-500 pb-2 pt-4">    
           <div class="flex flex-wrap mx-4">
             <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded ">
               <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
@@ -94,7 +95,7 @@ function AdminLeaves() {
               title="COUPON CODES LIST"
             />
           </div>
-
+        </div>
         </div>
       </section>
 

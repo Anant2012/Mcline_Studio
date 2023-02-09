@@ -3,6 +3,9 @@ import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import "./Table.css";
 
+
+// one overflow error to fix : to do
+
 const Table = ({
     columns,
     data,
@@ -21,6 +24,7 @@ const Table = ({
                 borderRightStyle: "solid",
                 borderRightWidth: "1px",
                 justifyContent: "center",
+
                 
             },
         },
