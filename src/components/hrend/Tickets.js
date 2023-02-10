@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 
 function Tickets() {
+  const User_id = "63bbebd43e8e148ba852fd86";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
-  const [mouse, setMouse] = useState("");
+  const [mouse, setMouse] = useState(true);
   const [keyboard, setKeyBoard] = useState("");
   const [laptop, setLaptop] = useState("");
   const [swipecard, setSwipe_Card] = useState("");
@@ -17,6 +18,7 @@ function Tickets() {
   const [chair, setChair] = useState("");
   const [headphone, setHeadphone] = useState("");
   const [other, setother] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
   
   const handleOpen = () => {
     // to do
@@ -42,14 +44,12 @@ function Tickets() {
         {row.status === "Publish" ? (
           <button
             className="btn btn-secondary"
-            // onClick={() => handlePublishButton(row)}
           >
             Resolved
           </button>
         ) : (
           <button
             className="btn btn-success"
-            // onClick={() => handlePublishButton(row)}
           >
             Sent
           </button>
@@ -60,12 +60,13 @@ function Tickets() {
 
   const AddTicket = async (e) => {
     e.preventDefault();
+    setIsDisabled(true);
     const data = {
-      user_id: "63bbebd43e8e148ba852fd86",
+      user_id: User_id,
       description: description,
     }
     try {
-      const response = await AxiosInstance.post(`/api/leads/create`, data)
+      const response = await AxiosInstance.post(`/api/ask/ticket/${User_id}`, data)
       if (response.status === 200) {
         alert("✅ Leave Sent SuccesFully");
       }
@@ -78,12 +79,13 @@ function Tickets() {
   }
 
   const getData = async () => {
-    AxiosInstance.get("/api/leads/get/63bbebd43e8e148ba852fd86")
+    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
       .then((data) =>
         setData(data.data.data)
       )
       .catch((err) => console.log("errorr", err));
   };
+
   useEffect(() => {
     getData();
   }, []);
@@ -127,7 +129,7 @@ function Tickets() {
                     <div className="flex ml-2 flex-col">
                       <div className="flex items-center">
                         <input value={mouse}
-                          onChange={(e) =>  setMouse(!mouse) }type="checkbox" id="box" name="box" />
+                          onChange={(e) => setMouse(!mouse)} type="checkbox" id="box" name="box" checked={mouse} />
                         <label class="ml-2 leading-7 text-sm text-gray-600">
                           Mouse
                         </label>
@@ -210,12 +212,8 @@ function Tickets() {
                 </div>
 
                 <div class="p-2 w-full">
-                  <button onClick={AddTicket} class="flex mx-auto mt-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                    Submit
-                  </button>
+                  <button onClick={AddTicket} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                 </div>
-
-
               </div>
             </div>
           </div>
@@ -235,7 +233,7 @@ function Tickets() {
                 columns={columns}
                 data={filteredData}
                 onSearch={onSearch}
-                title="COUPON CODES LIST"
+                // title="COUPON CODES LIST"
               />
             </div>
           </div>

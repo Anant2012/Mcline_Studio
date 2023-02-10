@@ -11,7 +11,7 @@ function Addnewlead() {
   const [contact_no, setContact_no] = useState("");
   const [lead_status, setLead_Status] = useState("");
   const [description, setDescription] = useState("");
-
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const styles = {
     backgroundImage: `url(${background})`,
@@ -22,6 +22,7 @@ function Addnewlead() {
 
   const AddLead = async (e) => {
     e.preventDefault();
+    setIsDisabled(true);
     const data = {
       user_id:"63bbebd43e8e148ba852fd86",
       date: date,
@@ -63,7 +64,7 @@ function Addnewlead() {
               </h1>
               <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
             </div>
-            <form onSubmit={AddLead}>
+            <form>
               <div class="w-3/4 mx-auto">
                 <div class="flex flex-wrap -m-2">
                   <div class="p-2 w-full sm:w-1/2">
@@ -184,9 +185,7 @@ function Addnewlead() {
                     </div>
                   </div>
                   <div class="p-2 w-full">
-                    <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                      Submit
-                    </button>
+                    <button onClick={AddLead} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                   </div>
                 </div>
               </div>

@@ -6,13 +6,13 @@ import { useState } from "react";
 const AdminHRFrontPage = () => {
 
     
-    const [hrLogin, setHrLogin] = useState(1);
+    const [hrLogin, setHrLogin] = useState(0);
 
 
 
   return (
     <>
-        <AdminHREndLogin hrLogin={hrLogin}/>
+      <AdminHREndLogin hrLogin={hrLogin} setHrLogin={setHrLogin} />
 
     <div className={`${(hrLogin)?"block":"hidden"}`}>
       <div class="flex flex-col text-center w-full mt-20">

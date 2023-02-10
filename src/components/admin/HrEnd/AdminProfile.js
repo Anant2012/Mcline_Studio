@@ -2,10 +2,10 @@ import React from "react";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 const AdminProfile = () => {
-  
+
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
-  
+
   const onSearch = (val) => {
     setFilteredData(
       data.filter((x) => x.description.toLowerCase().match(val.toLowerCase()))
@@ -21,8 +21,12 @@ const AdminProfile = () => {
 
   useEffect(() => {
     getData();
+    // FilterLead();
   }, []);
 
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
 
   useEffect(() => {
     setFilteredData(data);
@@ -32,38 +36,38 @@ const AdminProfile = () => {
   return (
     <>
       <div class="flex flex-wrap mx-auto mt-20 w-3/4">
-            
-            <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded-full ">
-              <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">Profiles</h1>
-              <div class="flex flex-row justify-center pr-8 items-center relative">
-                <label
-                  for="name"
-                  class="my-auto px-4 pr py-3 title-font tracking-wider  text-sm decoration-white"
-                >
-                  Search
-                </label>
-                <input
+
+        <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded-full ">
+          <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">Profiles</h1>
+          <div class="flex flex-row justify-center pr-8 items-center relative">
+            <label
+              for="name"
+              class="my-auto px-4 pr py-3 title-font tracking-wider  text-sm decoration-white"
+            >
+              Search
+            </label>
+            <input
               type="text"
               onChange={(e) => onSearch(e.target.value)}
-                  id="name"
-                  name="name"
-                  class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div> 
+              id="name"
+              name="name"
+              class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+            />
           </div>
         </div>
+      </div>
 
-        <section class="text-gray-600 w-3/4 mx-auto body-font">
-                <div class="container px-5 py-10 mx-auto">
-                  <div class="flex flex-wrap -m-4">
-                    
-                  
-      {
-         filteredData?.map((data, index) => {
-          return (
-            <>
+      <section class="text-gray-600 w-3/4 mx-auto body-font">
+        <div class="container px-5 py-10 mx-auto">
+          <div class="flex flex-wrap -m-4">
 
-            <div class="p-4 md:w-1/3">
+
+            {
+              filteredData?.map((data, index) => {
+                return (
+                  <>
+
+                    <div class="p-4 md:w-1/3">
                       <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <div class="p-6">
                           <div className="flex w-full">
@@ -145,18 +149,18 @@ const AdminProfile = () => {
                         </div>
                       </div>
                     </div>
-            
-            </>
-          )
-        })
 
-      }
+                  </>
+                )
+              })
+
+            }
 
 
-</div>
-                </div>
-              </section>
-      
+          </div>
+        </div>
+      </section>
+
     </>
   );
 };

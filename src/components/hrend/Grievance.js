@@ -5,14 +5,35 @@ import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 
 function Grievance() {
+  const User_id = "63bbebd43e8e148ba852fd86";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [email, setEmail] = useState("");
   const [statement, setStatement] = useState("");
+  
+  const [isDisabled, setIsDisabled] = useState(false);
 
-  const handleOpen = () => {
-    // to do
-  };
+  const AddGrievance = async (e) => {
+    e.preventDefault();
+    setIsDisabled(true);
+    const data = {
+      // user_id: User_id,
+      greviance: statement,
+    }
+    try {
+      const response = await AxiosInstance.post(`/api/ask/greviances/${User_id}`, data)
+      if (response.status === 200) {
+        alert("✅ Grievance Sent SuccesFully");
+      }
+      setEmail("")
+      setStatement("");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
+  
+
   const onSearch = (val) => {
     setFilteredData(
       data?.filter(
@@ -50,27 +71,9 @@ function Grievance() {
     },
   ];
 
-  const AddGrievance = async (e) => {
-    e.preventDefault();
-    const data = {
-      user_id: "63bbebd43e8e148ba852fd86",
-      statement: statement,
-    }
-    try {
-      const response = await AxiosInstance.post(`/api/leads/create`, data)
-      if (response.status === 200) {
-        alert("✅ Grievance Sent SuccesFully");
-      }
-      setEmail("")
-      setStatement("");
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    };
-  }
 
   const getData = async () => {
-    AxiosInstance.get("/api/leads/get/63bbebd43e8e148ba852fd86")
+    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
       .then((data) =>
         setData(data.data.data)
       )
@@ -143,9 +146,7 @@ function Grievance() {
                 </div>
               </div>
               <div class="p-2 w-full">
-                <button onClick={AddGrievance} class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                  Submit
-                </button>
+                  <button onClick={AddGrievance} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
               </div>
               
             </div>

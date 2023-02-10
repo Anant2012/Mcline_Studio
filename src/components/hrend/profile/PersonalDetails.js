@@ -1,6 +1,6 @@
 import React from "react";
-import ViewProfile from "../hrend/profile/ViewProfile"
-import FillProfile from "../hrend/profile/FillProfile";
+import ViewProfile from "./ViewProfile"
+import FillProfile from "./FillProfile";
 import { useState } from "react";
 
 function PersonalDetails() {

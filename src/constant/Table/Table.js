@@ -34,6 +34,7 @@ const Table = ({
                 flexWrap: "wrap",
                 height: "fit-content",
                 minHeight: "56px",
+                minWidth: "140px"
             },
         },
         rows: {
@@ -81,7 +82,7 @@ const Table = ({
         },
         pagination: {
             style: {
-                backgroundColor:"lightgrey"
+                backgroundColor: "#e7e7e7"
             }
         }
     };
@@ -95,7 +96,7 @@ const Table = ({
                 {/* <div className="table-title">
                     <span style={{ marginLeft: "10px" }}>{title}</span>
                 </div> */}
-                
+
                 <DataTable
                     columns={columns}
                     data={data}

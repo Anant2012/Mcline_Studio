@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import background from '../../Add New/AddNewBanner.jpg';
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
+import moment from "moment/moment";
 
 function EditLead() {
     const URL = window.location.href;
@@ -24,12 +25,12 @@ function EditLead() {
         backgroundPosition: 'center',
         filter: 'grayscale(20%)'
     };
-    
+
     const getLead = async (e) => {
-        AxiosInstance.get(`/api/leads/get/${leadId}`)
+        AxiosInstance.get(`/api/leads/get/lead/${leadId}`)
             .then((data) => {
-                console.log(data,"hjk")
-                setDate(data.data.data.date);
+                console.log(data, "hjk")
+                setDate(moment(data.data.data.datee).format('YYYY-MM-DD') );
                 setCompany(data.data.data.company);
                 setContact_no(data.data.data.contact_no);
                 setPerson(data.data.data.name);
@@ -44,7 +45,7 @@ function EditLead() {
                 alert(err);
             });
     }
-    
+
     const EditLead = async (e) => {
         e.preventDefault();
         try {

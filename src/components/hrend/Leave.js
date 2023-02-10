@@ -5,16 +5,15 @@ import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 
 function Leave() {
+  const User_id = "63bbebd43e8e148ba852fd86";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [date_to, setDate_to] = useState("");
   const [date_from, setDate_from] = useState("");
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
-  const handleOpen = () => {
-    // to do
-  };
   const onSearch = (val) => {
     setFilteredData(
       data?.filter(
@@ -36,14 +35,12 @@ function Leave() {
           {row.status === "Publish" ? (
             <button
               className="btn btn-secondary"
-            // onClick={() => handlePublishButton(row)}
             >
               Granted
             </button>
           ) : (
             <button
               className="btn btn-success"
-            // onClick={() => handlePublishButton(row)}
             >
               Applied
             </button>
@@ -54,14 +51,15 @@ function Leave() {
   
   const AddLeave = async (e) => {
     e.preventDefault();
+    setIsDisabled(true);
     const data = {
-      user_id: "63bbebd43e8e148ba852fd86",
+      // user_id: User_id,
       date_to: date_to,
       date_from: date_from,
       description: description,
     }
     try {
-      const response = await AxiosInstance.post(`/api/leads/create`, data)
+      const response = await AxiosInstance.post(`/api/ask/leaves/${User_id}`, data)
       if (response.status === 200) {
         alert("✅ Leave Sent SuccesFully");
       }
@@ -76,7 +74,7 @@ function Leave() {
   }
 
   const getData = async () => {
-    AxiosInstance.get("/api/leads/get/63bbebd43e8e148ba852fd86")
+    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
       .then((data) =>
         setData(data.data.data)
       )
@@ -189,9 +187,7 @@ function Leave() {
                   </div>
                 </div>
                 <div class="p-2 w-full">
-                  <button onClick={AddLeave} class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                    Submit
-                  </button>
+                  <button onClick={AddLeave} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                 </div>
               </div>
             </div>

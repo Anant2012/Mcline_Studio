@@ -7,6 +7,7 @@ import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 
 function Project() {
+  const User_id = "63bbebd43e8e148ba852fd86";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [totalPurchasedItems, setTotalPurchasedItems] = useState(0);
@@ -18,7 +19,7 @@ function Project() {
   };
   const onSearch = (val) => {
     const updatedData = data.filter((x) =>
-      x.name.toLowerCase().match(val.toLowerCase())
+      x.client_name.toLowerCase().match(val.toLowerCase())
     );
     setFilteredData(updatedData);
     setTotalPurchasedItems(
@@ -26,58 +27,127 @@ function Project() {
     );
   };
   const columns = [
-    { name: "Date", selector: (row) => row.approval_date, sortable: true },
-    { name: "Code", selector: (row) => row.code, sortable: true },
-    { name: "Company", selector: (row) => row.client_name, sortable: true },
+    { name: "Project Code", selector: (row) => row.code, sortable: true, width:"160px",},
     {
-      name: "Person",
-      selector: (row) => row.person,
-      sortable: true,
+      name: "Invoice Number",
+      selector: (row) => row.invoice.invoive_number,
+      sortable: true,width:"160px",
     },
+    { name: "Company Name", selector: (row) => row.client_name, sortable: true, width:"160px",},
     {
-      name: "Project Name",
+      name: "Project",
       selector: (row) => row.project_name,
-      sortable: true,
+      sortable: true, width:"160px",
+      wrap: true
     },
     {
       name: "Project Status",
       selector: (row) => row.status,
-      sortable: true,
+      sortable: true,width:"160px",
     },
+    { name: "Hours", selector: (row) => row.approval_date, sortable: true, width:"160px",},
+    { name: "Bid", selector: (row) => row.approval_date, sortable: true, width:"160px",},
+    { name: "Approval Date", selector: (row) => row.approval_date, sortable: true, width:"160px",},
+    { name: "Submission Date", selector: (row) => row.submission_date, sortable: true, width:"160px",},
+    {
+      name: "P.O.No.",
+      id:"person",
+      selector: (row) => row.person,
+      sortable: true,
+      width:"160px",
+      
+    },
+    { name: "Net Days", selector: (row) => row.submission_date, sortable: true, width:"160px",},
     {
       name: "Description",
       selector: (row) => row.description,
-      sortable: true,
+      sortable: true,width:"160px",
+    },
+    { name: "Invoice Type", selector: (row) => row.submission_date, sortable: true, width:"160px",},
+    {
+      name: "Due Date",
+      // selector: (row) => row.invoice.status,
+      sortable: true,width:"160px",
     },
     {
-      name: "Invoice Amount",
+      name: "Resource",
+      // selector: (row) => row.invoice.status,
+      sortable: true,width:"160px",
+    },
+    // {
+    //   name: "Resource Rate",
+    //   // selector: (row) => row.invoice.status,
+    //   sortable: true,width:"160px",
+    // },
+    // {
+    //   name: "Resource Cost",
+    //   // selector: (row) => row.invoice.status,
+    //   sortable: true,width:"160px",
+    // },
+    {
+      name: "Email To",
       selector: (row) => row.invoice.amount,
-      sortable: true,
+      sortable: true,width:"160px",
     },
     {
-      name: "Invoice Date",
+      name: "Email (cc)",
       // selector: (row) => row.invoice.amount,
-      sortable: true,
+      sortable: true,width:"160px",
     },
     {
-      name: "Invoice Status",
+      name: "Contact Person",
       selector: (row) => row.invoice.status,
-      sortable: true,
+      sortable: true,width:"160px",
+    },
+    {
+      name: "Phone No.",
+      selector: (row) => row.invoice.payment_status,
+      sortable: true,width:"160px",
+    },
+    {
+      name: "Address",
+      // selector: (row) => row.invoice.amount,
+      sortable: true, width: "160px",
+    },
+    {
+      name: "Reference",
+      selector: (row) => row.invoice.status,
+      sortable: true, width: "160px",
     },
     {
       name: "Payment Status",
       selector: (row) => row.invoice.payment_status,
-      sortable: true,
+      sortable: true, width: "160px",
+    },
+    {
+      name: "Comments",
+      selector: (row) => row.invoice.invoive_number,
+      sortable: true, width: "160px",
+    },
+    {
+      name: "Invoice Date",
+      // selector: (row) => row.invoice.amount,
+      sortable: true, width: "160px",
+    },
+    {
+      name: "Invoice Status",
+      selector: (row) => row.invoice.status,
+      sortable: true, width: "160px",
+    },
+    {
+      name: "Payment Status",
+      selector: (row) => row.invoice.payment_status,
+      sortable: true, width: "160px",
     },
     {
       name: "Invoice Number",
       selector: (row) => row.invoice.invoive_number,
-      sortable: true,
+      sortable: true, width: "160px",
     },
     {
       name: "Invoice Due Date",
       // selector: (row) => row.invoice.status,
-      sortable: true,
+      sortable: true, width: "160px",
     },
     {
       name: "Action",
@@ -102,7 +172,7 @@ function Project() {
     navigate(`/user/edit_project/${row._id}`);
   };
   const getData = async () => {
-    AxiosInstance.get("/api/project/get/63bbebd43e8e148ba852fd86")
+    AxiosInstance.get(`/api/project/get/${User_id}`)
       .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };
@@ -130,7 +200,8 @@ function Project() {
       data?.reduce((acc, item) => acc + item.population, 0)
     );
   }, [data]);
-
+  // console.log("ghj12345", filteredData);
+  
   return (
     <section class="text-gray-600 body-font">
       <div class="container px-5 py-20 mx-auto">
@@ -218,6 +289,7 @@ function Project() {
         </span>
         </div>
         </div>
+        
       </div>
     </section>
   );

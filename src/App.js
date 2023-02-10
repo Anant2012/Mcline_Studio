@@ -29,7 +29,7 @@ import AdminGrievance from './components/admin/HrEnd/AdminGrievance';
 import AdminProfile from './components/admin/HrEnd/AdminProfile';
 import EditLead from './components/operation/View/Lead/EditLead';
 import AdminTableFrontPage from './components/admin/HomePage/AdminTableFrontPage';
-import PersonalDetails from './components/personal_details/PersonalDetails';
+import PersonalDetails from './components/hrend/profile/PersonalDetails';
 
 import EditProject from './components/operation/View/Project/EditProject';
 import AdminHRFrontPage from './components/admin/HrEnd/AdminHRFrontPage';
@@ -42,7 +42,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<FrontPage/>} />
-        {/* <Route exact path="/hr/viewprofile" element={<ViewProfile />} /> */}
+        <Route exact path="/hr/viewprofile" element={<ViewProfile />} />
         <Route exact path="/hr/personaldetails" element={<PersonalDetails />} />
         <Route exact path="/operation/addnew/lead" element={<Addnewlead />} />
         <Route exact path="/operation/addnew/project" element={<Addnewproject />} />

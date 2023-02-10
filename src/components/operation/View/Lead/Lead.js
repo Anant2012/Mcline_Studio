@@ -7,6 +7,7 @@ import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 
 function Lead() {
+  const User_id = "63bbebd43e8e148ba852fd86";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const handleOpen = () => {
@@ -58,7 +59,7 @@ function Lead() {
     // console.log("lead",row._id)
   }
   const getData = async () => {
-    AxiosInstance.get("/api/leads/get/63bbebd43e8e148ba852fd86")
+    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
       .then((data) =>
         setData(data.data.data)
       )
@@ -109,8 +110,7 @@ function Lead() {
             View Lead
           </h1>
         </div>
-        <div className="bg-indigo-500 pb-2 pt-4">    
-          <div class="flex mx-4 flex-wrap ">
+        <div class="flex mx-4 flex-wrap ">
                         <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
                             <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">Filter:</div>
                             <div class="flex flex-row justify-center item-center relative">
@@ -144,7 +144,6 @@ function Lead() {
             onSearch={onSearch}
             title="COUPON CODES LIST"
           />
-        </div>
         </div>
 
       </div>
