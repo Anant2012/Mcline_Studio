@@ -35,13 +35,17 @@ import EditProject from './components/operation/View/Project/EditProject';
 import AdminHRFrontPage from './components/admin/HrEnd/AdminHRFrontPage';
 import AdminOperationFrontPage from './components/admin/Operations/AdminOperationFrontPage';
 import Timeline from './components/timeline/Timeline'
+import AdminEditLead from './components/admin/Operations/AdminEditLead';
+import AdminEditLeaves from './components/admin/HrEnd/Edit/AdminEditLeaves';
+import AdminEditTickets from './components/admin/HrEnd/Edit/AdminEditTicket';
+import AdminEditGrievance from './components/admin/HrEnd/Edit/AdminEditGrievance';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<FrontPage/>} />
+        <Route exact path="/" element={<FrontPage />} />
         <Route exact path="/hr/viewprofile" element={<ViewProfile />} />
         <Route exact path="/hr/personaldetails" element={<PersonalDetails />} />
         <Route exact path="/operation/addnew/lead" element={<Addnewlead />} />
@@ -57,18 +61,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/table1" element={<Table1 />} />
-
-
-
-
         <Route exact path="/timeline" element={<Timeline />} />
-
-
-
-
-
-
-
 
 
 
@@ -78,12 +71,17 @@ function App() {
         <Route exact path="/admin/hrend" element={<AdminHRFrontPage />} />
         <Route exact path="/admin/operation" element={<AdminOperationFrontPage />} />
         <Route exact path="/admin/operation/view/lead" element={<AdminLead />} />
+        <Route exact path="/admin/operation/edit/lead/:leadId" element={<AdminEditLead />} />
         <Route exact path="/admin/operation/view/project" element={<AdminProject />} />
 
         <Route exact path="/admin/hr/profiles" element={<AdminProfile />} />
+        <Route exact path="/admin/hr/profiles/profileId" element={<AdminProfile />} />
         <Route exact path="/admin/hr/leaves" element={<AdminLeaves />} />
+        <Route exact path="/admin/hr/leaves/edit/:leaveId" element={<AdminEditLeaves />} />
         <Route exact path="/admin/hr/tickets" element={<AdminTickets />} />
+        <Route exact path="/admin/hr/tickets/edit/:ticketId" element={<AdminEditTickets />} />
         <Route exact path="/admin/hr/grievance" element={<AdminGrievance />} />
+        <Route exact path="/admin/hr/grievance/edit/:grId" element={<AdminEditGrievance/>} />
 
         <Route exact path="/admin/login" element={<Login />} />
         <Route exact path="/table1" element={<Table1 />} />

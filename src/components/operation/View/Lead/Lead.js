@@ -3,7 +3,7 @@ import Table from "../../../../constant/Table/Table"
 import { FaUserEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
-import moment from "moment/moment";
+// import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 
 function Lead() {

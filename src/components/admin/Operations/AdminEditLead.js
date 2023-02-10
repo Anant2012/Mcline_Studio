@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import background from '../../Add New/AddNewBanner.jpg';
-import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
+import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment/moment";
+import background from "../../../assets/images/AddNewBanner.jpg"
 
-function EditLead() {
+function AdminEditLead() {
     const URL = window.location.href;
     const params = useParams();
     const leadId = params.leadId;
     // console.log("Lead", leadId);
 
     const [date, setDate] = useState("");
+    const [username, setUsername] = useState("");
     const [person, setPerson] = useState("");
     const [company, setCompany] = useState("");
     const [email, setEmail] = useState("");
@@ -30,7 +31,8 @@ function EditLead() {
         AxiosInstance.get(`/api/leads/get/lead/${leadId}`)
             .then((data) => {
                 console.log(data, "hjk")
-                setDate(moment(data.data.data.datee).format('YYYY-MM-DD') );
+                setUsername(data.data.data.company)
+                setDate(moment(data.data.data.date).format('YYYY-MM-DD'));
                 setCompany(data.data.data.company);
                 setContact_no(data.data.data.contact_no);
                 setPerson(data.data.data.name);
@@ -87,6 +89,23 @@ function EditLead() {
                         <form>
                             <div class="w-3/4 mx-auto">
                                 <div class="flex flex-wrap -m-2">
+                                    <div class="p-2 w-full sm:w-1/2">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                User Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                // placeholder={date}
+                                                required
+                                                value={username}
+                                                onChange={(e) => setUsername(e.target.value)}
+                                                id="date"
+                                                name="date"
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
                                             <label for="date" class="leading-7 text-sm text-gray-600">
@@ -220,4 +239,4 @@ function EditLead() {
     );
 }
 
-export default EditLead;
+export default AdminEditLead;

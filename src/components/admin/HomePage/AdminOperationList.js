@@ -11,7 +11,7 @@ function AdminOperationList() {
 
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
-  const [totalPurchasedItems, setTotalPurchasedItems] = useState(0);
+
   const handleOpen = () => {
     // to do
   };
@@ -20,9 +20,6 @@ function AdminOperationList() {
       x.name.toLowerCase().match(val.toLowerCase())
     );
     setFilteredData(updatedData);
-    setTotalPurchasedItems(
-      updatedData?.reduce((acc, item) => acc + item.population, 0)
-    );
   };
   const columns = [
     { name: "Name", selector: (row) => row.capital, sortable: true },
@@ -54,9 +51,7 @@ function AdminOperationList() {
 
   useEffect(() => {
     setFilteredData(data);
-    setTotalPurchasedItems(
-      data?.reduce((acc, item) => acc + item.population, 0)
-    );
+
   }, [data]);
 
  

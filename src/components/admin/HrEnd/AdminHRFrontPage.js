@@ -12,7 +12,7 @@ const AdminHRFrontPage = () => {
 
   return (
     <>
-      <AdminHREndLogin hrLogin={hrLogin} setHrLogin={setHrLogin} />
+      <AdminHREndLogin hrLogin={hrLogin}/>
 
     <div className={`${(hrLogin)?"block":"hidden"}`}>
       <div class="flex flex-col text-center w-full mt-20">

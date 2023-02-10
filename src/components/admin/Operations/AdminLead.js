@@ -1,51 +1,94 @@
 import { useEffect, useState } from "react";
-import Table from "../../../constant/Table/Table"
+import Table from "../../../constant/Table/Table";
+import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { FaUserEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 function AdminLead() {
+  const User_id = "63bbebd43e8e148ba852fd86";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
-  const handleOpen = () => {
-    // to do
-  };
+
+  const navigate = useNavigate();
   const onSearch = (val) => {
     setFilteredData(
-      data.filter((x) => x.name.toLowerCase().match(val.toLowerCase()))
+      data?.filter(
+        (x) =>
+          x.company.toLowerCase().match(val.toLowerCase()) ||
+          x.name.toLowerCase().match(val.toLowerCase()) ||
+          x.status.toLowerCase().match(val.toLowerCase()) ||
+          x.description.toString().match(val.toLowerCase()) ||
+          x.date.toString().match(val.toLowerCase())
+      )
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.population, sortable: true },
-    { name: "Date", selector: (row) => row.name, sortable: true },
-    { name: "Company ", selector: (row) => row.name, sortable: true },
-    { name: "Person", selector: (row) => row.capital, sortable: true },
+    { name: "Date", selector: (row) => row.date, sortable: true },
+    // { name: "Date", selector: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
+    { name: "Company ", selector: (row) => row.company, sortable: true },
+    { name: "Person", selector: (row) => row.name, sortable: true },
     {
       name: "Lead Status",
-      selector: (row) => row.population,
+      selector: (row) => row.status,
       sortable: true,
     },
     {
       name: "Description",
-      selector: (row) => row.population,
+      selector: (row) => row.description,
       sortable: true,
     },
     {
       name: "Action",
       selector: (row) => (
         <div style={{ display: "flex" }}>
-          <FaUserEdit title="Edit" style={{ color: "blue", fontSize: "Large" }} />
-          <MdDelete title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
+          <FaUserEdit onClick={() => EditLead(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
+          <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
         </div>
       ),
     },
   ];
 
+  const EditLead = (row) => {
+    // <EditLead leadId={row._id} />
+    navigate(`/admin/operation/edit/lead/${row._id}`);
+    // console.log("lead",row._id)
+  }
   const getData = async () => {
-    fetch("https://restcountries.com/v2/all")
-      .then((res) => res.json())
-      .then((data) => setData(data))
+    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+      .then((data) =>
+        setData(data.data.data)
+      )
       .catch((err) => console.log("errorr", err));
   };
+  const DeleteLead = async (row) => {
+    try {
+      const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
+      if (response.status === 200) {
+        alert("✅Review deleted successfully!!");
+        window.location.reload()
+      }
+    } catch (err) {
+      console.log(err);
+      alert("Something went wrong!!");
+    }
+  }
+  const FilterLead = async (row) => {
+    const data = {
+      date_to: "1975-04-07",
+      date_from: "1999-11-22"
+    }
+    try {
+      const response = await AxiosInstance.post(`/api/leads/filter`, data)
+      console.log(response, "fgh")
+      if (response.status === 200) {
+        console.log(response, "fgh")
+      }
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
 
   useEffect(() => {
     getData();

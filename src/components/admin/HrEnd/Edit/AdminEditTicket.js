@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import background from '../../Add New/AddNewBanner.jpg';
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment/moment";
+import background from "../../../../assets/images/AddNewBanner.jpg"
 
-function EditLead() {
+function AdminEditTickets() {
     const URL = window.location.href;
     const params = useParams();
-    const leadId = params.leadId;
-    // console.log("Lead", leadId);
+    const ticketId = params.ticketId;
+    // console.log("Lead", ticketId);
 
     const [date, setDate] = useState("");
-    const [person, setPerson] = useState("");
-    const [company, setCompany] = useState("");
-    const [email, setEmail] = useState("");
-    const [contact_no, setContact_no] = useState("");
-    const [lead_status, setLead_Status] = useState("");
+    const [issue, setIssue] = useState("");
+    const [username, setUsername] = useState("");
+    const [ticket_status, setTicket_status] = useState("");
     const [description, setDescription] = useState("");
 
 
@@ -27,16 +25,14 @@ function EditLead() {
     };
 
     const getLead = async (e) => {
-        AxiosInstance.get(`/api/leads/get/lead/${leadId}`)
+        AxiosInstance.get(`/api/leads/get/lead/${ticketId}`)
             .then((data) => {
                 console.log(data, "hjk")
-                setDate(moment(data.data.data.datee).format('YYYY-MM-DD') );
-                setCompany(data.data.data.company);
-                setContact_no(data.data.data.contact_no);
-                setPerson(data.data.data.name);
+                setUsername(data.data.data.company)
+                setDate(moment(data.data.data.date).format('YYYY-MM-DD'));
+                setIssue(moment(data.data.data.date).format('YYYY-MM-DD'));
                 setDescription(data.data.data.description);
-                setEmail(data.data.data.email);
-                setLead_Status(data.data.data.status);
+                setTicket_status(data.data.data.status);
                 // alert("✅ Lead Edited SuccesFully");
             }
             )
@@ -51,16 +47,14 @@ function EditLead() {
         try {
             const data = {
                 date: date,
-                name: person,
-                company: company,
-                email: email,
-                contact_no: contact_no,
-                status: lead_status,
+                issue: issue,
+                name: username,
+                status: ticket_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/api/leads/update/${leadId}`, data);
+            const response = await AxiosInstance.put(`/api/leads/update/${ticketId}`, data);
             if (response.status === 200) {
-                alert("✅Lead updated successfully!!");
+                alert("✅ticket updated successfully!!");
             }
         } catch (err) {
             console.log(err);
@@ -80,7 +74,7 @@ function EditLead() {
                     <div class="container px-5 py-20 mx-auto">
                         <div class="flex flex-col text-center w-full mb-4">
                             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                                Edit Lead Form
+                                Edit ticket Form
                             </h1>
                             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
                         </div>
@@ -90,7 +84,24 @@ function EditLead() {
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
                                             <label for="date" class="leading-7 text-sm text-gray-600">
-                                                Date
+                                                User Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                // placeholder={date}
+                                                required
+                                                value={username}
+                                                onChange={(e) => setUsername(e.target.value)}
+                                                id="date"
+                                                name="date"
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/2">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                Date 
                                             </label>
                                             <input
                                                 type="date"
@@ -104,19 +115,19 @@ function EditLead() {
                                             />
                                         </div>
                                     </div>
-
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
-                                            <label for="person" class="leading-7 text-sm text-gray-600">
-                                                Person
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                Has Issue with
                                             </label>
                                             <input
-                                                type="text"
+                                                type="date"
+                                                // placeholder={date}
                                                 required
-                                                value={person}
-                                                onChange={(e) => setPerson(e.target.value)}
-                                                id="person"
-                                                name="person"
+                                                value={issue}
+                                                onChange={(e) => setIssue(e.target.value)}
+                                                id="date"
+                                                name="date"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -124,65 +135,14 @@ function EditLead() {
 
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
-                                            <label for="company" class="leading-7 text-sm text-gray-600">
-                                                Company
-                                            </label>
-                                            <input
-                                                type="text"
-                                                required
-                                                value={company}
-                                                onChange={(e) => setCompany(e.target.value)}
-                                                id="company"
-                                                name="company"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
+                                            <label for="cars" class="leading-7 text-sm text-gray-600">Ticket Status</label>
 
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="number" class="leading-7 text-sm text-gray-600">
-                                                Contact Number
-                                            </label>
-                                            <input
-                                                type="tel"
-                                                required
-                                                value={contact_no}
-                                                onChange={(e) => setContact_no(e.target.value)}
-                                                id="number"
-                                                name="number"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="email" class="leading-7 text-sm text-gray-600">
-                                                Email
-                                            </label>
-                                            <input
-                                                type="email"
-                                                required
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                id="email"
-                                                name="email"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="cars" class="leading-7 text-sm text-gray-600">Lead Status</label>
-
-                                            <select value={lead_status}
-                                                onChange={(e) => setLead_Status(e.target.value)} name="lead_status" id="lead_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <select value={ticket_status}
+                                                onChange={(e) => setTicket_status(e.target.value)} name="ticket_status" id="ticket_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <option value="" class="leading-7 text-sm text-gray-500" disabled selected>Select</option>
-                                                <option value="Lead" class="leading-7 text-sm text-gray-600">Lead</option>
-                                                <option value="Hot" class="leading-7 text-sm text-gray-600">Hot</option>
-                                                <option value="Warm" class="leading-7 text-sm text-gray-600">Warm</option>
+                                                <option value="Pending" class="leading-7 text-sm text-gray-600">Pending</option>
+                                                <option value="Resolved" class="leading-7 text-sm text-gray-600">Resolved</option>
+                                                <option value="At Hold" class="leading-7 text-sm text-gray-600">At Hold</option>
                                             </select>
                                         </div>
                                     </div>
@@ -220,4 +180,4 @@ function EditLead() {
     );
 }
 
-export default EditLead;
+export default AdminEditTickets;

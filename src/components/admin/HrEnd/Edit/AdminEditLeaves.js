@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import background from '../../Add New/AddNewBanner.jpg';
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment/moment";
+import background from "../../../../assets/images/AddNewBanner.jpg"
 
-function EditLead() {
+function AdminEditLeaves() {
     const URL = window.location.href;
     const params = useParams();
-    const leadId = params.leadId;
-    // console.log("Lead", leadId);
+    const leaveId = params.leaveId;
+    // console.log("Lead", leaveId);
 
-    const [date, setDate] = useState("");
-    const [person, setPerson] = useState("");
-    const [company, setCompany] = useState("");
-    const [email, setEmail] = useState("");
-    const [contact_no, setContact_no] = useState("");
-    const [lead_status, setLead_Status] = useState("");
+    const [date_to, setDate_to] = useState("");
+    const [date_from, setDate_from] = useState("");
+    const [username, setUsername] = useState("");
+    const [leave_status, setLeave_status] = useState("");
     const [description, setDescription] = useState("");
 
 
@@ -27,16 +25,14 @@ function EditLead() {
     };
 
     const getLead = async (e) => {
-        AxiosInstance.get(`/api/leads/get/lead/${leadId}`)
+        AxiosInstance.get(`/api/leads/get/lead/${leaveId}`)
             .then((data) => {
                 console.log(data, "hjk")
-                setDate(moment(data.data.data.datee).format('YYYY-MM-DD') );
-                setCompany(data.data.data.company);
-                setContact_no(data.data.data.contact_no);
-                setPerson(data.data.data.name);
+                setUsername(data.data.data.company)
+                setDate_to(moment(data.data.data.date).format('YYYY-MM-DD'));
+                setDate_from(moment(data.data.data.date).format('YYYY-MM-DD'));
                 setDescription(data.data.data.description);
-                setEmail(data.data.data.email);
-                setLead_Status(data.data.data.status);
+                setLeave_status(data.data.data.status);
                 // alert("✅ Lead Edited SuccesFully");
             }
             )
@@ -50,17 +46,15 @@ function EditLead() {
         e.preventDefault();
         try {
             const data = {
-                date: date,
-                name: person,
-                company: company,
-                email: email,
-                contact_no: contact_no,
-                status: lead_status,
+                date_to: date_to,
+                date_from: date_from,
+                name: username,
+                status: leave_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/api/leads/update/${leadId}`, data);
+            const response = await AxiosInstance.put(`/api/leads/update/${leaveId}`, data);
             if (response.status === 200) {
-                alert("✅Lead updated successfully!!");
+                alert("✅Leave updated successfully!!");
             }
         } catch (err) {
             console.log(err);
@@ -80,7 +74,7 @@ function EditLead() {
                     <div class="container px-5 py-20 mx-auto">
                         <div class="flex flex-col text-center w-full mb-4">
                             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                                Edit Lead Form
+                                Edit Leave Form
                             </h1>
                             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
                         </div>
@@ -90,14 +84,49 @@ function EditLead() {
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
                                             <label for="date" class="leading-7 text-sm text-gray-600">
-                                                Date
+                                                User Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                // placeholder={date}
+                                                required
+                                                value={username}
+                                                onChange={(e) => setUsername(e.target.value)}
+                                                id="date"
+                                                name="date"
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                                readOnly
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/2">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                Date To
                                             </label>
                                             <input
                                                 type="date"
                                                 // placeholder={date}
                                                 required
-                                                value={date}
-                                                onChange={(e) => setDate(e.target.value)}
+                                                value={date_to}
+                                                onChange={(e) => setDate_to(e.target.value)}
+                                                id="date"
+                                                name="date"
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/2">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                Date From
+                                            </label>
+                                            <input
+                                                type="date"
+                                                // placeholder={date}
+                                                required
+                                                value={date_from}
+                                                onChange={(e) => setDate_from(e.target.value)}
                                                 id="date"
                                                 name="date"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -107,82 +136,14 @@ function EditLead() {
 
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
-                                            <label for="person" class="leading-7 text-sm text-gray-600">
-                                                Person
-                                            </label>
-                                            <input
-                                                type="text"
-                                                required
-                                                value={person}
-                                                onChange={(e) => setPerson(e.target.value)}
-                                                id="person"
-                                                name="person"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
+                                            <label for="cars" class="leading-7 text-sm text-gray-600">Leave Status</label>
 
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="company" class="leading-7 text-sm text-gray-600">
-                                                Company
-                                            </label>
-                                            <input
-                                                type="text"
-                                                required
-                                                value={company}
-                                                onChange={(e) => setCompany(e.target.value)}
-                                                id="company"
-                                                name="company"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="number" class="leading-7 text-sm text-gray-600">
-                                                Contact Number
-                                            </label>
-                                            <input
-                                                type="tel"
-                                                required
-                                                value={contact_no}
-                                                onChange={(e) => setContact_no(e.target.value)}
-                                                id="number"
-                                                name="number"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="email" class="leading-7 text-sm text-gray-600">
-                                                Email
-                                            </label>
-                                            <input
-                                                type="email"
-                                                required
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                id="email"
-                                                name="email"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="cars" class="leading-7 text-sm text-gray-600">Lead Status</label>
-
-                                            <select value={lead_status}
-                                                onChange={(e) => setLead_Status(e.target.value)} name="lead_status" id="lead_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <select value={leave_status}
+                                                onChange={(e) => setLeave_status(e.target.value)} name="leave_status" id="leave_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <option value="" class="leading-7 text-sm text-gray-500" disabled selected>Select</option>
-                                                <option value="Lead" class="leading-7 text-sm text-gray-600">Lead</option>
-                                                <option value="Hot" class="leading-7 text-sm text-gray-600">Hot</option>
-                                                <option value="Warm" class="leading-7 text-sm text-gray-600">Warm</option>
+                                                <option value="Granted" class="leading-7 text-sm text-gray-600">Granted</option>
+                                                <option value="Rejected" class="leading-7 text-sm text-gray-600">Rejected</option>
+                                                <option value="At Hold" class="leading-7 text-sm text-gray-600">At Hold</option>
                                             </select>
                                         </div>
                                     </div>
@@ -220,4 +181,4 @@ function EditLead() {
     );
 }
 
-export default EditLead;
+export default AdminEditLeaves;
