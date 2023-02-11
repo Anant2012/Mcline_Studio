@@ -11,7 +11,7 @@ function AdminTableFrontPage() {
 
   return (
     <>
-      <AdminLoginFrontPage adminLogin={adminLogin}/>
+      <AdminLoginFrontPage adminLogin={adminLogin}  setAdminLogin={setAdminLogin}/>
 
       <div className={`${(adminLogin)?"block":"hidden"}`}>
         <AdminUserList />

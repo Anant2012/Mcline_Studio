@@ -56,6 +56,12 @@ const FillProfile = (props) => {
       console.log(error);
     };
   }
+
+
+  const ProfileImageClick = () =>{
+    const imgBtn = document.querySelector("#imgBtn");
+    imgBtn.click();
+  }
   return (
     <>
       <div className={`${(props.viewFillProfile) ? "block" : "hidden"}`}>
@@ -83,11 +89,17 @@ const FillProfile = (props) => {
                 </div>
               </div>
 
-              <img
-                className="h-16 w-16 sm:h-24 sm:w-24 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
+              <div class="center h-full flex items-center justify-center">
+                <div class="form-input w-[350px]  flex justify-end bg-white">
+                    <label for="file-ip-1" className=' block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white'  onClick={(e) => {
+                      e.preventDefault();
+                      ProfileImageClick();
+                      console.log("Clicked");
+                    }}>Upload Image</label>
+                    <input className='file-upload-input hidden' id="imgBtn"  type="file"  accept="Image/" 
+                   />
+                </div>
+              </div> 
             </div>
           </div>
           <div class="border-t border-gray-300">

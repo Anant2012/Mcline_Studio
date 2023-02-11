@@ -1,3 +1,4 @@
+import "./Project.css";
 import { useEffect, useState } from "react";
 import Table from "../../../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
@@ -27,127 +28,166 @@ function Project() {
     );
   };
   const columns = [
-    { name: "Project Code", selector: (row) => row.code, sortable: true, width:"160px",},
     {
-      name: "Invoice Number",
-      selector: (row) => row.invoice.invoive_number,
-      sortable: true,width:"160px",
-    },
-    { name: "Company Name", selector: (row) => row.client_name, sortable: true, width:"160px",},
-    {
-      name: "Project",
-      selector: (row) => row.project_name,
-      sortable: true, width:"160px",
-      wrap: true
+      name: "Project Code",
+      selector: (row) => row.code,
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Project Status",
       selector: (row) => row.status,
-      sortable: true,width:"160px",
+      sortable: true,
+      width: "160px",
     },
-    { name: "Hours", selector: (row) => row.approval_date, sortable: true, width:"160px",},
-    { name: "Bid", selector: (row) => row.approval_date, sortable: true, width:"160px",},
-    { name: "Approval Date", selector: (row) => row.approval_date, sortable: true, width:"160px",},
-    { name: "Submission Date", selector: (row) => row.submission_date, sortable: true, width:"160px",},
+    {
+      name: "Company Name",
+      selector: (row) => row.client_name,
+      sortable: true,
+      width: "160px",
+    },
+
+    {
+      name: "Project",
+      selector: (row) => row.project_name,
+      sortable: true,
+      width: "160px",
+      wrap: true,
+    },
+
+    {
+      name: "Hours",
+      selector: (row) => row.approval_date,
+      sortable: true,
+      width: "160px",
+    },
+    {
+      name: "Bid",
+      selector: (row) => row.approval_date,
+      sortable: true,
+      width: "160px",
+    },
+    {
+      name: "Approval Date",
+      selector: (row) => row.approval_date,
+      sortable: true,
+      width: "160px",
+    },
+    {
+      name: "Submission Date",
+      selector: (row) => row.submission_date,
+      sortable: true,
+      width: "160px",
+    },
     {
       name: "P.O.No.",
-      id:"person",
+      id: "person",
       selector: (row) => row.person,
       sortable: true,
-      width:"160px",
-      
+      width: "160px",
     },
-    { name: "Net Days", selector: (row) => row.submission_date, sortable: true, width:"160px",},
     {
-      name: "Description",
-      selector: (row) => row.description,
-      sortable: true,width:"160px",
+      name: "Net Days",
+      selector: (row) => row.submission_date,
+      sortable: true,
+      width: "160px",
     },
-    { name: "Invoice Type", selector: (row) => row.submission_date, sortable: true, width:"160px",},
     {
-      name: "Due Date",
-      // selector: (row) => row.invoice.status,
-      sortable: true,width:"160px",
+      name: "Invoice Type",
+      selector: (row) => row.submission_date,
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Resource",
       // selector: (row) => row.invoice.status,
-      sortable: true,width:"160px",
+      sortable: true,
+      width: "160px",
     },
-    // {
-    //   name: "Resource Rate",
-    //   // selector: (row) => row.invoice.status,
-    //   sortable: true,width:"160px",
-    // },
-    // {
-    //   name: "Resource Cost",
-    //   // selector: (row) => row.invoice.status,
-    //   sortable: true,width:"160px",
-    // },
     {
-      name: "Email To",
+      name: "Email (to)",
       selector: (row) => row.invoice.amount,
-      sortable: true,width:"160px",
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Email (cc)",
       // selector: (row) => row.invoice.amount,
-      sortable: true,width:"160px",
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Contact Person",
       selector: (row) => row.invoice.status,
-      sortable: true,width:"160px",
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Phone No.",
       selector: (row) => row.invoice.payment_status,
-      sortable: true,width:"160px",
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Address",
       // selector: (row) => row.invoice.amount,
-      sortable: true, width: "160px",
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Reference",
       selector: (row) => row.invoice.status,
-      sortable: true, width: "160px",
-    },
-    {
-      name: "Payment Status",
-      selector: (row) => row.invoice.payment_status,
-      sortable: true, width: "160px",
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Comments",
       selector: (row) => row.invoice.invoive_number,
-      sortable: true, width: "160px",
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Invoice Date",
       // selector: (row) => row.invoice.amount,
-      sortable: true, width: "160px",
-    },
-    {
-      name: "Invoice Status",
-      selector: (row) => row.invoice.status,
-      sortable: true, width: "160px",
-    },
-    {
-      name: "Payment Status",
-      selector: (row) => row.invoice.payment_status,
-      sortable: true, width: "160px",
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Invoice Number",
       selector: (row) => row.invoice.invoive_number,
-      sortable: true, width: "160px",
+      sortable: true,
+      width: "160px",
     },
     {
-      name: "Invoice Due Date",
+      name: "Due Date",
       // selector: (row) => row.invoice.status,
-      sortable: true, width: "160px",
+      sortable: true,
+      width: "160px",
+    },
+
+    {
+      name: "Resource Rate",
+      // selector: (row) => row.invoice.status,
+      sortable: true,
+      width: "160px",
+    },
+    {
+      name: "Resource Cost",
+      // selector: (row) => row.invoice.status,
+      sortable: true,
+      width: "160px",
+    },
+    {
+      name: "Invoice Status",
+      selector: (row) => row.invoice.status,
+      sortable: true,
+      width: "160px",
+    },
+    {
+      name: "Payment Status",
+      selector: (row) => row.invoice.payment_status,
+      sortable: true,
+      width: "160px",
     },
     {
       name: "Action",
@@ -201,7 +241,7 @@ function Project() {
     );
   }, [data]);
   // console.log("ghj12345", filteredData);
-  
+
   return (
     <section class="text-gray-600 body-font">
       <div class="container px-5 py-20 mx-auto">
@@ -211,85 +251,106 @@ function Project() {
           </h1>
         </div>
         <div>
-        <div className="bg-indigo-500 pb-2 pt-4">    
-          <div class="lg:w-7/8 w-full mx-auto">
-            <div class="flex mx-4 flex-wrap ">
-              <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
-                <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
-                  Filter:
+          <div className="bg-indigo-500 pb-2 pt-4">
+            <div class="lg:w-7/8 w-full mx-auto">
+              <div class="flex mx-4 flex-wrap ">
+                <div class="w-full flex-col p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+                <div className="flex justify-end mb-2 mr-4 title-font tracking-wider font-medium text-md decoration-white">
+                    
+                    Filter
                 </div>
-                <div class="flex flex-row justify-center item-center relative">
-                  <label
-                    for="name"
-                    class="whitespace-nowrap my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                  >
-                    Invoice Amount_from
-                  </label>
-                  <input
-                    type="number"
-                    id="name"
-                    name="name"
-                    class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                  />
-                </div>
-                <div class="flex flex-row justify-center item-center relative">
-                  <label
-                    for="name"
-                    class="whitespace-nowrap my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                  >
-                    Invoice Amount_to
-                  </label>
-                  <input
-                    type="number"
-                    id="name"
-                    name="name"
-                    class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                  />
-                </div>
-                <div class="flex flex-row justify-center item-center relative">
-                  <label
-                    for="name"
-                    class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                  >
-                    Date_from
-                  </label>
-                  <input
-                    type="date"
-                    id="name"
-                    name="name"
-                    class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                  />
-                </div>
-                <div class="flex flex-row justify-center item-center relative">
-                  <label
-                    for="name"
-                    class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                  >
-                    Date_to
-                  </label>
-                  <input
-                    type="date"
-                    id="name"
-                    name="name"
-                    class="w-full focus:bg-opacity-5 bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                  />
+                  <div className="flex justify-end my-1">
+                    <div class="flex flex-row justify-center item-center relative">
+                      <label
+                        for="name"
+                        class="my-auto px-4 py-3 whitespace-nowrap title-font tracking-wider font-medium text-sm decoration-white"
+                      >
+                        Date from
+                      </label>
+                      <input
+                        type="date"
+                        id="name"
+                        name="name"
+                        class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+
+                    <div class="flex flex-row justify-center item-center relative">
+                      <label
+                        for="name"
+                        class="my-auto px-4 py-3 whitespace-nowrap title-font tracking-wider font-medium text-sm decoration-white"
+                      >
+                        Date to
+                      </label>
+                      <input
+                        type="date"
+                        id="name"
+                        name="name"
+                        class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+
+                    <div class="flex flex-row justify-center item-center relative">
+                      <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded ml-3 text-sm mr-3 whitespace-nowrap">
+                        Find
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end my-1">
+                    <div class="flex flex-row justify-center item-center relative">
+                      <label
+                        for="name"
+                        class="removeBtn my-auto px-4 whitespace-nowrap py-3 title-font tracking-wider font-medium text-sm decoration-white"
+                      >
+                        Invoice Amount from
+                      </label>
+                      <input
+                        type="number"
+                        id="name"
+                        name="name"
+                        class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+
+                    <div class="flex flex-row justify-center item-center relative">
+                      <label
+                        for="name"
+                        class="removeBtn my-auto px-4 py-3 whitespace-nowrap title-font tracking-wider font-medium text-sm decoration-white"
+                      >
+                        Invoice Amount to
+                      </label>
+                      <input
+                        type="number"
+                        id="name"
+                        name="name"
+                        class="appearance-none w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+
+                    <div class="flex flex-row justify-center item-center relative">
+                      <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded text-sm mr-3  ml-3 whitespace-nowrap">
+                        Find
+                      </button>
+                    </div>
+                  </div>
+
+
+
+
+
+                  
                 </div>
               </div>
             </div>
+            <Table
+              columns={columns}
+              data={filteredData}
+              onSearch={onSearch}
+              title="Selling Product List"
+            />
           </div>
-          <Table
-            columns={columns}
-            data={filteredData}
-            onSearch={onSearch}
-            title="Selling Product List"
-          />
-        
-        <span className="w-full flex justify-center text-slate-100">
-          Total Payment : {totalPurchasedItems}
-        </span>
         </div>
-        </div>
-        
       </div>
     </section>
   );
