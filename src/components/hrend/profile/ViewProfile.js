@@ -1,6 +1,23 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 
 const ViewProfile = (props) => {
+  const User_id = "63e239529722a3fe13a268d4";
+  const [data, setData] = useState();
+  
+  const getData = async () => {
+    AxiosInstance.get(`/api/hr/get/personal/${User_id}`)
+      .then((data) =>
+        console.log(data.data.data)
+      )
+      .catch((err) => console.log("errorr", err));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className={`${(props.viewViewProfile)?"block":"hidden"}`}>
     <div class="overflow-hidden bg-white w-3/4 mx-auto mt-12 shadow-md sm:rounded-lg border border-gray-300">

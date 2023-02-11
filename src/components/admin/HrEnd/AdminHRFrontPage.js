@@ -6,7 +6,7 @@ import { useState } from "react";
 const AdminHRFrontPage = () => {
 
     
-    const [hrLogin, setHrLogin] = useState(0);
+    const [hrLogin, setHrLogin] = useState(1);
 
 
 
