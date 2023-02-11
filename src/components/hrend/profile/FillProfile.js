@@ -4,7 +4,7 @@ import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 
 
 const FillProfile = (props) => {
-  const User_id = "63bbebd43e8e148ba852fd86";
+  const User_id = "63e239529722a3fe13a268d4";
   const [name, setName] = useState("");
   const [employee_code, setEmployee_code] = useState("");
   const [designation, setDesignation] = useState("");
@@ -36,7 +36,7 @@ const FillProfile = (props) => {
       company_id,
     }
     try {
-      const response = await AxiosInstance.post(`/api/edit/${User_id}`, data)
+      const response = await AxiosInstance.post(`/api/hr/edit/${User_id}`, data)
       if (response.status === 200) {
         alert("✅ Profile Added SuccesFully");
       }

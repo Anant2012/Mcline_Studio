@@ -3,6 +3,7 @@ import background from "./grievanceimg.jpg";
 import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
+import moment from "moment";
 
 function Grievance() {
   const User_id = "63bbebd43e8e148ba852fd86";
@@ -21,7 +22,7 @@ function Grievance() {
       greviance: statement,
     }
     try {
-      const response = await AxiosInstance.post(`/api/ask/greviances/${User_id}`, data)
+      const response = await AxiosInstance.post(`/api/hr/ask/greviances/${User_id}`, data)
       if (response.status === 200) {
         alert("✅ Grievance Sent SuccesFully");
       }
@@ -45,9 +46,9 @@ function Grievance() {
     );
   };
   const columns = [
-    { name: "Date", selector: (row) => row.name, sortable: true },
+    { name: "Date", selector: (row) => moment(row.created_at).format('DD/MM/YYYY'), sortable: true },
     // { name: "From", selector: (row) => row.name, sortable: true },
-    { name: "Statement", selector: (row) => row.capital, sortable: true },
+    { name: "Statement", selector: (row) => row.greviance, sortable: true },
     {
       name: "Status",
       selector: (row) => (
@@ -73,7 +74,7 @@ function Grievance() {
 
 
   const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+    AxiosInstance.get(`/api/hr/get/greviances/${User_id}`)
       .then((data) =>
         setData(data.data.data)
       )

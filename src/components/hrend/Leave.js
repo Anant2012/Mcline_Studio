@@ -18,16 +18,16 @@ function Leave() {
     setFilteredData(
       data?.filter(
         (x) =>
-          x.date_to.toLowerCase().match(val.toLowerCase()) ||
-          x.date_from.toLowerCase().match(val.toLowerCase()) ||
-          x.description.toLowerCase().match(val.toLowerCase()) 
+          x.leaves.date_to.toLowerCase().match(val.toLowerCase()) ||
+          x.leaves.date_from.toLowerCase().match(val.toLowerCase()) ||
+          x.leaves.description.toLowerCase().match(val.toLowerCase()) 
       )
     );
   };
   const columns = [
-    { name: "To", selector: (row) => row.name, sortable: true },
-    { name: "From", selector: (row) => row.name, sortable: true },
-    { name: "Description", selector: (row) => row.description, sortable: true },
+    { name: "To", selector: (row) => row.leaves.date_to, sortable: true },
+    { name: "From", selector: (row) => row.leaves.date_from, sortable: true },
+    { name: "Description", selector: (row) => row.leaves.description, sortable: true },
     {
       name: "Status",
       selector: (row) => (
@@ -59,7 +59,7 @@ function Leave() {
       description: description,
     }
     try {
-      const response = await AxiosInstance.post(`/api/ask/leaves/${User_id}`, data)
+      const response = await AxiosInstance.post(`/api/hr/ask/leaves/${User_id}`, data)
       if (response.status === 200) {
         alert("✅ Leave Sent SuccesFully");
       }
@@ -74,7 +74,7 @@ function Leave() {
   }
 
   const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+    AxiosInstance.get(`/api/hr/get/leaves/${User_id}`)
       .then((data) =>
         setData(data.data.data)
       )
@@ -202,41 +202,7 @@ function Leave() {
 
         <section class="text-gray-600 body-font mt-8">
         <div className="bg-indigo-500 pb-2 pt-4">
-          <div class="flex flex-wrap mx-4">
-            <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded ">
-              <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
-                Filter:
-              </div>
-              <div class="flex flex-row justify-center item-center relative">
-                <label
-                  for="name"
-                  class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                >
-                  Date_from
-                </label>
-                <input
-                  type="date"
-                  id="name"
-                  name="name"
-                  class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-              <div class="flex flex-row justify-center item-center relative">
-                <label
-                  for="name"
-                  class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                >
-                  Date_to
-                </label>
-                <input
-                  type="date"
-                  id="name"
-                  name="name"
-                  class="w-full focus:bg-opacity-5 bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-            </div>
-          </div>
+          
           <div class="container mx-auto w-full">
             <div>
               <Table

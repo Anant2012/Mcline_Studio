@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 
 function AdminTableFrontPage() {
-  const [adminLogin, setAdminLogin] = useState(0);
+  const [adminLogin, setAdminLogin] = useState(1);
 
   return (
     <>
