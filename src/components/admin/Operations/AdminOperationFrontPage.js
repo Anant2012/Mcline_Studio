@@ -10,7 +10,7 @@ const AdminOperationFrontPage = () => {
 
   return (
     <>
-    <AdminOperationLogin operationLogin={operationLogin}/>
+    <AdminOperationLogin operationLogin={operationLogin}  setOperationLogin={setOperationLogin}/>
 
     <div className={`${(operationLogin)?"block":"hidden"}`}>
       <div class="flex flex-col text-center w-full mt-20">

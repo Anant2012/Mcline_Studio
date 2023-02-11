@@ -4,7 +4,7 @@ import FillProfile from "./FillProfile";
 import { useState } from "react";
 
 function PersonalDetails() {
-  const [profileFilled, setProfileFilled] = useState(1);
+  const [profileFilled, setProfileFilled] = useState(0);
 
   return (
     <>  

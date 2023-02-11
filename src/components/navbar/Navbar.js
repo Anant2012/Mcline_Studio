@@ -1,10 +1,16 @@
 import {useState } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
+
+  
+
+  const location = useLocation();
+  console.log(location.pathname)
 
   return (
     <>
@@ -33,7 +39,7 @@ const Navbar = () => {
                   </Link> */}
                 </div>
 
-                <div className={`${!loggedIn ? "hidden" : "block"}`}>
+                <div className={`${(!loggedIn) ? "hidden" : "block"}`}>
                   <button
                     type="button"
                     className="flex rounded-full bg-gray-800 text-sm outline-none ring-2 ring-white focus:ring-offset-2 ring-offset-gray-800"
