@@ -201,8 +201,7 @@ function Leave() {
         </h1>
 
         <section class="text-gray-600 body-font mt-8">
-        <div className="bg-[#047EC1] pb-2 pt-4">
-          
+        <div className="bg-[#047EC1] pb-2 pt-4">       
           <div class="container mx-auto w-full">
             <div>
               <Table
