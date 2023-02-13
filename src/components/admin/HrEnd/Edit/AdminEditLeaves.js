@@ -8,7 +8,7 @@ function AdminEditLeaves() {
     const URL = window.location.href;
     const params = useParams();
     const leaveId = params.leaveId;
-    // console.log("Lead", leaveId);
+    // console.log("Leaves", leaveId);
 
     const [date_to, setDate_to] = useState("");
     const [date_from, setDate_from] = useState("");
@@ -24,8 +24,8 @@ function AdminEditLeaves() {
         filter: 'grayscale(20%)'
     };
 
-    const getLead = async (e) => {
-        AxiosInstance.get(`/api/leads/get/lead/${leaveId}`)
+    const getLeave = async (e) => {
+        AxiosInstance.get(`/api/admin/hr/leaves/${leaveId}`)
             .then((data) => {
                 console.log(data, "hjk")
                 setUsername(data.data.data.company)
@@ -33,7 +33,7 @@ function AdminEditLeaves() {
                 setDate_from(moment(data.data.data.date).format('YYYY-MM-DD'));
                 setDescription(data.data.data.description);
                 setLeave_status(data.data.data.status);
-                // alert("✅ Lead Edited SuccesFully");
+                // alert("✅ Leaves Edited SuccesFully");
             }
             )
             .catch((err) => {
@@ -42,7 +42,7 @@ function AdminEditLeaves() {
             });
     }
 
-    const EditLead = async (e) => {
+    const EditLeave = async (e) => {
         e.preventDefault();
         try {
             const data = {
@@ -52,7 +52,7 @@ function AdminEditLeaves() {
                 status: leave_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/api/leads/update/${leaveId}`, data);
+            const response = await AxiosInstance.put(`/admin/hr/leaves/${leaveId}`, data);
             if (response.status === 200) {
                 alert("✅Leave updated successfully!!");
             }
@@ -63,7 +63,7 @@ function AdminEditLeaves() {
     }
 
     useEffect(() => {
-        getLead();
+        getLeave();
     }, []);
 
     return (
@@ -76,7 +76,7 @@ function AdminEditLeaves() {
                             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                                 Edit Leave Form
                             </h1>
-                            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
+                            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leaves from Multiple Sources</p>
                         </div>
                         <form>
                             <div class="w-3/4 mx-auto">
@@ -167,7 +167,7 @@ function AdminEditLeaves() {
                                         </div>
                                     </div>
                                     <div class="p-2 w-full">
-                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditLead}>
+                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditLeave}>
                                             Submit
                                         </button>
                                     </div>

@@ -8,7 +8,7 @@ function AdminEditGrievance() {
     const URL = window.location.href;
     const params = useParams();
     const grId = params.grId;
-    // console.log("Lead", grId);
+    // console.log("Grievance", grId);
 
     const [username, setUsername] = useState("");
     const [date, setDate] = useState("");
@@ -23,14 +23,14 @@ function AdminEditGrievance() {
         filter: 'grayscale(20%)'
     };
 
-    const getLead = async (e) => {
-        AxiosInstance.get(`/api/leads/get/lead/${grId}`)
+    const getGrievance = async (e) => {
+        AxiosInstance.get(`/api/admin/hr/greviances/${grId}`)
             .then((data) => {
                 console.log(data, "hjk")
                 setUsername(data.data.data.company)
                 setDescription(data.data.data.description);
                 setGrievance_status(data.data.data.status);
-                // alert("✅ Lead Edited SuccesFully");
+                // alert("✅ Grievance Edited SuccesFully");
             }
             )
             .catch((err) => {
@@ -39,7 +39,7 @@ function AdminEditGrievance() {
             });
     }
 
-    const EditLead = async (e) => {
+    const EditGrievance = async (e) => {
         e.preventDefault();
         try {
             const data = {
@@ -48,9 +48,9 @@ function AdminEditGrievance() {
                 status: grievance_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/api/leads/update/${grId}`, data);
+            const response = await AxiosInstance.put(`/api/admin/hr/greviances/${grId}`, data);
             if (response.status === 200) {
-                alert("✅Leave updated successfully!!");
+                alert("✅Grievance updated successfully!!");
             }
         } catch (err) {
             console.log(err);
@@ -59,7 +59,7 @@ function AdminEditGrievance() {
     }
 
     useEffect(() => {
-        getLead();
+        getGrievance();
     }, []);
 
     return (
@@ -72,7 +72,7 @@ function AdminEditGrievance() {
                             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                                 Edit Grievance Form
                             </h1>
-                            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
+                            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Grievances from Multiple Sources</p>
                         </div>
                         <form>
                             <div class="w-3/4 mx-auto">
@@ -115,7 +115,7 @@ function AdminEditGrievance() {
 
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
-                                            <label for="cars" class="leading-7 text-sm text-gray-600">Leave Status</label>
+                                            <label for="cars" class="leading-7 text-sm text-gray-600">Grievance Status</label>
 
                                             <select value={grievance_status}
                                                 onChange={(e) => setGrievance_status(e.target.value)} name="grievance_status" id="grievance_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -146,7 +146,7 @@ function AdminEditGrievance() {
                                         </div>
                                     </div>
                                     <div class="p-2 w-full">
-                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditLead}>
+                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditGrievance}>
                                             Submit
                                         </button>
                                     </div>

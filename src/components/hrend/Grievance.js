@@ -46,7 +46,7 @@ function Grievance() {
     );
   };
   const columns = [
-    { name: "Date", selector: (row) => moment(row.created_at).format('DD/MM/YYYY'), sortable: true },
+    { name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true },
     // { name: "From", selector: (row) => row.name, sortable: true },
     { name: "Statement", selector: (row) => row.greviance, sortable: true },
     {

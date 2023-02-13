@@ -65,7 +65,7 @@ const FillProfile = (props) => {
 
   const onSubmitClick = () => {
     AddPersonalDetails();
-    props.setProfileFilled(1);
+    // props.setProfileFilled(1);
   }
 
   return (
@@ -73,7 +73,7 @@ const FillProfile = (props) => {
       <div className={`${(props.viewFillProfile) ? "block" : "hidden"}`}>
         <div class="flex flex-col text-center w-full my-8">
           <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900">
-            Submit Profile
+            Fill your Details 
           </h1>
         </div>
         <div class="overflow-hidden bg-white w-11/12 sm:w-3/4 mx-auto shadow-md sm:rounded-lg border border-gray-300">

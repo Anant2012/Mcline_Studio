@@ -8,7 +8,7 @@ function AdminEditTickets() {
     const URL = window.location.href;
     const params = useParams();
     const ticketId = params.ticketId;
-    // console.log("Lead", ticketId);
+    // console.log("Ticket", ticketId);
 
     const [date, setDate] = useState("");
     const [issue, setIssue] = useState("");
@@ -24,8 +24,8 @@ function AdminEditTickets() {
         filter: 'grayscale(20%)'
     };
 
-    const getLead = async (e) => {
-        AxiosInstance.get(`/api/leads/get/lead/${ticketId}`)
+    const getTicket = async (e) => {
+        AxiosInstance.get(`/api/admin/hr/ticket/${ticketId}`)
             .then((data) => {
                 console.log(data, "hjk")
                 setUsername(data.data.data.company)
@@ -33,7 +33,7 @@ function AdminEditTickets() {
                 setIssue(moment(data.data.data.date).format('YYYY-MM-DD'));
                 setDescription(data.data.data.description);
                 setTicket_status(data.data.data.status);
-                // alert("✅ Lead Edited SuccesFully");
+                // alert("✅ Ticket Edited SuccesFully");
             }
             )
             .catch((err) => {
@@ -42,7 +42,7 @@ function AdminEditTickets() {
             });
     }
 
-    const EditLead = async (e) => {
+    const EditTicket = async (e) => {
         e.preventDefault();
         try {
             const data = {
@@ -52,7 +52,7 @@ function AdminEditTickets() {
                 status: ticket_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/api/leads/update/${ticketId}`, data);
+            const response = await AxiosInstance.put(`/api/admin/hr/tickets/${ticketId}`, data);
             if (response.status === 200) {
                 alert("✅ticket updated successfully!!");
             }
@@ -63,7 +63,7 @@ function AdminEditTickets() {
     }
 
     useEffect(() => {
-        getLead();
+        getTicket();
     }, []);
 
     return (
@@ -76,7 +76,7 @@ function AdminEditTickets() {
                             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                                 Edit ticket Form
                             </h1>
-                            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
+                            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Tickets from Multiple Sources</p>
                         </div>
                         <form>
                             <div class="w-3/4 mx-auto">
@@ -166,7 +166,7 @@ function AdminEditTickets() {
                                         </div>
                                     </div>
                                     <div class="p-2 w-full">
-                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditLead}>
+                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditTicket}>
                                             Submit
                                         </button>
                                     </div>

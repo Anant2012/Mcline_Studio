@@ -20,7 +20,7 @@ import Grievance from './components/hrend/Grievance';
 import Policy from './components/hrend/Policy';
 
 import Project from './components/operation/View/Project/Project';
-import FillProfile from './components/hrend/profile/FillProfile';
+import EditProfile from './components/hrend/profile/EditProfile';
 import AdminLead from './components/admin/Operations/AdminLead';
 import AdminProject from './components/admin/Operations/AdminProject';
 import AdminLeaves from './components/admin/HrEnd/AdminLeaves';
@@ -39,7 +39,7 @@ import AdminEditLead from './components/admin/Operations/AdminEditLead';
 import AdminEditLeaves from './components/admin/HrEnd/Edit/AdminEditLeaves';
 import AdminEditTickets from './components/admin/HrEnd/Edit/AdminEditTicket';
 import AdminEditGrievance from './components/admin/HrEnd/Edit/AdminEditGrievance';
-import AdminHRTimesheet from './components/admin/HrEnd/AdminHRTimesheet';
+
 
 function App() {
   return (
@@ -48,6 +48,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<FrontPage />} />
         <Route exact path="/hr/viewprofile" element={<ViewProfile />} />
+        <Route exact path="/hr/edit_profile" element={<EditProfile />} />
         <Route exact path="/hr/personaldetails" element={<PersonalDetails />} />
         <Route exact path="/operation/addnew/lead" element={<Addnewlead />} />
         <Route exact path="/operation/addnew/project" element={<Addnewproject />} />
@@ -83,7 +84,7 @@ function App() {
         <Route exact path="/admin/hr/tickets/edit/:ticketId" element={<AdminEditTickets />} />
         <Route exact path="/admin/hr/grievance" element={<AdminGrievance />} />
         <Route exact path="/admin/hr/grievance/edit/:grId" element={<AdminEditGrievance/>} />
-        <Route exact path="/admin/hr/timesheet" element={<AdminHRTimesheet/>} />
+        {/* <Route exact path="/admin/hr/timesheet" element={<AdminHRTimesheet/>} /> */}
         
         <Route exact path="/admin/login" element={<Login />} />
         <Route exact path="/table1" element={<Table1 />} />

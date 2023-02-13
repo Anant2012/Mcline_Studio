@@ -29,7 +29,7 @@ function Tickets() {
     );
   };
   const columns = [
-    { name: "Date", selector: (row) => moment(row.created_at).format('DD/MM/YYYY'), sortable: true },
+    { name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true },
     {
       name: "Has Issue With", selector: (row) => (row.tickets.issued_item.map((data, index) => {
         return (<>{row.tickets.issued_item.length != index+1  ? `${data}, ` : `${data}`}</>) })), sortable: true, wrap: true },
@@ -67,7 +67,7 @@ function Tickets() {
       console.log(other)
       const response = await AxiosInstance.post(`/api/hr/ask/ticket/${User_id}`, data)
       if (response.status === 200) {
-        alert("✅ Leave Sent SuccesFully");
+        alert("✅ Ticket Sent SuccesFully");
       }
 
       setDescription("");

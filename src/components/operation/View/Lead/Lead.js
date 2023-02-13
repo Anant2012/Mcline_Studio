@@ -30,7 +30,7 @@ function Lead() {
   };
   const columns = [
     { name: "Date", selector: (row) => moment(row.date).format('DD/MM/YYYY'), sortable: true },
-    // { name: "Date", selector: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
+    // { name: "Date", selector: (row) => row.length, sortable: true },
     { name: "Company ", selector: (row) => row.company, sortable: true },
     { name: "Person", selector: (row) => row.name, sortable: true },
     {
@@ -51,11 +51,6 @@ function Lead() {
             onClick={() => EditLead(row)}
             title="Edit"
             style={{ color: "blue", fontSize: "Large" }}
-          />
-          <MdDelete
-            onClick={() => DeleteLead(row)}
-            title="Delete"
-            style={{ color: "red", marginLeft: "10px", fontSize: "Large" }}
           />
         </div>
       ),

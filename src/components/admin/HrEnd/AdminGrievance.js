@@ -19,7 +19,8 @@ function AdminGrievance() {
   };
   const columns = [
     { name: "Username", selector: (row) => row.name, sortable: true, width: "400px" },
-    { name: "Date", selector: (row) => moment(row.date).format('DD/MM/YYYY'), sortable: true, width: "400px" },
+    {
+      name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true, width: "400px" },
     { name: "Description", selector: (row) => row.capital, sortable: true, },
     {
       name: "Status",
@@ -43,7 +44,7 @@ function AdminGrievance() {
     // console.log("lead",row._id)
   }
   const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+    AxiosInstance.get(`/api/admin/hr/greviances`)
       .then((data) =>
         setData(data.data.data)
       )

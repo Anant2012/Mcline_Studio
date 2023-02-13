@@ -43,7 +43,7 @@ function AdminLeaves() {
     // console.log("lead",row._id)
   }
   const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+    AxiosInstance.get(`/api/admin/hr/leaves`)
       .then((data) =>
         setData(data.data.data)
       )
