@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table";
 
 function AdminGrievance() {
-  const User_id = "63bbebd43e8e148ba852fd86";
+  const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -18,13 +18,14 @@ function AdminGrievance() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.name, sortable: true, width: "400px" },
+    { name: "Username", selector: (row) => row.user_id.username, sortable: true, width: "300px" },
     {
-      name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true, width: "400px" },
-    { name: "Description", selector: (row) => row.capital, sortable: true, },
+      name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true, width: "200px"
+    },
+    { name: "Description", selector: (row) => row.grievance.reason, sortable: true,wrap:true },
     {
       name: "Status",
-      selector: (row) => row.capital, sortable: true, width: "200px"
+      selector: (row) => row.grievance.status, sortable: true, width: "200px"
     },
     {
       name: "Action",
@@ -34,7 +35,7 @@ function AdminGrievance() {
           <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
         </div>
       ),
-      width:"200px"
+      width: "200px"
     },
   ];
 
@@ -52,31 +53,15 @@ function AdminGrievance() {
   };
   const DeleteLead = async (row) => {
     try {
-      const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
+      const response = await AxiosInstance.delete(`/api/admin/hr/greviances/${row._id}`);
       if (response.status === 200) {
-        alert("✅Review deleted successfully!!");
+        alert("✅Grievance deleted successfully!!");
         window.location.reload()
       }
     } catch (err) {
       console.log(err);
       alert("Something went wrong!!");
     }
-  }
-  const FilterLead = async (row) => {
-    const data = {
-      date_to: "1975-04-07",
-      date_from: "1999-11-22"
-    }
-    try {
-      const response = await AxiosInstance.post(`/api/leads/filter`, data)
-      console.log(response, "fgh")
-      if (response.status === 200) {
-        console.log(response, "fgh")
-      }
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    };
   }
   useEffect(() => {
     getData();

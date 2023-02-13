@@ -31,7 +31,7 @@ function EditLead() {
         AxiosInstance.get(`/api/leads/get/lead/${leadId}`)
             .then((data) => {
                 console.log(data, "hjk")
-                setDate(moment(data.data.data.datee).format('YYYY-MM-DD') );
+                setDate(moment(data.data.data.date).format('YYYY-MM-DD') );
                 setCompany(data.data.data.company);
                 setContact_no(data.data.data.contact_no);
                 setPerson(data.data.data.name);

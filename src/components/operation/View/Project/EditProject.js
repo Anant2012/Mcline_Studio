@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import background from '../../Add New/AddNewProject.jpg';
-import { useParams } from "react-router"; 
+import { useParams } from "react-router";
 
 function Addnewproject() {
     const URL = window.location.href;
@@ -23,7 +23,7 @@ function Addnewproject() {
         backgroundPosition: 'center',
         filter: 'grayscale(0%)'
     };
-    
+
     const getProject = async (e) => {
         e.preventDefault();
         try {
@@ -46,7 +46,7 @@ function Addnewproject() {
     const EditProject = async (e) => {
         e.preventDefault();
         const data = {
-            // user_id: "63bbebd43e8e148ba852fd86",
+            // user_id: "63e9411577ce9c26f2babd4f",
             // code: code,
             client_name: company,
             person: person,

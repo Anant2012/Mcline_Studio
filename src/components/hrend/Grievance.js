@@ -6,7 +6,7 @@ import Table from "../../constant/Table/Table";
 import moment from "moment";
 
 function Grievance() {
-  const User_id = "63bbebd43e8e148ba852fd86";
+  const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ function Grievance() {
     setIsDisabled(true);
     const data = {
       // user_id: User_id,
-      greviance: statement,
+      statement: statement,
     }
     try {
       const response = await AxiosInstance.post(`/api/hr/ask/greviances/${User_id}`, data)
@@ -48,27 +48,10 @@ function Grievance() {
   const columns = [
     { name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true },
     // { name: "From", selector: (row) => row.name, sortable: true },
-    { name: "Statement", selector: (row) => row.greviance, sortable: true },
+    { name: "Statement", selector: (row) => row.grievance.reason, sortable: true },
     {
       name: "Status",
-      selector: (row) => (
-        <div>
-          {row.status === "Publish" ? (
-            <button
-              className="btn btn-secondary"
-            // onClick={() => handlePublishButton(row)}
-            >
-              Resolved
-            </button>
-          ) : (
-            <button
-              className="btn btn-success"
-            // onClick={() => handlePublishButton(row)}
-            >
-              Sent
-            </button>
-          )}
-        </div>), sortable: true
+      selector: (row) => (row.grievance.status), sortable: true
     },
   ];
 

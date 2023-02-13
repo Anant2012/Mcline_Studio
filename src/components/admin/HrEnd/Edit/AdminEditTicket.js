@@ -27,11 +27,15 @@ function AdminEditTickets() {
     const getTicket = async (e) => {
         AxiosInstance.get(`/api/admin/hr/ticket/${ticketId}`)
             .then((data) => {
-                console.log(data, "hjk")
-                setUsername(data.data.data.company)
-                setDate(moment(data.data.data.date).format('YYYY-MM-DD'));
-                setIssue(moment(data.data.data.date).format('YYYY-MM-DD'));
-                setDescription(data.data.data.description);
+                // console.log(data.data.data.tickets.issued_item.map((datares, index) => {
+                //     return ({datares})
+                // }));
+                setUsername(data.data.data.user_id.username)
+                setDate(moment(data.data.data.created_at).format('YYYY-MM-DD'));
+                // setIssue(data.data.data.tickets.issued_item.map((ticket, index) => {
+                //     return ({ticket})
+                // }));
+                setDescription(data.data.data.tickets.reason);
                 setTicket_status(data.data.data.status);
                 // alert("✅ Ticket Edited SuccesFully");
             }
@@ -94,6 +98,7 @@ function AdminEditTickets() {
                                                 onChange={(e) => setUsername(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -111,6 +116,7 @@ function AdminEditTickets() {
                                                 onChange={(e) => setDate(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -121,13 +127,14 @@ function AdminEditTickets() {
                                                 Has Issue with
                                             </label>
                                             <input
-                                                type="date"
+                                                type="text"
                                                 // placeholder={date}
                                                 required
                                                 value={issue}
                                                 onChange={(e) => setIssue(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -161,6 +168,7 @@ function AdminEditTickets() {
                                                 value={description}
                                                 onChange={(e) => setDescription(e.target.value)}
                                                 name="message"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                                             ></textarea>
                                         </div>

@@ -26,11 +26,10 @@ function AdminEditGrievance() {
     const getGrievance = async (e) => {
         AxiosInstance.get(`/api/admin/hr/greviances/${grId}`)
             .then((data) => {
-                console.log(data, "hjk")
-                setUsername(data.data.data.company)
-                setDescription(data.data.data.description);
-                setGrievance_status(data.data.data.status);
-                // alert("✅ Grievance Edited SuccesFully");
+                setUsername(data.data.data.user_id.username)
+                setDescription(data.data.data.grievance.reason);
+                setDate(moment(data.data.data.grievance.created_At).format('YYYY-MM-DD'));
+                setGrievance_status(data.data.data.grievance.status);
             }
             )
             .catch((err) => {
@@ -90,6 +89,7 @@ function AdminEditGrievance() {
                                                 onChange={(e) => setUsername(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -107,6 +107,7 @@ function AdminEditGrievance() {
                                                 onChange={(e) => setDate(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                readonly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -141,6 +142,7 @@ function AdminEditGrievance() {
                                                 value={description}
                                                 onChange={(e) => setDescription(e.target.value)}
                                                 name="message"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                                             ></textarea>
                                         </div>

@@ -3,9 +3,10 @@ import background from "./leaveimg.jpg";
 import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
+import moment from "moment";
 
 function Leave() {
-  const User_id = "63bbebd43e8e148ba852fd86";
+  const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [date_to, setDate_to] = useState("");
@@ -20,7 +21,8 @@ function Leave() {
         (x) =>
           x.leaves.date_to.toLowerCase().match(val.toLowerCase()) ||
           x.leaves.date_from.toLowerCase().match(val.toLowerCase()) ||
-          x.leaves.description.toLowerCase().match(val.toLowerCase()) 
+          x.leaves.description.toLowerCase().match(val.toLowerCase())||
+          x.leaves.status.toLowerCase().match(val.toLowerCase())
       )
     );
   };
@@ -30,26 +32,23 @@ function Leave() {
     { name: "Description", selector: (row) => row.leaves.description, sortable: true },
     {
       name: "Status",
-      selector: (row) => (
-        <div>
-          {row.status === "Publish" ? (
-            <button
-              className="btn btn-secondary"
-            >
-              Granted
-            </button>
-          ) : (
-            <button
-              className="btn btn-success"
-            >
-              Applied
-            </button>
-          )}
-        </div>), sortable: true
+      selector: (row) => (row.leaves.status), sortable: true
     },
   ];
-  
+
   const AddLeave = async (e) => {
+    if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date_from).format("YYYY-MM-DD"))) {
+      alert("Invalid date");
+      return;
+    }
+    if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date_to).format("YYYY-MM-DD"))) {
+      alert("Invalid date");
+      return;
+    }
+    // if (moment(date_to) > moment(date_from)) {
+    //   alert("Invalid date");
+    //   return;
+    // }
     e.preventDefault();
     setIsDisabled(true);
     const data = {
@@ -201,17 +200,17 @@ function Leave() {
         </h1>
 
         <section class="text-gray-600 body-font mt-8">
-        <div className="bg-[#047EC1] pb-2 pt-4">       
-          <div class="container mx-auto w-full">
-            <div>
-              <Table
-                columns={columns}
-                data={filteredData}
-                onSearch={onSearch}
-                title="COUPON CODES LIST"
-              />
+          <div className="bg-[#047EC1] pb-2 pt-4">
+            <div class="container mx-auto w-full">
+              <div>
+                <Table
+                  columns={columns}
+                  data={filteredData}
+                  onSearch={onSearch}
+                  title="COUPON CODES LIST"
+                />
+              </div>
             </div>
-          </div>
           </div>
         </section>
       </div>

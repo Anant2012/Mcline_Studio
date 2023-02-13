@@ -27,12 +27,12 @@ function AdminEditLeaves() {
     const getLeave = async (e) => {
         AxiosInstance.get(`/api/admin/hr/leaves/${leaveId}`)
             .then((data) => {
-                console.log(data, "hjk")
-                setUsername(data.data.data.company)
-                setDate_to(moment(data.data.data.date).format('YYYY-MM-DD'));
-                setDate_from(moment(data.data.data.date).format('YYYY-MM-DD'));
-                setDescription(data.data.data.description);
-                setLeave_status(data.data.data.status);
+                // console.log(data, "hjk")
+                setUsername(data.data.data.user_id.username)
+                setDate_to(moment(data.data.data.leaves.date_t0).format('YYYY-MM-DD'));
+                setDate_from(moment(data.data.data.leaves.date_from).format('YYYY-MM-DD'));
+                setDescription(data.data.data.leaves.description);
+                setLeave_status(data.data.data.leaves.status);
                 // alert("✅ Leaves Edited SuccesFully");
             }
             )
@@ -112,6 +112,7 @@ function AdminEditLeaves() {
                                                 onChange={(e) => setDate_to(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -129,6 +130,7 @@ function AdminEditLeaves() {
                                                 onChange={(e) => setDate_from(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -162,6 +164,7 @@ function AdminEditLeaves() {
                                                 value={description}
                                                 onChange={(e) => setDescription(e.target.value)}
                                                 name="message"
+                                                readOnly
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                                             ></textarea>
                                         </div>

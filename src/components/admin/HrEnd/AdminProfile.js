@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
 const AdminProfile = () => {
-  const User_id = "63bbebd43e8e148ba852fd86";
+  const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -17,46 +17,46 @@ const AdminProfile = () => {
     );
   };
 
-const EditLead = (row) => {
-  // <EditLead leadId={row._id} />
-  // navigate(`/admin/hr/leaves/edit/${row._id}`);
-  // console.log("lead",row._id)
-}
-const getData = async () => {
-  AxiosInstance.get(`/api/leads/get/user/${User_id}`)
-    .then((data) =>
-      setData(data.data.data)
-    )
-    .catch((err) => console.log("errorr", err));
-};
-const DeleteUser = async (row) => {
-  try {
-    const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
-    if (response.status === 200) {
-      alert("✅Review deleted successfully!!");
-      window.location.reload()
-    }
-  } catch (err) {
-    console.log(err);
-    alert("Something went wrong!!");
+  const EditLead = (row) => {
+    // <EditLead leadId={row._id} />
+    // navigate(`/admin/hr/leaves/edit/${row._id}`);
+    // console.log("lead",row._id)
   }
-}
-const FilterLead = async (row) => {
-  const data = {
-    date_to: "1975-04-07",
-    date_from: "1999-11-22"
-  }
-  try {
-    const response = await AxiosInstance.post(`/api/leads/filter`, data)
-    console.log(response, "fgh")
-    if (response.status === 200) {
-      console.log(response, "fgh")
-    }
-  } catch (error) {
-    alert(error);
-    console.log(error);
+  const getData = async () => {
+    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+      .then((data) =>
+        setData(data.data.data)
+      )
+      .catch((err) => console.log("errorr", err));
   };
-}
+  const DeleteUser = async (row) => {
+    try {
+      const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
+      if (response.status === 200) {
+        alert("✅Review deleted successfully!!");
+        window.location.reload()
+      }
+    } catch (err) {
+      console.log(err);
+      alert("Something went wrong!!");
+    }
+  }
+  const FilterLead = async (row) => {
+    const data = {
+      date_to: "1975-04-07",
+      date_from: "1999-11-22"
+    }
+    try {
+      const response = await AxiosInstance.post(`/api/leads/filter`, data)
+      console.log(response, "fgh")
+      if (response.status === 200) {
+        console.log(response, "fgh")
+      }
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
 
   useEffect(() => {
     getData();
@@ -187,10 +187,10 @@ const FilterLead = async (row) => {
 
                             <div className="w-full flex justify-end mt-2">
                               <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm">
-                                  Edit
+                                Edit
                               </button>
                             </div>
-                            
+
                           </p>
                         </div>
                       </div>

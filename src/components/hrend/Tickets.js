@@ -6,7 +6,7 @@ import Table from "../../constant/Table/Table";
 import moment from "moment/moment";
 
 function Tickets() {
-  const User_id = "63bbebd43e8e148ba852fd86";
+  const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [description, setDescription] = useState("");
@@ -29,30 +29,17 @@ function Tickets() {
     );
   };
   const columns = [
-    { name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true },
+    { name: "Date", selector: (row) => moment(row.created_at).format('DD/MM/YYYY'), sortable: true },
     {
       name: "Has Issue With", selector: (row) => (row.tickets.issued_item.map((data, index) => {
-        return (<>{row.tickets.issued_item.length != index+1  ? `${data}, ` : `${data}`}</>) })), sortable: true, wrap: true },
+        return (<>{row.tickets.issued_item.length != index + 1 ? `${data}, ` : `${data}`}</>)
+      })), sortable: true, wrap: true
+    },
 
     { name: "Description", selector: (row) => row.tickets.reason, sortable: true },
     {
       name: "Status",
-      selector: (row) => (
-        <div>
-          {row.status === "Publish" ? (
-            <button
-              className="btn btn-secondary"
-            >
-              Resolved
-            </button>
-          ) : (
-            <button
-              className="btn btn-success"
-            >
-              Sent
-            </button>
-          )}
-        </div>), sortable: true
+      selector: (row) => (row.status), sortable: true
     },
   ];
 

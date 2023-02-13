@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
 
 function AdminTickets() {
-  const User_id = "63bbebd43e8e148ba852fd86";
+  const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -18,29 +18,34 @@ function AdminTickets() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.name, sortable: true },
+    { name: "Username", selector: (row) => row.user_id?.username, sortable: true },
     {
-      name: "Date", selector: (row) => moment(row.created_at).format('DD/MM/YYYY'), sortable: true },
-    { name: "Has Issue With", selector: (row) => row.name, sortable: true },
-    { name: "Description", selector: (row) => row.capital, sortable: true },
+      name: "Date", selector: (row) => moment(row.created_at).format('DD/MM/YYYY'), sortable: true
+    },
+    {
+      name: "Has Issue With", selector: (row) => (row.tickets.issued_item.map((data, index) => {
+        return (<>{row.tickets.issued_item.length != index + 1 ? `${data}, ` : `${data}`}</>)
+      })), sortable: true, wrap: true
+    },
+
+    { name: "Description", selector: (row) => row.tickets.reason, sortable: true },
     {
       name: "Status",
-      selector: (row) => row.capital, sortable: true 
-    }, {
+      selector: (row) => (row.status), sortable: true
+    },
+    {
       name: "Action",
       selector: (row) => (
         <div style={{ display: "flex" }}>
-          <FaUserEdit onClick={() => EditLead(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
-          <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
+          <FaUserEdit onClick={() => EditTicket(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
+          <MdDelete onClick={() => DeleteTicket(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
         </div>
       ),
     },
   ];
 
-  const EditLead = (row) => {
-    // <EditLead leadId={row._id} />
+  const EditTicket = (row) => {
     navigate(`/admin/hr/tickets/edit/${row._id}`);
-    // console.log("lead",row._id)
   }
   const getData = async () => {
     AxiosInstance.get(`/api/admin/hr/ticket`)
@@ -49,33 +54,17 @@ function AdminTickets() {
       )
       .catch((err) => console.log("errorr", err));
   };
-  const DeleteLead = async (row) => {
+  const DeleteTicket = async (row) => {
     try {
-      const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
+      const response = await AxiosInstance.delete(`/api/admin/hr/ticket/${row._id}`);
       if (response.status === 200) {
-        alert("✅Review deleted successfully!!");
+        alert("✅Ticket deleted successfully!!");
         window.location.reload()
       }
     } catch (err) {
       console.log(err);
       alert("Something went wrong!!");
     }
-  }
-  const FilterLead = async (row) => {
-    const data = {
-      date_to: "1975-04-07",
-      date_from: "1999-11-22"
-    }
-    try {
-      const response = await AxiosInstance.post(`/api/leads/filter`, data)
-      console.log(response, "fgh")
-      if (response.status === 200) {
-        console.log(response, "fgh")
-      }
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    };
   }
 
   useEffect(() => {
@@ -97,17 +86,17 @@ function AdminTickets() {
               List of all Raised Tickets
             </h1>
           </div>
-          <div className="bg-indigo-500 pb-2 pt-2">    
-          <div>
-            <Table
-              columns={columns}
-              data={filteredData}
-              onSearch={onSearch}
-              title="COUPON CODES LIST"
-            />
+          <div className="bg-indigo-500 pb-2 pt-2">
+            <div>
+              <Table
+                columns={columns}
+                data={filteredData}
+                onSearch={onSearch}
+                title="COUPON CODES LIST"
+              />
 
+            </div>
           </div>
-    </div>
         </div>
       </section>
 
