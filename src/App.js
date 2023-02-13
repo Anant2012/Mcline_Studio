@@ -45,6 +45,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      {/* {["/admin", "/admin/operation"].includes(window.location.pathname) ? <></> : <Navbar />} */}
       <Routes>
         <Route exact path="/" element={<FrontPage />} />
         <Route exact path="/hr/viewprofile" element={<ViewProfile />} />
