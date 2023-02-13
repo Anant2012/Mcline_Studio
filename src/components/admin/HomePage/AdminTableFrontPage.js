@@ -7,18 +7,18 @@ import { useState } from 'react'
 
 
 function AdminTableFrontPage() {
-  const [adminLogin, setAdminLogin] = useState(1);
+  const [adminLogin, setAdminLogin] = useState(0);
 
   return (
     <>
-      <AdminLoginFrontPage adminLogin={adminLogin}  setAdminLogin={setAdminLogin}/>
+      <AdminLoginFrontPage adminLogin={adminLogin} setAdminLogin={setAdminLogin} />
 
-      <div className={`${(adminLogin)?"block":"hidden"}`}>
-        <AdminUserList setAdminLogin={setAdminLogin}/>
+      <div className={`${(adminLogin) ? "block" : "hidden"}`}>
+        <AdminUserList setAdminLogin={setAdminLogin} />
         <div class="p-2 w-full pt-8 mt-2 border-t border-gray-300 text-center"></div>
-        <AdminHREndList setAdminLogin={setAdminLogin}/>
+        <AdminHREndList setAdminLogin={setAdminLogin} />
         <div class="p-2 w-full pt-8 mt-2 border-t border-gray-300 text-center"></div>
-        <AdminOperationList setAdminLogin={setAdminLogin}/>
+        <AdminOperationList setAdminLogin={setAdminLogin} />
       </div>
     </>
   )

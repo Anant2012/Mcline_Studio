@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import { MdDelete } from "react-icons/md";
+import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 function AdminUserList(props) {
+  const User_id = "63bbebd43e8e148ba852fd86";
   const navigate = useNavigate();
 
 
@@ -25,22 +27,40 @@ function AdminUserList(props) {
     { name: "Phone", selector: (row) => row.name, sortable: true },
     { name: "Password", selector: (row) => row.capital, sortable: true },
     {
-      name: "Action", selector: (row) => (
+      name: "Action",
+      selector: (row) => (
         <div style={{ display: "flex" }}>
-          <FaUserEdit onClick={() => EditUser(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
+          <FaUserEdit onClick={() => EditLead(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
+          <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
         </div>
-    )}
+      ),
+    },
   ];
-  const EditUser = (row) => {
-    navigate(`/user/admin/edit_user/${row._id}`);
 
+  const EditLead = (row) => {
+    // <EditLead leadId={row._id} />
+    navigate(`/admin/operation/edit/lead/${row._id}`);
+    // console.log("lead",row._id)
   }
   const getData = async () => {
-    fetch("https://restcountries.com/v2/all")
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => console.log("error", err));
+    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+      .then((data) =>
+        setData(data.data.data)
+      )
+      .catch((err) => console.log("errorr", err));
   };
+  const DeleteLead = async (row) => {
+    try {
+      const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
+      if (response.status === 200) {
+        alert("✅Review deleted successfully!!");
+        window.location.reload()
+      }
+    } catch (err) {
+      console.log(err);
+      alert("Something went wrong!!");
+    }
+  }
 
   useEffect(() => {
     getData();
