@@ -147,7 +147,7 @@ function Grievance() {
                 </div>
               </div>
               <div class="p-2 w-full">
-                  <button onClick={AddGrievance} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                  <button onClick={AddGrievance} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
               </div>
               
             </div>
@@ -162,7 +162,7 @@ function Grievance() {
                 </h1>
 
                 <section class="text-gray-600 mt-8 body-font">
-                <div className="bg-indigo-500 pb-2 pt-2">    
+                <div className="bg-[#047EC1] pb-2 pt-2">    
                 <div class="container mx-auto w-full mt-4">
                     <div>
                       <Table

@@ -184,6 +184,13 @@ const FilterLead = async (row) => {
                                 </div>
                               </div>
                             </div>
+
+                            <div className="w-full flex justify-end mt-2">
+                              <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm">
+                                  Edit
+                              </button>
+                            </div>
+                            
                           </p>
                         </div>
                       </div>

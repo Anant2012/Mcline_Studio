@@ -3,7 +3,7 @@ import Table from "../../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-function AdminUserList() {
+function AdminUserList(props) {
   const navigate = useNavigate();
 
 
@@ -29,7 +29,7 @@ function AdminUserList() {
         <div style={{ display: "flex" }}>
           <FaUserEdit onClick={() => EditUser(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
         </div>
-      ) },
+    )}
   ];
   const EditUser = (row) => {
     navigate(`/user/admin/edit_user/${row._id}`);
@@ -39,7 +39,7 @@ function AdminUserList() {
     fetch("https://restcountries.com/v2/all")
       .then((res) => res.json())
       .then((data) => setData(data))
-      .catch((err) => console.log("errorr", err));
+      .catch((err) => console.log("error", err));
   };
 
   useEffect(() => {
@@ -50,6 +50,10 @@ function AdminUserList() {
     setFilteredData(data);
 
   }, [data]);
+
+  const handleAddClick = () => {
+    props.setAdminLogin(0);
+  }
 
   return (
     <>
@@ -67,13 +71,15 @@ function AdminUserList() {
                   User List
                 </h1>
                 <div class="flex flex-row justify-center pr-8 items-center relative">
-                  <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded-full text-sm mr-3">
+                  <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded-full text-sm mr-3" onClick={handleAddClick}>
                     Add
                   </button>
                 </div>
               </div>
             </div>
 
+
+            
             <div className="w-full mx-auto">
               <Table
                 columns={columns}

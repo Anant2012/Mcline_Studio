@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 // import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 function Lead() {
   const User_id = "63bbebd43e8e148ba852fd86";
@@ -178,10 +179,10 @@ function Lead() {
           </h1>
         </div>
         <div>
-        <div className="bg-indigo-500 pb-2 pt-4">    
+        <div className="bg-[#047EC1] pb-2 pt-4">    
           <div class="lg:w-7/8 w-full mx-auto">
             <div class="flex mx-4 flex-wrap ">
-              <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+              <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-[#047EC1] rounded ">
                 <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
                   Filter:
                 </div>
@@ -216,12 +217,23 @@ function Lead() {
               </div>
             </div>
           </div>
-          <Table
-            columns={columns}
-            data={filteredData}
-            onSearch={onSearch}
-            title="Selling Product List"
-          />
+          <ReactHTMLTableToExcel
+                    id="test-table-xls-button"
+                    className="download-table-xls-button"
+                    table="table-to-xls"
+                    filename="tablexls"
+                    sheet="tablexls"
+                    buttonText="Download as XLS"/>
+              
+          <table id="table-to-xls">
+            <Table
+              columns={columns}
+              data={filteredData}
+              onSearch={onSearch}
+              title="Selling Product List"
+            />
+            </table>
+          
         
         </div>
         </div>

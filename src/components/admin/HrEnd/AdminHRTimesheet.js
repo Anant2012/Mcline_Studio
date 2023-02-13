@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Table from "../../constant/Table/Table";
+import Table from "../../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-function Timeline() {
+function AdminHRTimesheet() {
 
   const [showModal, setShowModal] = useState(0);
   const [data, setData] = useState();
@@ -80,17 +80,17 @@ function Timeline() {
               </div>
               <div class="relative p-4">
                 <div class="relative mb-4 w-3/4 mx-auto flex">
-                <input
-                    type="text"
-                    name="text"
-                    class="w-1/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mr-1"
-                    placeholder="Time"
-                  />
                   <input
                     type="text"
                     name="text"
-                    class="w-3/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ml-1"
+                    class="w-3/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mr-1"
                     placeholder="Task"
+                  />
+                <input
+                    type="text"
+                    name="text"
+                    class="w-1/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ml-1"
+                    placeholder="Time"
                   />
                   
                 </div>
@@ -123,4 +123,4 @@ function Timeline() {
   );
 }
 
-export default Timeline;
+export default AdminHRTimesheet;

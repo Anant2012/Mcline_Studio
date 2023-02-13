@@ -3,7 +3,7 @@ import Table from "../../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-function AdminOperationList() {
+function AdminOperationList(props) {
   const navigate = useNavigate();
 
  
@@ -54,6 +54,11 @@ function AdminOperationList() {
 
   }, [data]);
 
+
+  const handleAddClick = () => {
+    props.setAdminLogin(0);
+  }
+
  
   return (
 
@@ -72,7 +77,7 @@ function AdminOperationList() {
                   Operation List
                 </h1>
                 <div class="flex flex-row justify-center pr-8 items-center relative">
-                  <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded-full text-sm mr-3">
+                  <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded-full text-sm mr-3" onClick={handleAddClick}>
                     Add
                   </button>
                 </div>
