@@ -77,11 +77,12 @@ const AdminHRFrontPage = () => {
                               <p className="leading-relaxed text-sm">
                                 Choose Option
                               </p>
-                              <div className="flex mt-2 flex-col">
+                              <div className="flex mt-2 w-full flex-col">
+                                <div className="flex flex-row">
                                 <Link to="/admin/hr/profiles">
                                   <button
                                     type="button"
-                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-2"
                                   >
                                     Profiles
                                   </button>
@@ -90,16 +91,17 @@ const AdminHRFrontPage = () => {
                                 <Link to="/admin/hr/leaves">
                                   <button
                                     type="button"
-                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ml-2"
                                   >
                                     Leaves
                                   </button>
                                 </Link>
-
+                                </div>
+                                <div className="flex flex-row">
                                 <Link to="/admin/hr/tickets">
                                   <button
                                     type="button"
-                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-2 mt-3"
                                   >
                                     Tickets
                                   </button>
@@ -108,11 +110,31 @@ const AdminHRFrontPage = () => {
                                 <Link to="/admin/hr/grievance">
                                   <button
                                     type="button"
-                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ml-2 mt-3"
                                   >
                                     Grievance
                                   </button>
                                 </Link>
+                                </div>
+
+                                <div className="flex flex-row">
+                                <Link to="/admin/hr/timesheet">
+                                  <button
+                                    type="button"
+                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-2 mt-3"
+                                  >
+                                    Timesheet
+                                  </button>
+                                </Link>
+
+                                <Link to="/hr/policy"><button
+                                    type="button"
+                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ml-2 mt-3"
+                                    >
+                                    Policy
+                                    </button>
+                                    </Link>
+                                </div>
                               </div>
                             </div>
                           </div>

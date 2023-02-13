@@ -96,7 +96,6 @@ const Table = ({
                 {/* <div className="table-title">
                     <span style={{ marginLeft: "10px" }}>{title}</span>
                 </div> */}
-
                 <DataTable
                     columns={columns}
                     data={data}
@@ -108,6 +107,7 @@ const Table = ({
                     subHeader
                     subHeaderComponent={
                         <div>
+                            
                             <input
                                 type="text"
                                 onChange={(e) => onSearch(e.target.value)}
@@ -117,7 +117,7 @@ const Table = ({
                             />
                         </div>
                     }
-                />
+                    />
             </div>
         </div>
     );

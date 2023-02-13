@@ -1,5 +1,5 @@
 import React from 'react'
-
+import background from './footerImg.png';
 
 function Footer() {
 
@@ -36,6 +36,14 @@ function Footer() {
           </li>
         </nav>
         </nav>
+      </div>
+
+
+
+      <div class="md:w-1/2 w-full px-4">
+        <div className='flex justify-end mt-[10px] w-full items-center'>
+          <img src={`${background}`} class="max-w-[400px] flex h-auto" alt="..." />
+          </div>
       </div>
       
       {/* <div class="lg:w-1/4 md:w-1/2 flex justify-center  w-full px-4">

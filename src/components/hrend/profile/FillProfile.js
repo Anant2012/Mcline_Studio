@@ -58,10 +58,16 @@ const FillProfile = (props) => {
   }
 
 
-  const ProfileImageClick = () =>{
+  const ProfileImageClick = (props) =>{
     const imgBtn = document.querySelector("#imgBtn");
     imgBtn.click();
   }
+
+  const onSubmitClick = () => {
+    AddPersonalDetails();
+    props.setProfileFilled(1);
+  }
+
   return (
     <>
       <div className={`${(props.viewFillProfile) ? "block" : "hidden"}`}>
@@ -242,7 +248,7 @@ const FillProfile = (props) => {
           </div>
         </div>
         <div className="w-full flex justify-center">
-          <button onClick={AddPersonalDetails} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="mx-auto w-11/12 sm:w-3/4 text-white bg-indigo-500 mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+          <button onClick={onSubmitClick} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
         </div>
       </div>
     </>

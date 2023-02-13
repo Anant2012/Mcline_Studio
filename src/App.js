@@ -30,15 +30,16 @@ import AdminProfile from './components/admin/HrEnd/AdminProfile';
 import EditLead from './components/operation/View/Lead/EditLead';
 import AdminTableFrontPage from './components/admin/HomePage/AdminTableFrontPage';
 import PersonalDetails from './components/hrend/profile/PersonalDetails';
+import Timesheet from './components/hrend/Timesheet';
 
 import EditProject from './components/operation/View/Project/EditProject';
 import AdminHRFrontPage from './components/admin/HrEnd/AdminHRFrontPage';
 import AdminOperationFrontPage from './components/admin/Operations/AdminOperationFrontPage';
-import Timeline from './components/timeline/Timeline'
 import AdminEditLead from './components/admin/Operations/AdminEditLead';
 import AdminEditLeaves from './components/admin/HrEnd/Edit/AdminEditLeaves';
 import AdminEditTickets from './components/admin/HrEnd/Edit/AdminEditTicket';
 import AdminEditGrievance from './components/admin/HrEnd/Edit/AdminEditGrievance';
+import AdminHRTimesheet from './components/admin/HrEnd/AdminHRTimesheet';
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/table1" element={<Table1 />} />
-        <Route exact path="/timeline" element={<Timeline />} />
+        <Route exact path="/hr/timesheet" element={<Timesheet/>} />
 
 
 
@@ -82,7 +83,8 @@ function App() {
         <Route exact path="/admin/hr/tickets/edit/:ticketId" element={<AdminEditTickets />} />
         <Route exact path="/admin/hr/grievance" element={<AdminGrievance />} />
         <Route exact path="/admin/hr/grievance/edit/:grId" element={<AdminEditGrievance/>} />
-
+        <Route exact path="/admin/hr/timesheet" element={<AdminHRTimesheet/>} />
+        
         <Route exact path="/admin/login" element={<Login />} />
         <Route exact path="/table1" element={<Table1 />} />
 

@@ -6,7 +6,7 @@ const Navbar = () => {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
-
+  
   
 
   const location = useLocation();
@@ -27,7 +27,7 @@ const Navbar = () => {
               <div className="relative">
                 <div className={`${loggedIn ? "hidden" : "block"}`}>
                   <Link to="/login">
-                    <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-600 rounded-full text-sm mr-3">
+                    <button className="text-white text-sm font-medium bg-[#047EC1] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#0473af] rounded-full text-sm mr-3">
                       LogIn
                     </button>
                   </Link>

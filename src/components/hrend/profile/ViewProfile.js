@@ -5,6 +5,7 @@ import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 const ViewProfile = (props) => {
   const User_id = "63e239529722a3fe13a268d4";
   const [data, setData] = useState();
+
   
   const getData = async () => {
     AxiosInstance.get(`/api/hr/get/personal/${User_id}`)

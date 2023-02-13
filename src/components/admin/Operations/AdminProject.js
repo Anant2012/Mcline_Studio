@@ -1,3 +1,4 @@
+import "../../operation/View/Project/Project.css";
 import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
@@ -255,84 +256,57 @@ function AdminProject() {
               <div class="lg:w-7/8 w-full mx-auto">
                 <div class="flex mx-4 flex-wrap ">
                   <div class="w-full flex-col p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
-                    <div className="flex justify-end mb-2 mr-4 title-font tracking-wider font-medium text-md decoration-white">
-                      Filter
+                    
+                  <div className="grid grid-cols-5 grid-rows-3 gap-2 w-2/3">
+                    <div className="col-span-5 text-lg">Filter</div>
+                    <div className="my-auto text-right">Date From</div>
+                    <div className="my-auto">
+                      <input
+                        type="date"
+                        id="name"
+                        name="name"
+                        class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                      />
                     </div>
-                    <div className="flex justify-end my-1">
-                      <div class="flex flex-row justify-center item-center relative">
-                        <label
-                          for="name"
-                          class="my-auto px-4 py-3 whitespace-nowrap title-font tracking-wider font-medium text-sm decoration-white"
-                        >
-                          Date from
-                        </label>
-                        <input
-                          type="date"
-                          id="name"
-                          name="name"
-                          class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
-
-                      <div class="flex flex-row justify-center item-center relative">
-                        <label
-                          for="name"
-                          class="my-auto px-4 py-3 whitespace-nowrap title-font tracking-wider font-medium text-sm decoration-white"
-                        >
-                          Date to
-                        </label>
-                        <input
-                          type="date"
-                          id="name"
-                          name="name"
-                          class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
-
-                      <div class="flex flex-row justify-center item-center relative">
-                        <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded ml-3 text-sm mr-3 whitespace-nowrap">
-                          Find
-                        </button>
-                      </div>
+                    <div className="my-auto text-right">Date To</div>
+                    <div className="my-auto">
+                      <input
+                        type="date"
+                        id="name"
+                        name="name"
+                        class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+                    <div className="my-auto">
+                      <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded ml-3 text-sm mr-3 whitespace-nowrap">
+                        Find
+                      </button>
                     </div>
 
-                    <div className="flex justify-end my-1">
-                      <div class="flex flex-row justify-center item-center relative">
-                        <label
-                          for="name"
-                          class="removeBtn my-auto px-4 whitespace-nowrap py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                        >
-                          Invoice Amount from
-                        </label>
-                        <input
-                          type="number"
-                          id="name"
-                          name="name"
-                          class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
 
-                      <div class="flex flex-row justify-center item-center relative">
-                        <label
-                          for="name"
-                          class="removeBtn my-auto px-4 py-3 whitespace-nowrap title-font tracking-wider font-medium text-sm decoration-white"
-                        >
-                          Invoice Amount to
-                        </label>
-                        <input
-                          type="number"
-                          id="name"
-                          name="name"
-                          class="appearance-none w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
 
-                      <div class="flex flex-row justify-center item-center relative">
-                        <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded text-sm mr-3  ml-3 whitespace-nowrap">
-                          Find
-                        </button>
-                      </div>
+                    <div className="my-auto text-right whitespace-nowrap">Invoice Amount From</div>
+                    <div className="my-auto">
+                      <input
+                        type="number"
+                        class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                      />
                     </div>
+                    <div className="my-auto text-right">Invoice Amount To</div>
+                    <div className="my-auto">
+                      <input
+                        type="number"
+                        class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+                    <div className="my-auto">
+                      <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded ml-3 text-sm mr-3 whitespace-nowrap">
+                        Find
+                      </button>
+                    </div>
+                  </div>
+
+                    
                   </div>
                 </div>
               </div>
