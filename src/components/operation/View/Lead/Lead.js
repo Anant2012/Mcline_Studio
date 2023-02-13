@@ -3,7 +3,7 @@ import Table from "../../../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
-// import moment from "moment/moment";
+import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
@@ -29,7 +29,7 @@ function Lead() {
     );
   };
   const columns = [
-    { name: "Date", selector: (row) => row.date, sortable: true },
+    { name: "Date", selector: (row) => moment(row.date).format('DD/MM/YYYY'), sortable: true },
     // { name: "Date", selector: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
     { name: "Company ", selector: (row) => row.company, sortable: true },
     { name: "Person", selector: (row) => row.name, sortable: true },

@@ -69,13 +69,13 @@ function Project() {
     },
     {
       name: "Approval Date",
-      selector: (row) => row.approval_date,
+      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
       sortable: true,
       width: "160px",
     },
     {
       name: "Submission Date",
-      selector: (row) => row.submission_date,
+      selector: (row) => moment(row.submission_date).format('DD/MM/YYYY'),
       sortable: true,
       width: "160px",
     },
@@ -149,6 +149,7 @@ function Project() {
     {
       name: "Invoice Date",
       // selector: (row) => row.invoice.amount,
+      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
       sortable: true,
       width: "160px",
     },
@@ -161,22 +162,23 @@ function Project() {
     {
       name: "Due Date",
       // selector: (row) => row.invoice.status,
+      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
       sortable: true,
       width: "160px",
     },
-
-    {
-      name: "Resource Rate",
-      // selector: (row) => row.invoice.status,
-      sortable: true,
-      width: "160px",
-    },
-    {
-      name: "Resource Cost",
-      // selector: (row) => row.invoice.status,
-      sortable: true,
-      width: "160px",
-    },
+    
+    // {
+    //   name: "Resource Rate",
+    //   // selector: (row) => row.invoice.status,
+    //   sortable: true,
+    //   width: "160px",
+    // },
+    // {
+    //   name: "Resource Cost",
+    //   // selector: (row) => row.invoice.status,
+    //   sortable: true,
+    //   width: "160px",
+    // },
     {
       name: "Invoice Status",
       selector: (row) => row.invoice.status,

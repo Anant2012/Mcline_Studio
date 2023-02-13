@@ -29,6 +29,12 @@ function AdminProject() {
   };
   const columns = [
     {
+      name: "UserName",
+      selector: (row) => row.code,
+      sortable: true,
+      width: "160px",
+    },
+    {
       name: "Project Code",
       selector: (row) => row.code,
       sortable: true,

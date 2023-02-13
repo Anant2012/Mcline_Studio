@@ -4,7 +4,7 @@ import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { FaUserEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-
+import moment from "moment";
 function AdminLead() {
   const User_id = "63bbebd43e8e148ba852fd86";
   const [data, setData] = useState();
@@ -24,7 +24,8 @@ function AdminLead() {
     );
   };
   const columns = [
-    { name: "Date", selector: (row) => row.date, sortable: true },
+    { name: "Username", selector: (row) => row.company, sortable: true },
+    { name: "Date", selector: (row) => moment(row.date).format('DD/MM/YYYY'), sortable: true },
     // { name: "Date", selector: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
     { name: "Company ", selector: (row) => row.company, sortable: true },
     { name: "Person", selector: (row) => row.name, sortable: true },

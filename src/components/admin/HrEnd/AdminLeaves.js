@@ -2,7 +2,7 @@ import React from "react";
 import { FaUserEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
-// import moment from "moment/moment";
+import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
@@ -19,8 +19,8 @@ function AdminLeaves() {
   };
   const columns = [
     { name: "Username", selector: (row) => row.name, sortable: true },
-    { name: "Date To", selector: (row) => row.name, sortable: true },
-    { name: "Date From", selector: (row) => row.name, sortable: true },
+    { name: "Date To", selector: (row) => moment(row.date).format('DD/MM/YYYY'), sortable: true },
+    { name: "Date From", selector: (row) => moment(row.date).format('DD/MM/YYYY'), sortable: true },
     { name: "Description", selector: (row) => row.capital, sortable: true },
     {
       name: "Status",
