@@ -1,7 +1,7 @@
 import React from 'react'
 import background from '../../auth/login_banner.jpg';
 
-const AdminHREndLogin = (props) => {
+const HomePageLogin = (props) => {
 
   const styles = {
     backgroundImage: `url(${background})`,
@@ -12,7 +12,7 @@ const AdminHREndLogin = (props) => {
 
   return (
     <>
-
+     
       <div className={`${(props.hrLogin)?"hidden":"block"} h-[500px]  w-full sm:w-3/4 flex mx-auto sm:shadow-md my-12`}>
         
         <div className='w-full lg:w-1/2 my-auto'>
@@ -44,4 +44,4 @@ const AdminHREndLogin = (props) => {
   )
 }
 
-export default AdminHREndLogin
+export default HomePageLogin
