@@ -1,16 +1,15 @@
-import {useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import background from '../footer/footerImg.png'
 
-const Navbar = () => {
+const NavbarUser = () => {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
-  
-  
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const location = useLocation();
-  console.log(location.pathname)
+  console.log(location.pathname);
 
   return (
     <>
@@ -19,7 +18,13 @@ const Navbar = () => {
           <div className="relative flex h-16 items-center justify-between">
             <div className="flex flex-1 items-center sm:items-stretch justify-start">
               <div className="flex flex-shrink-0 items-center text-white font-sans text-sm ml-4 sm:text-xl font-semibold subpixel-antialiased sm:tracking-wider ">
-                McLine STUDIOS
+              <Link to="/">
+                    <img
+                      src={`${background}`}
+                      class="max-w-[120px] flex h-auto"
+                      alt="..."
+                    />
+                    </Link>
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -27,8 +32,14 @@ const Navbar = () => {
               <div className="relative">
                 <div className={`${loggedIn ? "hidden" : "block"}`}>
                   <Link to="/login">
-                    <button className="text-white text-sm font-medium bg-[#047EC1] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#0473af] rounded-full text-sm mr-3">
-                      LogIn
+                    <button
+                      className="text-white text-sm font-medium bg-[#047EC1] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#0473af] rounded-full text-sm mr-3"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setLoggedIn(true);
+                      }}
+                    >
+                      Log In
                     </button>
                   </Link>
 
@@ -39,7 +50,27 @@ const Navbar = () => {
                   </Link> */}
                 </div>
 
-                <div className={`${(!loggedIn) ? "hidden" : "block"}`}>
+                <div className={`${!loggedIn ? "hidden" : "block"}`}>
+                  <Link to="/login">
+                    <button
+                      className="text-white text-sm font-medium bg-[#047EC1] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#0473af] rounded-full text-sm mr-3"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setLoggedIn(false);
+                      }}
+                    >
+                      Log Out
+                    </button>
+                  </Link>
+
+                  {/* <Link to="/signup">
+                    <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-5 focus:outline-none hover:bg-indigo-600 rounded-full text-sm">
+                      SignUp
+                    </button>
+                  </Link> */}
+                </div>
+
+                {/* <div className={`${(!loggedIn) ? "hidden" : "block"}`}>
                   <button
                     type="button"
                     className="flex rounded-full bg-gray-800 text-sm outline-none ring-2 ring-white focus:ring-offset-2 ring-offset-gray-800"
@@ -60,9 +91,9 @@ const Navbar = () => {
                       alt=""
                     />
                   </button>
-                </div>
+                </div> */}
 
-                <div
+                {/* <div
                   className={`absolute right-0 z-10 mt-2 w-48  ${
                     hover || open ? "block" : "hidden"
                   } origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-opacity`}
@@ -81,9 +112,9 @@ const Navbar = () => {
                   onMouseEnter={() => {
                     setOpen(true);
                   }}
-                >
-                  {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
-                  <Link
+                > */}
+                {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
+                {/* <Link
                     to="/hr/personaldetails"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     role="menuitem"
@@ -106,7 +137,7 @@ const Navbar = () => {
                   >
                     Sign out
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -116,4 +147,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export default NavbarUser;

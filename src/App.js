@@ -1,5 +1,6 @@
 import './App.css';
-import Navbar from './components/navbar/Navbar';
+import NavbarUser from './components/navbar/NavbarUser';
+import NavbarAdmin from './components/navbar/NavbarAdmin';
 import {
   BrowserRouter as Router,
   Routes,
@@ -44,8 +45,7 @@ import AdminEditGrievance from './components/admin/HrEnd/Edit/AdminEditGrievance
 function App() {
   return (
     <Router>
-      <Navbar />
-      {/* {["/admin", "/admin/operation"].includes(window.location.pathname) ? <></> : <Navbar />} */}
+      {["/admin", "/admin/operation", "/admin/hrend", "/admin/operation/view/lead", "/admin/operation/view/project", "/admin/hr/profiles", "/admin/hr/leaves", "/admin/hr/tickets", "/admin/hr/grievance", "/admin/hr/timesheet", "/hr/policy"].includes(window.location.pathname) ? <NavbarAdmin/> : <NavbarUser />}
       <Routes>
         <Route exact path="/" element={<FrontPage />} />
         <Route exact path="/hr/viewprofile" element={<ViewProfile />} />
