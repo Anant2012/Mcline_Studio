@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import DownloadTableIcon from "../../common/DownloadTableIcon";
 
 function AdminProject() {
   const User_id = "63e9411577ce9c26f2babd4f";
@@ -14,7 +15,6 @@ function AdminProject() {
   const [totalPurchasedItems, setTotalPurchasedItems] = useState(0);
 
   const navigate = useNavigate();
-
 
   const handleOpen = () => {
     // to do
@@ -70,13 +70,13 @@ function AdminProject() {
     },
     {
       name: "Approval Date",
-      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
+      selector: (row) => moment(row.approval_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
     {
       name: "Submission Date",
-      selector: (row) => moment(row.submission_date).format('DD/MM/YYYY'),
+      selector: (row) => moment(row.submission_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
@@ -149,7 +149,7 @@ function AdminProject() {
     },
     {
       name: "Invoice Date",
-      selector: (row) => moment(row.date).format('DD/MM/YYYY'),
+      selector: (row) => moment(row.date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
@@ -161,7 +161,7 @@ function AdminProject() {
     },
     {
       name: "Due Date",
-      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
+      selector: (row) => moment(row.approval_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
@@ -257,7 +257,6 @@ function AdminProject() {
               <div class="lg:w-7/8 w-full mx-auto">
                 <div class="flex mx-4 flex-wrap ">
                   <div class="w-full flex-col p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
-
                     <div className="grid grid-cols-5 grid-rows-3 gap-2 w-2/3">
                       <div className="col-span-5 text-lg">Filter</div>
                       <div className="my-auto text-right">Date From</div>
@@ -284,16 +283,18 @@ function AdminProject() {
                         </button>
                       </div>
 
-
-
-                      <div className="my-auto text-right whitespace-nowrap">Invoice Amount From</div>
+                      <div className="my-auto text-right whitespace-nowrap">
+                        Invoice Amount From
+                      </div>
                       <div className="my-auto">
                         <input
                           type="number"
                           class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
                         />
                       </div>
-                      <div className="my-auto text-right">Invoice Amount To</div>
+                      <div className="my-auto text-right">
+                        Invoice Amount To
+                      </div>
                       <div className="my-auto">
                         <input
                           type="number"
@@ -306,8 +307,6 @@ function AdminProject() {
                         </button>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
               </div>
@@ -317,6 +316,7 @@ function AdminProject() {
                 onSearch={onSearch}
                 title="Selling Product List"
               />
+              <DownloadTableIcon fileName="Selling Products" fileData={data} />
             </div>
           </div>
         </div>

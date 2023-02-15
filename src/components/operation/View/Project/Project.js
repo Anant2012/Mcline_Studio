@@ -2,10 +2,10 @@ import "./Project.css";
 import { useEffect, useState } from "react";
 import Table from "../../../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
+import DownloadTableIcon from "../../../common/DownloadTableIcon";
 
 function Project() {
   const User_id = "63e9411577ce9c26f2babd4f";
@@ -69,13 +69,13 @@ function Project() {
     },
     {
       name: "Approval Date",
-      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
+      selector: (row) => moment(row.approval_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
     {
       name: "Submission Date",
-      selector: (row) => moment(row.submission_date).format('DD/MM/YYYY'),
+      selector: (row) => moment(row.submission_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
@@ -148,7 +148,8 @@ function Project() {
     },
     {
       name: "Invoice Date",
-      selector: (row) => moment(row.date).format('DD/MM/YYYY'),
+      // selector: (row) => row.invoice.amount,
+      selector: (row) => moment(row.approval_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
@@ -160,7 +161,8 @@ function Project() {
     },
     {
       name: "Due Date",
-      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
+      // selector: (row) => row.invoice.status,
+      selector: (row) => moment(row.approval_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
@@ -211,7 +213,7 @@ function Project() {
       .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };
- 
+
   useEffect(() => {
     getData();
   }, []);
@@ -263,9 +265,9 @@ function Project() {
                       </button>
                     </div>
 
-
-
-                    <div className="my-auto text-right whitespace-nowrap">Invoice Amount From</div>
+                    <div className="my-auto text-right whitespace-nowrap">
+                      Invoice Amount From
+                    </div>
                     <div className="my-auto">
                       <input
                         type="number"
@@ -294,6 +296,7 @@ function Project() {
               onSearch={onSearch}
               title="Selling Product List"
             />
+            <DownloadTableIcon fileData={data} fileName="Project" />
           </div>
         </div>
       </div>
