@@ -52,7 +52,8 @@ function AdminEditLeaves() {
                 status: leave_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/admin/hr/leaves/${leaveId}`, data);
+            const response = await AxiosInstance.patch(`api/admin/hr/leaves/${leaveId}`, data);
+            // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
             if (response.status === 200) {
                 alert("✅Leave updated successfully!!");
             }

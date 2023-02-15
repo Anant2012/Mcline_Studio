@@ -23,40 +23,16 @@ const AdminProfile = () => {
     // console.log("lead",row._id)
   }
   const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+    AxiosInstance.get(`/api/admin/user`)
       .then((data) =>
+      {
         setData(data.data.data)
+        console.log(data.data.data)}
       )
       .catch((err) => console.log("errorr", err));
   };
-  const DeleteUser = async (row) => {
-    try {
-      const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
-      if (response.status === 200) {
-        alert("✅Review deleted successfully!!");
-        window.location.reload()
-      }
-    } catch (err) {
-      console.log(err);
-      alert("Something went wrong!!");
-    }
-  }
-  const FilterLead = async (row) => {
-    const data = {
-      date_to: "1975-04-07",
-      date_from: "1999-11-22"
-    }
-    try {
-      const response = await AxiosInstance.post(`/api/leads/filter`, data)
-      console.log(response, "fgh")
-      if (response.status === 200) {
-        console.log(response, "fgh")
-      }
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    };
-  }
+
+
 
   useEffect(() => {
     getData();
@@ -105,14 +81,14 @@ const AdminProfile = () => {
               filteredData?.map((data, index) => {
                 return (
                   <>
-
+                    
                     <div class="p-4 md:w-1/3">
                       <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <div class="p-6">
                           <div className="flex w-full">
                             <div className="w-1/2">
                               <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                Engineer - EC101 | A+
+                                {/* Engineer - {data.personal_details.employee_code} */}
                               </h2>
                               <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
                                 Margot Foster
@@ -185,11 +161,11 @@ const AdminProfile = () => {
                               </div>
                             </div>
 
-                            <div className="w-full flex justify-end mt-2">
+                            {/* <div className="w-full flex justify-end mt-2">
                               <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm">
                                 Edit
                               </button>
-                            </div>
+                            </div> */}
 
                           </p>
                         </div>

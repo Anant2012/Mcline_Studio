@@ -1,9 +1,10 @@
-import { duration } from 'moment';
+
 import React, { useState } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import background from './AddNewProject.jpg';
 
 function Addnewproject() {
+  const user_id = "63e9411577ce9c26f2babd4f";
   const [projectName, setProjectName] = useState("");
   const [person, setPerson] = useState("");
   const [company, setCompany] = useState("");
@@ -39,13 +40,25 @@ function Addnewproject() {
     const data = {
       user_id: "63e9411577ce9c26f2babd4f",
       // code: code,
-      client_name: company,
-      person: person,
-      status: project_status,
-      project_name: projectName,
+      project_status:project_status,
+      client_name:company,
+      person:person,
+      description:description,
+      project_name:projectName,
       approval_date: approvalDate,
       submission_date: submissionDate,
-      description: description,
+      comments:comment,
+      reference:reference,
+      address:address,
+      phone:Phone_no,
+      contact_person:contact_person,
+      resource:resource,
+      invoice_type:invoice_type,
+      net_days:net_days,
+      PO_number:po_no,
+      bid:bid,
+      hours:hours,
+      company_name:company,
     }
     try {
       const response = await AxiosInstance.post(`/api/project/create`, data)

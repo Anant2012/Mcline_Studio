@@ -3,6 +3,7 @@ import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment/moment";
 import background from "../../../../assets/images/AddNewBanner.jpg"
+import axios from "axios";
 
 function AdminEditTickets() {
     const URL = window.location.href;
@@ -50,13 +51,14 @@ function AdminEditTickets() {
         e.preventDefault();
         try {
             const data = {
-                date: date,
-                issue: issue,
-                name: username,
+                // date: date,
+                // issue: issue,
+                // name: username,
                 status: ticket_status,
-                description: description,
+                // description: description,
             }
-            const response = await AxiosInstance.put(`/api/admin/hr/tickets/${ticketId}`, data);
+            const response = await AxiosInstance.patch(`/api/admin/hr/ticket/${ticketId}`, data)
+            // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
             if (response.status === 200) {
                 alert("✅ticket updated successfully!!");
             }

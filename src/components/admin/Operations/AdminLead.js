@@ -63,7 +63,7 @@ function AdminLead() {
   };
   const DeleteLead = async (row) => {
     try {
-      const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
+      const response = await AxiosInstance.delete(`/api/operations/leads/delete/${row._id}`);
       if (response.status === 200) {
         alert("✅Lead deleted successfully!!");
         window.location.reload()

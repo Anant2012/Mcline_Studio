@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import background from '../../auth/login_banner.jpg';
 
 const HomePageLogin = (props) => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const styles = {
     backgroundImage: `url(${background})`,
@@ -9,6 +13,26 @@ const HomePageLogin = (props) => {
     backgroundPosition: 'center',
     filter: 'grayscale(60%)'
   };
+  const LoginUser = async (e) => {
+    e.preventDefault();
+    // setIsDisabled(true);
+    const data = {
+      email: email,
+      password: password,
+    }
+    try {
+      // const response = await AxiosInstance.post(`/api/leads/create`, data)
+      // if (response.status === 200) {
+      //   alert("✅User Login SuccesFully");
+      // }
+      setEmail("");
+      setPassword("");
+      props.setHrLogin(1)
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
 
   return (
     <>
@@ -22,16 +46,15 @@ const HomePageLogin = (props) => {
             <p className="leading-relaxed mb-5 text-gray-600">Please fill out the form to login</p>
             <div className="relative mb-4">
               <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-              <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
+                <input type="email" id="email" value={email}
+                  onChange={(e) => setEmail(e.target.value)} name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
             <div className="relative mb-4">
               <label htmlFor="email" className="leading-7 text-sm text-gray-600">Password</label>
-              <input type="password" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
+                <input type="password" id="email" value={password}
+                  onChange={(e) => setPassword(e.target.value)} name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
-            <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={(e) => {
-                      e.preventDefault();
-                      props.setHrLogin(1)
-                    }}>LogIn</button>
+              <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={LoginUser}>LogIn</button>
             {/* <p className="text-xs text-gray-500 mt-7 flex justify-center mx-auto"><a href='/' className='text-[16px] text-blue-700'>Create Account</a></p> */}
           </div>
           </form>

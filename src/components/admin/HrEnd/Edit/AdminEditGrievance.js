@@ -47,7 +47,7 @@ function AdminEditGrievance() {
                 status: grievance_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/api/admin/hr/greviances/${grId}`, data);
+            const response = await AxiosInstance.patch(`/api/admin/hr/greviances/${grId}`, data);
             if (response.status === 200) {
                 alert("✅Grievance updated successfully!!");
             }

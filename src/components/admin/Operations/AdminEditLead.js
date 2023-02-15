@@ -28,17 +28,17 @@ function AdminEditLead() {
     };
 
     const getLead = async (e) => {
-        AxiosInstance.get(`/api/admin/operations`)
+        AxiosInstance.get(`/api/admin/operations/leads/${leadId}`)
             .then((data) => {
-                console.log(data.data.leads.company, "hjk")
-                // setUsername(data.data.leads.user_id.username)
-                // setDate(moment(data.data.leads.date).format('YYYY-MM-DD'));
-                // setCompany(data.data.leads.company);
-                // setContact_no(data.data.leads.contact_no);
-                // setPerson(data.data.leads.name);
-                // setDescription(data.data.leads.description);
-                // setEmail(data.data.leads.email);
-                // setLead_Status(data.data.leads.status);
+                console.log(data.data.data, "hjk")
+                setUsername(data.data.data.user_id.username)
+                setDate(moment(data.data.data.date).format('YYYY-MM-DD'));
+                setCompany(data.data.data.company);
+                setContact_no(data.data.data.contact_no);
+                setPerson(data.data.data.name);
+                setDescription(data.data.data.description);
+                setEmail(data.data.data.email);
+                setLead_Status(data.data.data.status);
                 // alert("✅ Lead Edited SuccesFully");
             }
             )
@@ -60,7 +60,7 @@ function AdminEditLead() {
                 status: lead_status,
                 description: description,
             }
-            const response = await AxiosInstance.put(`/api/leads/update/${leadId}`, data);
+            const response = await AxiosInstance.patch(`/api/admin/operations/leads/update/${leadId}`, data);
             if (response.status === 200) {
                 alert("✅Lead updated successfully!!");
             }
