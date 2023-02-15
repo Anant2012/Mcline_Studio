@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
-import { AxiosInstance } from '../../../../AxiosInstance/AxiosInstance';
-import background from '../../../../assets/images/AddNewProject.jpg';
+import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
+import background from '../../../assets/images/AddNewProject.jpg';
 import { useParams } from "react-router";
 import moment from 'moment';
 

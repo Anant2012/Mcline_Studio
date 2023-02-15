@@ -37,15 +37,17 @@ import EditProject from './components/operation/View/Project/EditProject';
 import AdminHRFrontPage from './components/admin/HrEnd/AdminHRFrontPage';
 import AdminOperationFrontPage from './components/admin/Operations/AdminOperationFrontPage';
 import AdminEditLead from './components/admin/Operations/AdminEditLead';
+import AdminEditProject from './components/admin/Operations/AdminEditProject';
 import AdminEditLeaves from './components/admin/HrEnd/Edit/AdminEditLeaves';
 import AdminEditTickets from './components/admin/HrEnd/Edit/AdminEditTicket';
 import AdminEditGrievance from './components/admin/HrEnd/Edit/AdminEditGrievance';
+import AdminEditUser from './components/admin/HomePage/AdminEditUser';
 
 
 function App() {
   return (
     <Router>
-      {["/admin", "/admin/operation", "/admin/hrend", "/admin/operation/view/lead", "/admin/operation/view/project", "/admin/hr/profiles", "/admin/hr/leaves", "/admin/hr/tickets", "/admin/hr/grievance", "/admin/hr/timesheet", "/hr/policy"].includes(window.location.pathname) ? <NavbarAdmin/> : <NavbarUser />}
+      {["/admin", "/admin/operation", "/admin/hrend", "/admin/operation/view/lead", "/admin/operation/view/project", "/admin/hr/profiles", "/admin/hr/leaves", "/admin/hr/tickets", "/admin/hr/grievance", "/admin/hr/timesheet", "/hr/policy"].includes(window.location.pathname) ? <NavbarAdmin /> : <NavbarUser />}
       <Routes>
         <Route exact path="/" element={<FrontPage />} />
         <Route exact path="/hr/viewprofile" element={<ViewProfile />} />
@@ -64,18 +66,20 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/table1" element={<Table1 />} />
-        <Route exact path="/hr/timesheet" element={<Timesheet/>} />
+        <Route exact path="/hr/timesheet" element={<Timesheet />} />
 
 
 
         {/* Admin Section   */}
         <Route exact path="/admin" element={<AdminTableFrontPage />} />
+        <Route exact path="/admin/operation/edit/user/:userId" element={<AdminEditUser />} />
 
         <Route exact path="/admin/hrend" element={<AdminHRFrontPage />} />
         <Route exact path="/admin/operation" element={<AdminOperationFrontPage />} />
         <Route exact path="/admin/operation/view/lead" element={<AdminLead />} />
         <Route exact path="/admin/operation/edit/lead/:leadId" element={<AdminEditLead />} />
         <Route exact path="/admin/operation/view/project" element={<AdminProject />} />
+        <Route exact path="/admin/operation/edit/project/:projectId" element={<AdminEditProject />} />
 
         <Route exact path="/admin/hr/profiles" element={<AdminProfile />} />
         <Route exact path="/admin/hr/profiles/profileId" element={<AdminProfile />} />
@@ -84,9 +88,9 @@ function App() {
         <Route exact path="/admin/hr/tickets" element={<AdminTickets />} />
         <Route exact path="/admin/hr/tickets/edit/:ticketId" element={<AdminEditTickets />} />
         <Route exact path="/admin/hr/grievance" element={<AdminGrievance />} />
-        <Route exact path="/admin/hr/grievance/edit/:grId" element={<AdminEditGrievance/>} />
+        <Route exact path="/admin/hr/grievance/edit/:grId" element={<AdminEditGrievance />} />
         {/* <Route exact path="/admin/hr/timesheet" element={<AdminHRTimesheet/>} /> */}
-        
+
         <Route exact path="/admin/login" element={<Login />} />
         <Route exact path="/table1" element={<Table1 />} />
 

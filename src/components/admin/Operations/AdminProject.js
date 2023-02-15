@@ -210,7 +210,7 @@ function AdminProject() {
   ];
 
   const EditProject = (row) => {
-    navigate(`/user/edit_project/${row._id}`);
+    navigate(`/admin/operation/edit/project/${row._id}`);
   };
   const getData = async () => {
     AxiosInstance.get(`/api/admin/operations`)
@@ -220,7 +220,7 @@ function AdminProject() {
   const DeleteProject = async (row) => {
     try {
       const response = await AxiosInstance.delete(
-        `/api/operations/projects/delete/${row._id}`
+        `/api/admin/operations/project/delete/${row._id}`
       );
       if (response.status === 200) {
         alert("✅Project deleted successfully!!");

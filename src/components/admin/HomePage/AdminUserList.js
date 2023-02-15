@@ -26,6 +26,10 @@ function AdminUserList(props) {
     { name: "Email", selector: (row) => row.name, sortable: true },
     { name: "Phone", selector: (row) => row.name, sortable: true },
     { name: "Password", selector: (row) => row.capital, sortable: true },
+    // {
+    //   name: "Role", selector: (row) => (row.role.map((data, index) => {
+    //     return (<>{row.role.length != index + 1 ? `${data}, ` : `${data}`}</>)
+    //   })), sortable: true },
     {
       name: "Action",
       selector: (row) => (
@@ -39,7 +43,7 @@ function AdminUserList(props) {
 
   const EditLead = (row) => {
     // <EditLead leadId={row._id} />
-    navigate(`/admin/operation/edit/lead/${row._id}`);
+    navigate(`/admin/operation/edit/user/${row._id}`);
     // console.log("lead",row._id)
   }
   const getData = async () => {

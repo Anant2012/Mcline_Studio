@@ -13,7 +13,13 @@ const AdminProfile = () => {
   const navigate = useNavigate();
   const onSearch = (val) => {
     setFilteredData(
-      data.filter((x) => x.description.toLowerCase().match(val.toLowerCase()))
+      data?.filter(
+        (x) =>
+          x.personal_details.name.toLowerCase().match(val.toLowerCase()) ||
+          x.personal_details.employee_code.toLowerCase().match(val.toLowerCase()) ||
+          x.personal_details.company_id.toLowerCase().match(val.toLowerCase()) ||
+          x.official_email_id.status.toLowerCase().match(val.toLowerCase())
+      )
     );
   };
 
@@ -88,12 +94,12 @@ const AdminProfile = () => {
                           <div className="flex w-full">
                             <div className="w-1/2">
                               <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                {/* Engineer - {data.personal_details.employee_code} */}
+                              {data.personal_details.employee_code}
                               </h2>
                               <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-                                Margot Foster
+                                {data.personal_details.name}
                                 <p className="text-xs title-font font-normal text-gray-800">
-                                  margot@mcline.com
+                                  {data.personal_details.official_email_id}
                                 </p>
                               </h1>
                             </div>
@@ -114,7 +120,7 @@ const AdminProfile = () => {
                                 </div>
                                 <div className="text-xs text-gray-800 font-medium">
 
-                                  +91 7383-93289
+                                  {data.personal_details.personal_contact_number}
                                 </div>
                               </div>
                               <div className="w-1/2 my-1 text-right">
@@ -122,7 +128,7 @@ const AdminProfile = () => {
                                   Personal Email ID
                                 </div>
                                 <div className="text-xs text-gray-800 font-medium">
-                                  Margot@gmail.com
+                                  {data.personal_details.personal_email_id}
                                 </div>
                               </div>
                             </div>
@@ -131,7 +137,7 @@ const AdminProfile = () => {
                               <div className="w-1/2 my-1 text-left">
                                 <div className="text-xs text-gray-500">Blood Group</div>
                                 <div className="text-xs text-gray-800 font-medium">
-                                  O+
+                                  {data.personal_details.blood_group}
                                 </div>
                               </div>
                               <div className="w-1/2 my-1 text-right">
@@ -139,7 +145,7 @@ const AdminProfile = () => {
                                   Emergency Contact Number
                                 </div>
                                 <div className="text-xs text-gray-800 font-medium">
-                                  +91 9887-78283
+                                  {data.personal_details.emergency_contact_number}
                                 </div>
                               </div>
                             </div>
@@ -150,13 +156,13 @@ const AdminProfile = () => {
                                   Reporting Manager
                                 </div>
                                 <div className="text-xs text-gray-800 font-medium">
-                                  John Doe
+                                  {data.personal_details.reporting_manager}
                                 </div>
                               </div>
                               <div className="w-1/2 my-1 text-right">
                                 <div className="text-xs text-gray-500">Company ID</div>
                                 <div className="text-xs text-gray-800 font-medium">
-                                  CoID930293
+                                  {data.personal_details.company_id}
                                 </div>
                               </div>
                             </div>
