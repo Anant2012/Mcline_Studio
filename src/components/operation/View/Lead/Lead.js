@@ -212,22 +212,14 @@ function Lead() {
                 </div>
               </div>
             </div>
-            <ReactHTMLTableToExcel
-              id="test-table-xls-button"
-              className="download-table-xls-button"
-              table="table-to-xls"
-              filename="tablexls"
-              sheet="tablexls"
-              buttonText="Download as XLS" />
 
-            <table id="table-to-xls">
+
               <Table
                 columns={columns}
                 data={filteredData}
                 onSearch={onSearch}
                 title="Selling Product List"
               />
-            </table>
 
 
           </div>

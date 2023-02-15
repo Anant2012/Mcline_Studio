@@ -93,7 +93,7 @@ function Addnewproject() {
             <form>
               <div class="w-3/4 mx-auto">
                 <div class="flex flex-wrap -m-2">
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="date" class="leading-7 text-sm text-gray-600">
                         Approval Date
@@ -109,7 +109,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="date" class="leading-7 text-sm text-gray-600">
                         Submission Date
@@ -125,7 +125,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="person" class="leading-7 text-sm text-gray-600">
                         Person
@@ -141,7 +141,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="clientName" class="leading-7 text-sm text-gray-600">
                         Company Name
@@ -158,7 +158,7 @@ function Addnewproject() {
                     </div>
                   </div>
 
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Project Name
@@ -175,7 +175,7 @@ function Addnewproject() {
                     </div>
                   </div>
 
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="cars" class="leading-7 text-sm text-gray-600">Project Status</label>
 
@@ -189,7 +189,7 @@ function Addnewproject() {
                     </div>
                   </div>
 
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Bid
@@ -205,7 +205,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Hours
@@ -221,7 +221,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         P.O.No.
@@ -237,7 +237,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Net Days
@@ -253,7 +253,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Invoive Type
@@ -269,7 +269,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Resource
@@ -285,7 +285,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Email To
@@ -301,7 +301,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Email (cc)
@@ -317,7 +317,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Contact Person
@@ -333,7 +333,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Phone No.
@@ -349,7 +349,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Address
@@ -365,7 +365,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Reference
@@ -381,10 +381,10 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/2">
+                  <div class="p-2 w-full sm:w-2/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
-                        Commemts
+                        Comments
                       </label>
                       <input
                         type="text"

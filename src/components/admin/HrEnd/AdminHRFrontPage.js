@@ -1,38 +1,78 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AdminHREndLogin from "./AdminHREndLogin";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Table from "../../../constant/Table/Table";
+import { FaUserEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const AdminHRFrontPage = () => {
-
-
+const AdminHRFrontPage = (props) => {
   const [hrLogin, setHrLogin] = useState(0);
 
+  const navigate = useNavigate();
+  const [data, setData] = useState();
+  const [filteredData, setFilteredData] = useState(data);
+  const handleOpen = () => {
+    // to do
+  };
+  const onSearch = (val) => {
+    const updatedData = data.filter((x) =>
+      x.name.toLowerCase().match(val.toLowerCase())
+    );
+    setFilteredData(updatedData);
+  };
+  const columns = [
+    { name: "Name", selector: (row) => row.capital, sortable: true },
+    { name: "Days", selector: (row) => row.name, sortable: true },
+    { name: "Reason", selector: (row) => row.name, sortable: true },
+  ];
+  const EditUser = (row) => {
+    navigate(`/user/admin/edit_user/${row._id}`);
+  };
+  const getData = async () => {
+    fetch("https://restcountries.com/v2/all")
+      .then((res) => res.json())
+      .then((data) => setData(data))
+      .catch((err) => console.log("errorr", err));
+  };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
+  const handleAddClick = () => {
+    props.setAdminLogin(0);
+  };
 
   return (
     <>
       <AdminHREndLogin hrLogin={hrLogin} setHrLogin={setHrLogin} />
 
-      <div className={`${(hrLogin) ? "block" : "hidden"}`}>
-        <div class="flex flex-col text-center w-full mt-20">
-          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-            Manage Your Workspace
-          </h1>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
-            Creating a Productive and Organized Environment
-          </p>
+      <div className={`${hrLogin ? "block" : "hidden"}`}>
+        <div>
+          <div class="flex flex-col text-center w-full mt-20">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+              Manage Your Workspace
+            </h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
+              Creating a Productive and Organized Environment
+            </p>
+          </div>
         </div>
 
-        <section className="text-gray-600 w-full body-font">
-          <div className="container w-full py-24 mx-auto flex flex-wrap">
-            <div className="flex flex-wrap justify-center w-full -m-4">
+        <section className="text-gray-600  body-font">
+          <div className="container px-5 py-24 w-full justify-center mx-auto flex flex-wrap">
+            <div className="flex flex-wrap -m-4">
               <div className="p-4 lg:w-1/2 md:w-full">
                 <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
-                  <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
+                  <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb]-500 flex-shrink-0">
                     <svg
                       fill="none"
-                      stroke="currentColor"
+                      stroke="#047EC1"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -56,7 +96,7 @@ const AdminHRFrontPage = () => {
                         <div className="container px-5 pt-14 pb-0 mx-auto flex flex-wrap">
                           <div className="flex flex-wrap w-full">
                             <div className="flex relative pb-2">
-                              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#047EC1] inline-flex items-center justify-center text-white relative z-10">
                                 <svg
                                   fill="none"
                                   stroke="currentColor"
@@ -127,12 +167,13 @@ const AdminHRFrontPage = () => {
                                       </button>
                                     </Link>
 
-                                    <Link to="/hr/policy"><button
-                                      type="button"
-                                      class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ml-2 mt-3"
-                                    >
-                                      Policy
-                                    </button>
+                                    <Link to="/hr/policy">
+                                      <button
+                                        type="button"
+                                        class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ml-2 mt-3"
+                                      >
+                                        Policy
+                                      </button>
                                     </Link>
                                   </div>
                                 </div>
@@ -144,6 +185,30 @@ const AdminHRFrontPage = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="p-4 lg:w-1/2 md:w-full mx-auto">
+                <section class="text-gray-600 body-font">
+                  <div class="container  mx-auto">
+                    <div className="bg-indigo-500 pb-4 px-4 pt-4">
+                      <div class="flex flex-wrap mx-4">
+                        <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+                          <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">
+                            Table
+                          </h1>
+                        </div>
+                      </div>
+
+                      <div className="w-full mx-auto">
+                        <Table
+                          columns={columns}
+                          data={filteredData}
+                          onSearch={onSearch}
+                          title="Selling Product List"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
