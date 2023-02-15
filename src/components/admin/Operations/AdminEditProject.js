@@ -1,15 +1,21 @@
-import { duration } from 'moment';
-import React, { useState } from 'react'
-import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
-import background from "../../../assets/images/AddNewProject.jpg"
+
+import React, { useState, useEffect } from 'react'
+import { AxiosInstance } from '../../../../AxiosInstance/AxiosInstance';
+import background from '../../../../assets/images/AddNewProject.jpg';
+import { useParams } from "react-router";
+import moment from 'moment';
 
 function Addnewproject() {
+
+    const URL = window.location.href;
+    const params = useParams();
+    const projectId = params.projectId;
+
     const user_id = "63e9411577ce9c26f2babd4f";
     const [projectName, setProjectName] = useState("");
-    const [userName, setUserName] = useState("");
-    const [code, setCode] = useState("");
     const [person, setPerson] = useState("");
     const [company, setCompany] = useState("");
+    const [code, setCode] = useState("");
     const [approvalDate, setapprovalDate] = useState("");
     const [submissionDate, setSubmissionDate] = useState("");
     const [project_status, setProject_status] = useState("");
@@ -29,6 +35,11 @@ function Addnewproject() {
     const [resource_rate, setResource_rate] = useState("");
     const [resource_cost, setResource_cost] = useState("");
     const [comment, setComment] = useState("");
+    const [invoice_number, setInvoice_number] = useState("");
+    const [invoice_date, setInvoice_date] = useState("");
+    const [due_date, setDue_date] = useState("");
+    const [invoice_status, setInvoice_status] = useState("");
+    const [payment_status, setPayment_status] = useState("");
     const [isDisabled, setIsDisabled] = useState(false);
 
     const styles = {
@@ -37,11 +48,38 @@ function Addnewproject() {
         backgroundPosition: 'center',
         filter: 'grayscale(0%)'
     };
+
     const getLead = async (e) => {
-        AxiosInstance.get(`/api/admin/operations`)
+        AxiosInstance.get(`/api/project/get/project/${projectId}`)
             .then((data) => {
-                console.log(data.data.leads.company, "hjk")
-                // set
+                setProject_status(data.data.data.status);
+                setCode(data.data.data.code);
+                setCompany(data.data.data.client_name)
+                setPerson(data.data.data.person);
+                setDescription(data.data.data.description);
+                setAddress(data.data.data.address);
+                setBid(data.data.data.bid)
+                setPhone_no(data.data.data.phone)
+                setSubmissionDate(moment(data.data.data.submission_date).format('YYYY-MM-DD'))
+                setHours(data.data.data.hours)
+                setComment(data.data.data.comments)
+                setContact_person(data.data.data.contact_person)
+                setPo_no(data.data.data.PO_number)
+                setProjectName(data.data.data.project_name)
+                setNet_days(data.data.data.net_days)
+                setReference(data.data.data.reference)
+                setResource(data.data.data.resource)
+                setEmail_to(data.data.data.resource)
+                setEmail_cc(data.data.data.resource)
+                setInvoice_type(data.data.data.invoice_type)
+                setInvoice_status(data.data.data.invoice.status)
+                setResource_cost(data.data.data.invoice.resource_cost)
+                setResource_rate(data.data.data.invoice.resource_rate)
+                setPayment_status(data.data.data.invoice.payment_status)
+                setInvoice_number(data.data.data.invoice.invoice_number)
+                setInvoice_date(moment(data.data.data.approval_date).format('YYYY-MM-DD'))
+                setDue_date(moment(data.data.data.approval_date).format('YYYY-MM-DD'))
+                setapprovalDate(moment(data.data.data.approval_date).format('YYYY-MM-DD'));
                 // alert("✅ Lead Edited SuccesFully");
             }
             )
@@ -56,38 +94,46 @@ function Addnewproject() {
         const data = {
             user_id: "63e9411577ce9c26f2babd4f",
             // code: code,
-            project_status,
-            user_id,
+            project_status: project_status,
             client_name: company,
-            person,
-            description,
+            person: person,
+            description: description,
             project_name: projectName,
             approval_date: approvalDate,
             submission_date: submissionDate,
             comments: comment,
-            reference,
-            address,
+            reference: reference,
+            address: address,
             phone: Phone_no,
-            contact_person,
-            resource,
-            invoice_type,
-            net_days,
+            contact_person: contact_person,
+            resource: resource,
+            invoice_type: invoice_type,
+            net_days: net_days,
             PO_number: po_no,
-            bid,
-            hours,
+            bid: bid,
+            hours: hours,
+            email_to: email_to,
+            email_cc: email_cc,
             company_name: company,
+            invoice_date: invoice_date,
+            invoice_number: invoice_number,
+            invoice_status: invoice_status,
+            payment_status: payment_status,
+            resource_cost: resource_cost,
+            resource_rate: resource_rate,
+            due_date:due_date
         }
         try {
-            const response = await AxiosInstance.post(`/api/project/create`, data)
+            const response = await AxiosInstance.patch(`/api/admin/operations/project/update/${projectId}`, data)
             if (response.status === 200) {
-                alert("✅ Project Added SuccesFully");
+                alert("✅ Project Updated SuccesFully");
             }
+            // setCode("");
         } catch (error) {
             alert(error);
             console.log(error);
         };
     }
-
     useEffect(() => {
         getLead();
     }, []);
@@ -106,23 +152,7 @@ function Addnewproject() {
                         <form>
                             <div class="w-3/4 mx-auto">
                                 <div class="flex flex-wrap -m-2">
-                                    <div class="p-2 w-full sm:w-1/2">
-                                        <div class="relative">
-                                            <label for="date" class="leading-7 text-sm text-gray-600">
-                                                User name
-                                            </label>
-                                            <input
-                                                type="text"
-                                                required
-                                                value={userName}
-                                                onChange={(e) => setUserName(e.target.value)}
-                                                id="date"
-                                                name="date"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="date" class="leading-7 text-sm text-gray-600">
                                                 Code
@@ -138,7 +168,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="date" class="leading-7 text-sm text-gray-600">
                                                 Approval Date
@@ -154,7 +184,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="date" class="leading-7 text-sm text-gray-600">
                                                 Submission Date
@@ -170,7 +200,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="person" class="leading-7 text-sm text-gray-600">
                                                 Person
@@ -186,7 +216,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="clientName" class="leading-7 text-sm text-gray-600">
                                                 Company Name
@@ -203,7 +233,7 @@ function Addnewproject() {
                                         </div>
                                     </div>
 
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Project Name
@@ -220,7 +250,7 @@ function Addnewproject() {
                                         </div>
                                     </div>
 
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="cars" class="leading-7 text-sm text-gray-600">Project Status</label>
 
@@ -234,7 +264,7 @@ function Addnewproject() {
                                         </div>
                                     </div>
 
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Bid
@@ -250,7 +280,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Hours
@@ -266,7 +296,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 P.O.No.
@@ -282,7 +312,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Net Days
@@ -298,7 +328,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Invoive Type
@@ -314,7 +344,92 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="projectName" class="leading-7 text-sm text-gray-600">
+                                                Invoice Status
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={invoice_status}
+                                                onChange={(e) => setInvoice_status(e.target.value)}
+                                                id="projectName"
+                                                name="projectName"
+                                                
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="projectName" class="leading-7 text-sm text-gray-600">
+                                                Invoice Date
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={invoice_date}
+                                                onChange={(e) => setInvoice_date(e.target.value)}
+                                                id="projectName"
+                                                name="projectName"
+                                                
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="projectName" class="leading-7 text-sm text-gray-600">
+                                                Invoice Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={invoice_number}
+                                                onChange={(e) => setInvoice_number(e.target.value)}
+                                                id="projectName"
+                                                name="projectName"
+                                                
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="projectName" class="leading-7 text-sm text-gray-600">
+                                                Payment Status
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={payment_status}
+                                                onChange={(e) => setPayment_status(e.target.value)}
+                                                id="projectName"
+                                                name="projectName"
+                                                
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="projectName" class="leading-7 text-sm text-gray-600">
+                                                Due date
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={due_date}
+                                                onChange={(e) => setDue_date(e.target.value)}
+                                                id="projectName"
+                                                name="projectName"
+                                                
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Resource
@@ -326,11 +441,12 @@ function Addnewproject() {
                                                 onChange={(e) => setResource(e.target.value)}
                                                 id="projectName"
                                                 name="projectName"
+
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Resource Rate
@@ -338,7 +454,7 @@ function Addnewproject() {
                                             <input
                                                 type="text"
                                                 required
-                                                value={resource_setResource_rate}
+                                                value={resource_rate}
                                                 onChange={(e) => setResource_rate(e.target.value)}
                                                 id="projectName"
                                                 name="projectName"
@@ -346,7 +462,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Resource Cost
@@ -362,7 +478,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Email To
@@ -378,7 +494,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Email (cc)
@@ -394,7 +510,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Contact Person
@@ -410,7 +526,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Phone No.
@@ -426,7 +542,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Address
@@ -442,7 +558,7 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Reference
@@ -458,10 +574,10 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/2">
+                                    <div class="p-2 w-full sm:w-2/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
-                                                Commemts
+                                                Comments
                                             </label>
                                             <input
                                                 type="text"

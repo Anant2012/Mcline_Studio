@@ -57,13 +57,13 @@ function Project() {
 
     {
       name: "Hours",
-      selector: (row) => row.approval_date,
+      selector: (row) => row.hours,
       sortable: true,
       width: "160px",
     },
     {
       name: "Bid",
-      selector: (row) => row.approval_date,
+      selector: (row) => row.bid,
       sortable: true,
       width: "160px",
     },
@@ -82,86 +82,84 @@ function Project() {
     {
       name: "P.O.No.",
       id: "person",
-      selector: (row) => row.person,
+      selector: (row) => row.PO_number,
       sortable: true,
       width: "160px",
     },
     {
       name: "Net Days",
-      selector: (row) => row.submission_date,
+      selector: (row) => row.net_days,
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Type",
-      selector: (row) => row.submission_date,
+      selector: (row) => row.invoice_type,
       sortable: true,
       width: "160px",
     },
     {
       name: "Resource",
-      // selector: (row) => row.invoice.status,
+      selector: (row) => row.resource,
       sortable: true,
       width: "160px",
     },
     {
       name: "Email (to)",
-      selector: (row) => row.invoice.amount,
+      selector: (row) => row.email_to,
       sortable: true,
       width: "160px",
     },
     {
       name: "Email (cc)",
-      // selector: (row) => row.invoice.amount,
+      selector: (row) => row.email_cc,
       sortable: true,
       width: "160px",
     },
     {
       name: "Contact Person",
-      selector: (row) => row.invoice.status,
+      selector: (row) => row.contact_person,
       sortable: true,
       width: "160px",
     },
     {
       name: "Phone No.",
-      selector: (row) => row.invoice.payment_status,
+      selector: (row) => row.phone,
       sortable: true,
       width: "160px",
     },
     {
       name: "Address",
-      // selector: (row) => row.invoice.amount,
+      selector: (row) => row.address,
       sortable: true,
       width: "160px",
     },
     {
       name: "Reference",
-      selector: (row) => row.invoice.status,
+      selector: (row) => row.reference,
       sortable: true,
       width: "160px",
     },
     {
       name: "Comments",
-      selector: (row) => row.invoice.invoive_number,
+      selector: (row) => row.comments,
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Date",
-      // selector: (row) => row.invoice.amount,
-      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
+      selector: (row) => moment(row.date).format('DD/MM/YYYY'),
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Number",
-      selector: (row) => row.invoice.invoive_number,
+      selector: (row) => row.invoice.invoice_number,
       sortable: true,
       width: "160px",
     },
     {
       name: "Due Date",
-      // selector: (row) => row.invoice.status,
       selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
       sortable: true,
       width: "160px",
@@ -200,11 +198,6 @@ function Project() {
             title="Edit"
             style={{ color: "blue", fontSize: "Large" }}
           />
-          <MdDelete
-            onClick={() => DeleteProject(row)}
-            title="Delete"
-            style={{ color: "red", marginLeft: "10px", fontSize: "Large" }}
-          />
         </div>
       ),
     },
@@ -214,24 +207,11 @@ function Project() {
     navigate(`/user/edit_project/${row._id}`);
   };
   const getData = async () => {
-    AxiosInstance.get(`/api/project/get/${User_id}`)
+    AxiosInstance.get(`/api/project/get/user/${User_id}`)
       .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };
-  const DeleteProject = async (row) => {
-    try {
-      const response = await AxiosInstance.delete(
-        `/api/project/delete/${row._id}`
-      );
-      if (response.status === 200) {
-        alert("✅Project deleted successfully!!");
-        window.location.reload();
-      }
-    } catch (err) {
-      console.log(err);
-      alert("Something went wrong!!");
-    }
-  };
+ 
   useEffect(() => {
     getData();
   }, []);

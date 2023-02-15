@@ -85,7 +85,7 @@ function Timesheet() {
           <div>
             <Table
               columns={columns}
-              // data={setShow}
+              data={data}
               // onSearch={onSearch}
               title="COUPON CODES LIST"
             />

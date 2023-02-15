@@ -30,12 +30,6 @@ function AdminProject() {
   };
   const columns = [
     {
-      name: "UserName",
-      selector: (row) => row.code,
-      sortable: true,
-      width: "160px",
-    },
-    {
       name: "Project Code",
       selector: (row) => row.code,
       sortable: true,
@@ -107,80 +101,80 @@ function AdminProject() {
     },
     {
       name: "Resource",
-      selector: (row) => row.invoice.status,
+      selector: (row) => row.resource,
       sortable: true,
       width: "160px",
     },
     {
       name: "Email (to)",
-      selector: (row) => row.invoice.amount,
+      selector: (row) => row.email_to,
       sortable: true,
       width: "160px",
     },
     {
       name: "Email (cc)",
-      // selector: (row) => row.invoice.amount,
+      selector: (row) => row.email_cc,
       sortable: true,
       width: "160px",
     },
     {
       name: "Contact Person",
-      selector: (row) => row.invoice.status,
+      selector: (row) => row.contact_person,
       sortable: true,
       width: "160px",
     },
     {
       name: "Phone No.",
-      selector: (row) => row.invoice.payment_status,
+      selector: (row) => row.phone,
       sortable: true,
       width: "160px",
     },
     {
       name: "Address",
-      // selector: (row) => row.invoice.amount,
+      selector: (row) => row.address,
       sortable: true,
       width: "160px",
     },
     {
       name: "Reference",
-      selector: (row) => row.invoice.status,
+      selector: (row) => row.reference,
       sortable: true,
       width: "160px",
     },
     {
       name: "Comments",
-      selector: (row) => row.invoice.invoive_number,
+      selector: (row) => row.comments,
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Date",
-      // selector: (row) => row.invoice.amount,
+      selector: (row) => moment(row.date).format('DD/MM/YYYY'),
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Number",
-      selector: (row) => row.invoice.invoive_number,
+      selector: (row) => row.invoice.invoice_number,
       sortable: true,
       width: "160px",
     },
     {
       name: "Due Date",
-      // selector: (row) => row.invoice.status,
+      selector: (row) => moment(row.approval_date).format('DD/MM/YYYY'),
       sortable: true,
       width: "160px",
     },
 
     {
       name: "Resource Rate",
-      // selector: (row) => row.invoice.status,
+      selector: (row) => row.invoice.resource_rate,
       sortable: true,
       width: "160px",
     },
     {
       name: "Resource Cost",
-      // selector: (row) => row.invoice.status,
+      selector: (row) => row.invoice.resource_cost,
       sortable: true,
       width: "160px",
     },
@@ -219,7 +213,7 @@ function AdminProject() {
     navigate(`/user/edit_project/${row._id}`);
   };
   const getData = async () => {
-    AxiosInstance.get(`/api/operations`)
+    AxiosInstance.get(`/api/admin/operations`)
       .then((data) => setData(data.data.projects))
       .catch((err) => console.log("errorr", err));
   };

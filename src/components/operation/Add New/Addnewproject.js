@@ -40,25 +40,27 @@ function Addnewproject() {
     const data = {
       user_id: "63e9411577ce9c26f2babd4f",
       // code: code,
-      project_status:project_status,
-      client_name:company,
-      person:person,
-      description:description,
-      project_name:projectName,
+      project_status: project_status,
+      client_name: company,
+      person: person,
+      description: description,
+      project_name: projectName,
       approval_date: approvalDate,
       submission_date: submissionDate,
-      comments:comment,
-      reference:reference,
-      address:address,
-      phone:Phone_no,
-      contact_person:contact_person,
-      resource:resource,
-      invoice_type:invoice_type,
-      net_days:net_days,
-      PO_number:po_no,
-      bid:bid,
-      hours:hours,
-      company_name:company,
+      comments: comment,
+      reference: reference,
+      address: address,
+      phone: Phone_no,
+      contact_person: contact_person,
+      resource: resource,
+      invoice_type: invoice_type,
+      net_days: net_days,
+      PO_number: po_no,
+      bid: bid,
+      hours: hours,
+      email_to: email_to,
+      email_cc: email_cc,
+      company_name: company,
     }
     try {
       const response = await AxiosInstance.post(`/api/project/create`, data)
@@ -66,12 +68,23 @@ function Addnewproject() {
         alert("✅ Project Added SuccesFully");
       }
       // setCode("");
-      setPerson("");
-      setSubmissionDate("")
-      setCompany("");
-      setDescription("");
       setProject_status("");
-      setProjectName("");
+      setCompany("")
+      setPerson("");
+      setDescription("");
+      setAddress("");
+      setBid("")
+      setPhone_no("")
+      setSubmissionDate("")
+      setHours("")
+      setComment("")
+      setContact_person("")
+      setPo_no("")
+      setProjectName("")
+      setNet_days("")
+      setReference("")
+      setResource("")
+      setInvoice_type("")
       setapprovalDate("");
     } catch (error) {
       alert(error);
