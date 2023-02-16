@@ -22,14 +22,14 @@ function AdminUserList(props) {
 
   };
   const columns = [
-    { name: "Name", selector: (row) => row.capital, sortable: true },
-    { name: "Email", selector: (row) => row.name, sortable: true },
-    { name: "Phone", selector: (row) => row.name, sortable: true },
-    { name: "Password", selector: (row) => row.capital, sortable: true },
-    // {
-    //   name: "Role", selector: (row) => (row.role.map((data, index) => {
-    //     return (<>{row.role.length != index + 1 ? `${data}, ` : `${data}`}</>)
-    //   })), sortable: true },
+    { name: "Name", selector: (row) => row.username, sortable: true },
+    { name: "Email", selector: (row) => row.email, sortable: true },
+    { name: "Phone", selector: (row) => row.phone, sortable: true },
+    { name: "Password", selector: (row) => row.phone, sortable: true },
+    {
+      name: "Role", selector: (row) => (row.role.map((data, index) => {
+        return (<>{row.role.length != index + 1 ? `${data}, ` : `${data}`}</>)
+      })), sortable: true },
     {
       name: "Action",
       selector: (row) => (
@@ -47,7 +47,7 @@ function AdminUserList(props) {
     // console.log("lead",row._id)
   }
   const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+    AxiosInstance.get(`/api/admin/user/all`)
       .then((data) =>
         setData(data.data.data)
       )
@@ -57,7 +57,7 @@ function AdminUserList(props) {
     try {
       const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
       if (response.status === 200) {
-        alert("✅Review deleted successfully!!");
+        alert("✅User deleted successfully!!");
         window.location.reload()
       }
     } catch (err) {
