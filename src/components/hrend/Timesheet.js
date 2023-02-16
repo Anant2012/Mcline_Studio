@@ -12,12 +12,15 @@ function Timesheet() {
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
 
+  const [task, setTask] = useState("");
+  const [time, setTime] = useState("");
+
   const navigate = useNavigate();
 
   const columns = [
-    { name: "SNo", selector: (row) => row.date, sortable: true },
-    { name: "Task ", selector: (row) => row.company, sortable: true },
-    { name: "Time", selector: (row) => row.person, sortable: true },
+    { name: "SNo", selector: (row) => row.timeLine.task, sortable: true },
+    { name: "Task ", selector: (row) => row.timeLine.task, sortable: true },
+    { name: "Time", selector: (row) => row.timeLine.time, sortable: true },
     {
       name: "Action",
       selector: (row) => (
@@ -32,11 +35,30 @@ function Timesheet() {
     },
   ];
 
+  const AddTimeline = async (e) => {
+    e.preventDefault();
+    const data = {
+      task,
+      time
+    }
+    try {
+      const response = await AxiosInstance.post(`/api/user/timeline/add/${User_id}`, data)
+      if (response.status === 200 || response.status === 201) {
+        alert("✅ Timesheet Added SuccesFully");
+      }
+      setTask("")
+      setTime("");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
+  // console.log("errorr", data[0])
   const EditLead = (row) => {
     navigate(`/user/edit_lead/${row._id}`);
   };
   const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+    AxiosInstance.get(`/api/user/timeline/get/${User_id}`)
       .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };
@@ -113,12 +135,16 @@ function Timesheet() {
                   <input
                     type="text"
                     name="text"
+                    value={task}
+                    onChange={(e) => setTask(e.target.value)}
                     class="w-3/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mr-1"
                     placeholder="Task"
                   />
                   <input
                     type="text"
                     name="text"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
                     class="w-1/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ml-1"
                     placeholder="Time"
                   />
@@ -137,6 +163,7 @@ function Timesheet() {
                   Close
                 </button>
                 <button
+                  onClick={AddTimeline}
                   type="button"
                   class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
                 >
