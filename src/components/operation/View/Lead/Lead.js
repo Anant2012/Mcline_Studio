@@ -118,10 +118,10 @@ function Lead() {
           </h1>
         </div>
         <div>
-          <div className="bg-[#047EC1] pb-2 pt-4">
+          <div className="bg-[#0483c8] pb-2 pt-4">
             <div class="lg:w-7/8 w-full mx-auto">
               <div class="flex mx-4 flex-wrap ">
-                <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-[#047EC1] rounded ">
+                <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
                   <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
                     Filter:
                   </div>

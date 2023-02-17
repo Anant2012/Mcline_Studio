@@ -27,10 +27,10 @@ const AdminOperationFrontPage = () => {
             <div className="flex flex-wrap -m-4 mx-auto justify-center w-full">
               <div className="p-4 lg:w-1/2 md:w-full">
                 <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
-                  <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
+                  <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                     <svg
                       fill="none"
-                      stroke="currentColor"
+                      stroke="#047EC1"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
@@ -53,7 +53,7 @@ const AdminOperationFrontPage = () => {
                         <div className="container px-5 pt-14 pb-0 mx-auto flex flex-wrap">
                           <div className="flex flex-wrap w-full">
                             <div className="flex relative mb-8">
-                              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#047EC1] inline-flex items-center justify-center text-white relative z-10">
                                 <svg
                                   fill="none"
                                   stroke="currentColor"

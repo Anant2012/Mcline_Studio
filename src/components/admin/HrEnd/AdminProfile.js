@@ -58,7 +58,7 @@ const AdminProfile = () => {
     <>
       <div class="flex flex-wrap mx-auto mt-20 w-3/4">
 
-        <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded-full ">
+        <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-[#0483c8] rounded-full ">
           <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">Profiles</h1>
           <div class="flex flex-row justify-center pr-8 items-center relative">
             <label

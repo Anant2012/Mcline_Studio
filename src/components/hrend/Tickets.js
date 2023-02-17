@@ -222,7 +222,7 @@ function Tickets() {
 
         <section class="text-gray-600 mt-[40px] body-font">
 
-          <div className="bg-[#047EC1] pb-2 pt-2">
+          <div className="bg-[#0483c8] pb-2 pt-2">
 
             <div class="container mx-auto w-full mt-4">
               <div>
