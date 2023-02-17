@@ -18,9 +18,16 @@ function Timesheet() {
   const navigate = useNavigate();
 
   const columns = [
-    { name: "SNo", selector: (row) => row.timeLine.task, sortable: true },
-    { name: "Task ", selector: (row) => row.timeLine.task, sortable: true },
-    { name: "Time", selector: (row) => row.timeLine.time, sortable: true },
+    { name: "SNo", selector: (row) => row._id, sortable: true },
+    {
+      name: "Task", selector: (row) => (row.timeLine.map((data, index) => {
+        return (<>{data.task}</>)
+      })), sortable: true, wrap: true
+    },
+    {
+      name: "Time", selector: (row) => (row.timeLine.map((data, index) => {
+        return (<>{data.time}</>)
+      })), sortable: true },
     {
       name: "Action",
       selector: (row) => (
@@ -53,7 +60,7 @@ function Timesheet() {
       console.log(error);
     };
   }
-  // console.log("errorr", data[0])
+  console.log("errorr", data)
   const EditLead = (row) => {
     navigate(`/user/edit_lead/${row._id}`);
   };
