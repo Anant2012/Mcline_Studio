@@ -25,7 +25,7 @@ function AdminUserList(props) {
     { name: "Name", selector: (row) => row.username, sortable: true },
     { name: "Email", selector: (row) => row.email, sortable: true },
     { name: "Phone", selector: (row) => row.phone, sortable: true },
-    { name: "Password", selector: (row) => row.phone, sortable: true },
+    { name: "Password", selector: (row) => row.password, sortable: true },
     {
       name: "Role", selector: (row) => (row.role.map((data, index) => {
         return (<>{row.role.length != index + 1 ? `${data}, ` : `${data}`}</>)

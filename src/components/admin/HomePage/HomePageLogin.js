@@ -21,10 +21,10 @@ const HomePageLogin = (props) => {
       password: password,
     }
     try {
-      // const response = await AxiosInstance.post(`/api/leads/create`, data)
-      // if (response.status === 200) {
-      //   alert("✅User Login SuccesFully");
-      // }
+      const response = await AxiosInstance.post(`/api/user/signin`, data)
+      if (response.status === 200) {
+        alert("✅User Login SuccesFully");
+      }
       setEmail("");
       setPassword("");
       props.setHrLogin(1)
