@@ -81,7 +81,7 @@ function AdminGrievance() {
               List of all Grievance
             </h1>
           </div>
-          <div className="bg-indigo-500 pb-2 pt-4">
+          <div className="bg-[#0483c8] pb-2 pt-4">
             <div>
               <Table
                 columns={columns}

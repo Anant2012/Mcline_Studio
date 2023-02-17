@@ -235,10 +235,10 @@ function Project() {
           </h1>
         </div>
         <div>
-          <div className="bg-[#047EC1] pb-2 pt-4">
+          <div className="bg-[#0483c8] pb-2 pt-4">
             <div class="lg:w-7/8 w-full mx-auto">
               <div class="flex mx-4 flex-wrap ">
-                <div class="w-full sm:w-2/3 flex-col p-2 flex item-center flex text-white justify-end bg-[#047EC1] rounded ">
+                <div class="w-full sm:w-2/3 flex-col p-2 flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
                   <div className="grid grid-cols-5 grid-rows-3 gap-2">
                     <div className="col-span-5 text-lg">Filter</div>
                     <div className="my-auto text-right">Date From</div>
