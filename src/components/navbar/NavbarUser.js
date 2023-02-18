@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import background from '../footer/footerImg.png'
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import background from "../footer/footerImg.png";
+import { logOut } from "../../actions";
 
 const NavbarUser = () => {
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
 
-  const location = useLocation();
-  console.log(location.pathname);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { isLoggedIn } = useSelector((state) => state);
+  const handleAuth = () => {
+    isLoggedIn ? dispatch(logOut()) : navigate("/login");
+  };
 
   return (
     <>
@@ -18,50 +23,25 @@ const NavbarUser = () => {
           <div className="relative flex h-16 items-center justify-between">
             <div className="flex flex-1 items-center sm:items-stretch justify-start">
               <div className="flex flex-shrink-0 items-center text-white font-sans text-sm ml-4 sm:text-xl font-semibold subpixel-antialiased sm:tracking-wider ">
-              <Link to="/">
-                    <img
-                      src={`${background}`}
-                      class="max-w-[120px] flex h-auto"
-                      alt="..."
-                    />
-                    </Link>
+                <Link to="/">
+                  <img
+                    src={`${background}`}
+                    class="max-w-[120px] flex h-auto"
+                    alt="..."
+                  />
+                </Link>
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               {/* <!-- Profile dropdown --> */}
               <div className="relative">
-                <div className={`${loggedIn ? "hidden" : "block"}`}>
-                  <Link to="/login">
-                    <button
-                      className="text-white text-sm font-medium bg-[#047EC1] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#0473af] rounded-full text-sm mr-3"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setLoggedIn(true);
-                      }}
-                    >
-                      Log In
-                    </button>
-                  </Link>
-
-                  {/* <Link to="/signup">
-                    <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-5 focus:outline-none hover:bg-indigo-600 rounded-full text-sm">
-                      SignUp
-                    </button>
-                  </Link> */}
-                </div>
-
-                <div className={`${!loggedIn ? "hidden" : "block"}`}>
-                  <Link to="/login">
-                    <button
-                      className="text-white text-sm font-medium bg-[#047EC1] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#0473af] rounded-full text-sm mr-3"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setLoggedIn(false);
-                      }}
-                    >
-                      Log Out
-                    </button>
-                  </Link>
+                <div>
+                  <button
+                    className="text-white text-sm font-medium bg-[#047EC1] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#0473af] rounded-full text-sm mr-3"
+                    onClick={handleAuth}
+                  >
+                    {isLoggedIn ? "Log Out" : "Log In"}
+                  </button>
 
                   {/* <Link to="/signup">
                     <button className="text-white text-sm font-medium bg-indigo-500 border-0 py-2 px-4 sm:px-5 focus:outline-none hover:bg-indigo-600 rounded-full text-sm">
