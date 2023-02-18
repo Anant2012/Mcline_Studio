@@ -9,7 +9,7 @@ import FrontPage from "./components/frontpage/FrontPage";
 import Addnewlead from "./components/operation/Add New/Addnewlead";
 import Addnewproject from "./components/operation/Add New/Addnewproject";
 import Footer from "./components/footer/Footer";
-import Table1 from "./Table1";
+
 import Lead from "./components/operation/View/Lead/Lead";
 import Leave from "./components/hrend/Leave";
 import Tickets from "./components/hrend/Tickets";
@@ -38,7 +38,7 @@ import AdminEditLeaves from "./components/admin/HrEnd/Edit/AdminEditLeaves";
 import AdminEditTickets from "./components/admin/HrEnd/Edit/AdminEditTicket";
 import AdminEditGrievance from "./components/admin/HrEnd/Edit/AdminEditGrievance";
 import AdminEditUser from "./components/admin/HomePage/AdminEditUser";
-import PrivateRoute from "./routes/PrivateRoute";
+import PrivateRoute from "./Redux/routes/PrivateRoute";
 
 function App() {
   return (
@@ -62,16 +62,34 @@ function App() {
       )}
       <Routes>
         <Route exact path="/" element={<FrontPage />} />
-        <Route exact path="/hr/viewprofile" element={<ViewProfile />} />
-        <Route exact path="/hr/edit_profile" element={<EditProfile />} />
-        <Route exact path="/hr/personaldetails" element={<PersonalDetails />} />
-        <Route exact path="/operation/addnew/lead" element={<Addnewlead />} />
+        <Route exact path="/hr/viewprofile" element={
+          <PrivateRoute>
+            <ViewProfile />
+          </PrivateRoute>} />
+        <Route exact path="/hr/edit_profile" element={
+          <PrivateRoute>
+            <EditProfile />
+          </PrivateRoute>} />
+        <Route exact path="/hr/personaldetails" element={
+          <PrivateRoute>
+            <PersonalDetails />
+          </PrivateRoute>} />
+        <Route exact path="/operation/addnew/lead" element={
+          <PrivateRoute>
+            <Addnewlead />
+          </PrivateRoute>} />
         <Route
           exact
           path="/operation/addnew/project"
-          element={<Addnewproject />}
+          element={
+            <PrivateRoute>
+              <Addnewproject />
+            </PrivateRoute>}
         />
-        <Route exact path="/operation/view/project" element={<Project />} />
+        <Route exact path="/operation/view/project" element={
+          <PrivateRoute>
+            <Project />
+          </PrivateRoute>} />
 
         <Route
           exact
@@ -82,20 +100,42 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route exact path="/user/edit_lead/:leadId" element={<EditLead />} />
+        <Route exact path="/user/edit_lead/:leadId" element={
+          <PrivateRoute>
+            <EditLead />
+          </PrivateRoute>} />
         <Route
           exact
           path="/user/edit_project/:projectId"
-          element={<EditProject />}
+          element={<PrivateRoute>
+            <EditProject />
+          </PrivateRoute>}
         />
-        <Route exact path="/hr/leaves" element={<Leave />} />
-        <Route exact path="/hr/tickets" element={<Tickets />} />
-        <Route exact path="/hr/grievance" element={<Grievance />} />
-        <Route exact path="/hr/policy" element={<Policy />} />
+        <Route exact path="/hr/leaves" element={
+          <PrivateRoute>
+            <Leave />
+          </PrivateRoute>} />
+        <Route exact path="/hr/tickets" element={
+          <PrivateRoute>
+            <Tickets />
+          </PrivateRoute>} />
+        <Route exact path="/hr/grievance" element={
+          <PrivateRoute>
+            <Grievance />
+          </PrivateRoute>} />
+        <Route exact path="/hr/policy" element={
+          <PrivateRoute>
+            <Policy />
+          </PrivateRoute>} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signup" element={<SignUp />} />
-        <Route exact path="/table1" element={<Table1 />} />
-        <Route exact path="/hr/timesheet" element={<Timesheet />} />
+        {/* <Route exact path="/signup" element={
+          <PrivateRoute>
+            <SignUp />
+          </PrivateRoute>} /> */}
+        <Route exact path="/hr/timesheet" element={
+          <PrivateRoute>
+            <Timesheet />
+          </PrivateRoute>} />
 
         {/* Admin Section   */}
         <Route exact path="/admin" element={<AdminTableFrontPage />} />
@@ -159,7 +199,6 @@ function App() {
         {/* <Route exact path="/admin/hr/timesheet" element={<AdminHRTimesheet/>} /> */}
 
         <Route exact path="/admin/login" element={<Login />} />
-        <Route exact path="/table1" element={<Table1 />} />
       </Routes>
       <Footer />
     </Router>

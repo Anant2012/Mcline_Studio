@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import background from './AddNewProject.jpg';
-
+import { useSelector } from "react-redux";
 function Addnewproject() {
-  const user_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [projectName, setProjectName] = useState("");
   const [person, setPerson] = useState("");
   const [company, setCompany] = useState("");
@@ -38,7 +38,7 @@ function Addnewproject() {
     e.preventDefault();
     setIsDisabled(true);
     const data = {
-      user_id: "63e9411577ce9c26f2babd4f",
+      user_id: userId,
       // code: code,
       project_status: project_status,
       client_name: company,

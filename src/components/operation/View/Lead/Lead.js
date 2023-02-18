@@ -5,9 +5,9 @@ import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import DownloadTableIcon from "../../../common/DownloadTableIcon";
-
+import { useSelector } from "react-redux";
 function Lead() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const handleOpen = () => {
@@ -66,7 +66,7 @@ function Lead() {
     // console.log("lead",row._id)
   };
   const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${User_id}`)
+    AxiosInstance.get(`/api/leads/get/user/${userId}`)
       .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };

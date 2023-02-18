@@ -1,4 +1,4 @@
-import { AxiosInstance } from "../AxiosInstance/AxiosInstance";
+import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 
 export const LOG_IN = "LOG_IN";
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
@@ -15,7 +15,7 @@ export function handleLogIn(userCred) {
         localStorage.setItem("status", JSON.stringify(res.data.user.status));
         dispatch(logInSuccess(res.data));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err.response.data.msg));
   };
 }
 
@@ -27,6 +27,7 @@ export function logInSuccess(userData) {
 }
 
 export function logOut() {
+  alert("Log Out Successfully")
   localStorage.setItem("user", null);
   localStorage.setItem("userId", null);
   localStorage.setItem("token", null);

@@ -21,7 +21,7 @@ const HomePageLogin = (props) => {
       const response = await AxiosInstance.post(`/api/user/signin`, data);
       if (response.status === 200) {
         if (response.data.user.role.includes("hr"))
-          alert("✅User Login SuccesFully");
+          alert("✅Admin Login SuccesFully");
         else alert("User can not log in as admin");
       }
       setEmail("");

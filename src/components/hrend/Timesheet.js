@@ -4,10 +4,11 @@ import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import DownloadTableIcon from "../common/DownloadTableIcon";
+import { useSelector } from "react-redux";
 
 // automatically SNo. at last
 function Timesheet() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [showModal, setShowModal] = useState(0);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
@@ -27,7 +28,8 @@ function Timesheet() {
     {
       name: "Time", selector: (row) => (row.timeLine.map((data, index) => {
         return (<>{data.time}</>)
-      })), sortable: true },
+      })), sortable: true
+    },
     {
       name: "Action",
       selector: (row) => (
@@ -49,7 +51,7 @@ function Timesheet() {
       time
     }
     try {
-      const response = await AxiosInstance.post(`/api/user/timeline/add/${User_id}`, data)
+      const response = await AxiosInstance.post(`/api/user/timeline/add/${userId}`, data)
       if (response.status === 200 || response.status === 201) {
         alert("✅ Timesheet Added SuccesFully");
       }
@@ -65,7 +67,7 @@ function Timesheet() {
     navigate(`/user/edit_lead/${row._id}`);
   };
   const getData = async () => {
-    AxiosInstance.get(`/api/user/timeline/get/${User_id}`)
+    AxiosInstance.get(`/api/user/timeline/get/${userId}`)
       .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };
@@ -122,9 +124,8 @@ function Timesheet() {
         </div>
 
         <div
-          class={`${
-            showModal ? "block" : "hidden"
-          } fade fixed top-1 left-1/2 w-1/2 -translate-x-1/2  h-full outline-none overflow-x-hidden overflow-y-auto`}
+          class={`${showModal ? "block" : "hidden"
+            } fade fixed top-1 left-1/2 w-1/2 -translate-x-1/2  h-full outline-none overflow-x-hidden overflow-y-auto`}
         >
           <div class="relative w-auto pointer-events-none">
             <div class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">

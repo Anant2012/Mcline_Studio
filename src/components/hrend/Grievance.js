@@ -4,9 +4,9 @@ import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 import moment from "moment";
-
+import { useSelector } from "react-redux";
 function Grievance() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [email, setEmail] = useState("");
@@ -18,11 +18,10 @@ function Grievance() {
     e.preventDefault();
     setIsDisabled(true);
     const data = {
-      // user_id: User_id,
       statement: statement,
     }
     try {
-      const response = await AxiosInstance.post(`/api/hr/ask/greviances/${User_id}`, data)
+      const response = await AxiosInstance.post(`/api/hr/ask/greviances/${userId}`, data)
       if (response.status === 200) {
         alert("✅ Grievance Sent SuccesFully");
       }
@@ -57,7 +56,7 @@ function Grievance() {
 
 
   const getData = async () => {
-    AxiosInstance.get(`/api/hr/get/greviances/${User_id}`)
+    AxiosInstance.get(`/api/hr/get/greviances/${userId}`)
       .then((data) =>
         setData(data.data.data)
       )
