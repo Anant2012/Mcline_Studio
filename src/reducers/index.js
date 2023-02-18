@@ -1,10 +1,12 @@
 import { LOG_IN_SUCCESS, LOG_OUT } from "../actions";
 
 const initialAuthState = {
-  user: null,
-  userId: null,
-  isLoggedIn: false,
-  token: null,
+  user: JSON.parse(localStorage.getItem("user")),
+  userId: JSON.parse(localStorage.getItem("userId")),
+  isLoggedIn: !!JSON.parse(localStorage.getItem("userId")),
+  token: JSON.parse(localStorage.getItem("token")),
+  role: JSON.parse(localStorage.getItem("role")),
+  status: JSON.parse(localStorage.getItem("status")),
 };
 
 export default function AuthReducer(state = initialAuthState, action) {
@@ -15,6 +17,8 @@ export default function AuthReducer(state = initialAuthState, action) {
         userId: action.userData.user._id,
         isLoggedIn: true,
         token: action.userData.token,
+        role: action.userData.role,
+        status: action.userData.status,
       };
     case LOG_OUT:
       return {
@@ -22,6 +26,8 @@ export default function AuthReducer(state = initialAuthState, action) {
         userId: null,
         isLoggedIn: false,
         token: null,
+        role: [],
+        status: "Inactive",
       };
     default:
       return state;
