@@ -21,10 +21,10 @@ const HomePageLogin = (props) => {
       password: password,
     }
     try {
-      // const response = await AxiosInstance.post(`/api/leads/create`, data)
-      // if (response.status === 200) {
-      //   alert("✅User Login SuccesFully");
-      // }
+      const response = await AxiosInstance.post(`/api/user/signin`, data)
+      if (response.status === 200) {
+        alert("✅User Login SuccesFully");
+      }
       setEmail("");
       setPassword("");
       props.setHrLogin(1)
@@ -54,7 +54,7 @@ const HomePageLogin = (props) => {
                 <input type="password" id="email" value={password}
                   onChange={(e) => setPassword(e.target.value)} name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
-              <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={LoginUser}>LogIn</button>
+              <button className="text-white bg-[#047EC1] border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg" onClick={LoginUser}>LogIn</button>
             {/* <p className="text-xs text-gray-500 mt-7 flex justify-center mx-auto"><a href='/' className='text-[16px] text-blue-700'>Create Account</a></p> */}
           </div>
           </form>

@@ -253,10 +253,10 @@ function AdminProject() {
             </h1>
           </div>
           <div>
-            <div className="bg-indigo-500 pb-2 pt-4">
+            <div className="bg-[#0483c8] pb-2 pt-4">
               <div class="lg:w-7/8 w-full mx-auto">
                 <div class="flex mx-4 flex-wrap ">
-                  <div class="w-full flex-col p-2 flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+                  <div class="w-full flex-col p-2 flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
                     <div className="grid grid-cols-5 grid-rows-3 gap-2 w-2/3">
                       <div className="col-span-5 text-lg">Filter</div>
                       <div className="my-auto text-right">Date From</div>
@@ -278,7 +278,7 @@ function AdminProject() {
                         />
                       </div>
                       <div className="my-auto">
-                        <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded ml-3 text-sm mr-3 whitespace-nowrap">
+                        <button className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap">
                           Find
                         </button>
                       </div>
@@ -302,7 +302,7 @@ function AdminProject() {
                         />
                       </div>
                       <div className="my-auto">
-                        <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded ml-3 text-sm mr-3 whitespace-nowrap">
+                        <button className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap">
                           Find
                         </button>
                       </div>

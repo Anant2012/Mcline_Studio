@@ -25,11 +25,11 @@ const SignUp = (props) => {
       email: email,
       phone: phone,
       password: password,
-      role: "user",
+      role: role,
     }
     try {
       const response = await AxiosInstance.post(`/api/user/signup`, data)
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         alert("✅User Created SuccesFully");
       }
       setName("");
@@ -38,7 +38,7 @@ const SignUp = (props) => {
       setPassword("");
       props.setAdminLogin(1)
     } catch (error) {
-      alert(error);
+      alert(error.msg);
       console.log(error);
     };
   }
@@ -74,7 +74,7 @@ const SignUp = (props) => {
               <br/>
                 <input onChange={(e) => setRole([...role, "user"])}type="checkbox" className='mr-1' /><span className="leading-7 text-sm text-gray-600">User</span>
               <br/>
-                <input onChange={(e) => setRole([...role, "operation"])}type="checkbox"  className='mr-1' /><span className="leading-7 text-sm text-gray-600">Operation</span>
+                <input onChange={(e) => setRole([...role, "operations"])}type="checkbox"  className='mr-1' /><span className="leading-7 text-sm text-gray-600">Operation</span>
               <br/>
                 <input onChange={(e) => setRole([...role, "hr"])}type="checkbox"  className='mr-1' /><span className="leading-7 text-sm text-gray-600">HR</span>
             </div>
@@ -83,7 +83,7 @@ const SignUp = (props) => {
                 <input type="password" id="email" name="email" value={password}
                   onChange={(e) => setPassword(e.target.value)} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
             </div>
-            <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={ AddUser}>SignIn</button>
+            <button className="text-white bg-[#047EC1] border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg" onClick={ AddUser}>SignIn</button>
             <p className="text-xs text-gray-500 mt-3">Don't worry! We will keep your data safe</p>
           </div>
           </form>

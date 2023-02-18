@@ -18,9 +18,16 @@ function Timesheet() {
   const navigate = useNavigate();
 
   const columns = [
-    { name: "SNo", selector: (row) => row.timeLine.task, sortable: true },
-    { name: "Task ", selector: (row) => row.timeLine.task, sortable: true },
-    { name: "Time", selector: (row) => row.timeLine.time, sortable: true },
+    { name: "SNo", selector: (row) => row._id, sortable: true },
+    {
+      name: "Task", selector: (row) => (row.timeLine.map((data, index) => {
+        return (<>{data.task}</>)
+      })), sortable: true, wrap: true
+    },
+    {
+      name: "Time", selector: (row) => (row.timeLine.map((data, index) => {
+        return (<>{data.time}</>)
+      })), sortable: true },
     {
       name: "Action",
       selector: (row) => (
@@ -53,7 +60,7 @@ function Timesheet() {
       console.log(error);
     };
   }
-  // console.log("errorr", data[0])
+  console.log("errorr", data)
   const EditLead = (row) => {
     navigate(`/user/edit_lead/${row._id}`);
   };
@@ -81,15 +88,15 @@ function Timesheet() {
               Timesheet
             </h1>
           </div>
-          <div className="bg-indigo-500 pb-2 pt-4">
+          <div className="bg-[#0483c8] pb-2 pt-4">
             <div class="flex flex-wrap mx-4">
-              <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+              <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
                 <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">
                   Timesheet
                 </h1>
                 <div class="flex flex-row justify-center pr-8 items-center relative">
                   <button
-                    className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded-full text-sm mr-3 whitespace-nowrap"
+                    className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
                     data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                     onClick={(e) => {

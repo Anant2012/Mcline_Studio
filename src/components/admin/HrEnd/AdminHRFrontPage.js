@@ -189,9 +189,9 @@ const AdminHRFrontPage = (props) => {
               <div className="p-4 lg:w-1/2 md:w-full mx-auto">
                 <section class="text-gray-600 body-font">
                   <div class="container  mx-auto">
-                    <div className="bg-indigo-500 pb-4 px-4 pt-4">
+                    <div className="bg-[#0483c8] pb-4 px-4 pt-4">
                       <div class="flex flex-wrap mx-4">
-                        <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+                        <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
                           <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">
                             Table
                           </h1>
