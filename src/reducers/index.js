@@ -17,8 +17,8 @@ export default function AuthReducer(state = initialAuthState, action) {
         userId: action.userData.user._id,
         isLoggedIn: true,
         token: action.userData.token,
-        role: action.userData.role,
-        status: action.userData.status,
+        role: action.userData.user.role,
+        status: action.userData.user.status,
       };
     case LOG_OUT:
       return {

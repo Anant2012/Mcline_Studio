@@ -11,8 +11,8 @@ export function handleLogIn(userCred) {
         localStorage.setItem("user", JSON.stringify(res.data.user.username));
         localStorage.setItem("userId", JSON.stringify(res.data.user._id));
         localStorage.setItem("token", JSON.stringify(res.data.token));
-        localStorage.setItem("role", JSON.stringify(res.data.role));
-        localStorage.setItem("status", JSON.stringify(res.data.status));
+        localStorage.setItem("role", JSON.stringify(res.data.user.role));
+        localStorage.setItem("status", JSON.stringify(res.data.user.status));
         dispatch(logInSuccess(res.data));
       })
       .catch((err) => console.log(err));
