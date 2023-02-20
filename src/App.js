@@ -1,6 +1,5 @@
 import "./App.css";
 import NavbarUser from "./components/navbar/NavbarUser";
-import NavbarAdmin from "./components/navbar/NavbarAdmin";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ViewProfile from "./components/hrend/profile/ViewProfile";
 import Login from "./components/auth/Login";
@@ -25,21 +24,19 @@ import AdminTickets from "./components/admin/HrEnd/AdminTickets";
 import AdminGrievance from "./components/admin/HrEnd/AdminGrievance";
 import AdminProfile from "./components/admin/HrEnd/AdminProfile";
 import EditLead from "./components/operation/View/Lead/EditLead";
-import AdminTableFrontPage from "./components/admin/HomePage/AdminTableFrontPage";
 import PersonalDetails from "./components/hrend/profile/PersonalDetails";
 import Timesheet from "./components/hrend/Timesheet";
 
 import EditProject from "./components/operation/View/Project/EditProject";
 import AdminHRFrontPage from "./components/admin/HrEnd/AdminHRFrontPage";
-import AdminOperationFrontPage from "./components/admin/Operations/AdminOperationFrontPage";
 import AdminEditLead from "./components/admin/Operations/AdminEditLead";
 import AdminEditProject from "./components/admin/Operations/AdminEditProject";
 import AdminEditLeaves from "./components/admin/HrEnd/Edit/AdminEditLeaves";
 import AdminEditTickets from "./components/admin/HrEnd/Edit/AdminEditTicket";
 import AdminEditGrievance from "./components/admin/HrEnd/Edit/AdminEditGrievance";
-import AdminEditUser from "./components/admin/HomePage/AdminEditUser";
 import { PrivateRoute } from "./Redux/routes/PrivateRoute";
 import { AdminRoutes } from "./Redux/routes/AdminRoutes";
+import { OperationRoutes } from "./Redux/routes/OperationRoutes";
 
 function App() {
   return (
@@ -199,16 +196,7 @@ function App() {
         {/* Admin Section   */}
         {AdminRoutes}
         <Route exact path="/admin/hrend" element={<AdminHRFrontPage />} />
-        <Route
-          exact
-          path="/admin/operation"
-          element={<AdminOperationFrontPage />}
-        />
-        <Route
-          exact
-          path="/admin/operation/view/lead"
-          element={<AdminLead />}
-        />
+        {OperationRoutes}
         <Route
           exact
           path="/admin/operation/edit/lead/:leadId"
