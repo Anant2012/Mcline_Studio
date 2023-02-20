@@ -1,5 +1,6 @@
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { AxiosInstance } from '../../../../AxiosInstance/AxiosInstance';
 import background from '../../../../assets/images/AddNewProject.jpg';
 import { useParams } from "react-router";

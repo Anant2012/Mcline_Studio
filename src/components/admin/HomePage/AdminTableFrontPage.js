@@ -1,23 +1,19 @@
-import React from 'react'
-import AdminUserList from './AdminUserList'
-import AdminSignUpFrontPage from './AdminSignUpFrontPage'
-import HomePageLogin from './HomePageLogin'
-import { useState } from 'react'
-
+import { useState } from "react";
+import AdminUserList from "./AdminUserList";
+import AdminSignUpFrontPage from "./AdminSignUpFrontPage";
 
 function AdminTableFrontPage() {
   const [adminLogin, setAdminLogin] = useState(1);
-  const [hrLogin, setHrLogin] = useState(0);
 
   return (
     <>
-      <AdminSignUpFrontPage adminLogin={adminLogin} setAdminLogin={setAdminLogin} />
-      <HomePageLogin hrLogin={hrLogin} setHrLogin={setHrLogin} />
-      <div className={`${(hrLogin) ? "block" : "hidden"} ${(adminLogin)?"block":"hidden"}`}>
-        <AdminUserList setAdminLogin={setAdminLogin} />
-      </div>
+      <AdminSignUpFrontPage
+        adminLogin={adminLogin}
+        setAdminLogin={setAdminLogin}
+      />
+      <AdminUserList setAdminLogin={setAdminLogin} />
     </>
-  )
+  );
 }
 
-export default AdminTableFrontPage
+export default AdminTableFrontPage;
