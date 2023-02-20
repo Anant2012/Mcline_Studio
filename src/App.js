@@ -16,13 +16,10 @@ import Policy from "./components/hrend/Policy";
 
 import Project from "./components/operation/View/Project/Project";
 import EditProfile from "./components/hrend/profile/EditProfile";
-import AdminProject from "./components/admin/Operations/AdminProject";
 import EditLead from "./components/operation/View/Lead/EditLead";
 import PersonalDetails from "./components/hrend/profile/PersonalDetails";
 import Timesheet from "./components/hrend/Timesheet";
 import EditProject from "./components/operation/View/Project/EditProject";
-import AdminEditLead from "./components/admin/Operations/AdminEditLead";
-import AdminEditProject from "./components/admin/Operations/AdminEditProject";
 import { PrivateRoute } from "./Redux/routes/PrivateRoute";
 import { AdminRoutes } from "./Redux/routes/AdminRoutes";
 import { OperationRoutes } from "./Redux/routes/OperationRoutes";
@@ -167,21 +164,6 @@ function App() {
         {AdminRoutes}
         {HRRoutes}
         {OperationRoutes}
-        <Route
-          exact
-          path="/admin/operation/edit/lead/:leadId"
-          element={<AdminEditLead />}
-        />
-        <Route
-          exact
-          path="/admin/operation/view/project"
-          element={<AdminProject />}
-        />
-        <Route
-          exact
-          path="/admin/operation/edit/project/:projectId"
-          element={<AdminEditProject />}
-        />
       </Routes>
       <Footer />
     </Router>
