@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import background from "./login_banner.jpg";
-import { handleLogIn } from "../../actions";
+import { handleLogIn } from "../../Redux/actions";
 
 const Login = () => {
   const [email, setEmail] = useState("");

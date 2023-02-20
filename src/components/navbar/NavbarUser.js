@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import background from "../footer/footerImg.png";
-import { logOut } from "../../actions";
+import { logOut } from "../../Redux/actions";
 
 const NavbarUser = () => {
   const [hover, setHover] = useState(false);

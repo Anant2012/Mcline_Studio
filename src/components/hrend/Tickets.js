@@ -4,9 +4,9 @@ import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 import moment from "moment/moment";
-
+import { useSelector } from "react-redux";
 function Tickets() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [description, setDescription] = useState("");
@@ -52,7 +52,7 @@ function Tickets() {
     }
     try {
       console.log(other)
-      const response = await AxiosInstance.post(`/api/hr/ask/ticket/${User_id}`, data)
+      const response = await AxiosInstance.post(`/api/hr/ask/ticket/${userId}`, data)
       if (response.status === 200) {
         alert("✅ Ticket Sent SuccesFully");
       }
@@ -66,7 +66,7 @@ function Tickets() {
   }
 
   const getData = async () => {
-    AxiosInstance.get(`/api/hr/get/tickets/${User_id}`)
+    AxiosInstance.get(`/api/hr/get/tickets/${userId}`)
       .then((data) =>
         setData(data.data.data)
       )

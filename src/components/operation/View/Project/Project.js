@@ -6,9 +6,9 @@ import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import DownloadTableIcon from "../../../common/DownloadTableIcon";
-
+import { useSelector } from "react-redux";
 function Project() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [totalPurchasedItems, setTotalPurchasedItems] = useState(0);
@@ -209,7 +209,7 @@ function Project() {
     navigate(`/user/edit_project/${row._id}`);
   };
   const getData = async () => {
-    AxiosInstance.get(`/api/project/get/user/${User_id}`)
+    AxiosInstance.get(`/api/project/get/user/${userId}`)
       .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };

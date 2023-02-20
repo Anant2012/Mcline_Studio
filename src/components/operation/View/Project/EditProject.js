@@ -1,5 +1,5 @@
 
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AxiosInstance } from '../../../../AxiosInstance/AxiosInstance';
 import background from '../../../../assets/images/AddNewProject.jpg';
 import { useParams } from "react-router";
@@ -11,7 +11,7 @@ function EditProject() {
     const params = useParams();
     const projectId = params.projectId;
 
-    const user_id = "63e9411577ce9c26f2babd4f";
+    const { userId } = useSelector((state) => state);
     const [projectName, setProjectName] = useState("");
     const [person, setPerson] = useState("");
     const [company, setCompany] = useState("");
@@ -46,7 +46,7 @@ function EditProject() {
         backgroundPosition: 'center',
         filter: 'grayscale(0%)'
     };
-    
+
     const getLead = async (e) => {
         AxiosInstance.get(`/api/project/get/project/${projectId}`)
             .then((data) => {
@@ -108,8 +108,8 @@ function EditProject() {
             PO_number: po_no,
             bid: bid,
             hours: hours,
-            email_to:email_to,
-            email_cc:email_cc,
+            email_to: email_to,
+            email_cc: email_cc,
             company_name: company,
         }
         try {

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import background from './AddNewBanner.jpg';
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
+import { useSelector } from "react-redux";
 
 
 function Addnewlead() {
+  const { userId } = useSelector((state) => state);
   const [date, setDate] = useState("");
   const [person, setPerson] = useState("");
   const [company, setCompany] = useState("");
@@ -24,7 +26,7 @@ function Addnewlead() {
     e.preventDefault();
     setIsDisabled(true);
     const data = {
-      user_id: "63e9411577ce9c26f2babd4f",
+      user_id: userId,
       date: date,
       name: person,
       company: company,
