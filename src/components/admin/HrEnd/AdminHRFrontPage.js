@@ -13,13 +13,13 @@ const AdminHRFrontPage = (props) => {
   };
   const onSearch = (val) => {
     const updatedData = data.filter((x) =>
-      x.name.toLowerCase().match(val.toLowerCase())
+      x.user_id.username.toLowerCase().match(val.toLowerCase())
     );
     setFilteredData(updatedData);
   };
   const columns = [
-    { name: "Name", selector: (row) => row.user_id, sortable: true },
-    { name: "Days", selector: (row) => row.name, sortable: true },
+    { name: "Name", selector: (row) => row.user_id?.username, sortable: true },
+    { name: "Days", selector: (row) => row.net_days, sortable: true },
     { name: "Reason", selector: (row) => row.leaves.description, sortable: true },
   ];
   const EditUser = (row) => {
