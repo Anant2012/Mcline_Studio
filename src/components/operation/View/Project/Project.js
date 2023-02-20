@@ -54,6 +54,13 @@ function Project() {
       width: "160px",
       wrap: true,
     },
+    {
+      name: "Invoice Amount",
+      selector: (row) => row?.invoice_amount,
+      sortable: true,
+      width: "160px",
+      wrap: true,
+    },
 
     {
       name: "Hours",
@@ -149,7 +156,7 @@ function Project() {
     {
       name: "Invoice Date",
       // selector: (row) => row.invoice.amount,
-      selector: (row) => moment(row.approval_date).format("DD/MM/YYYY"),
+      selector: (row) => row.invoice.invoice_date,
       sortable: true,
       width: "160px",
     },
@@ -162,7 +169,7 @@ function Project() {
     {
       name: "Due Date",
       // selector: (row) => row.invoice.status,
-      selector: (row) => moment(row.approval_date).format("DD/MM/YYYY"),
+      selector: (row) => row.invoice.due_date,
       sortable: true,
       width: "160px",
     },
@@ -299,6 +306,9 @@ function Project() {
             <DownloadTableIcon fileData={data} fileName="Project" />
           </div>
         </div>
+      </div>
+      <div>
+        Total Amount : {totalPurchasedItems}
       </div>
     </section>
   );

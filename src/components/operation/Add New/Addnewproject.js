@@ -17,6 +17,7 @@ function Addnewproject() {
   const [po_no, setPo_no] = useState("");
   const [net_days, setNet_days] = useState("");
   const [invoice_type, setInvoice_type] = useState("");
+  const [invoice_amount, setInvoice_amount] = useState("");
   const [email_to, setEmail_to] = useState("");
   const [email_cc, setEmail_cc] = useState("");
   const [contact_person, setContact_person] = useState("");
@@ -51,6 +52,7 @@ function Addnewproject() {
       reference: reference,
       address: address,
       phone: Phone_no,
+      invoice_amount:invoice_amount,
       contact_person: contact_person,
       resource: resource,
       invoice_type: invoice_type,
@@ -64,7 +66,7 @@ function Addnewproject() {
     }
     try {
       const response = await AxiosInstance.post(`/api/project/create`, data)
-      if (response.status === 200) {
+      if (response.status === 201) {
         alert("✅ Project Added SuccesFully");
       }
       // setCode("");
@@ -84,11 +86,15 @@ function Addnewproject() {
       setNet_days("")
       setReference("")
       setResource("")
-      setInvoice_type("")
+      setEmail_cc("");
+      setEmail_to("")
+      setInvoice_type("");
+      setInvoice_amount("");
       setapprovalDate("");
+      setIsDisabled(false);
     } catch (error) {
-      alert(error);
-      console.log(error);
+      alert(error.response.data.msg);
+
     };
   }
   return (
@@ -134,6 +140,22 @@ function Addnewproject() {
                         onChange={(e) => setSubmissionDate(e.target.value)}
                         id="date"
                         name="date"
+                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      />
+                    </div>
+                  </div>
+                  <div class="p-2 w-full sm:w-1/4">
+                    <div class="relative">
+                      <label for="person" class="leading-7 text-sm text-gray-600">
+                        Invoice Amount
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={invoice_amount}
+                        onChange={(e) => setInvoice_amount(e.target.value)}
+                        id="person"
+                        name="person"
                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       />
                     </div>

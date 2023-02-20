@@ -49,6 +49,7 @@ function Tickets() {
     const data = {
       reason: description,
       issued_item: other,
+      email_cc:email,
     }
     try {
       console.log(other)
@@ -58,12 +59,13 @@ function Tickets() {
         setDescription("");
         setother([]);
         setIsDisabled(false);
+        setEmail("");
       }
 
-      
+
     } catch (error) {
-      alert(error);
-      console.log(error);
+      alert(error.response.data.msg);
+
     };
   }
 
@@ -188,6 +190,8 @@ function Tickets() {
                           type="email"
                           id="date_to"
                           name="date"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                           required
                         />

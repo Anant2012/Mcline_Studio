@@ -18,9 +18,9 @@ const AdminHRFrontPage = (props) => {
     setFilteredData(updatedData);
   };
   const columns = [
-    { name: "Name", selector: (row) => row.capital, sortable: true },
+    { name: "Name", selector: (row) => row.user_id, sortable: true },
     { name: "Days", selector: (row) => row.name, sortable: true },
-    { name: "Reason", selector: (row) => row.name, sortable: true },
+    { name: "Reason", selector: (row) => row.leaves.description, sortable: true },
   ];
   const EditUser = (row) => {
     navigate(`/user/admin/edit_user/${row._id}`);
@@ -150,14 +150,6 @@ const AdminHRFrontPage = (props) => {
                                 </div>
 
                                 <div className="flex flex-row">
-                                  <Link to="/admin/hr/timesheet">
-                                    <button
-                                      type="button"
-                                      class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-2 mt-3"
-                                    >
-                                      Timesheet
-                                    </button>
-                                  </Link>
 
                                   <Link to="/hr/policy">
                                     <button

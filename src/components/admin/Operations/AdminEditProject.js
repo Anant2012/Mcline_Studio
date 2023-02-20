@@ -121,7 +121,7 @@ function Addnewproject() {
             payment_status: payment_status,
             resource_cost: resource_cost,
             resource_rate: resource_rate,
-            due_date:due_date
+            due_date: due_date
         }
         try {
             const response = await AxiosInstance.patch(`/api/admin/operations/project/update/${projectId}`, data)
@@ -130,8 +130,8 @@ function Addnewproject() {
             }
             // setCode("");
         } catch (error) {
-            alert(error);
-            console.log(error);
+            alert(error.response.data.msg);
+
         };
     }
     useEffect(() => {
@@ -356,7 +356,7 @@ function Addnewproject() {
                                                 onChange={(e) => setInvoice_status(e.target.value)}
                                                 id="projectName"
                                                 name="projectName"
-                                                
+
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -373,7 +373,7 @@ function Addnewproject() {
                                                 onChange={(e) => setInvoice_date(e.target.value)}
                                                 id="projectName"
                                                 name="projectName"
-                                                
+
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -390,7 +390,7 @@ function Addnewproject() {
                                                 onChange={(e) => setInvoice_number(e.target.value)}
                                                 id="projectName"
                                                 name="projectName"
-                                                
+
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -407,7 +407,7 @@ function Addnewproject() {
                                                 onChange={(e) => setPayment_status(e.target.value)}
                                                 id="projectName"
                                                 name="projectName"
-                                                
+
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -424,7 +424,7 @@ function Addnewproject() {
                                                 onChange={(e) => setDue_date(e.target.value)}
                                                 id="projectName"
                                                 name="projectName"
-                                                
+
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
