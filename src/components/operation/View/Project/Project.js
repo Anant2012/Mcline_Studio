@@ -69,13 +69,13 @@ function Project() {
     },
     {
       name: "Approval Date",
-      selector: (row) => moment(row.approval_date).format("DD/MM/YYYY"),
+      selector: (row) => row.approval_date,
       sortable: true,
       width: "160px",
     },
     {
       name: "Submission Date",
-      selector: (row) => moment(row.submission_date).format("DD/MM/YYYY"),
+      selector: (row) => row.submission_date,
       sortable: true,
       width: "160px",
     },

@@ -29,7 +29,7 @@ function AdminEditLeaves() {
             .then((data) => {
                 // console.log(data, "hjk")
                 setUsername(data.data.data.user_id.username)
-                setDate_to(moment(data.data.data.leaves.date_t0).format('YYYY-MM-DD'));
+                setDate_to(moment(data.data.data.leaves.date_to).format('YYYY-MM-DD'));
                 setDate_from(moment(data.data.data.leaves.date_from).format('YYYY-MM-DD'));
                 setDescription(data.data.data.leaves.description);
                 setLeave_status(data.data.data.leaves.status);

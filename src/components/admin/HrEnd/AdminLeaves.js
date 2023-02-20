@@ -25,8 +25,8 @@ function AdminLeaves() {
   };
   const columns = [
     { name: "Username", selector: (row) => row.user_id?.username, sortable: true },
-    { name: "Date To", selector: (row) => moment(row.leaves.date_to).format('DD/MM/YYYY'), sortable: true },
-    { name: "Date From", selector: (row) => moment(row.leaves.date_from).format('DD/MM/YYYY'), sortable: true },
+    { name: "Date To", selector: (row) => row.leaves.date_to, sortable: true },
+    { name: "Date From", selector: (row) => row.leaves.date_from, sortable: true },
     { name: "Description", selector: (row) => row.leaves.description, sortable: true },
     {
       name: "Status",

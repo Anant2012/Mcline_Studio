@@ -26,7 +26,7 @@ const AdminEditUser = (props) => {
         AxiosInstance.get(`/api/admin/user/${userId}`)
             .then((data) => {
                 // console.log(data, "hjk")
-                setName(data.data.data.user_id.name);
+                setName(data.data.data.username);
                 setEmail(data.data.data.userId.email);
                 setPhone(data.data.data.userId.phone);
                 setPassword(data.data.data.userId.password);
