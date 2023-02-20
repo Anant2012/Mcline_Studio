@@ -38,12 +38,13 @@ import AdminEditLeaves from "./components/admin/HrEnd/Edit/AdminEditLeaves";
 import AdminEditTickets from "./components/admin/HrEnd/Edit/AdminEditTicket";
 import AdminEditGrievance from "./components/admin/HrEnd/Edit/AdminEditGrievance";
 import AdminEditUser from "./components/admin/HomePage/AdminEditUser";
-import PrivateRoute from "./Redux/routes/PrivateRoute";
+import { PrivateRoute } from "./Redux/routes/PrivateRoute";
+import { AdminRoutes } from "./Redux/routes/AdminRoutes";
 
 function App() {
   return (
     <Router>
-      {[
+      {/* {[
         "/admin",
         "/admin/operation",
         "/admin/hrend",
@@ -57,39 +58,65 @@ function App() {
         "/hr/policy",
       ].includes(window.location.pathname) ? (
         <NavbarAdmin />
-      ) : (
-        <NavbarUser />
-      )}
+      ) : ( */}
+      <NavbarUser />
+      {/* )} */}
       <Routes>
         <Route exact path="/" element={<FrontPage />} />
-        <Route exact path="/hr/viewprofile" element={
-          <PrivateRoute>
-            <ViewProfile />
-          </PrivateRoute>} />
-        <Route exact path="/hr/edit_profile" element={
-          <PrivateRoute>
-            <EditProfile />
-          </PrivateRoute>} />
-        <Route exact path="/hr/personaldetails" element={
-          <PrivateRoute>
-            <PersonalDetails />
-          </PrivateRoute>} />
-        <Route exact path="/operation/addnew/lead" element={
-          <PrivateRoute>
-            <Addnewlead />
-          </PrivateRoute>} />
+        <Route
+          exact
+          path="/hr/viewprofile"
+          element={
+            <PrivateRoute>
+              <ViewProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/hr/edit_profile"
+          element={
+            <PrivateRoute>
+              <EditProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/hr/personaldetails"
+          element={
+            <PrivateRoute>
+              <PersonalDetails />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/operation/addnew/lead"
+          element={
+            <PrivateRoute>
+              <Addnewlead />
+            </PrivateRoute>
+          }
+        />
         <Route
           exact
           path="/operation/addnew/project"
           element={
             <PrivateRoute>
               <Addnewproject />
-            </PrivateRoute>}
+            </PrivateRoute>
+          }
         />
-        <Route exact path="/operation/view/project" element={
-          <PrivateRoute>
-            <Project />
-          </PrivateRoute>} />
+        <Route
+          exact
+          path="/operation/view/project"
+          element={
+            <PrivateRoute>
+              <Project />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           exact
@@ -100,51 +127,77 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route exact path="/user/edit_lead/:leadId" element={
-          <PrivateRoute>
-            <EditLead />
-          </PrivateRoute>} />
+        <Route
+          exact
+          path="/user/edit_lead/:leadId"
+          element={
+            <PrivateRoute>
+              <EditLead />
+            </PrivateRoute>
+          }
+        />
         <Route
           exact
           path="/user/edit_project/:projectId"
-          element={<PrivateRoute>
-            <EditProject />
-          </PrivateRoute>}
+          element={
+            <PrivateRoute>
+              <EditProject />
+            </PrivateRoute>
+          }
         />
-        <Route exact path="/hr/leaves" element={
-          <PrivateRoute>
-            <Leave />
-          </PrivateRoute>} />
-        <Route exact path="/hr/tickets" element={
-          <PrivateRoute>
-            <Tickets />
-          </PrivateRoute>} />
-        <Route exact path="/hr/grievance" element={
-          <PrivateRoute>
-            <Grievance />
-          </PrivateRoute>} />
-        <Route exact path="/hr/policy" element={
-          <PrivateRoute>
-            <Policy />
-          </PrivateRoute>} />
+        <Route
+          exact
+          path="/hr/leaves"
+          element={
+            <PrivateRoute>
+              <Leave />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/hr/tickets"
+          element={
+            <PrivateRoute>
+              <Tickets />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/hr/grievance"
+          element={
+            <PrivateRoute>
+              <Grievance />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/hr/policy"
+          element={
+            <PrivateRoute>
+              <Policy />
+            </PrivateRoute>
+          }
+        />
         <Route exact path="/login" element={<Login />} />
         {/* <Route exact path="/signup" element={
           <PrivateRoute>
             <SignUp />
           </PrivateRoute>} /> */}
-        <Route exact path="/hr/timesheet" element={
-          <PrivateRoute>
-            <Timesheet />
-          </PrivateRoute>} />
-
-        {/* Admin Section   */}
-        <Route exact path="/admin" element={<AdminTableFrontPage />} />
         <Route
           exact
-          path="/admin/operation/edit/user/:userId"
-          element={<AdminEditUser />}
+          path="/hr/timesheet"
+          element={
+            <PrivateRoute>
+              <Timesheet />
+            </PrivateRoute>
+          }
         />
 
+        {/* Admin Section   */}
+        {AdminRoutes}
         <Route exact path="/admin/hrend" element={<AdminHRFrontPage />} />
         <Route
           exact

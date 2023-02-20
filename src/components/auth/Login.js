@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import background from "./login_banner.jpg";
 import { handleLogIn } from "../../Redux/actions";
+import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +21,15 @@ const Login = () => {
   };
 
   const LoginUser = () => {
-    dispatch(handleLogIn({ email, password }));
+    const data = { email, password };
+    AxiosInstance.post("/api/user/signin", data)
+      .then(({ data }) => {
+        if (data.user.role.includes("user")) {
+          dispatch(handleLogIn(data, "user"));
+          navigate("/");
+        } else alert("User can not log in as user");
+      })
+      .catch((err) => alert(err));
   };
 
   useEffect(() => {
