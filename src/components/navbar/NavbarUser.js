@@ -7,14 +7,24 @@ const NavbarUser = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { userId } = useSelector((state) => state);
+  const { role, userId } = useSelector((state) => state);
+  const isLoggedIn = window.location.pathname.includes("/login")
+    ? false
+    : window.location.pathname === "/"
+    ? role === "user"
+      ? true
+      : false
+    : !!userId
+    ? true
+    : false;
 
   const handleAuth = () => {
-    userId ? dispatch(logOut()) : navigate("/login");
+    isLoggedIn ? dispatch(logOut()) : navigate("/login");
   };
   const redirectToHome = () => {
-    if (window.location.pathname.includes("/hr")) navigate("/admin/hrend");
-    else if (window.location.pathname.includes("/operaion"))
+    if (window.location.pathname.includes("/admin/hr"))
+      navigate("/admin/hrend");
+    else if (window.location.pathname.includes("/admin/operation"))
       navigate("/admin/operation");
     else if (window.location.pathname.includes("/admin")) navigate("/admin");
     else navigate("/");
@@ -41,9 +51,7 @@ const NavbarUser = () => {
                   className="text-white text-sm font-medium bg-[#047EC1] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#0473af] rounded-full text-sm mr-3"
                   onClick={handleAuth}
                 >
-                  {window.location.pathname.includes("/login")
-                    ? "Log In"
-                    : `${!!userId ? "Log Out" : "Log In"}`}
+                  {isLoggedIn ? "Log Out" : "Log In"}
                 </button>
               </div>
             </div>

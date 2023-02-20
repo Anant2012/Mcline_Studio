@@ -32,10 +32,6 @@ const Login = () => {
       .catch((err) => alert(err));
   };
 
-  useEffect(() => {
-    if (userId) navigate("/");
-  }, [userId]);
-
   return (
     <>
       <div className="h-[500px]  w-full sm:w-3/4 flex mx-auto sm:shadow-md my-12">
