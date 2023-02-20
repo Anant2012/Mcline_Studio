@@ -96,8 +96,8 @@ function Lead() {
         console.log(response, "fgh");
       }
     } catch (error) {
-      alert(error);
-      console.log(error);
+      alert(error.response.data.msg);
+
     }
   };
   useEffect(() => {

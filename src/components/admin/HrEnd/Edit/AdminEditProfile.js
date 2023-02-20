@@ -58,8 +58,8 @@ function AdminEditLeaves() {
             setName("");
             setGrade("");
         } catch (error) {
-            alert(error);
-            console.log(error);
+            alert(error.response.data.msg);
+
         };
     }
     return (

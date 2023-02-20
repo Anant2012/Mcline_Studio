@@ -14,7 +14,7 @@ function AdminTickets() {
   const navigate = useNavigate();
   const onSearch = (val) => {
     setFilteredData(
-      data.filter((x) => x.name.toLowerCase().match(val.toLowerCase()))
+      data.filter((x) => x.user_id?.username.toLowerCase().match(val.toLowerCase()))
     );
   };
   const columns = [

@@ -22,7 +22,7 @@ function Leave() {
         (x) =>
           x.leaves.date_to.toLowerCase().match(val.toLowerCase()) ||
           x.leaves.date_from.toLowerCase().match(val.toLowerCase()) ||
-          x.leaves.description.toLowerCase().match(val.toLowerCase())||
+          x.leaves.description.toLowerCase().match(val.toLowerCase()) ||
           x.leaves.status.toLowerCase().match(val.toLowerCase())
       )
     );
@@ -42,7 +42,7 @@ function Leave() {
       alert("Date Should be Greater than today");
       return;
     }
-    if (moment(date_to) < moment() ) {
+    if (moment(date_to) < moment()) {
       alert("Date Should be Greater than today");
       return;
     }
@@ -56,7 +56,8 @@ function Leave() {
       date_to: date_to,
       date_from: date_from,
       description: description,
-      net_days:net_days,
+      net_days: net_days,
+      email_cc:email,
     }
     try {
       const response = await AxiosInstance.post(`/api/hr/ask/leaves/${userId}`, data)
@@ -70,8 +71,8 @@ function Leave() {
         setIsDisabled(true);
       }
     } catch (error) {
-      alert(error);
-      console.log(error);
+      alert(error.response.data.msg);
+
     };
   }
 
@@ -129,7 +130,7 @@ function Leave() {
                       id="date_to"
                       value={date_to}
                       onChange={(e) => setDate_to(e.target.value)}
-                      name="date"
+                      name="date_to"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required
                     />
@@ -145,7 +146,7 @@ function Leave() {
                       id="date_to"
                       value={date_from}
                       onChange={(e) => setDate_from(e.target.value)}
-                      name="date"
+                      name="date_from"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required
                     />

@@ -26,6 +26,7 @@ function EditProject() {
     const [po_no, setPo_no] = useState("");
     const [net_days, setNet_days] = useState("");
     const [invoice_type, setInvoice_type] = useState("");
+    const [invoice_amount, setInvoice_amount] = useState("");
     const [email_to, setEmail_to] = useState("");
     const [email_cc, setEmail_cc] = useState("");
     const [contact_person, setContact_person] = useState("");
@@ -69,21 +70,22 @@ function EditProject() {
                 setNet_days(data.data.data.net_days)
                 setReference(data.data.data.reference)
                 setResource(data.data.data.resource)
-                setEmail_to(data.data.data.resource)
-                setEmail_cc(data.data.data.resource)
+                setEmail_to(data.data.data.email_to)
+                setEmail_cc(data.data.data.email_cc)
                 setInvoice_type(data.data.data.invoice_type)
+                // setInvoice_amount(data.data.data.invoice_amount)
                 setInvoice_status(data.data.data.invoice.status)
                 setPayment_status(data.data.data.invoice.payment_status)
-                setInvoice_number(data.data.data.invoice.invoice_number)
-                setInvoice_date(moment(data.data.data.approval_date).format('YYYY-MM-DD'))
-                setDue_date(moment(data.data.data.approval_date).format('YYYY-MM-DD'))
+                setInvoice_number(data.data.data.invoice.invoice_number);
+                setInvoice_date(moment(data.data.data.invoice.invoice_date).format('YYYY-MM-DD'));
+                setDue_date(moment(data.data.data.invoice.due_date).format('YYYY-MM-DD'));
                 setapprovalDate(moment(data.data.data.approval_date).format('YYYY-MM-DD'));
                 // alert("✅ Lead Edited SuccesFully");
             }
             )
             .catch((err) => {
-                console.log("errorr", err);
-                alert(err);
+                console.log(err.response.data.msg);
+                alert(err.response.data.msg);
             });
     }
     const EditProject = async (e) => {
@@ -100,6 +102,7 @@ function EditProject() {
             approval_date: approvalDate,
             submission_date: submissionDate,
             comments: comment,
+            invoice_amount:invoice_amount,
             reference: reference,
             address: address,
             phone: Phone_no,
@@ -121,8 +124,8 @@ function EditProject() {
             }
             // setCode("");
         } catch (error) {
-            alert(error);
-            console.log(error);
+            alert(error.response.data.msg);
+
         };
     }
     useEffect(() => {
@@ -187,6 +190,22 @@ function EditProject() {
                                                 onChange={(e) => setSubmissionDate(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="person" class="leading-7 text-sm text-gray-600">
+                                                Invoice Amount
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={invoice_amount}
+                                                onChange={(e) => setInvoice_amount(e.target.value)}
+                                                id="person"
+                                                name="person"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>

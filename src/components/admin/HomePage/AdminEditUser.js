@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import background from '../../auth/signup_banner.jpg';
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -21,16 +21,16 @@ const AdminEditUser = (props) => {
         backgroundPosition: 'center',
         filter: 'grayscale(60%)'
     };
-    
+
     const getUser = async (e) => {
         AxiosInstance.get(`/api/admin/user/${userId}`)
             .then((data) => {
                 // console.log(data, "hjk")
                 setName(data.data.data.username);
-                setEmail(data.data.data.userId.email);
-                setPhone(data.data.data.userId.phone);
-                setPassword(data.data.data.userId.password);
-                setRole(data.data.data.userId.role);
+                setEmail(data.data.data.email);
+                setPhone(data.data.data.phone);
+                setPassword(data.data.datapassword);
+                setRole(data.data.data.role);
 
             }
             )
@@ -57,8 +57,8 @@ const AdminEditUser = (props) => {
             }
             navigate("/admin")
         } catch (error) {
-            alert(error);
-            console.log(error);
+            alert(error.response.data.msg);
+
         };
     }
     useEffect(() => {
