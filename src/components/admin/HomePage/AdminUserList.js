@@ -4,8 +4,9 @@ import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
+import { useSelector } from "react-redux";
 function AdminUserList(props) {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const navigate = useNavigate();
 
   const [data, setData] = useState();
@@ -15,7 +16,7 @@ function AdminUserList(props) {
   };
   const onSearch = (val) => {
     const updatedData = data.filter((x) =>
-      x.name.toLowerCase().match(val.toLowerCase())
+      x.username.toLowerCase().match(val.toLowerCase())
     );
     setFilteredData(updatedData);
   };
@@ -64,7 +65,7 @@ function AdminUserList(props) {
   const DeleteLead = async (row) => {
     try {
       const response = await AxiosInstance.delete(
-        `/api/leads/delete/${row._id}`
+        `/api/admin/user/delete/${row._id}`
       );
       if (response.status === 200) {
         alert("✅User deleted successfully!!");

@@ -1,14 +1,14 @@
 import React, { useState,useEffect } from 'react'
 import background from '../../auth/signup_banner.jpg';
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
-import { useParams } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from "react-redux";
 const AdminEditUser = (props) => {
-    
+    // const { userId } = useSelector((state) => state);
     const URL = window.location.href;
     const params = useParams();
     const userId = params.userId;
-
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -23,15 +23,15 @@ const AdminEditUser = (props) => {
     };
     
     const getUser = async (e) => {
-        AxiosInstance.get(`/api/admin/hr/leaves/${userId}`)
+        AxiosInstance.get(`/api/admin/user/${userId}`)
             .then((data) => {
                 // console.log(data, "hjk")
                 setName(data.data.data.user_id.name);
-                setEmail(data.data.data.user_id.email);
-                setPhone(data.data.data.user_id.phone);
-                setPassword(data.data.data.user_id.password);
-                setRole(data.data.data.user_id.role);
-                // alert("✅ Leaves Edited SuccesFully");
+                setEmail(data.data.data.userId.email);
+                setPhone(data.data.data.userId.phone);
+                setPassword(data.data.data.userId.password);
+                setRole(data.data.data.userId.role);
+
             }
             )
             .catch((err) => {
@@ -48,18 +48,14 @@ const AdminEditUser = (props) => {
             email: email,
             phone: phone,
             password: password,
-            role: "user",
+            role: role,
         }
         try {
-            const response = await AxiosInstance.post(`/api/user/signup/${userId}`, data)
+            const response = await AxiosInstance.put(`/api/admin/user/update/${userId}`, data)
             if (response.status === 200) {
-                alert("✅User Created SuccesFully");
+                alert("✅User Edited SuccesFully");
             }
-            setName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
-            props.setAdminLogin(1)
+            navigate("/admin")
         } catch (error) {
             alert(error);
             console.log(error);

@@ -24,9 +24,10 @@ function Grievance() {
       const response = await AxiosInstance.post(`/api/hr/ask/greviances/${userId}`, data)
       if (response.status === 200) {
         alert("✅ Grievance Sent SuccesFully");
+        setEmail("")
+        setStatement("");
+        setIsDisabled(true);
       }
-      setEmail("")
-      setStatement("");
     } catch (error) {
       alert(error);
       console.log(error);

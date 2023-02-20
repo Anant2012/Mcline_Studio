@@ -9,7 +9,6 @@ import moment from "moment";
 import DownloadTableIcon from "../../common/DownloadTableIcon";
 
 function AdminProject() {
-  const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [totalPurchasedItems, setTotalPurchasedItems] = useState(0);
@@ -29,6 +28,12 @@ function AdminProject() {
     );
   };
   const columns = [
+    {
+      name: "User Name",
+      selector: (row) => row.user_id?.username,
+      sortable: true,
+      width: "160px",
+    },
     {
       name: "Project Code",
       selector: (row) => row.code,

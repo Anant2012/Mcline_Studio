@@ -72,6 +72,21 @@ function Timesheet() {
       .catch((err) => console.log("errorr", err));
   };
 
+  const DeleteAll = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await AxiosInstance.delete(`/api/user/timeline/delete/${userId}`)
+      if (response.status === 200) {
+        alert("Email sent")
+      }
+
+
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    };
+  }
+
   useEffect(() => {
     getData();
     // FilterLead();
@@ -182,6 +197,25 @@ function Timesheet() {
           </div>
         </div>
       </section>
+      
+      <div>
+        <input
+          type="text"
+          id="date_to"
+          // value={email}
+          // onChange={(e) => setEmail(e.target.value)}
+          name="date"
+          class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          required
+        />
+        <button
+          onClick={DeleteAll}
+          type="button"
+          class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+        >
+          Send Mail
+        </button>
+      </div>
     </>
   );
 }
