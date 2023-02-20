@@ -19,3 +19,8 @@ export const PrivateOperataionRoute = ({ children }) => {
     <Navigate to="/admin/operation/login" replace />
   );
 };
+
+export const PrivateHRRoute = ({ children }) => {
+  const { role } = useSelector((state) => state);
+  return role === "hr" ? children : <Navigate to="/admin/hrend/login" />;
+};
