@@ -31,11 +31,11 @@ function AdminEditTickets() {
                 // console.log(data.data.data.tickets.issued_item.map((datares, index) => {
                 //     return ({datares})
                 // }));
-                setUsername(data.data.data.user_id.username)
+                setUsername(data.data.data.user_id?.username)
                 setDate(moment(data.data.data.created_at).format('YYYY-MM-DD'));
-                // setIssue(data.data.data.tickets.issued_item.map((ticket, index) => {
-                //     return ({ticket})
-                // }));
+                setIssue(data.data.data.tickets.issued_item.map((res, index) => {
+                    return (res)
+                }));
                 setDescription(data.data.data.tickets.reason);
                 setTicket_status(data.data.data.status);
                 // alert("✅ Ticket Edited SuccesFully");

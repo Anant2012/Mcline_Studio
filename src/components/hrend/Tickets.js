@@ -55,10 +55,12 @@ function Tickets() {
       const response = await AxiosInstance.post(`/api/hr/ask/ticket/${userId}`, data)
       if (response.status === 200) {
         alert("✅ Ticket Sent SuccesFully");
+        setDescription("");
+        setother([]);
+        setIsDisabled(false);
       }
 
-      setDescription("");
-      setother([]);
+      
     } catch (error) {
       alert(error);
       console.log(error);

@@ -5,7 +5,7 @@ import { AxiosInstance } from '../../../../AxiosInstance/AxiosInstance';
 import background from '../../../../assets/images/AddNewProject.jpg';
 import { useParams } from "react-router";
 import moment from 'moment';
-
+// import { useSelector } from "react-redux";
 function EditProject() {
 
     const URL = window.location.href;
@@ -60,6 +60,7 @@ function EditProject() {
                 setBid(data.data.data.bid)
                 setPhone_no(data.data.data.phone)
                 setSubmissionDate(moment(data.data.data.submission_date).format('YYYY-MM-DD'))
+                // setSubmissionDate((data.data.data.submission_date))
                 setHours(data.data.data.hours)
                 setComment(data.data.data.comments)
                 setContact_person(data.data.data.contact_person)
@@ -89,7 +90,7 @@ function EditProject() {
         e.preventDefault();
         setIsDisabled(true);
         const data = {
-            user_id: "63e9411577ce9c26f2babd4f",
+            userId: "63e9411577ce9c26f2babd4f",
             // code: code,
             project_status: project_status,
             client_name: company,

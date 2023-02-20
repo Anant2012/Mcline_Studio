@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Table from "../../../constant/Table/Table";
 import { useNavigate } from "react-router-dom";
+import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 
 const AdminHRFrontPage = (props) => {
   const navigate = useNavigate();
@@ -25,9 +26,10 @@ const AdminHRFrontPage = (props) => {
     navigate(`/user/admin/edit_user/${row._id}`);
   };
   const getData = async () => {
-    fetch("https://restcountries.com/v2/all")
-      .then((res) => res.json())
-      .then((data) => setData(data))
+    AxiosInstance.get(`/api/admin/hr/leaves/top/five`)
+      .then((data) =>
+        setData(data.data.data)
+      )
       .catch((err) => console.log("errorr", err));
   };
 

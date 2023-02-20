@@ -1,10 +1,10 @@
 
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
-
+import { useSelector } from "react-redux";
 
 const EditProfile = () => {
-    const User_id = "63e239529722a3fe13a268d4";
+    const { userId } = useSelector((state) => state);
     const [name, setName] = useState("");
     const [employee_code, setEmployee_code] = useState("");
     const [designation, setDesignation] = useState("");
@@ -19,7 +19,7 @@ const EditProfile = () => {
 
     const [isDisabled, setIsDisabled] = useState(false);
 
-    const AddPersonalDetails = async (e) => {
+    const EditPersonalDetails = async (e) => {
         setIsDisabled(true);
         e.preventDefault();
         const data = {
@@ -36,9 +36,9 @@ const EditProfile = () => {
             company_id,
         }
         try {
-            const response = await AxiosInstance.post(`/api/hr/edit/${User_id}`, data)
+            const response = await AxiosInstance.post(`/api/hr/edit/${userId}`, data)
             if (response.status === 200) {
-                alert("✅ Profile Added SuccesFully");
+                alert("✅ Profile Edited SuccesFully");
             }
             setPersonal_contact_number("");
             setPersonal_email_id("");
@@ -65,7 +65,7 @@ const EditProfile = () => {
 
 
     const getData = async () => {
-        AxiosInstance.get(`/api/hr/get/personal/${User_id}`)
+        AxiosInstance.get(`/api/hr/get/personal/${userId}`)
             .then((data) =>
                 console.log(data.data.data)
             )
@@ -256,7 +256,7 @@ const EditProfile = () => {
                 </div>
             </div>
             <div className="w-full flex justify-center">
-                <button className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
+                <button onClick={EditPersonalDetails} className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
             </div>
         </>
     );

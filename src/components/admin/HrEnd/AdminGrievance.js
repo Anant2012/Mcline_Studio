@@ -14,11 +14,11 @@ function AdminGrievance() {
   const navigate = useNavigate();
   const onSearch = (val) => {
     setFilteredData(
-      data.filter((x) => x.name.toLowerCase().match(val.toLowerCase()))
+      data.filter((x) => x.user_id.username.toLowerCase().match(val.toLowerCase()))
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.user_id.username, sortable: true, width: "300px" },
+    { name: "Username", selector: (row) => row.user_id?.username, sortable: true, width: "300px" },
     {
       name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true, width: "200px"
     },

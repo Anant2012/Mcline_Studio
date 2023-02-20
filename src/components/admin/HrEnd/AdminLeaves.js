@@ -6,9 +6,9 @@ import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
-
+import { useSelector } from "react-redux";
 function AdminLeaves() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -24,9 +24,9 @@ function AdminLeaves() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.user_id.username, sortable: true },
-    { name: "Date To", selector: (row) => moment(row.leaves.date_to).format('DD/MM/YYYY'), sortable: true },
-    { name: "Date From", selector: (row) => moment(row.leaves.date_from).format('DD/MM/YYYY'), sortable: true },
+    { name: "Username", selector: (row) => row.user_id?.username, sortable: true },
+    { name: "Date To", selector: (row) => row.leaves.date_to, sortable: true },
+    { name: "Date From", selector: (row) => row.leaves.date_from, sortable: true },
     { name: "Description", selector: (row) => row.leaves.description, sortable: true },
     {
       name: "Status",

@@ -11,6 +11,7 @@ function Leave() {
   const [filteredData, setFilteredData] = useState(data);
   const [date_to, setDate_to] = useState("");
   const [date_from, setDate_from] = useState("");
+  const [net_days, setNet_days] = useState("");
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
@@ -37,12 +38,12 @@ function Leave() {
   ];
 
   const AddLeave = async (e) => {
-    if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date_from).format("YYYY-MM-DD"))) {
-      alert("Invalid date");
+    if (moment(date_from) < moment()) {
+      alert("Date Should be Greater than today");
       return;
     }
-    if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date_to).format("YYYY-MM-DD"))) {
-      alert("Invalid date");
+    if (moment(date_to) < moment() ) {
+      alert("Date Should be Greater than today");
       return;
     }
     // if (moment(date_to) > moment(date_from)) {
@@ -55,16 +56,19 @@ function Leave() {
       date_to: date_to,
       date_from: date_from,
       description: description,
+      net_days:net_days,
     }
     try {
       const response = await AxiosInstance.post(`/api/hr/ask/leaves/${userId}`, data)
       if (response.status === 200) {
         alert("✅ Leave Sent SuccesFully");
+        setDate_to("");
+        setDate_from("");
+        setEmail("")
+        setDescription("");
+        setNet_days("")
+        setIsDisabled(true);
       }
-      setDate_to("");
-      setDate_from("");
-      setEmail("")
-      setDescription("");
     } catch (error) {
       alert(error);
       console.log(error);
@@ -141,6 +145,25 @@ function Leave() {
                       id="date_to"
                       value={date_from}
                       onChange={(e) => setDate_from(e.target.value)}
+                      name="date"
+                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="p-2 w-full">
+                  <div class="relative">
+                    <label
+                      for="message"
+                      class="leading-7 text-sm text-gray-600"
+                    >
+                      No. of Days
+                    </label>
+                    <input
+                      type="number"
+                      id="email"
+                      value={net_days}
+                      onChange={(e) => setNet_days(e.target.value)}
                       name="date"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required

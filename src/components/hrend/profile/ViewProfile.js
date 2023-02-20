@@ -2,21 +2,21 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import { useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const ViewProfile = (props) => {
-  const User_id = "63e239529722a3fe13a268d4";
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
 
   const navigate = useNavigate();
   const getData = async () => {
-    AxiosInstance.get(`/api/hr/get/personal/${User_id}`)
+    AxiosInstance.get(`/api/hr/get/personal/${userId}`)
       .then((data) =>
         console.log(data.data.data)
       )
       .catch((err) => console.log("errorr", err));
   };
   const onSubmitClick = () => {
-   navigate(`/hr/edit_profile`)
+    navigate(`/hr/edit_profile`)
   }
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const ViewProfile = (props) => {
         </div>
       </div>
       <div className="w-full flex justify-center">
-        <button onClick={onSubmitClick}  className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
+        <button onClick={onSubmitClick} className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg">Edit Profile</button>
       </div>
     </div>
   );
