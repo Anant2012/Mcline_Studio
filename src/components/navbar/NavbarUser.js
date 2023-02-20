@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import background from "../footer/footerImg.png";
 import { logOut } from "../../Redux/actions";
@@ -8,8 +8,16 @@ const NavbarUser = () => {
   const dispatch = useDispatch();
 
   const { userId } = useSelector((state) => state);
+
   const handleAuth = () => {
     userId ? dispatch(logOut()) : navigate("/login");
+  };
+  const redirectToHome = () => {
+    if (window.location.pathname.includes("/hr")) navigate("/admin/hrend");
+    else if (window.location.pathname.includes("/operaion"))
+      navigate("/admin/operation");
+    else if (window.location.pathname.includes("/admin")) navigate("/admin");
+    else navigate("/");
   };
 
   return (
@@ -18,13 +26,12 @@ const NavbarUser = () => {
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex flex-1 items-center sm:items-stretch justify-start">
             <div className="flex flex-shrink-0 items-center text-white font-sans text-sm ml-4 sm:text-xl font-semibold subpixel-antialiased sm:tracking-wider ">
-              <Link to="/">
-                <img
-                  src={`${background}`}
-                  class="max-w-[120px] flex h-auto"
-                  alt="..."
-                />
-              </Link>
+              <img
+                src={`${background}`}
+                class="max-w-[120px] flex h-auto"
+                alt="..."
+                onClick={redirectToHome}
+              />
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
