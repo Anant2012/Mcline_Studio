@@ -1,10 +1,10 @@
 
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
-
+import { useSelector } from "react-redux";
 
 const EditProfile = () => {
-    const User_id = "63e239529722a3fe13a268d4";
+    const { userId } = useSelector((state) => state);
     const [name, setName] = useState("");
     const [employee_code, setEmployee_code] = useState("");
     const [designation, setDesignation] = useState("");
@@ -36,7 +36,7 @@ const EditProfile = () => {
             company_id,
         }
         try {
-            const response = await AxiosInstance.post(`/api/hr/edit/${User_id}`, data)
+            const response = await AxiosInstance.post(`/api/hr/edit/${userId}`, data)
             if (response.status === 200) {
                 alert("✅ Profile Added SuccesFully");
             }
@@ -65,7 +65,7 @@ const EditProfile = () => {
 
 
     const getData = async () => {
-        AxiosInstance.get(`/api/hr/get/personal/${User_id}`)
+        AxiosInstance.get(`/api/hr/get/personal/${userId}`)
             .then((data) =>
                 console.log(data.data.data)
             )

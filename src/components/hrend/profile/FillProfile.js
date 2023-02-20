@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
-
+import { useSelector } from "react-redux";
 
 const FillProfile = (props) => {
-  const User_id = "63e239529722a3fe13a268d4";
+  const { userId } = useSelector((state) => state);
   const [name, setName] = useState("");
   const [employee_code, setEmployee_code] = useState("");
   const [designation, setDesignation] = useState("");
@@ -36,7 +36,7 @@ const FillProfile = (props) => {
       company_id,
     }
     try {
-      const response = await AxiosInstance.post(`/api/hr/edit/${User_id}`, data)
+      const response = await AxiosInstance.post(`/api/hr/edit/${userId}`, data)
       if (response.status === 200) {
         alert("✅ Profile Added SuccesFully");
       }
@@ -58,7 +58,7 @@ const FillProfile = (props) => {
   }
 
 
-  const ProfileImageClick = (props) =>{
+  const ProfileImageClick = (props) => {
     const imgBtn = document.querySelector("#imgBtn");
     imgBtn.click();
   }
@@ -73,7 +73,7 @@ const FillProfile = (props) => {
       <div className={`${(props.viewFillProfile) ? "block" : "hidden"}`}>
         <div class="flex flex-col text-center w-full my-8">
           <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900">
-            Fill your Details 
+            Fill your Details
           </h1>
         </div>
         <div class="overflow-hidden bg-white w-11/12 sm:w-3/4 mx-auto shadow-md sm:rounded-lg border border-gray-300">
@@ -97,15 +97,15 @@ const FillProfile = (props) => {
 
               <div class="center h-full flex items-center justify-center">
                 <div class="form-input w-[350px]  flex justify-end bg-white">
-                    <label for="file-ip-1" className=' block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white'  onClick={(e) => {
-                      e.preventDefault();
-                      ProfileImageClick();
-                      console.log("Clicked");
-                    }}>Upload Image</label>
-                    <input className='file-upload-input hidden' id="imgBtn"  type="file"  accept="Image/" 
-                   />
+                  <label for="file-ip-1" className=' block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white' onClick={(e) => {
+                    e.preventDefault();
+                    ProfileImageClick();
+                    console.log("Clicked");
+                  }}>Upload Image</label>
+                  <input className='file-upload-input hidden' id="imgBtn" type="file" accept="Image/"
+                  />
                 </div>
-              </div> 
+              </div>
             </div>
           </div>
           <div class="border-t border-gray-300">
