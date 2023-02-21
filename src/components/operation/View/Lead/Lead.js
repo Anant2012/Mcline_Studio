@@ -10,9 +10,8 @@ function Lead() {
   const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
-  const handleOpen = () => {
-    // to do
-  };
+  const [startingDate, setStartingDate] = useState();
+  const [endingDate, setEndingDate] = useState();
   const navigate = useNavigate();
 
   const onSearch = (val) => {
@@ -33,7 +32,6 @@ function Lead() {
       selector: (row) => moment(row.date).format("DD/MM/YYYY"),
       sortable: true,
     },
-    // { name: "Date", selector: (row) => row.length, sortable: true },
     { name: "Company ", selector: (row) => row.company, sortable: true },
     { name: "Person", selector: (row) => row.name, sortable: true },
     {
@@ -65,6 +63,16 @@ function Lead() {
     navigate(`/user/edit_lead/${row._id}`);
     // console.log("lead",row._id)
   };
+  const filterByDate = () => {
+    if (!startingDate || !endingDate) {
+      alert("Select all filters");
+      return;
+    }
+    const updatedData = data.filter(
+      (x) => x.date >= startingDate && x.date <= endingDate
+    );
+    setFilteredData(updatedData);
+  };
   const getData = async () => {
     AxiosInstance.get(`/api/leads/get/user/${userId}`)
       .then((data) => setData(data.data.data))
@@ -82,22 +90,6 @@ function Lead() {
     } catch (err) {
       console.log(err);
       alert("Something went wrong!!");
-    }
-  };
-  const FilterLead = async (row) => {
-    const data = {
-      date_to: "1975-04-07",
-      date_from: "1999-11-22",
-    };
-    try {
-      const response = await AxiosInstance.post(`/api/leads/filter`, data);
-      console.log(response, "fgh");
-      if (response.status === 200) {
-        console.log(response, "fgh");
-      }
-    } catch (error) {
-      alert(error.response.data.msg);
-
     }
   };
   useEffect(() => {
@@ -126,32 +118,33 @@ function Lead() {
                     Filter:
                   </div>
                   <div class="flex flex-row justify-center item-center relative">
-                    <label
-                      for="name"
-                      class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                    >
+                    <label class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white">
                       Date_from
                     </label>
                     <input
                       type="date"
-                      id="name"
-                      name="name"
+                      onChange={(e) => setStartingDate(e.target.value)}
                       class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                   <div class="flex flex-row justify-center item-center relative">
-                    <label
-                      for="name"
-                      class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                    >
+                    <label class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white">
                       Date_to
                     </label>
                     <input
                       type="date"
-                      id="name"
-                      name="name"
+                      onChange={(e) => setEndingDate(e.target.value)}
                       class="w-full focus:bg-opacity-5 bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
                     />
+                  </div>
+
+                  <div className="my-auto">
+                    <button
+                      onClick={filterByDate}
+                      className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
+                    >
+                      Find
+                    </button>
                   </div>
                 </div>
               </div>
