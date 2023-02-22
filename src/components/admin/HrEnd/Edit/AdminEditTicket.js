@@ -43,7 +43,7 @@ function AdminEditTickets() {
             )
             .catch((err) => {
                 console.log("errorr", err);
-                alert(err);
+                alert(err.response.data.msg);
             });
     }
 
@@ -108,7 +108,7 @@ function AdminEditTickets() {
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">
                                             <label for="date" class="leading-7 text-sm text-gray-600">
-                                                Date 
+                                                Date
                                             </label>
                                             <input
                                                 type="date"

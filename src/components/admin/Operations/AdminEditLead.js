@@ -44,7 +44,7 @@ function AdminEditLead() {
             )
             .catch((err) => {
                 console.log("errorr", err);
-                alert(err);
+                alert(err.response.data.msg);
             });
     }
 

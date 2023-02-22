@@ -39,6 +39,7 @@ function Addnewlead() {
       const response = await AxiosInstance.post(`/api/leads/create`, data)
       if (response.status === 200) {
         alert("✅ Lead Added SuccesFully");
+        setIsDisabled(false);
       }
       setDate("");
       setCompany("");

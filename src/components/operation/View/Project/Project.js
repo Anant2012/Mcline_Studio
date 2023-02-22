@@ -21,12 +21,18 @@ const Project = () => {
   const navigate = useNavigate();
 
   const onSearch = (val) => {
-    const updatedData = data.filter((x) =>
-      x.client_name.toLowerCase().match(val.toLowerCase())
+    const updatedData = data?.filter(
+      (x) =>
+        x.client_name.toLowerCase().match(val.toLowerCase()) ||
+        x.code.toLowerCase().match(val.toLowerCase()) ||
+        x.resource.toLowerCase().match(val.toLowerCase()) ||
+        // x.description.toString().match(val.toLowerCase()) ||
+        x.invoice_amount.toString().match(val.toLowerCase())
+    
     );
     setFilteredData(updatedData);
     setTotalPurchasedItems(
-      updatedData?.reduce((acc, item) => acc + item.population, 0)
+      updatedData?.reduce((acc, item) => acc + item.invoice_amount, 0)
     );
   };
   const columns = [
@@ -144,17 +150,23 @@ const Project = () => {
       width: "160px",
     },
     {
-      name: "Reference",
-      selector: (row) => row.reference,
+      name: "Description",
+      selector: (row) => row.description,
       sortable: true,
-      width: "160px",
+      width: "240px",
     },
-    {
-      name: "Comments",
-      selector: (row) => row.comments,
-      sortable: true,
-      width: "160px",
-    },
+    // {
+    //   name: "Reference",
+    //   selector: (row) => row.reference,
+    //   sortable: true,
+    //   width: "160px",
+    // },
+    // {
+    //   name: "Comments",
+    //   selector: (row) => row.comments,
+    //   sortable: true,
+    //   width: "160px",
+    // },
     {
       name: "Invoice Date",
       selector: (row) => row.invoice.invoice_date,

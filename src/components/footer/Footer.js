@@ -26,13 +26,13 @@ function Footer() {
 
           <nav class="list-none mt-4 leading-loose">
           <li>
-            <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-solid fa-envelope mr-4"></i>info@mclinestudios.com</a>
+            <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-solid fa-envelope mr-4"></i>info@mclinestudios.net</a>
           </li>
           <li>
-            <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-solid fa-phone mr-4"></i>+1 929-341-4154</a>
+                  <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-solid fa-phone mr-4"></i>hr@mclinestudios.net</a>
           </li>
           <li>
-            <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-sharp fa-solid fa-location-dot mr-4"></i>600 N Broad St Suite 5 #3441, Middletown, DE 19709</a>
+                  <a class="text-slate-100  hover:text-slate-200 cursor-default"><i class="fa-sharp fa-solid fa-location-dot mr-4"></i>103, McLine Studios Dt city center Mall Shalimar Bagh New Delhi -110088</a>
           </li>
         </nav>
         </nav>

@@ -123,6 +123,14 @@ const AdminProfile = () => {
                               <div className="text-xs text-gray-800 font-medium">
                                 {data.personal_details.personal_email_id}
                               </div>
+
+                            <div className="w-1/2 flex justify-end">
+                              <img
+                                className="h-14 w-14 rounded-full"
+                                src={`https://mc-line2.onrender.com/${data.personal_details.profile_image}`}
+                                alt=""
+                              />
+
                             </div>
                           </div>
 

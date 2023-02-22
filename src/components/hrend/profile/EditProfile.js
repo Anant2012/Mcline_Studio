@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
     const { userId } = useSelector((state) => state);
 
+    const navigate = useNavigate();
     const [data, setData] = useState("");
     const [name, setName] = useState("");
     const [employee_code, setEmployee_code] = useState("");
@@ -18,29 +20,32 @@ const EditProfile = () => {
     const [personal_email_id, setPersonal_email_id] = useState("");
     const [official_email_id, setOfficial_email_id] = useState("");
     const [company_id, setCompany_id] = useState("");
+    const [profileImg, setProfileImg] = useState();
 
     const [isDisabled, setIsDisabled] = useState(false);
 
     const EditPersonalDetails = async (e) => {
         setIsDisabled(true);
         e.preventDefault();
-        const data = {
-            name,
-            employee_code,
-            designation,
-            grade,
-            reporting_manager,
-            emergency_contact_number,
-            blood_group,
-            personal_contact_number,
-            personal_email_id,
-            official_email_id,
-            company_id,
-        }
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("employee_code", employee_code);
+        formData.append("designation", designation);
+        formData.append("grade", grade);
+        formData.append("reporting_manager", reporting_manager);
+        formData.append("emergency_contact_number", emergency_contact_number);
+        formData.append("blood_group", blood_group);
+        formData.append("personal_contact_number", personal_contact_number);
+        formData.append("personal_email_id", personal_email_id);
+        formData.append("official_email_id", official_email_id);
+        formData.append("company_id", company_id);
+        formData.append("profile_image", profileImg);
         try {
-            const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, data)
+            const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)
             if (response.status === 200) {
                 alert("✅ Profile Edited SuccesFully");
+                navigate(`/hr/personaldetails`);
+                setIsDisabled(false);
             }
         } catch (error) {
             alert(error.response.data.msg);
@@ -116,7 +121,7 @@ return (
                                 ProfileImageClick();
                                 // console.log("Clicked");
                             }}>Edit Image</label>
-                            <input className='file-upload-input hidden' id="imgBtn" type="file" accept="Image/"
+                            <input className='file-upload-input hidden' id="imgBtn" type="file" accept="Image/" onChange={(e) => setProfileImg(e.target.files[0])}
                             />
                         </div>
                     </div>

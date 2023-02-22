@@ -29,7 +29,9 @@ const Login = () => {
           navigate("/");
         } else alert("User can not log in as user");
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        alert(err.response.data.msg);
+      });
   };
 
   return (
