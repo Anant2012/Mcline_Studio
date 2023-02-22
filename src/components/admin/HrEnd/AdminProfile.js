@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
 const AdminProfile = () => {
-  const User_id = "63e9411577ce9c26f2babd4f";
+
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -107,7 +107,7 @@ const AdminProfile = () => {
                             <div className="w-1/2 flex justify-end">
                               <img
                                 className="h-14 w-14 rounded-full"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                src={`https://mc-line2.onrender.com/${data.personal_details.profile_image}`}
                                 alt=""
                               />
                             </div>

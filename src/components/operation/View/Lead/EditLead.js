@@ -30,8 +30,8 @@ function EditLead() {
     const getLead = async (e) => {
         AxiosInstance.get(`/api/leads/get/lead/${leadId}`)
             .then((data) => {
-                console.log(data, "hjk")
-                setDate(moment(data.data.data.date).format('YYYY-MM-DD') );
+                // console.log(data, "hjk")
+                setDate(moment(data.data.data.date).format('YYYY-MM-DD'));
                 setCompany(data.data.data.company);
                 setContact_no(data.data.data.contact_no);
                 setPerson(data.data.data.name);
@@ -43,7 +43,7 @@ function EditLead() {
             )
             .catch((err) => {
                 console.log("errorr", err);
-                alert(err);
+                alert(err.response.data.msg);
             });
     }
 

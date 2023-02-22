@@ -4,10 +4,10 @@ import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
+import { useSelector } from "react-redux";
 function AdminUserList(props) {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const navigate = useNavigate();
-
 
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
@@ -16,10 +16,9 @@ function AdminUserList(props) {
   };
   const onSearch = (val) => {
     const updatedData = data.filter((x) =>
-      x.name.toLowerCase().match(val.toLowerCase())
+      x.username.toLowerCase().match(val.toLowerCase())
     );
     setFilteredData(updatedData);
-
   };
   const columns = [
     { name: "Name", selector: (row) => row.username, sortable: true },
@@ -27,15 +26,27 @@ function AdminUserList(props) {
     { name: "Phone", selector: (row) => row.phone, sortable: true },
     { name: "Password", selector: (row) => row.password, sortable: true },
     {
-      name: "Role", selector: (row) => (row.role.map((data, index) => {
-        return (<>{row.role.length != index + 1 ? `${data}, ` : `${data}`}</>)
-      })), sortable: true },
+      name: "Role",
+      selector: (row) =>
+        row.role.map((data, index) => {
+          return <>{row.role.length != index + 1 ? `${data}, ` : `${data}`}</>;
+        }),
+      sortable: true,
+    },
     {
       name: "Action",
       selector: (row) => (
         <div style={{ display: "flex" }}>
-          <FaUserEdit onClick={() => EditLead(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
-          <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
+          <FaUserEdit
+            onClick={() => EditLead(row)}
+            title="Edit"
+            style={{ color: "blue", fontSize: "Large" }}
+          />
+          <MdDelete
+            onClick={() => DeleteLead(row)}
+            title="Delete"
+            style={{ color: "red", marginLeft: "10px", fontSize: "Large" }}
+          />
         </div>
       ),
     },
@@ -45,26 +56,26 @@ function AdminUserList(props) {
     // <EditLead leadId={row._id} />
     navigate(`/admin/operation/edit/user/${row._id}`);
     // console.log("lead",row._id)
-  }
+  };
   const getData = async () => {
     AxiosInstance.get(`/api/admin/user/all`)
-      .then((data) =>
-        setData(data.data.data)
-      )
+      .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };
   const DeleteLead = async (row) => {
     try {
-      const response = await AxiosInstance.delete(`/api/leads/delete/${row._id}`);
+      const response = await AxiosInstance.delete(
+        `/api/admin/user/delete/${row._id}`
+      );
       if (response.status === 200) {
         alert("✅User deleted successfully!!");
-        window.location.reload()
+        window.location.reload();
       }
     } catch (err) {
       console.log(err);
       alert("Something went wrong!!");
     }
-  }
+  };
 
   useEffect(() => {
     getData();
@@ -72,12 +83,11 @@ function AdminUserList(props) {
 
   useEffect(() => {
     setFilteredData(data);
-
   }, [data]);
 
   const handleAddClick = () => {
     props.setAdminLogin(0);
-  }
+  };
 
   return (
     <>
@@ -95,15 +105,15 @@ function AdminUserList(props) {
                   User List
                 </h1>
                 <div class="flex flex-row justify-center pr-8 items-center relative">
-                  <button className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap" onClick={handleAddClick}>
+                  <button
+                    className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
+                    onClick={handleAddClick}
+                  >
                     Add
                   </button>
                 </div>
               </div>
             </div>
-
-
-
             <div className="w-full mx-auto">
               <Table
                 columns={columns}

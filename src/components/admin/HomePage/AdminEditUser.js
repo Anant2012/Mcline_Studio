@@ -1,14 +1,14 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import background from '../../auth/signup_banner.jpg';
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
-import { useParams } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from "react-redux";
 const AdminEditUser = (props) => {
-    
+    // const { userId } = useSelector((state) => state);
     const URL = window.location.href;
     const params = useParams();
     const userId = params.userId;
-
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -21,22 +21,22 @@ const AdminEditUser = (props) => {
         backgroundPosition: 'center',
         filter: 'grayscale(60%)'
     };
-    
+
     const getUser = async (e) => {
-        AxiosInstance.get(`/api/admin/hr/leaves/${userId}`)
+        AxiosInstance.get(`/api/admin/user/${userId}`)
             .then((data) => {
                 // console.log(data, "hjk")
-                setName(data.data.data.user_id.name);
-                setEmail(data.data.data.user_id.email);
-                setPhone(data.data.data.user_id.phone);
-                setPassword(data.data.data.user_id.password);
-                setRole(data.data.data.user_id.role);
-                // alert("✅ Leaves Edited SuccesFully");
+                setName(data.data.data.username);
+                setEmail(data.data.data.email);
+                setPhone(data.data.data.phone);
+                setPassword(data.data.data.password);
+                setRole(data.data.data.role);
+
             }
             )
             .catch((err) => {
                 console.log("errorr", err);
-                alert(err);
+                alert(err.response.data.msg);
             });
     }
 
@@ -48,21 +48,17 @@ const AdminEditUser = (props) => {
             email: email,
             phone: phone,
             password: password,
-            role: "user",
+            role: role,
         }
         try {
-            const response = await AxiosInstance.post(`/api/user/signup/${userId}`, data)
+            const response = await AxiosInstance.put(`/api/admin/user/update/${userId}`, data)
             if (response.status === 200) {
-                alert("✅User Created SuccesFully");
+                alert("✅User Edited SuccesFully");
             }
-            setName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
-            props.setAdminLogin(1)
+            navigate("/admin")
         } catch (error) {
-            alert(error);
-            console.log(error);
+            alert(error.response.data.msg);
+
         };
     }
     useEffect(() => {
@@ -106,7 +102,7 @@ const AdminEditUser = (props) => {
                             </div>
                             <div className="relative mb-4">
                                 <label htmlFor="email" className="leading-7 text-sm text-gray-600">Password</label>
-                                <input type="password" id="email" name="email" value={password}
+                                <input type="text" id="email" name="email" value={password}
                                     onChange={(e) => setPassword(e.target.value)} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required />
                             </div>
                             <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditUser}>Save</button>

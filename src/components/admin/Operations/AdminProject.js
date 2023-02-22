@@ -9,7 +9,6 @@ import moment from "moment";
 import DownloadTableIcon from "../../common/DownloadTableIcon";
 
 function AdminProject() {
-  const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [totalPurchasedItems, setTotalPurchasedItems] = useState(0);
@@ -29,6 +28,12 @@ function AdminProject() {
     );
   };
   const columns = [
+    {
+      name: "User Name",
+      selector: (row) => row.user_id?.username,
+      sortable: true,
+      width: "160px",
+    },
     {
       name: "Project Code",
       selector: (row) => row.code,
@@ -110,6 +115,7 @@ function AdminProject() {
       selector: (row) => row.email_to,
       sortable: true,
       width: "160px",
+      wrap: true
     },
     {
       name: "Email (cc)",
@@ -136,17 +142,23 @@ function AdminProject() {
       width: "160px",
     },
     {
-      name: "Reference",
-      selector: (row) => row.reference,
+      name: "Description",
+      selector: (row) => row.description,
       sortable: true,
-      width: "160px",
+      width: "240px",
     },
-    {
-      name: "Comments",
-      selector: (row) => row.comments,
-      sortable: true,
-      width: "160px",
-    },
+    // {
+    //   name: "Reference",
+    //   selector: (row) => row.reference,
+    //   sortable: true,
+    //   width: "160px",
+    // },
+    // {
+    //   name: "Comments",
+    //   selector: (row) => row.comments,
+    //   sortable: true,
+    //   width: "160px",
+    // },
     {
       name: "Invoice Date",
       selector: (row) => moment(row.date).format("DD/MM/YYYY"),

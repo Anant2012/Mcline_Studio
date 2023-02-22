@@ -4,9 +4,9 @@ import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 import moment from "moment/moment";
-
+import { useSelector } from "react-redux";
 function Tickets() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [description, setDescription] = useState("");
@@ -49,24 +49,28 @@ function Tickets() {
     const data = {
       reason: description,
       issued_item: other,
+      email_cc:email,
     }
     try {
       console.log(other)
-      const response = await AxiosInstance.post(`/api/hr/ask/ticket/${User_id}`, data)
+      const response = await AxiosInstance.post(`/api/hr/ask/ticket/${userId}`, data)
       if (response.status === 200) {
         alert("✅ Ticket Sent SuccesFully");
+        setDescription("");
+        setother([]);
+        setIsDisabled(false);
+        setEmail("");
       }
 
-      setDescription("");
-      setother([]);
+
     } catch (error) {
-      alert(error);
-      console.log(error);
+      alert(error.response.data.msg);
+
     };
   }
 
   const getData = async () => {
-    AxiosInstance.get(`/api/hr/get/tickets/${User_id}`)
+    AxiosInstance.get(`/api/hr/get/tickets/${userId}`)
       .then((data) =>
         setData(data.data.data)
       )
@@ -186,6 +190,8 @@ function Tickets() {
                           type="email"
                           id="date_to"
                           name="date"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                           required
                         />

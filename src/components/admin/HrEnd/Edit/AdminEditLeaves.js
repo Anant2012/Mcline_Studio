@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
-import moment from "moment/moment";
+import moment from "moment";
 import background from "../../../../assets/images/AddNewBanner.jpg"
 
 function AdminEditLeaves() {
@@ -29,7 +29,8 @@ function AdminEditLeaves() {
             .then((data) => {
                 // console.log(data, "hjk")
                 setUsername(data.data.data.user_id.username)
-                setDate_to(moment(data.data.data.leaves.date_t0).format('YYYY-MM-DD'));
+                // setDate_to(data.data.data.leaves.date_to);
+                setDate_to(moment(data.data.data.leaves.date_to).format('YYYY-MM-DD'));
                 setDate_from(moment(data.data.data.leaves.date_from).format('YYYY-MM-DD'));
                 setDescription(data.data.data.leaves.description);
                 setLeave_status(data.data.data.leaves.status);
@@ -38,7 +39,7 @@ function AdminEditLeaves() {
             )
             .catch((err) => {
                 console.log("errorr", err);
-                alert(err);
+                alert(err.response.data.msg);
             });
     }
 
@@ -107,7 +108,7 @@ function AdminEditLeaves() {
                                             </label>
                                             <input
                                                 type="date"
-                                                // placeholder={date}
+                                                placeholder={date_to}
                                                 required
                                                 value={date_to}
                                                 onChange={(e) => setDate_to(e.target.value)}
@@ -125,7 +126,7 @@ function AdminEditLeaves() {
                                             </label>
                                             <input
                                                 type="date"
-                                                // placeholder={date}
+                                                placeholder={date_from}
                                                 required
                                                 value={date_from}
                                                 onChange={(e) => setDate_from(e.target.value)}

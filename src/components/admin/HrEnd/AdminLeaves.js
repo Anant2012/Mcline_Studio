@@ -6,9 +6,9 @@ import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
-
+import { useSelector } from "react-redux";
 function AdminLeaves() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -24,9 +24,10 @@ function AdminLeaves() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.user_id.username, sortable: true },
-    { name: "Date To", selector: (row) => moment(row.leaves.date_to).format('DD/MM/YYYY'), sortable: true },
-    { name: "Date From", selector: (row) => moment(row.leaves.date_from).format('DD/MM/YYYY'), sortable: true },
+    { name: "Username", selector: (row) => row.user_id?.username, sortable: true },
+    { name: "Date To", selector: (row) => row.leaves.date_to, sortable: true },
+    { name: "Date From", selector: (row) => row.leaves.date_from, sortable: true },
+    { name: "Net Days", selector: (row) => row.leaves.net_days, sortable: true },
     { name: "Description", selector: (row) => row.leaves.description, sortable: true },
     {
       name: "Status",
@@ -67,22 +68,7 @@ function AdminLeaves() {
       alert("Something went wrong!!");
     }
   }
-  const FilterLead = async (row) => {
-    const data = {
-      date_to: "1975-04-07",
-      date_from: "1999-11-22"
-    }
-    try {
-      const response = await AxiosInstance.post(`/api/leads/filter`, data)
-      console.log(response, "fgh")
-      if (response.status === 200) {
-        console.log(response, "fgh")
-      }
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    };
-  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -103,7 +89,7 @@ function AdminLeaves() {
             </h1>
           </div>
           <div className="bg-[#0483c8] pb-2 pt-4">
-            <div class="flex flex-wrap mx-4">
+            {/* <div class="flex flex-wrap mx-4">
               <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
                 <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
                   Filter:
@@ -137,7 +123,7 @@ function AdminLeaves() {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
             <div>
               <Table
                 columns={columns}
