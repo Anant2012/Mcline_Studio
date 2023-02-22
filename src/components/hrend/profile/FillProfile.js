@@ -1,6 +1,5 @@
-
-import React, { useState } from 'react'
-import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
+import { useState } from "react";
+import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useSelector } from "react-redux";
 
 const FillProfile = (props) => {
@@ -16,27 +15,32 @@ const FillProfile = (props) => {
   const [personal_email_id, setPersonal_email_id] = useState("");
   const [official_email_id, setOfficial_email_id] = useState("");
   const [company_id, setCompany_id] = useState("");
+  const [profileImg, setProfileImg] = useState();
 
   const [isDisabled, setIsDisabled] = useState(false);
 
   const AddPersonalDetails = async (e) => {
     setIsDisabled(true);
     e.preventDefault();
-    const data = {
-      name,
-      employee_code,
-      designation,
-      grade,
-      reporting_manager,
-      emergency_contact_number,
-      blood_group,
-      personal_contact_number,
-      personal_email_id,
-      official_email_id,
-      company_id,
-    }
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("employee_code", employee_code);
+    formData.append("designation", designation);
+    formData.append("grade", grade);
+    formData.append("reporting_manager", reporting_manager);
+    formData.append("emergency_contact_number", emergency_contact_number);
+    formData.append("blood_group", blood_group);
+    formData.append("personal_contact_number", personal_contact_number);
+    formData.append("personal_email_id", personal_email_id);
+    formData.append("official_email_id", official_email_id);
+    formData.append("company_id", company_id);
+    formData.append("profile_image", profileImg);
+
     try {
-      const response = await AxiosInstance.post(`/api/hr/edit/${userId}`, data)
+      const response = await AxiosInstance.post(
+        `/api/hr/edit/${userId}`,
+        formData
+      );
       if (response.status === 200) {
         alert("✅ Profile Added SuccesFully");
       }
@@ -45,7 +49,7 @@ const FillProfile = (props) => {
       setOfficial_email_id("");
       setCompany_id("");
       setEmployee_code("");
-      setReporting_manager("")
+      setReporting_manager("");
       setDesignation("");
       setBlood_group("");
       setEmergency_contact_number("");
@@ -53,15 +57,13 @@ const FillProfile = (props) => {
       setGrade("");
     } catch (error) {
       alert(error.response.data.msg);
-
-    };
-  }
-
+    }
+  };
 
   const ProfileImageClick = (props) => {
     const imgBtn = document.querySelector("#imgBtn");
     imgBtn.click();
-  }
+  };
 
   // const onSubmitClick = () => {
   //   AddPersonalDetails();
@@ -70,7 +72,7 @@ const FillProfile = (props) => {
 
   return (
     <>
-      <div className={`${(props.viewFillProfile) ? "block" : "hidden"}`}>
+      <div className={`${props.viewFillProfile ? "block" : "hidden"}`}>
         <div class="flex flex-col text-center w-full my-8">
           <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900">
             Fill your Details
@@ -81,7 +83,10 @@ const FillProfile = (props) => {
             <div className="flex justify-between items-center">
               <div>
                 <div class="relative flex flex-row  items-center">
-                  <label for="date" class="text-sm font-medium mr-2 text-gray-500">
+                  <label
+                    for="date"
+                    class="text-sm font-medium mr-2 text-gray-500"
+                  >
                     Name
                   </label>
                   <input
@@ -97,12 +102,23 @@ const FillProfile = (props) => {
 
               <div class="center h-full flex items-center justify-center">
                 <div class="form-input w-[350px]  flex justify-end bg-white">
-                  <label for="file-ip-1" className=' block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white' onClick={(e) => {
-                    e.preventDefault();
-                    ProfileImageClick();
-                    console.log("Clicked");
-                  }}>Upload Image</label>
-                  <input className='file-upload-input hidden' id="imgBtn" type="file" accept="Image/"
+                  <label
+                    for="file-ip-1"
+                    className=" block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      ProfileImageClick();
+                      console.log("Clicked");
+                    }}
+                  >
+                    Upload Image
+                  </label>
+                  <input
+                    className="file-upload-input hidden"
+                    id="imgBtn"
+                    type="file"
+                    accept="Image/"
+                    onChange={(e) => setProfileImg(e.target.files[0])}
                   />
                 </div>
               </div>
@@ -150,7 +166,9 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Reporting Manager</dt>
+                <dt class="text-sm font-medium text-gray-500">
+                  Reporting Manager
+                </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="text"
@@ -171,7 +189,9 @@ const FillProfile = (props) => {
                     type="number"
                     id="number"
                     value={emergency_contact_number}
-                    onChange={(e) => setEmergency_contact_number(e.target.value)}
+                    onChange={(e) =>
+                      setEmergency_contact_number(e.target.value)
+                    }
                     name="number"
                     class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -206,7 +226,9 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Personal Email ID</dt>
+                <dt class="text-sm font-medium text-gray-500">
+                  Personal Email ID
+                </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="email"
@@ -219,7 +241,9 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Official Email ID</dt>
+                <dt class="text-sm font-medium text-gray-500">
+                  Official Email ID
+                </dt>
                 <dd class="mt-1 t ext-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="email"
@@ -248,7 +272,14 @@ const FillProfile = (props) => {
           </div>
         </div>
         <div className="w-full flex justify-center">
-          <button onClick={AddPersonalDetails} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
+          <button
+            onClick={AddPersonalDetails}
+            disabled={isDisabled}
+            style={{ cursor: isDisabled ? "not-allowed" : "pointer" }}
+            className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg"
+          >
+            Submit
+          </button>
         </div>
       </div>
     </>
