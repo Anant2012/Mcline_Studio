@@ -157,7 +157,6 @@ const Project = () => {
     },
     {
       name: "Invoice Date",
-      // selector: (row) => row.invoice.amount,
       selector: (row) => row.invoice.invoice_date,
       sortable: true,
       width: "160px",
@@ -206,8 +205,9 @@ const Project = () => {
   };
   const filterByProperty = (prop) => {
     const startingComp =
-      prop === "invoice_amount" ? startingAmount : startingDate;
-    const endingComp = prop === "invoice_amount" ? endingAmount : endingDate;
+      prop === "invoice_amount" ? Number(startingAmount) : startingDate;
+    const endingComp =
+      prop === "invoice_amount" ? Number(endingAmount) : endingDate;
     if (!startingComp || !endingComp) {
       alert("Select all filters");
       return;
