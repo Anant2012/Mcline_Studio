@@ -115,6 +115,7 @@ function AdminProject() {
       selector: (row) => row.email_to,
       sortable: true,
       width: "160px",
+      wrap: true
     },
     {
       name: "Email (cc)",
