@@ -60,7 +60,7 @@ function Addnewproject() {
       PO_number: po_no,
       bid: bid,
       hours: hours,
-      email_to: email_to,
+      email: email_to,
       email_cc: email_cc,
       company_name: company,
     }
