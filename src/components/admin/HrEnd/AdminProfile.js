@@ -101,9 +101,10 @@ const AdminProfile = () => {
                           <div className="w-1/2 flex justify-end">
                             <img
                               className="h-14 w-14 rounded-full"
-                              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                              src={`https://mc-line2.onrender.com/${data.personal_details.profile_image}`}
                               alt=""
                             />
+
                           </div>
                         </div>
                         <p class="leading-relaxed mb-3">
@@ -123,13 +124,6 @@ const AdminProfile = () => {
                               <div className="text-xs text-gray-800 font-medium">
                                 {data.personal_details.personal_email_id}
                               </div>
-
-                            <div className="w-1/2 flex justify-end">
-                              <img
-                                className="h-14 w-14 rounded-full"
-                                src={`https://mc-line2.onrender.com/${data.personal_details.profile_image}`}
-                                alt=""
-                              />
 
                             </div>
                           </div>

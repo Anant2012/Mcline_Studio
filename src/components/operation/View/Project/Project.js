@@ -28,7 +28,7 @@ const Project = () => {
         x.resource.toLowerCase().match(val.toLowerCase()) ||
         // x.description.toString().match(val.toLowerCase()) ||
         x.invoice_amount.toString().match(val.toLowerCase())
-    
+
     );
     setFilteredData(updatedData);
     setTotalPurchasedItems(
@@ -153,7 +153,7 @@ const Project = () => {
       name: "Description",
       selector: (row) => row.description,
       sortable: true,
-      width: "240px",
+      width: "340px",
     },
     // {
     //   name: "Reference",

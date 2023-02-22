@@ -145,7 +145,7 @@ function AdminProject() {
       name: "Description",
       selector: (row) => row.description,
       sortable: true,
-      width: "240px",
+      width: "340px",
     },
     // {
     //   name: "Reference",
