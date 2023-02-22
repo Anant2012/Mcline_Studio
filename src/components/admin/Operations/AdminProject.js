@@ -142,17 +142,23 @@ function AdminProject() {
       width: "160px",
     },
     {
-      name: "Reference",
-      selector: (row) => row.reference,
+      name: "Description",
+      selector: (row) => row.description,
       sortable: true,
-      width: "160px",
+      width: "240px",
     },
-    {
-      name: "Comments",
-      selector: (row) => row.comments,
-      sortable: true,
-      width: "160px",
-    },
+    // {
+    //   name: "Reference",
+    //   selector: (row) => row.reference,
+    //   sortable: true,
+    //   width: "160px",
+    // },
+    // {
+    //   name: "Comments",
+    //   selector: (row) => row.comments,
+    //   sortable: true,
+    //   width: "160px",
+    // },
     {
       name: "Invoice Date",
       selector: (row) => moment(row.date).format("DD/MM/YYYY"),

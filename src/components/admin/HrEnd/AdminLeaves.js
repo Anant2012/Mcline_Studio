@@ -27,6 +27,7 @@ function AdminLeaves() {
     { name: "Username", selector: (row) => row.user_id?.username, sortable: true },
     { name: "Date To", selector: (row) => row.leaves.date_to, sortable: true },
     { name: "Date From", selector: (row) => row.leaves.date_from, sortable: true },
+    { name: "Net Days", selector: (row) => row.leaves.net_days, sortable: true },
     { name: "Description", selector: (row) => row.leaves.description, sortable: true },
     {
       name: "Status",

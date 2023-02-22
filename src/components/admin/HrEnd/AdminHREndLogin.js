@@ -27,15 +27,14 @@ const AdminHREndLogin = (props) => {
           navigate("/admin/hrend");
         } else alert("User can not log in as hr");
       })
-      .catch((err) => alert(err));
+      .catch((err) => alert(err.response.data.msg));
   };
 
   return (
     <>
       <div
-        className={`${
-          props.hrLogin ? "hidden" : "block"
-        } h-[500px]  w-full sm:w-3/4 flex mx-auto sm:shadow-md my-12`}
+        className={`${props.hrLogin ? "hidden" : "block"
+          } h-[500px]  w-full sm:w-3/4 flex mx-auto sm:shadow-md my-12`}
       >
         <div className="w-full lg:w-1/2 my-auto">
           <div className="w-3/4 mx-auto">

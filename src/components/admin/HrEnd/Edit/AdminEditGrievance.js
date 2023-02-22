@@ -34,7 +34,7 @@ function AdminEditGrievance() {
             )
             .catch((err) => {
                 console.log("errorr", err);
-                alert(err);
+                alert(err.response.data.msg);
             });
     }
 
@@ -112,7 +112,7 @@ function AdminEditGrievance() {
                                             />
                                         </div>
                                     </div>
-                            
+
 
                                     <div class="p-2 w-full sm:w-1/2">
                                         <div class="relative">

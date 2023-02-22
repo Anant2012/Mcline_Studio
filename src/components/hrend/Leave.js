@@ -30,6 +30,7 @@ function Leave() {
   const columns = [
     { name: "To", selector: (row) => row.leaves.date_to, sortable: true },
     { name: "From", selector: (row) => row.leaves.date_from, sortable: true },
+    { name: "No. of Days", selector: (row) => row.leaves.net_days, sortable: true },
     { name: "Description", selector: (row) => row.leaves.description, sortable: true },
     {
       name: "Status",
@@ -68,7 +69,7 @@ function Leave() {
         setEmail("")
         setDescription("");
         setNet_days("")
-        setIsDisabled(true);
+        setIsDisabled(false);
       }
     } catch (error) {
       alert(error.response.data.msg);

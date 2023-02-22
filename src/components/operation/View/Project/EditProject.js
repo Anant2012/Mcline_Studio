@@ -32,9 +32,9 @@ function EditProject() {
     const [contact_person, setContact_person] = useState("");
     const [Phone_no, setPhone_no] = useState("");
     const [address, setAddress] = useState("");
-    const [reference, setReference] = useState("");
+    // const [reference, setReference] = useState("");
     const [resource, setResource] = useState("");
-    const [comment, setComment] = useState("");
+    // const [comment, setComment] = useState("");
     const [invoice_number, setInvoice_number] = useState("");
     const [invoice_date, setInvoice_date] = useState("");
     const [due_date, setDue_date] = useState("");
@@ -63,12 +63,12 @@ function EditProject() {
                 setSubmissionDate(moment(data.data.data.submission_date).format('YYYY-MM-DD'))
                 // setSubmissionDate((data.data.data.submission_date))
                 setHours(data.data.data.hours)
-                setComment(data.data.data.comments)
+                // setComment(data.data.data.comments)
                 setContact_person(data.data.data.contact_person)
                 setPo_no(data.data.data.PO_number)
                 setProjectName(data.data.data.project_name)
                 setNet_days(data.data.data.net_days)
-                setReference(data.data.data.reference)
+                // setReference(data.data.data.reference)
                 setResource(data.data.data.resource)
                 setEmail_to(data.data.data.email_to)
                 setEmail_cc(data.data.data.email_cc)
@@ -101,9 +101,9 @@ function EditProject() {
             project_name: projectName,
             approval_date: approvalDate,
             submission_date: submissionDate,
-            comments: comment,
+            // comments: comment,
             invoice_amount:invoice_amount,
-            reference: reference,
+            // reference: reference,
             address: address,
             phone: Phone_no,
             contact_person: contact_person,
@@ -121,6 +121,7 @@ function EditProject() {
             const response = await AxiosInstance.put(`/api/project/update/${projectId}`, data)
             if (response.status === 200) {
                 alert("✅ Project Updated SuccesFully");
+                setIsDisabled(false);
             }
             // setCode("");
         } catch (error) {
@@ -552,7 +553,7 @@ function EditProject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-1/4">
+                                    {/* <div class="p-2 w-full sm:w-1/4">
                                         <div class="relative">
                                             <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Reference
@@ -583,7 +584,7 @@ function EditProject() {
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div class="p-2 w-full">
                                         <div class="relative">

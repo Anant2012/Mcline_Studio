@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 
 const ViewProfile = (props) => {
-  // const { userId } = useSelector((state) => state);
-  const userId = "63f4a616420ae478e1842a4e";
+  const { userId } = useSelector((state) => state);
+  // const userId = "63f4a616420ae478e1842a4e";
   const [data, setData] = useState({});
 
   const navigate = useNavigate();
@@ -34,11 +34,11 @@ const ViewProfile = (props) => {
               </p>
             </div>
 
-            {/* <img
+            <img
               className="h-16 w-16 sm:h-24 sm:w-24 rounded-full"
-              src={data.profile_image}
+              src={`https://mc-line2.onrender.com/${data.profile_image}`}
               alt=""
-            /> */}
+            />
           </div>
         </div>
         <div class="border-t border-gray-300">

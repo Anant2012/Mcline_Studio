@@ -23,9 +23,9 @@ function Addnewproject() {
   const [contact_person, setContact_person] = useState("");
   const [Phone_no, setPhone_no] = useState("");
   const [address, setAddress] = useState("");
-  const [reference, setReference] = useState("");
+  // const [reference, setReference] = useState("");
   const [resource, setResource] = useState("");
-  const [comment, setComment] = useState("");
+  // const [comment, setComment] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
   const styles = {
@@ -48,8 +48,8 @@ function Addnewproject() {
       project_name: projectName,
       approval_date: approvalDate,
       submission_date: submissionDate,
-      comments: comment,
-      reference: reference,
+      // comments: comment,
+      // reference: reference,
       address: address,
       phone: Phone_no,
       invoice_amount:invoice_amount,
@@ -68,6 +68,7 @@ function Addnewproject() {
       const response = await AxiosInstance.post(`/api/project/create`, data)
       if (response.status === 201) {
         alert("✅ Project Added SuccesFully");
+        setIsDisabled(false);
       }
       // setCode("");
       setProject_status("");
@@ -79,12 +80,12 @@ function Addnewproject() {
       setPhone_no("")
       setSubmissionDate("")
       setHours("")
-      setComment("")
+      // setComment("")
       setContact_person("")
       setPo_no("")
       setProjectName("")
       setNet_days("")
-      setReference("")
+      // setReference("")
       setResource("")
       setEmail_cc("");
       setEmail_to("")
@@ -400,7 +401,7 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-                  <div class="p-2 w-full sm:w-1/4">
+                  {/* <div class="p-2 w-full sm:w-1/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
                         Reference
@@ -431,7 +432,7 @@ function Addnewproject() {
                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   <div class="p-2 w-full">
                     <div class="relative">

@@ -43,6 +43,7 @@ const FillProfile = (props) => {
       );
       if (response.status === 200) {
         alert("✅ Profile Added SuccesFully");
+        setIsDisabled(false);
       }
       setPersonal_contact_number("");
       setPersonal_email_id("");
