@@ -12,8 +12,7 @@ const EditProfile = () => {
     const [name, setName] = useState("");
     const [employee_code, setEmployee_code] = useState("");
     const [designation, setDesignation] = useState("");
-    const [grade, setGrade] = useState("");
-    const [reporting_manager, setReporting_manager] = useState("");
+    const [grade, setGrade] = useState("");    const [reporting_manager, setReporting_manager] = useState("");
     const [emergency_contact_number, setEmergency_contact_number] = useState("");
     const [blood_group, setBlood_group] = useState("");
     const [personal_contact_number, setPersonal_contact_number] = useState("");
@@ -163,6 +162,7 @@ return (
                                 id="text"
                                 value={grade}
                                 onChange={(e) => setGrade(e.target.value)}
+                                readOnly
                                 name="text"
                                 class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
                             />

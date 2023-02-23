@@ -20,7 +20,7 @@ const FillProfile = (props) => {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const AddPersonalDetails = async (e) => {
-    setIsDisabled(true);
+    // setIsDisabled(true);
     e.preventDefault();
     const formData = new FormData();
     formData.append("name", name);
@@ -43,19 +43,8 @@ const FillProfile = (props) => {
       );
       if (response.status === 200) {
         alert("✅ Profile Added SuccesFully");
-        setIsDisabled(false);
+        // setIsDisabled(false);
       }
-      setPersonal_contact_number("");
-      setPersonal_email_id("");
-      setOfficial_email_id("");
-      setCompany_id("");
-      setEmployee_code("");
-      setReporting_manager("");
-      setDesignation("");
-      setBlood_group("");
-      setEmergency_contact_number("");
-      setName("");
-      setGrade("");
     } catch (error) {
       alert(error.response.data.msg);
     }
