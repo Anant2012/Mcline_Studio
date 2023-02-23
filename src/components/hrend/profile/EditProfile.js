@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import moment from 'moment/moment';
 
 const EditProfile = () => {
     const { userId } = useSelector((state) => state);
@@ -18,6 +19,8 @@ const EditProfile = () => {
     const [blood_group, setBlood_group] = useState("");
     const [personal_contact_number, setPersonal_contact_number] = useState("");
     const [personal_email_id, setPersonal_email_id] = useState("");
+    const [extension, setExtension] = useState("");
+    const [joining_date, setJoining_date] = useState("");
     const [official_email_id, setOfficial_email_id] = useState("");
     const [company_id, setCompany_id] = useState("");
     const [profileImg, setProfileImg] = useState();
@@ -39,6 +42,8 @@ const EditProfile = () => {
         formData.append("personal_email_id", personal_email_id);
         formData.append("official_email_id", official_email_id);
         formData.append("company_id", company_id);
+        formData.append("joining_date", joining_date);
+        formData.append("extension", extension);
         formData.append("profile_image", profileImg);
         try {
             const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)
@@ -72,6 +77,8 @@ const EditProfile = () => {
                 setEmployee_code(response.data.data[0].personal_details.employee_code);
                 setReporting_manager(response.data.data[0].personal_details.reporting_manager)
                 setDesignation(response.data.data[0].personal_details.designation);
+                setExtension(response.data.data[0].personal_details.extension);
+                setJoining_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
                 setBlood_group(response.data.data[0].personal_details.blood_group);
                 setEmergency_contact_number(response.data.data[0].personal_details.emergency_contact_number);
                 setName(response.data.data[0].personal_details.name);
@@ -163,6 +170,35 @@ return (
                                 id="text"
                                 value={grade}
                                 onChange={(e) => setGrade(e.target.value)}
+                                readOnly
+                                name="text"
+                                class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                            />
+                        </dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Joining Date</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                            <input
+                                type="date"
+                                id="text"
+                                value={joining_date}
+                                onChange={(e) => setJoining_date(e.target.value)}
+    
+                                name="text"
+                                class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                            />
+                        </dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Grade</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                            <input
+                                type="text"
+                                id="text"
+                                value={extension}
+                                onChange={(e) => setExtension(e.target.value)}
+                                readOnly
                                 name="text"
                                 class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
                             />

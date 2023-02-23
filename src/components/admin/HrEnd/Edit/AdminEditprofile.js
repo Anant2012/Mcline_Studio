@@ -11,7 +11,10 @@ const AdminEditProfile = (props) => {
     const userId = params.userId;
 
     const [data, setData] = useState({});
-
+    const [extension, setExtension] = useState("");
+    const [joining_date, setJoining_date] = useState("");
+    const [grade, setGrade] = useState("");
+    const [reporting_manager, setReporting_manager] = useState("");
     const navigate = useNavigate();
 
     const onSubmitClick = () => {
@@ -86,10 +89,61 @@ const AdminEditProfile = (props) => {
                                 {data.designation}
                             </dd>
                         </div>
+
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Grade</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                {data.grade}
+                                <input
+                                    type="text"
+                                    id="text"
+                                    value={grade}
+                                    onChange={(e) => setGrade(e.target.value)}
+                                    
+                                    name="text"
+                                    class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                />
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Joining Date</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                <input
+                                    type="date"
+                                    id="text"
+                                    value={joining_date}
+                                    onChange={(e) => setJoining_date(e.target.value)}
+                                    
+                                    name="text"
+                                    class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                />
+                            </dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Reporting Manager</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                <input
+                                    type="text"
+                                    id="text"
+                                    value={reporting_manager}
+                                    onChange={(e) => setReporting_manager(e.target.value)}
+                                    
+                                    name="text"
+                                    class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                />
+                            </dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Extension</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                <input
+                                    type="text"
+                                    id="text"
+                                    value={extension}
+                                    onChange={(e) => setExtension(e.target.value)}
+                                    
+                                    name="text"
+                                    class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                />
                             </dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

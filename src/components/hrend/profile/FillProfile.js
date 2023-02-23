@@ -14,13 +14,15 @@ const FillProfile = (props) => {
   const [personal_contact_number, setPersonal_contact_number] = useState("");
   const [personal_email_id, setPersonal_email_id] = useState("");
   const [official_email_id, setOfficial_email_id] = useState("");
+  const [extension, setExtension] = useState("");
+  const [joining_date, setJoining_date] = useState("");
   const [company_id, setCompany_id] = useState("");
   const [profileImg, setProfileImg] = useState();
 
   const [isDisabled, setIsDisabled] = useState(false);
 
   const AddPersonalDetails = async (e) => {
-    setIsDisabled(true);
+    // setIsDisabled(true);
     e.preventDefault();
     const formData = new FormData();
     formData.append("name", name);
@@ -34,6 +36,8 @@ const FillProfile = (props) => {
     formData.append("personal_email_id", personal_email_id);
     formData.append("official_email_id", official_email_id);
     formData.append("company_id", company_id);
+    formData.append("joining_date", joining_date);
+    formData.append("extension", extension);
     formData.append("profile_image", profileImg);
 
     try {
@@ -43,19 +47,8 @@ const FillProfile = (props) => {
       );
       if (response.status === 200) {
         alert("✅ Profile Added SuccesFully");
-        setIsDisabled(false);
+        // setIsDisabled(false);
       }
-      setPersonal_contact_number("");
-      setPersonal_email_id("");
-      setOfficial_email_id("");
-      setCompany_id("");
-      setEmployee_code("");
-      setReporting_manager("");
-      setDesignation("");
-      setBlood_group("");
-      setEmergency_contact_number("");
-      setName("");
-      setGrade("");
     } catch (error) {
       alert(error.response.data.msg);
     }
@@ -161,6 +154,34 @@ const FillProfile = (props) => {
                     id="text"
                     value={grade}
                     onChange={(e) => setGrade(e.target.value)}
+                    name="text"
+                    class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </dd>
+              </div>
+              <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Joining Date</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                  <input
+                    type="date"
+                    id="text"
+                    value={joining_date}
+                    onChange={(e) => setJoining_date(e.target.value)}
+                    readOnly
+                    name="text"
+                    class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Grade</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                  <input
+                    type="text"
+                    id="text"
+                    value={extension}
+                    onChange={(e) => setExtension(e.target.value)}
+                    readOnly
                     name="text"
                     class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
