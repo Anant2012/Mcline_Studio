@@ -145,6 +145,7 @@ function AdminEditLeaves() {
                                             <select value={leave_status}
                                                 onChange={(e) => setLeave_status(e.target.value)} name="leave_status" id="leave_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <option value="" class="leading-7 text-sm text-gray-500" disabled selected>Select</option>
+                                                <option value="pending" class="leading-7 text-sm text-gray-600">Pending</option>
                                                 <option value="Granted" class="leading-7 text-sm text-gray-600">Granted</option>
                                                 <option value="Rejected" class="leading-7 text-sm text-gray-600">Rejected</option>
                                                 <option value="At Hold" class="leading-7 text-sm text-gray-600">At Hold</option>

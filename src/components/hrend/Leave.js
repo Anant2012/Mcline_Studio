@@ -15,6 +15,7 @@ function Leave() {
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+  const [totalLeaves, setTotalLeaves] = useState();
 
   const onSearch = (val) => {
     setFilteredData(
@@ -30,11 +31,20 @@ function Leave() {
   const columns = [
     { name: "To", selector: (row) => row.leaves.date_to, sortable: true },
     { name: "From", selector: (row) => row.leaves.date_from, sortable: true },
-    { name: "No. of Days", selector: (row) => row.leaves.net_days, sortable: true },
-    { name: "Description", selector: (row) => row.leaves.description, sortable: true },
+    {
+      name: "No. of Days",
+      selector: (row) => row.leaves.net_days,
+      sortable: true,
+    },
+    {
+      name: "Description",
+      selector: (row) => row.leaves.description,
+      sortable: true,
+    },
     {
       name: "Status",
-      selector: (row) => (row.leaves.status), sortable: true
+      selector: (row) => row.leaves.status,
+      sortable: true,
     },
   ];
 
@@ -58,30 +68,30 @@ function Leave() {
       date_from: date_from,
       description: description,
       net_days: net_days,
-      email_cc:email,
-    }
+      email_cc: email,
+    };
     try {
-      const response = await AxiosInstance.post(`/api/hr/ask/leaves/${userId}`, data)
+      const response = await AxiosInstance.post(
+        `/api/hr/ask/leaves/${userId}`,
+        data
+      );
       if (response.status === 200) {
         alert("✅ Leave Sent SuccesFully");
         setDate_to("");
         setDate_from("");
-        setEmail("")
+        setEmail("");
         setDescription("");
-        setNet_days("")
+        setNet_days("");
         setIsDisabled(false);
       }
     } catch (error) {
       alert(error.response.data.msg);
-
-    };
-  }
+    }
+  };
 
   const getData = async () => {
     AxiosInstance.get(`/api/hr/get/leaves/${userId}`)
-      .then((data) =>
-        setData(data.data.data)
-      )
+      .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
   };
 
@@ -91,6 +101,12 @@ function Leave() {
 
   useEffect(() => {
     setFilteredData(data);
+    setTotalLeaves(
+      data?.reduce(
+        (prevVal, currVal) => prevVal + Number(currVal.leaves.net_days),
+        0
+      )
+    );
   }, [data]);
 
   const styles = {
@@ -210,7 +226,14 @@ function Leave() {
                   </div>
                 </div>
                 <div class="p-2 w-full">
-                  <button onClick={AddLeave} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
+                  <button
+                    onClick={AddLeave}
+                    disabled={isDisabled}
+                    style={{ cursor: isDisabled ? "not-allowed" : "pointer" }}
+                    className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg"
+                  >
+                    Submit
+                  </button>
                 </div>
               </div>
             </div>

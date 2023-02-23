@@ -152,7 +152,7 @@ const Project = () => {
       name: "Description",
       selector: (row) => row.description,
       sortable: true,
-      width: "240px",
+      width: "340px",
     },
     // {
     //   name: "Reference",
@@ -241,7 +241,7 @@ const Project = () => {
   useEffect(() => {
     setFilteredData(data);
     setTotalPurchasedItems(
-      data?.reduce((acc, item) => acc + item.population, 0)
+      data?.reduce((acc, item) => acc + Number(item.invoice_amount), 0)
     );
   }, [data]);
 
