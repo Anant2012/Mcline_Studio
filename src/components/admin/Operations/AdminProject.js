@@ -48,7 +48,7 @@ function AdminProject() {
     );
     setFilteredData(updatedData);
     setTotalPurchasedItems(
-      updatedData?.reduce((acc, item) => acc + item.population, 0)
+      updatedData?.reduce((acc, item) => acc + item.invoice_amount, 0)
     );
   };
   const columns = [
@@ -77,6 +77,13 @@ function AdminProject() {
       width: "160px",
     },
 
+    {
+      name: "Invoice Amount",
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.invoice_amount}</button>,
+      sortable: true,
+      width: "160px",
+      wrap: true,
+    },
     {
       name: "Project",
       selector: (row) => <button onClick={() => EditProject(row)}>{row.project_name}</button>,
@@ -249,6 +256,7 @@ function AdminProject() {
   const EditProject = (row) => {
     navigate(`/admin/operation/edit/project/${row._id}`);
   };
+  
   const getData = async () => {
     AxiosInstance.get(`/api/admin/operations`)
       .then((data) => setData(data.data.projects))
@@ -275,7 +283,7 @@ function AdminProject() {
   useEffect(() => {
     setFilteredData(data);
     setTotalPurchasedItems(
-      data?.reduce((acc, item) => acc + item.population, 0)
+      data?.reduce((acc, item) => acc + Number(item.invoice_amount), 0)
     );
   }, [data]);
   // cons
