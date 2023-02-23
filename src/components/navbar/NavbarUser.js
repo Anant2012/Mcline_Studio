@@ -7,7 +7,7 @@ const NavbarUser = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { role, userId } = useSelector((state) => state);
+  const { role, userId, user } = useSelector((state) => state);
   const isLoggedIn = window.location.pathname.includes("/login")
     ? false
     : window.location.pathname === "/"
@@ -45,6 +45,7 @@ const NavbarUser = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            {isLoggedIn ? <p style={{ color: "white", marginRight: "10px" }}>Hi, {user} </p> : ""}
             <div className="relative">
               <div>
                 <button

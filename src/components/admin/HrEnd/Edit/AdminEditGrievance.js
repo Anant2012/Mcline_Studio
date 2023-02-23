@@ -3,11 +3,12 @@ import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment/moment";
 import background from "../../../../assets/images/AddNewBanner.jpg"
-
+import { useNavigate } from "react-router-dom";
 function AdminEditGrievance() {
     const URL = window.location.href;
     const params = useParams();
     const grId = params.grId;
+    const navigate = useNavigate();
     // console.log("Grievance", grId);
 
     const [username, setUsername] = useState("");
@@ -50,6 +51,7 @@ function AdminEditGrievance() {
             const response = await AxiosInstance.patch(`/api/admin/hr/greviances/${grId}`, data);
             if (response.status === 200) {
                 alert("✅Grievance updated successfully!!");
+                navigate('/admin/hr/grievance')
             }
         } catch (err) {
             console.log(err);
@@ -121,9 +123,10 @@ function AdminEditGrievance() {
                                             <select value={grievance_status}
                                                 onChange={(e) => setGrievance_status(e.target.value)} name="grievance_status" id="grievance_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <option value="" class="leading-7 text-sm text-gray-500" disabled selected>Select</option>
+                                                <option value="Pending" class="leading-7 text-sm text-gray-600">Pending</option>
                                                 <option value="Granted" class="leading-7 text-sm text-gray-600">Granted</option>
+                                                <option value="In Progress" class="leading-7 text-sm text-gray-600">In Progress</option>
                                                 <option value="Rejected" class="leading-7 text-sm text-gray-600">Rejected</option>
-                                                <option value="At Hold" class="leading-7 text-sm text-gray-600">At Hold</option>
                                             </select>
                                         </div>
                                     </div>

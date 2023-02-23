@@ -4,11 +4,13 @@ import { useParams } from "react-router";
 import moment from "moment/moment";
 import background from "../../../../assets/images/AddNewBanner.jpg"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AdminEditTickets() {
     const URL = window.location.href;
     const params = useParams();
     const ticketId = params.ticketId;
+    const navigate = useNavigate();
     // console.log("Ticket", ticketId);
 
     const [date, setDate] = useState("");
@@ -61,6 +63,7 @@ function AdminEditTickets() {
             // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
             if (response.status === 200) {
                 alert("✅ticket updated successfully!!");
+                navigate('/admin/hr/tickets')
             }
         } catch (err) {
             console.log(err);
@@ -150,8 +153,8 @@ function AdminEditTickets() {
                                                 onChange={(e) => setTicket_status(e.target.value)} name="ticket_status" id="ticket_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <option value="" class="leading-7 text-sm text-gray-500" disabled selected>Select</option>
                                                 <option value="Pending" class="leading-7 text-sm text-gray-600">Pending</option>
+                                                <option value="In Progress" class="leading-7 text-sm text-gray-600">In Progress</option>
                                                 <option value="Resolved" class="leading-7 text-sm text-gray-600">Resolved</option>
-                                                <option value="At Hold" class="leading-7 text-sm text-gray-600">At Hold</option>
                                             </select>
                                         </div>
                                     </div>

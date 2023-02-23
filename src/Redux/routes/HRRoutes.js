@@ -7,6 +7,7 @@ import AdminProfile from "../../components/admin/HrEnd/AdminProfile";
 import AdminTickets from "../../components/admin/HrEnd/AdminTickets";
 import AdminEditGrievance from "../../components/admin/HrEnd/Edit/AdminEditGrievance";
 import AdminEditLeaves from "../../components/admin/HrEnd/Edit/AdminEditLeaves";
+import AdminEditProfile from "../../components/admin/HrEnd/Edit/AdminEditprofile";
 import AdminEditTickets from "../../components/admin/HrEnd/Edit/AdminEditTicket";
 import { PrivateHRRoute } from "./PrivateRoute";
 
@@ -27,6 +28,15 @@ export const HRRoutes = [
     element={
       <PrivateHRRoute>
         <AdminProfile />
+      </PrivateHRRoute>
+    }
+  />,
+  <Route
+    exact
+    path="/admin/hr/profile/edit/:userId"
+    element={
+      <PrivateHRRoute>
+        <AdminEditProfile />
       </PrivateHRRoute>
     }
   />,
