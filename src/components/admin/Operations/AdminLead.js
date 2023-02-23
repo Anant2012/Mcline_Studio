@@ -11,8 +11,20 @@ function AdminLead() {
   const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
+  const [startingDate, setStartingDate] = useState();
+  const [endingDate, setEndingDate] = useState();
 
   const navigate = useNavigate();
+  const filterByDate = () => {
+    if (!startingDate || !endingDate) {
+      alert("Select all filters");
+      return;
+    }
+    const updatedData = data.filter(
+      (x) => x.date >= startingDate && x.date <= endingDate
+    );
+    setFilteredData(updatedData);
+  };
   const onSearch = (val) => {
     setFilteredData(
       data?.filter(
@@ -33,20 +45,20 @@ function AdminLead() {
     },
     {
       name: "Date",
-      selector: (row) => moment(row.date).format("DD/MM/YYYY"),
+      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.date).format("DD/MM/YYYY")}</button>,
       sortable: true,
     },
     // { name: "Date", selector: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
-    { name: "Company ", selector: (row) => row.company, sortable: true },
-    { name: "Person", selector: (row) => row.name, sortable: true },
+    { name: "Company ", selector: (row) => <button onClick={() => EditLead(row)}>{row.company}</button>, sortable: true },
+    { name: "Person", selector: (row) => <button onClick={() => EditLead(row)}>{row.name}</button>, sortable: true },
     {
       name: "Lead Status",
-      selector: (row) => row.status,
+      selector: (row) => <button onClick={() => EditLead(row)}>{row.status}</button>,
       sortable: true,
     },
     {
       name: "Description",
-      selector: (row) => row.description,
+      selector: (row) => <button onClick={() => EditLead(row)}>{row.description}</button>,
       sortable: true,
     },
     {
@@ -125,50 +137,52 @@ function AdminLead() {
           </h1>
         </div>
         <div className="bg-[#0483c8] pb-2 pt-4">
-          <div class="flex mx-4 flex-wrap ">
-            <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
-              <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
-                Filter:
-              </div>
-              <div class="flex flex-row justify-center item-center relative">
-                <label
-                  for="name"
-                  class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                >
-                  Date_from
-                </label>
-                <input
-                  type="date"
-                  id="name"
-                  name="name"
-                  class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-              <div class="flex flex-row justify-center item-center relative">
-                <label
-                  for="name"
-                  class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white"
-                >
-                  Date_to
-                </label>
-                <input
-                  type="date"
-                  id="name"
-                  name="name"
-                  class="w-full focus:bg-opacity-5 bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                />
+          <div class="lg:w-7/8 w-full mx-auto">
+            <div class="flex mx-4 flex-wrap ">
+              <div class="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
+                <div class="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
+                  Filter:
+                </div>
+                <div class="flex flex-row justify-center item-center relative">
+                  <label class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white">
+                    Date_from
+                  </label>
+                  <input
+                    type="date"
+                    onChange={(e) => setStartingDate(e.target.value)}
+                    class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </div>
+                <div class="flex flex-row justify-center item-center relative">
+                  <label class="my-auto px-4 py-3 title-font tracking-wider font-medium text-sm decoration-white">
+                    Date_to
+                  </label>
+                  <input
+                    type="date"
+                    onChange={(e) => setEndingDate(e.target.value)}
+                    class="w-full focus:bg-opacity-5 bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </div>
+
+                <div className="my-auto">
+                  <button
+                    onClick={filterByDate}
+                    className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
+                  >
+                    Find
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <div>
-            <Table
-              columns={columns}
-              data={filteredData}
-              onSearch={onSearch}
-              title="COUPON CODES LIST"
-            />
-          </div>
-          <DownloadTableIcon fileData={data} fileName="Coupon Codes" />
+
+          <Table
+            columns={columns}
+            data={filteredData}
+            onSearch={onSearch}
+            title="Selling Product List"
+          />
+          <DownloadTableIcon fileData={data} fileName="Lead" />
         </div>
       </div>
     </section>

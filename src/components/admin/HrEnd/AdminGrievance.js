@@ -18,20 +18,20 @@ function AdminGrievance() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.user_id?.username, sortable: true, width: "300px" },
+    { name: "Username", selector: (row) => <button onClick={() => EditGrievance(row)}>{row.user_id?.username}</button>, sortable: true, width: "300px" },
     {
-      name: "Date", selector: (row) => moment(row.created_At).format('DD/MM/YYYY'), sortable: true, width: "200px"
+      name: "Date", selector: (row) => <button onClick={() => EditGrievance(row)}>{moment(row.created_At).format('DD/MM/YYYY')}</button>, sortable: true, width: "200px"
     },
-    { name: "Description", selector: (row) => row.grievance.reason, sortable: true,wrap:true },
+    { name: "Description", selector: (row) => <button onClick={() => EditGrievance(row)}>{row.grievance.reason}</button>, sortable: true,wrap:true },
     {
       name: "Status",
-      selector: (row) => row.grievance.status, sortable: true, width: "200px"
+      selector: (row) => <button onClick={() => EditGrievance(row)}>{row.userngrievance.statusame}</button>, sortable: true, width: "200px"
     },
     {
       name: "Action",
       selector: (row) => (
         <div style={{ display: "flex" }}>
-          <FaUserEdit onClick={() => EditLead(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
+          <FaUserEdit onClick={() => EditGrievance(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
           <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
         </div>
       ),
@@ -39,8 +39,8 @@ function AdminGrievance() {
     },
   ];
 
-  const EditLead = (row) => {
-    // <EditLead leadId={row._id} />
+  const EditGrievance = (row) => {
+    // <EditGrievance leadId={row._id} />
     navigate(`/admin/hr/grievance/edit/${row._id}`);
     // console.log("lead",row._id)
   }

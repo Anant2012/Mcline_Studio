@@ -3,11 +3,12 @@ import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment";
 import background from "../../../../assets/images/AddNewBanner.jpg"
-
+import { useNavigate } from "react-router-dom";
 function AdminEditLeaves() {
     const URL = window.location.href;
     const params = useParams();
     const leaveId = params.leaveId;
+    const navigate = useNavigate();
     // console.log("Leaves", leaveId);
 
     const [date_to, setDate_to] = useState("");
@@ -57,6 +58,7 @@ function AdminEditLeaves() {
             // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
             if (response.status === 200) {
                 alert("✅Leave updated successfully!!");
+                navigate('/admin/hr/leaves')
             }
         } catch (err) {
             console.log(err);
@@ -148,7 +150,7 @@ function AdminEditLeaves() {
                                                 <option value="pending" class="leading-7 text-sm text-gray-600">Pending</option>
                                                 <option value="Granted" class="leading-7 text-sm text-gray-600">Granted</option>
                                                 <option value="Rejected" class="leading-7 text-sm text-gray-600">Rejected</option>
-                                                <option value="At Hold" class="leading-7 text-sm text-gray-600">At Hold</option>
+                                                {/* <option value="At Hold" class="leading-7 text-sm text-gray-600">At Hold</option> */}
                                             </select>
                                         </div>
                                     </div>

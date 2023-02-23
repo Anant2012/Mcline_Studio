@@ -38,33 +38,26 @@ const Project = () => {
   const columns = [
     {
       name: "Project Code",
-      selector: (row) => row.code,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.code}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Project Status",
-      selector: (row) => row.status,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.status}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Company Name",
-      selector: (row) => row.client_name,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.client_name}</button>,
       sortable: true,
       width: "160px",
     },
 
     {
       name: "Project",
-      selector: (row) => row.project_name,
-      sortable: true,
-      width: "160px",
-      wrap: true,
-    },
-    {
-      name: "Invoice Amount",
-      selector: (row) => row?.invoice_amount,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.project_name}</button>,
       sortable: true,
       width: "160px",
       wrap: true,
@@ -72,129 +65,130 @@ const Project = () => {
 
     {
       name: "Hours",
-      selector: (row) => row.hours,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.hours}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Bid",
-      selector: (row) => row.bid,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.bid}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Approval Date",
-      selector: (row) => row.approval_date,
+      selector: (row) => <button onClick={() => EditProject(row)}>{moment(row.approval_date).format("DD/MM/YYYY")}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Submission Date",
-      selector: (row) => row.submission_date,
+      selector: (row) => <button onClick={() => EditProject(row)}>{moment(row.submission_date).format("DD/MM/YYYY")}</button>,
+      // selector: (row) => moment(row.submission_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
     },
     {
       name: "P.O.No.",
       id: "person",
-      selector: (row) => row.PO_number,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.PO_number}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Net Days",
-      selector: (row) => row.net_days,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.net_days}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Type",
-      selector: (row) => row.invoice_type,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.invoice_type}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Resource",
-      selector: (row) => row.resource,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.resource}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Email (to)",
-      selector: (row) => row.email_to,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.email_to}</button>,
       sortable: true,
       width: "160px",
+      wrap: true
     },
     {
       name: "Email (cc)",
-      selector: (row) => row.email_cc,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.email_cc}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Contact Person",
-      selector: (row) => row.contact_person,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.contact_person}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Phone No.",
-      selector: (row) => row.phone,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.phone}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Address",
-      selector: (row) => row.address,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.address}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Description",
-      selector: (row) => row.description,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.description}</button>,
       sortable: true,
       width: "340px",
     },
     // {
     //   name: "Reference",
-    //   selector: (row) => row.reference,
+    //   selector: (row) => <button onClick={() => EditProject(row)}>{row.username}</button>.reference,
     //   sortable: true,
     //   width: "160px",
     // },
     // {
     //   name: "Comments",
-    //   selector: (row) => row.comments,
+    //   selector: (row) => <button onClick={() => EditProject(row)}>{row.username}</button>.comments,
     //   sortable: true,
     //   width: "160px",
     // },
     {
       name: "Invoice Date",
-      selector: (row) => row.invoice.invoice_date,
+      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.invoice?.invoice_date).format("DD/MM/YYYY")}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Number",
-      selector: (row) => row.invoice.invoice_number,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.invoice.invoice_number}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Due Date",
-      // selector: (row) => row.invoice.status,
-      selector: (row) => row.invoice.due_date,
+      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.invoice.due_date).format("DD/MM/YYYY")}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Status",
-      selector: (row) => row.invoice.status,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.invoice.status}</button>,
       sortable: true,
       width: "160px",
     },
     {
       name: "Payment Status",
-      selector: (row) => row.invoice.payment_status,
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.invoice.payment_status}</button>,
       sortable: true,
       width: "160px",
     },
@@ -206,6 +200,11 @@ const Project = () => {
             onClick={() => EditProject(row)}
             title="Edit"
             style={{ color: "blue", fontSize: "Large" }}
+          />
+          <MdDelete
+            onClick={() => DeleteProject(row)}
+            title="Delete"
+            style={{ color: "red", marginLeft: "10px", fontSize: "Large" }}
           />
         </div>
       ),

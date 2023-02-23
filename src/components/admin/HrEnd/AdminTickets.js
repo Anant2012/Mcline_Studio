@@ -18,20 +18,20 @@ function AdminTickets() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.user_id?.username, sortable: true },
+    { name: "Username", selector: (row) => <button onClick={() => EditTicket(row)}>{row.user_id?.username}</button>, sortable: true },
     {
-      name: "Date", selector: (row) => moment(row.created_at).format('DD/MM/YYYY'), sortable: true
+      name: "Date", selector: (row) => <button onClick={() => EditTicket(row)}>{moment(row.created_at).format('DD/MM/YYYY')}</button>, sortable: true
     },
     {
-      name: "Has Issue With", selector: (row) => (row.tickets.issued_item.map((data, index) => {
+      name: "Has Issue With", selector: (row) => <button onClick={() => EditTicket(row)}>{(row.tickets.issued_item.map((data, index) => {
         return (<>{row.tickets.issued_item.length != index + 1 ? `${data}, ` : `${data}`}</>)
-      })), sortable: true, wrap: true
+      }))}</button>, sortable: true, wrap: true
     },
 
-    { name: "Description", selector: (row) => row.tickets.reason, sortable: true },
+    { name: "Description", selector: (row) => <button onClick={() => EditTicket(row)}>{row.tickets.reason}</button>, sortable: true },
     {
       name: "Status",
-      selector: (row) => (row.status), sortable: true
+      selector: (row) => <button onClick={() => EditTicket(row)}>{(row.status)}</button>, sortable: true
     },
     {
       name: "Action",

@@ -24,11 +24,11 @@ function AdminLeaves() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => row.user_id?.username, sortable: true },
-    { name: "Date To", selector: (row) => row.leaves.date_to, sortable: true },
-    { name: "Date From", selector: (row) => row.leaves.date_from, sortable: true },
-    { name: "Net Days", selector: (row) => row.leaves.net_days, sortable: true },
-    { name: "Description", selector: (row) => row.leaves.description, sortable: true },
+    { name: "Username", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.user_id?.username}</button>, sortable: true },
+    { name: "Date To", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.leaves.date_to}</button>, sortable: true },
+    { name: "Date From", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.leaves.date_from}</button>, sortable: true },
+    { name: "Net Days", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.leaves.net_days}</button>, sortable: true },
+    { name: "Description", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.leaves.description}</button>, sortable: true },
     {
       name: "Status",
       selector: (row) => row.leaves.status, sortable: true
@@ -37,15 +37,15 @@ function AdminLeaves() {
       name: "Action",
       selector: (row) => (
         <div style={{ display: "flex" }}>
-          <FaUserEdit onClick={() => EditLead(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
+          <FaUserEdit onClick={() => EditLeaves(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
           <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
         </div>
       ),
     },
   ];
 
-  const EditLead = (row) => {
-    // <EditLead leadId={row._id} />
+  const EditLeaves = (row) => {
+    // <EditLeaves leadId={row._id} />
     navigate(`/admin/hr/leaves/edit/${row._id}`);
     // console.log("lead",row._id)
   }

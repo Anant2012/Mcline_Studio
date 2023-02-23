@@ -29,19 +29,20 @@ function Lead() {
   const columns = [
     {
       name: "Date",
-      selector: (row) => moment(row.date).format("DD/MM/YYYY"),
+      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.date).format("DD/MM/YYYY")}</button>,
       sortable: true,
     },
-    { name: "Company ", selector: (row) => row.company, sortable: true },
-    { name: "Person", selector: (row) => row.name, sortable: true },
+    // { name: "Date", selector: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
+    { name: "Company ", selector: (row) => <button onClick={() => EditLead(row)}>{row.company}</button>, sortable: true },
+    { name: "Person", selector: (row) => <button onClick={() => EditLead(row)}>{row.name}</button>, sortable: true },
     {
       name: "Lead Status",
-      selector: (row) => row.status,
+      selector: (row) => <button onClick={() => EditLead(row)}>{row.status}</button>,
       sortable: true,
     },
     {
       name: "Description",
-      selector: (row) => row.description,
+      selector: (row) => <button onClick={() => EditLead(row)}>{row.description}</button>,
       sortable: true,
     },
     {
@@ -52,6 +53,11 @@ function Lead() {
             onClick={() => EditLead(row)}
             title="Edit"
             style={{ color: "blue", fontSize: "Large" }}
+          />
+          <MdDelete
+            onClick={() => DeleteLead(row)}
+            title="Delete"
+            style={{ color: "red", marginLeft: "10px", fontSize: "Large" }}
           />
         </div>
       ),
