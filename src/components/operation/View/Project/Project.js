@@ -29,7 +29,6 @@ const Project = () => {
         x.resource.toLowerCase().match(val.toLowerCase()) ||
         // x.description.toString().match(val.toLowerCase()) ||
         x.invoice_amount.toString().match(val.toLowerCase())
-
     );
     setFilteredData(updatedData);
     setTotalPurchasedItems(
@@ -237,7 +236,7 @@ const Project = () => {
   useEffect(() => {
     setFilteredData(data);
     setTotalPurchasedItems(
-      data?.reduce((acc, item) => acc + item.population, 0)
+      data?.reduce((acc, item) => acc + Number(item.invoice_amount), 0)
     );
   }, [data]);
 
@@ -254,19 +253,28 @@ const Project = () => {
             <div class="lg:w-7/8 w-full mx-auto">
               <div class="flex mx-4 flex-wrap ">
                 <div class="w-full sm:w-2/3 flex-col p-2 flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
-                  <div className="grid grid-cols-5 grid-rows-3 gap-2">
-                    <div className="col-span-5 text-lg">Filter</div>
+                  <div className="grid grid-cols-6 grid-rows-3 gap-2">
+                    <div className="col-span-6 text-lg">Filter</div>
+{/* 
+                    width: 120px;
+        height: 30px;
+        border: 1px solid #999;
+        font-size: 18px;
+        color: #1c87c9;
+        background-color: #eee;
+        border-radius: 5px;
+        box-shadow: 4px 4px #ccc; */}
 
-                    <div className="my-auto text-right flex">
+                    <div className="my-auto items-center flex justify-center">
                       <select
-                        className="text-black text-sm h-2/5 mr-2 w-3/6"
+                        className="h-[30px] cursor-pointer outline-0 w-[180px] border-[0px] text-base text-white bg-transparent "
                         onChange={(e) => setFilterDate(e.target.value)}
                       >
-                        <option>Approval Date</option>
-                        <option>Submission Date</option>
+                        <option className="text-gray-600">Approval Date</option>
+                        <option className="text-gray-600">Submission Date</option>
                       </select>
-                      Date From
                     </div>
+                    <div className="my-auto text-right">Date From</div>
                     <div className="my-auto">
                       <input
                         type="date"
@@ -297,7 +305,7 @@ const Project = () => {
                       </button>
                     </div>
 
-                    <div className="my-auto text-right whitespace-nowrap">
+                    <div className="my-auto col-span-2 text-right whitespace-nowrap">
                       Invoice Amount From
                     </div>
                     <div className="my-auto">
@@ -333,11 +341,17 @@ const Project = () => {
               onSearch={onSearch}
               title="Selling Product List"
             />
-            <DownloadTableIcon fileData={data} fileName="Project" />
+            <div className="flex flex-row justify-between w-full justify-center items-center">
+              <div className="ml-4 text-slate-100 text-md font-normal">
+                Total Amount : {totalPurchasedItems}
+              </div>
+              <div>
+                <DownloadTableIcon fileData={data} fileName="Project" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div>Total Amount : {totalPurchasedItems}</div>
     </section>
   );
 };

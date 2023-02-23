@@ -31,11 +31,11 @@ const NavbarUser = () => {
   };
 
   return (
-    <nav className="w-full bg-gray-800">
+    <nav className="w-full bg-gray-300">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex flex-1 items-center sm:items-stretch justify-start">
-            <div className="flex flex-shrink-0 items-center text-white font-sans text-sm ml-4 sm:text-xl font-semibold subpixel-antialiased sm:tracking-wider ">
+            <div className="flex flex-shrink-0 items-center text-white font-sans text-sm ml-4 sm:text-xl font-semibold subpixel-antialiased sm:tracking-wider cursor-pointer">
               <img
                 src={`${background}`}
                 class="max-w-[120px] flex h-auto"
