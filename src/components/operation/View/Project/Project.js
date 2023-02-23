@@ -28,7 +28,6 @@ const Project = () => {
         x.resource.toLowerCase().match(val.toLowerCase()) ||
         // x.description.toString().match(val.toLowerCase()) ||
         x.invoice_amount.toString().match(val.toLowerCase())
-
     );
     setFilteredData(updatedData);
     setTotalPurchasedItems(
@@ -242,7 +241,7 @@ const Project = () => {
   useEffect(() => {
     setFilteredData(data);
     setTotalPurchasedItems(
-      data?.reduce((acc, item) => acc + item.population, 0)
+      data?.reduce((acc, item) => acc + Number(item.invoice_amount), 0)
     );
   }, [data]);
 
