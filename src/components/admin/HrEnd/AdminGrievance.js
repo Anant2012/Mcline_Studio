@@ -14,7 +14,13 @@ function AdminGrievance() {
   const navigate = useNavigate();
   const onSearch = (val) => {
     setFilteredData(
-      data.filter((x) => x.user_id.username.toLowerCase().match(val.toLowerCase()))
+      data?.filter(
+        (x) =>
+          x.user_id.username.toLowerCase().match(val.toLowerCase()) ||
+          x.date.toLowerCase().match(val.toLowerCase()) ||
+          // x.leaves.description.toLowerCase().match(val.toLowerCase()) ||
+          x.grievance.reason.toLowerCase().match(val.toLowerCase())
+      )
     );
   };
   const columns = [

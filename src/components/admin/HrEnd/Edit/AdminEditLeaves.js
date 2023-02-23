@@ -28,7 +28,7 @@ function AdminEditLeaves() {
     const getLeave = async (e) => {
         AxiosInstance.get(`/api/admin/hr/leaves/${leaveId}`)
             .then((data) => {
-                // console.log(data, "hjk")
+                console.log(moment(data.data.data.leaves.date_to).format('YYYY-MM-DD'), "hjk")
                 setUsername(data.data.data.user_id.username)
                 // setDate_to(data.data.data.leaves.date_to);
                 setDate_to(moment(data.data.data.leaves.date_to).format('YYYY-MM-DD'));

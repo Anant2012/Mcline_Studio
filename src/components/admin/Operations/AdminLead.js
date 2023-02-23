@@ -31,6 +31,7 @@ function AdminLead() {
         (x) =>
           x.company.toLowerCase().match(val.toLowerCase()) ||
           x.name.toLowerCase().match(val.toLowerCase()) ||
+          x.user_id.username.toLowerCase().match(val.toLowerCase()) ||
           x.status.toLowerCase().match(val.toLowerCase()) ||
           x.description.toString().match(val.toLowerCase()) ||
           x.date.toString().match(val.toLowerCase())
@@ -40,7 +41,7 @@ function AdminLead() {
   const columns = [
     {
       name: "Username",
-      selector: (row) => row.user_id?.username,
+      selector: (row) => <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>,
       sortable: true,
     },
     {

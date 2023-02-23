@@ -35,8 +35,16 @@ function AdminProject() {
     setFilteredData(updatedData);
   };
   const onSearch = (val) => {
-    const updatedData = data.filter((x) =>
-      x.name.toLowerCase().match(val.toLowerCase())
+    const updatedData = data?.filter(
+      (x) =>
+        
+        x.client_name.toLowerCase().match(val.toLowerCase()) ||
+        x.user_id.username.toLowerCase().match(val.toLowerCase()) ||
+        x.code.toLowerCase().match(val.toLowerCase()) ||
+        x.resource.toLowerCase().match(val.toLowerCase()) ||
+        // x.description.toString().match(val.toLowerCase()) ||
+        x.invoice_amount.toString().match(val.toLowerCase())
+
     );
     setFilteredData(updatedData);
     setTotalPurchasedItems(
