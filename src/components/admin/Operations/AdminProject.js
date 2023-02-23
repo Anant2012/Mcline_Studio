@@ -178,7 +178,7 @@ function AdminProject() {
     // },
     {
       name: "Invoice Date",
-      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.invoice?.invoice_date).format("DD/MM/YYYY")}</button>,
+      selector: (row) => <button onClick={() => EditProject(row)}>{moment(row.invoice?.invoice_date).format("DD/MM/YYYY")}</button>,
       sortable: true,
       width: "160px",
     },
@@ -190,7 +190,7 @@ function AdminProject() {
     },
     {
       name: "Due Date",
-      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.invoice.due_date).format("DD/MM/YYYY")}</button>,
+      selector: (row) => <button onClick={() => EditProject(row)}>{moment(row.invoice.due_date).format("DD/MM/YYYY")}</button>,
       sortable: true,
       width: "160px",
     },

@@ -6,6 +6,7 @@ import { FaUserEdit } from "react-icons/fa";
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import Table from "../../../../constant/Table/Table";
 import DownloadTableIcon from "../../../common/DownloadTableIcon";
+import moment from "moment";
 
 const Project = () => {
   const { userId } = useSelector((state) => state);
@@ -164,7 +165,7 @@ const Project = () => {
     // },
     {
       name: "Invoice Date",
-      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.invoice?.invoice_date).format("DD/MM/YYYY")}</button>,
+      selector: (row) => <button onClick={() => EditProject(row)}>{moment(row.invoice?.invoice_date).format("DD/MM/YYYY")}</button>,
       sortable: true,
       width: "160px",
     },
@@ -176,7 +177,7 @@ const Project = () => {
     },
     {
       name: "Due Date",
-      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.invoice.due_date).format("DD/MM/YYYY")}</button>,
+      selector: (row) => <button onClick={() => EditProject(row)}>{moment(row.invoice.due_date).format("DD/MM/YYYY")}</button>,
       sortable: true,
       width: "160px",
     },
@@ -200,11 +201,6 @@ const Project = () => {
             onClick={() => EditProject(row)}
             title="Edit"
             style={{ color: "blue", fontSize: "Large" }}
-          />
-          <MdDelete
-            onClick={() => DeleteProject(row)}
-            title="Delete"
-            style={{ color: "red", marginLeft: "10px", fontSize: "Large" }}
           />
         </div>
       ),
