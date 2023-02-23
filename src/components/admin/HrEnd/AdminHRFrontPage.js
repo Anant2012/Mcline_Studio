@@ -19,7 +19,7 @@ const AdminHRFrontPage = (props) => {
   };
   const columns = [
     { name: "Name", selector: (row) => row.user_id?.username, sortable: true },
-    { name: "Days", selector: (row) => row.leaves.net_days, sortable: true },
+    // { name: "Days", selector: (row) => row.leaves.net_days, sortable: true },
     { name: "Reason", selector: (row) => row.leaves.description, sortable: true },
   ];
   const EditUser = (row) => {
@@ -49,7 +49,7 @@ const AdminHRFrontPage = (props) => {
     <>
       <div class="flex flex-col text-center w-full mt-20">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-          Manage Your Workspace
+          McLiner Access Portal
         </h1>
         <p class="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
           Creating a Productive and Organized Environment
@@ -77,7 +77,7 @@ const AdminHRFrontPage = (props) => {
                 </div>
                 <div className="flex-grow">
                   <h2 className="text-gray-900 text-xl title-font font-medium mb-3">
-                    HR
+                    HumanConnect
                   </h2>
                   <p className="leading-relaxed text-sm text-base">
                     VHS cornhole pop-up, try-hard 8-bit iceland helvetica.

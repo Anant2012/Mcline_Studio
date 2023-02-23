@@ -199,7 +199,7 @@ function AdminEditLead() {
                                             <select value={lead_status}
                                                 onChange={(e) => setLead_Status(e.target.value)} name="lead_status" id="lead_status" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <option value="" class="leading-7 text-sm text-gray-500" disabled selected>Select</option>
-                                                <option value="Lead" class="leading-7 text-sm text-gray-600">Lead</option>
+                                                <option value="Cold" class="leading-7 text-sm text-gray-600">Cold</option>
                                                 <option value="Hot" class="leading-7 text-sm text-gray-600">Hot</option>
                                                 <option value="Warm" class="leading-7 text-sm text-gray-600">Warm</option>
                                             </select>
