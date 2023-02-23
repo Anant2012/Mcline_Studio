@@ -28,16 +28,52 @@ const AdminProfile = () => {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
-    { name: "Employee Code", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.employee_code}</button>, sortable: true },
-    { name: "Email", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.official_email_id}</button>, sortable: true },
-    { name: "Reporting Manager", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.reporting_manager}</button>, sortable: true },
+    {
+      name: "Username",
+      selector: (row) => (
+        <button onClick={() => EditLeaves(row)}>
+          {row.personal_details.name}
+        </button>
+      ),
+      sortable: true,
+    },
+    {
+      name: "Employee Code",
+      selector: (row) => (
+        <button onClick={() => EditLeaves(row)}>
+          {row.personal_details.employee_code}
+        </button>
+      ),
+      sortable: true,
+    },
+    {
+      name: "Email",
+      selector: (row) => (
+        <button onClick={() => EditLeaves(row)}>
+          {row.personal_details.official_email_id}
+        </button>
+      ),
+      sortable: true,
+    },
+    {
+      name: "Reporting Manager",
+      selector: (row) => (
+        <button onClick={() => EditLeaves(row)}>
+          {row.personal_details.reporting_manager}
+        </button>
+      ),
+      sortable: true,
+    },
     // { name: "Description", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
     {
       name: "Action",
       selector: (row) => (
         <div style={{ display: "flex" }}>
-          <FaUserEdit onClick={() => EditLeaves(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
+          <FaUserEdit
+            onClick={() => EditLeaves(row)}
+            title="Edit"
+            style={{ color: "blue", fontSize: "Large" }}
+          />
         </div>
       ),
     },
@@ -45,7 +81,7 @@ const AdminProfile = () => {
 
   const EditLeaves = (row) => {
     navigate(`/admin/hr/profile/edit/${row.user_id}`);
-  }
+  };
   const getData = async () => {
     AxiosInstance.get(`/api/admin/user`)
       .then((data) => {
@@ -66,15 +102,54 @@ const AdminProfile = () => {
 
   return (
     <>
-      <div class="flex flex-wrap mx-auto mt-20 w-3/4">
-        <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-[#0483c8] rounded-full ">
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-20 mx-auto">
+          <div>
+            <div className="bg-[#0483c8] pb-2 pt-4">
+              <div className="flex flex-wrap mx-auto">
+                <div className="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-[#0483c8] rounded-full ">
+                  <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">
+                    Profiles
+                  </h1>
+                  <div className="flex flex-row justify-center pr-8 items-center relative">
+                    <label
+                      for="name"
+                      className="my-auto px-4 pr py-3 title-font tracking-wider  text-sm decoration-white"
+                    >
+                      Search
+                    </label>
+                    <input
+                      type="text"
+                      onChange={(e) => onSearch(e.target.value)}
+                      id="name"
+                      name="name"
+                      className="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <Table
+                  columns={columns}
+                  data={filteredData}
+                  onSearch={onSearch}
+                  title="COUPON CODES LIST"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* <div className="flex flex-wrap mx-auto mt-20 w-3/4">
+        <div className="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-[#0483c8] rounded-full ">
           <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">
             Profiles
           </h1>
-          <div class="flex flex-row justify-center pr-8 items-center relative">
+          <div className="flex flex-row justify-center pr-8 items-center relative">
             <label
               for="name"
-              class="my-auto px-4 pr py-3 title-font tracking-wider  text-sm decoration-white"
+              className="my-auto px-4 pr py-3 title-font tracking-wider  text-sm decoration-white"
             >
               Search
             </label>
@@ -83,7 +158,7 @@ const AdminProfile = () => {
               onChange={(e) => onSearch(e.target.value)}
               id="name"
               name="name"
-              class="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
         </div>
@@ -96,7 +171,7 @@ const AdminProfile = () => {
           onSearch={onSearch}
           title="COUPON CODES LIST"
         />
-      </div>
+      </div> */}
     </>
   );
 };
