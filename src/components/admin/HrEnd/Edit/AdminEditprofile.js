@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
+import { useParams } from "react-router";
 
 const AdminEditProfile = (props) => {
-    const { userId } = useSelector((state) => state);
-    // const userId = "63f4a616420ae478e1842a4e";
+    // const { userId } = useSelector((state) => state);
+    const URL = window.location.href;
+    const params = useParams();
+    const userId = params.userId;
+
     const [data, setData] = useState({});
 
     const navigate = useNavigate();
