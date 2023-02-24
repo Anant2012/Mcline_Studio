@@ -5,6 +5,7 @@ import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import DownloadTableIcon from "../common/DownloadTableIcon";
 import { useSelector } from "react-redux";
 import TimeSheetModal from "./TimeSheetModal";
+import { useNavigate } from "react-router-dom";
 
 function Timesheet() {
   const { userId } = useSelector((state) => state);
@@ -13,6 +14,10 @@ function Timesheet() {
   const [editRow, setEditRow] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [totalTime, setTotalTime] = useState(0);
+  const [total, setTotal] = useState("00:00");
+  const [email, setEmail] = useState("");
+
+  const navigate = useNavigate();
 
   const toggleModal = () => setShowModal(!showModal);
   const handleAddClick = () => {
@@ -61,12 +66,25 @@ function Timesheet() {
 
   const DeleteAll = async (e) => {
     e.preventDefault();
+    const data = {
+      email_cc: email,
+    }
+    try {
+      const response = await AxiosInstance.put(`/api/user/timeline/email/${userId}`,data)
+      if (response.status === 200) {
+        alert("Email sent successfully");
+        setEmail("")
+      }
+    } catch (error) {
+      alert(error.response.data.msg);
+    }
     try {
       const response = await AxiosInstance.delete(
         `/api/user/timeline/delete/${userId}`
       );
       if (response.status === 200) {
-        alert("Email sent successfully");
+        // alert("Email sent successfully");
+        navigate("/")
       }
     } catch (error) {
       alert(error.response.data.msg);
@@ -143,8 +161,8 @@ function Timesheet() {
               <input
                 type="text"
                 id="email"
-                // value={email}
-                // onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 name="date"
                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 required

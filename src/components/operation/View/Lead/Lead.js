@@ -29,7 +29,7 @@ function Lead() {
   const columns = [
     {
       name: "Date",
-      selector: (row) => row.date,
+      selector: (row) => moment(row.date).format("DD/MM/YYYY"),
       format: (row) => (
         <button onClick={() => EditLead(row)}>
           {moment(row.date).format("DD/MM/YYYY")}

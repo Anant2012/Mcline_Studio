@@ -41,25 +41,29 @@ function AdminLead() {
   const columns = [
     {
       name: "Username",
-      selector: (row) => <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>,
+      selector: (row) => row.user_id.username,
+      format: (row) => <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>,
       sortable: true,
     },
     {
       name: "Date",
-      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.date).format("DD/MM/YYYY")}</button>,
+      selector: (row) => row.moment(row.date).format('DD/MM/YYYY'),
+      format: (row) => <button onClick={() => EditLead(row)}>{moment(row.date).format("DD/MM/YYYY")}</button>,
       sortable: true,
     },
-    // { name: "Date", selector: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
-    { name: "Company ", selector: (row) => <button onClick={() => EditLead(row)}>{row.company}</button>, sortable: true },
-    { name: "Person", selector: (row) => <button onClick={() => EditLead(row)}>{row.name}</button>, sortable: true },
+    // { name: "Date", format: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
+    { name: "Company ", selector: (row) => row.company, format: (row) => <button onClick={() => EditLead(row)}>{row.company}</button>, sortable: true },
+    { name: "Person", selector: (row) => row.name, format: (row) => <button onClick={() => EditLead(row)}>{row.name}</button>, sortable: true },
     {
       name: "Lead Status",
-      selector: (row) => <button onClick={() => EditLead(row)}>{row.status}</button>,
+      selector: (row) => row.status,
+      format: (row) => <button onClick={() => EditLead(row)}>{row.status}</button>,
       sortable: true,
     },
     {
       name: "Description",
-      selector: (row) => <button onClick={() => EditLead(row)}>{row.description}</button>,
+      selector: (row) => row.description,
+      format: (row) => <button onClick={() => EditLead(row)}>{row.description}</button>,
       sortable: true,
     },
     {
