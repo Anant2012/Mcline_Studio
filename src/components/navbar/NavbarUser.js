@@ -38,14 +38,16 @@ const NavbarUser = () => {
             <div className="flex flex-shrink-0 items-center text-white font-sans text-sm ml-4 sm:text-xl font-semibold subpixel-antialiased sm:tracking-wider cursor-pointer">
               <img
                 src={`${background}`}
-                class="max-w-[120px] flex h-auto"
+                className="max-w-[120px] flex h-auto"
                 alt="..."
                 onClick={redirectToHome}
               />
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            {isLoggedIn ? <p style={{ color: "white", marginRight: "10px" }}>Hi, {user} </p> : ""}
+          <div className="inset-y-0 right-0 flex flex-row items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className="mr-8">
+            {isLoggedIn ? <p className="text-gray-700 font-medium">Hi, {user} </p> : ""}
+            </div>
             <div className="relative">
               <div>
                 <button

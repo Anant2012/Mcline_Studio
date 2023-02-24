@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 const AdminOperationFrontPage = () => {
   return (
     <>
-      <div class="flex flex-col text-center w-full mt-20">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+      <div className="flex flex-col text-center w-full mt-20">
+        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
           McLiner Access Portal
         </h1>
-        <p class="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
+        <p className="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
           Creating a Productive and Organized Environment
         </p>
       </div>
@@ -50,7 +50,7 @@ const AdminOperationFrontPage = () => {
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
                                 stroke-width="2"
-                                class="w-5 h-5"
+                                className="w-5 h-5"
                                 viewBox="0 0 24 24"
                               >
                                 <circle cx="12" cy="5" r="3"></circle>
@@ -68,7 +68,7 @@ const AdminOperationFrontPage = () => {
                                 <Link to="/admin/operation/view/lead">
                                   <button
                                     type="button"
-                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-3"
+                                    className="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-3"
                                   >
                                     Lead
                                   </button>
@@ -76,7 +76,7 @@ const AdminOperationFrontPage = () => {
                                 <Link to="/admin/operation/view/project">
                                   <button
                                     type="button"
-                                    class="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    className="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                   >
                                     Project
                                   </button>

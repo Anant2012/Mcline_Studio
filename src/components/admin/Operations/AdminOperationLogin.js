@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { handleLogIn } from "../../../Redux/actions";
-import background from "../../auth/login_banner.jpg";
+import background from "./undraw_Access_account_re_8spm.png";
 
 const AdminOperationLogin = (props) => {
   const [email, setEmail] = useState("");
@@ -14,9 +14,9 @@ const AdminOperationLogin = (props) => {
 
   const styles = {
     backgroundImage: `url(${background})`,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     backgroundPosition: "center",
-    filter: "grayscale(60%)",
+    backgroundRepeat: "no-repeat"
   };
   const LoginUser = (e) => {
     const data = { email, password };
@@ -31,13 +31,11 @@ const AdminOperationLogin = (props) => {
   };
 
   return (
-    <div
-      className={`h-[500px]  w-full sm:w-3/4 flex mx-auto sm:shadow-md my-12`}
-    >
+    <div className="h-[500px]  w-full sm:w-3/4 bg-gray-100 border-[1px] border-[#047EC1] flex mx-auto sm:shadow-md my-32">
       <div className="w-full lg:w-1/2 my-auto">
         <div className="w-3/4 mx-auto">
           <h2 className="text-gray-900 text-2xl mb-1 font-medium title-font">
-            Operations LogIn
+            Operation LogIn
           </h2>
           <p className="leading-relaxed mb-5 text-gray-600">
             Please fill out the form to login
@@ -52,7 +50,7 @@ const AdminOperationLogin = (props) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               name="email"
-              className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-white rounded border border-gray-300 focus:border-[#0473af] focus:ring-1  focus:ring-[#0473af] text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
             />
           </div>
@@ -64,7 +62,7 @@ const AdminOperationLogin = (props) => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-white rounded border border-gray-300 focus:border-[#0473af] focus:ring-1  focus:ring-[#0473af] text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
             />
           </div>
@@ -77,10 +75,10 @@ const AdminOperationLogin = (props) => {
         </div>
       </div>
       <div
-        className="d-none lg:w-1/2  flex  justify-center items-center"
+        className="d-none lg:w-1/2 flex bg-white justify-center items-center"
         style={styles}
       >
-        <div className="w-3/4 backdrop-opacity-30 blur-[1px] h-3/4 mx-auto backdrop-grayscale bg-slate-800/40"></div>
+       
       </div>
     </div>
   );
