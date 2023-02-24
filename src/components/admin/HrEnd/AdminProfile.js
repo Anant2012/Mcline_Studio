@@ -28,43 +28,13 @@ const AdminProfile = () => {
     );
   };
   const columns = [
-    {
-      name: "Username",
-      selector: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.name}
-        </button>
-      ),
-      sortable: true,
-    },
-    {
-      name: "Employee Code",
-      selector: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.employee_code}
-        </button>
-      ),
-      sortable: true,
-    },
-    {
-      name: "Email",
-      selector: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.official_email_id}
-        </button>
-      ),
-      sortable: true,
-    },
-    {
-      name: "Reporting Manager",
-      selector: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.reporting_manager}
-        </button>
-      ),
-      sortable: true,
-    },
-    // { name: "Description", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
+
+    { name: "Username", selector:(row)=>row.personal_details.name,format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
+    { name: "Employee Code",selector:(row)=>row.personal_details.employee_code, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.employee_code}</button>, sortable: true },
+    { name: "Email",selector:(row)=>row.personal_details.official_email_id, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.official_email_id}</button>, sortable: true },
+    { name: "Reporting Manager",selector:(row)=>row.personal_details.reporting_manager, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.reporting_manager}</button>, sortable: true },
+    // { name: "Description", format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
+
     {
       name: "Action",
       selector: (row) => (

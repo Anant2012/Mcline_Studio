@@ -21,7 +21,7 @@ function AdminUserList(props) {
     setFilteredData(updatedData);
   };
   const columns = [
-    { name: "Name", selector: (row) => <button onClick={() => EditLead(row)}>{row.username}</button>, sortable: true },
+    { name: "Name" , selector: (row) => <button onClick={() => EditLead(row)}>{row.username}</button>, sortable: true },
     { name: "Email", selector: (row) => <button onClick={() => EditLead(row)}>{row.email}</button>, sortable: true },
     { name: "Phone", selector: (row) => <button onClick={() => EditLead(row)}>{row.phone}</button>, sortable: true },
     { name: "Password", selector: (row) => <button onClick={() => EditLead(row)}>{row.password}</button>, sortable: true },
