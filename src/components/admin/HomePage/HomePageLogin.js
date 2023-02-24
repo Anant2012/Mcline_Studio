@@ -14,8 +14,9 @@ const HomePageLogin = () => {
 
   const styles = {
     backgroundImage: `url(${background})`,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     backgroundPosition: "center",
+    backgroundRepeat: "no-repeat"
   };
 
   const LoginUser = () => {
@@ -35,7 +36,7 @@ const HomePageLogin = () => {
       className="h-[500px]  w-full sm:w-3/4 bg-gray-100 border-[1px] border-[#047EC1] flex mx-auto sm:shadow-md my-32"
     >
       <div
-        className="d-none lg:w-1/2  flex  justify-center items-center"
+        className="d-none lg:w-1/2  bg-white flex  justify-center items-center"
         style={styles}
       >
         

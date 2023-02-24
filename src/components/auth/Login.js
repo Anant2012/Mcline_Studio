@@ -15,8 +15,9 @@ const Login = () => {
 
   const styles = {
     backgroundImage: `url(${background})`,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     backgroundPosition: "center",
+    backgroundRepeat: "no-repeat"
   };
 
   const LoginUser = () => {
@@ -83,7 +84,7 @@ const Login = () => {
           </div>
         </div>
         <div
-          className="d-none lg:w-1/2  flex  justify-center items-center"
+          className="d-none lg:w-1/2  flex bg-white  justify-center items-center"
           style={styles}
         >
           

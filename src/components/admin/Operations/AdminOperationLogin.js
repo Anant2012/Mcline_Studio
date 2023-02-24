@@ -14,8 +14,9 @@ const AdminOperationLogin = (props) => {
 
   const styles = {
     backgroundImage: `url(${background})`,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     backgroundPosition: "center",
+    backgroundRepeat: "no-repeat"
   };
   const LoginUser = (e) => {
     const data = { email, password };
@@ -74,7 +75,7 @@ const AdminOperationLogin = (props) => {
         </div>
       </div>
       <div
-        className="d-none lg:w-1/2 flex  justify-center items-center"
+        className="d-none lg:w-1/2 flex bg-white justify-center items-center"
         style={styles}
       >
        

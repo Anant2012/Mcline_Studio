@@ -14,8 +14,9 @@ const AdminHREndLogin = (props) => {
 
   const styles = {
     backgroundImage: `url(${background})`,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     backgroundPosition: "center",
+    backgroundRepeat: "no-repeat"
   };
   const LoginUser = () => {
     const data = { email, password };
@@ -87,7 +88,7 @@ const AdminHREndLogin = (props) => {
           </div>
         </div>
         <div
-          className="d-none lg:w-1/2  flex  justify-center items-center"
+          className="d-none lg:w-1/2 bg-white flex  justify-center items-center"
           style={styles}
         >
         </div>
