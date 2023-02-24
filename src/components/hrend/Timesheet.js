@@ -14,6 +14,7 @@ function Timesheet() {
   const [data, setData] = useState();
   const [editRow, setEditRow] = useState();
   const [filteredData, setFilteredData] = useState(data);
+  const [total, setTotal] = useState("00:00");
 
   const navigate = useNavigate();
 
@@ -26,7 +27,18 @@ function Timesheet() {
     setEditRow(row);
     toggleModal();
   };
-
+  
+  const onSearch = (val) => {
+    const updatedData = data?.filter(
+      (x) =>
+        x.task.toLowerCase().match(val.toLowerCase()) ||
+        x.time.toLowerCase().match(val.toLowerCase())
+    );
+    setFilteredData(updatedData);
+    setTotal(
+      updatedData?.reduce((acc, item) => acc + item.time, 0)
+    );
+  };
   const columns = [
     { name: "SNo", cell: (row, index) => index + 1, sortable: true },
     {
@@ -66,21 +78,34 @@ function Timesheet() {
   const DeleteAll = async (e) => {
     e.preventDefault();
     try {
-      const response = await AxiosInstance.delete(`/api/user/timeline/delete/${userId}`)
+      const response = await AxiosInstance.put(`/api/user/timeline/email/${userId}`)
       if (response.status === 200) {
         alert("Email sent successfully")
       }
-
-
     } catch (error) {
       alert(error.response.data.msg);
 
     };
+    // try {
+
+    //   const response = await AxiosInstance.delete(`/api/user/timeline/delete/${userId}`)
+    //   if (response.status === 200) {
+    //     alert("Email sent successfully")
+    //   }
+
+
+    // } catch (error) {
+    //   alert(error.response.data.msg);
+
+    // };
   }
 
 
   useEffect(() => {
     setFilteredData(data);
+    setTotal(
+      data?.reduce((acc, item) => acc +Number(item.time), 0)
+    );
   }, [data]);
 
   return (
@@ -115,6 +140,7 @@ function Timesheet() {
                 // onSearch={onSearch}
                 title="COUPON CODES LIST"
               />
+              Total : {total}
               <DownloadTableIcon fileData={data} fileName="Timesheet" />
             </div>
           </div>

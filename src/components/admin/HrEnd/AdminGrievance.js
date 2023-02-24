@@ -31,7 +31,7 @@ function AdminGrievance() {
     { name: "Description", selector: (row) => <button onClick={() => EditGrievance(row)}>{row.grievance.reason}</button>, sortable: true,wrap:true },
     {
       name: "Status",
-      selector: (row) => <button onClick={() => EditGrievance(row)}>{row.userngrievance.statusame}</button>, sortable: true, width: "200px"
+      selector: (row) => <button onClick={() => EditGrievance(row)}>{row.grievance.status}</button>, sortable: true, width: "200px"
     },
     {
       name: "Action",

@@ -16,6 +16,8 @@ function AdminEditLeaves() {
     const [username, setUsername] = useState("");
     const [leave_status, setLeave_status] = useState("");
     const [description, setDescription] = useState("");
+    const [remarks, setRemarks] = useState("");
+    const [paid_leave, setPaid_leave] = useState("");
 
 
     const styles = {
@@ -53,6 +55,7 @@ function AdminEditLeaves() {
                 name: username,
                 status: leave_status,
                 description: description,
+                remarks:remarks,
             }
             const response = await AxiosInstance.patch(`api/admin/hr/leaves/${leaveId}`, data);
             // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
@@ -152,6 +155,42 @@ function AdminEditLeaves() {
                                                 <option value="Rejected" class="leading-7 text-sm text-gray-600">Rejected</option>
                                                 {/* <option value="At Hold" class="leading-7 text-sm text-gray-600">At Hold</option> */}
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                Paid leaves left
+                                            </label>
+                                            <input
+                                                type="number"
+                                                // placeholder={}
+                                                required
+                                                value={paid_leave}
+                                                onChange={(e) => setPaid_leave(e.target.value)}
+                                                id="date"
+                                                name="date"
+                                               
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-3/4">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                Remark
+                                            </label>
+                                            <input
+                                                type="text"
+                                                // placeholder={date_from}
+                                                required
+                                                value={remarks}
+                                                onChange={(e) => setRemarks(e.target.value)}
+                                                id="date"
+                                                name="date"
+                                                
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
                                         </div>
                                     </div>
 

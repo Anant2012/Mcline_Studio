@@ -83,6 +83,7 @@ const EditProfile = () => {
                 setEmergency_contact_number(response.data.data[0].personal_details.emergency_contact_number);
                 setName(response.data.data[0].personal_details.name);
                 setGrade(response.data.data[0].personal_details.grade);
+                setProfileImg(response.data.data[0].personal_details.profile_image)
             }
         } catch (error) {
             alert(error);
