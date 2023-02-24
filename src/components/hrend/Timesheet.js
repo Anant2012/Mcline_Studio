@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import DownloadTableIcon from "../common/DownloadTableIcon";
 import { useSelector } from "react-redux";
 import TimeSheetModal from "./TimeSheetModal";
 
-// automatically SNo. at last
 function Timesheet() {
   const { userId } = useSelector((state) => state);
   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState();
   const [editRow, setEditRow] = useState();
   const [filteredData, setFilteredData] = useState(data);
-
-  const navigate = useNavigate();
+  const [totalTime, setTotalTime] = useState(0);
 
   const toggleModal = () => setShowModal(!showModal);
   const handleAddClick = () => {
@@ -58,7 +55,6 @@ function Timesheet() {
     AxiosInstance.get(`/api/user/timeline/get/${userId}`)
       .then((res) => setData(res.data.data[0].timeLine))
       .catch((err) => console.log("errorr", err));
-
   }, [showModal]);
 
   // };
@@ -66,21 +62,29 @@ function Timesheet() {
   const DeleteAll = async (e) => {
     e.preventDefault();
     try {
-      const response = await AxiosInstance.delete(`/api/user/timeline/delete/${userId}`)
+      const response = await AxiosInstance.delete(
+        `/api/user/timeline/delete/${userId}`
+      );
       if (response.status === 200) {
-        alert("Email sent successfully")
+        alert("Email sent successfully");
       }
-
-
     } catch (error) {
       alert(error.response.data.msg);
+    }
+  };
 
-    };
-  }
-
-
+  const addTime = (time, timeToadd) => {
+    var timeToAddArr = timeToadd.split(":");
+    var minutes = 60 * parseInt(timeToAddArr[0]) + parseInt(timeToAddArr[1]);
+    return time + minutes;
+  };
   useEffect(() => {
     setFilteredData(data);
+    const totalMinutes = data?.reduce(
+      (acc, item) => addTime(acc, item.time),
+      0
+    );
+    setTotalTime(`${parseInt(totalMinutes / 60)}:${totalMinutes % 60}`);
   }, [data]);
 
   return (
@@ -115,10 +119,10 @@ function Timesheet() {
                 // onSearch={onSearch}
                 title="COUPON CODES LIST"
               />
+              <div className="text-white">Total time : {totalTime}</div>
               <DownloadTableIcon fileData={data} fileName="Timesheet" />
             </div>
           </div>
-
         </div>
         {showModal && (
           <TimeSheetModal
@@ -128,7 +132,6 @@ function Timesheet() {
           />
         )}
       </section>
-
 
       <div class="w-full px-4 mb-12 mx-auto">
         <div class="flex flex-wrap ">
@@ -160,9 +163,7 @@ function Timesheet() {
           </div>
         </div>
       </div>
-
     </>
-
   );
 }
 
