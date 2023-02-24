@@ -67,13 +67,8 @@ const TimeSheetModal = ({ toggleModal, userId, row }) => {
                 name="text"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-<<<<<<< HEAD
-                className="w-1/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ml-1"
-                placeholder="Time"
-=======
                 class="w-1/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ml-1"
                 placeholder="Time (Hrs:Mins)"
->>>>>>> a81116f894abdcbea577dffdab5b302d5ff0f0e3
               />
             </div>
           </div>
