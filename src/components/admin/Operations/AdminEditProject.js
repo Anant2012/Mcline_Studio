@@ -39,6 +39,7 @@ function Addnewproject() {
     const [invoice_date, setInvoice_date] = useState("");
     const [due_date, setDue_date] = useState("");
     const [invoice_status, setInvoice_status] = useState("");
+    const [username, setUsername] = useState("");
     const [payment_status, setPayment_status] = useState("");
     const [isDisabled, setIsDisabled] = useState(false);
 
@@ -52,6 +53,7 @@ function Addnewproject() {
     const getLead = async (e) => {
         AxiosInstance.get(`/api/project/get/project/${projectId}`)
             .then((data) => {
+                setUsername(data.data.data.user_id.username)
                 setProject_status(data.data.data.status);
                 setCode(data.data.data.code);
                 setCompany(data.data.data.client_name)
@@ -151,11 +153,27 @@ function Addnewproject() {
                             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Projects from Multiple Sources</p>
                         </div>
                         <form>
-                            <div className="w-3/4 mx-auto">
-                                <div className="flex flex-wrap -m-2">
-                                    <div className="p-2 w-full sm:w-1/4">
-                                        <div className="relative">
-                                            <label for="date" className="leading-7 text-sm text-gray-600">
+                            <div class="w-3/4 mx-auto">
+                                <div class="flex flex-wrap -m-2">
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
+                                                User Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={username}
+                                                onChange={(e) => setUsername(e.target.value)}
+                                                id="date"
+                                                name="date"
+                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full sm:w-1/4">
+                                        <div class="relative">
+                                            <label for="date" class="leading-7 text-sm text-gray-600">
                                                 Code
                                             </label>
                                             <input
@@ -543,9 +561,9 @@ function Addnewproject() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="p-2 w-full sm:w-1/4">
-                                        <div className="relative">
-                                            <label for="projectName" className="leading-7 text-sm text-gray-600">
+                                    <div class="p-2 w-full sm:w-3/4">
+                                        <div class="relative">
+                                            <label for="projectName" class="leading-7 text-sm text-gray-600">
                                                 Address
                                             </label>
                                             <input

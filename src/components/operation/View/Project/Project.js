@@ -56,6 +56,13 @@ const Project = () => {
     },
 
     {
+      name: "Invoice Amount",
+      selector: (row) => <button onClick={() => EditProject(row)}>{row.invoice_amount}</button>,
+      sortable: true,
+      width: "160px",
+      wrap: true,
+    },
+    {
       name: "Project",
       selector: (row) => <button onClick={() => EditProject(row)}>{row.project_name}</button>,
       sortable: true,

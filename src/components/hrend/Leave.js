@@ -42,6 +42,11 @@ function Leave() {
       sortable: true,
     },
     {
+      name: "Remarks",
+      selector: (row) => row.leaves.remarks,
+      sortable: true,
+    },
+    {
       name: "Status",
       selector: (row) => row.leaves.status,
       sortable: true,

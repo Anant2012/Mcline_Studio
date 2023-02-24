@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import DownloadTableIcon from "../common/DownloadTableIcon";
 import { useSelector } from "react-redux";
 import TimeSheetModal from "./TimeSheetModal";
 
-// automatically SNo. at last
 function Timesheet() {
   const { userId } = useSelector((state) => state);
   const [showModal, setShowModal] = useState(false);
@@ -16,6 +14,8 @@ function Timesheet() {
   const [filteredData, setFilteredData] = useState(data);
 
   const navigate = useNavigate();
+  const [totalTime, setTotalTime] = useState(0);
+
 
   const toggleModal = () => setShowModal(!showModal);
   const handleAddClick = () => {
@@ -26,7 +26,18 @@ function Timesheet() {
     setEditRow(row);
     toggleModal();
   };
-
+  
+  const onSearch = (val) => {
+    const updatedData = data?.filter(
+      (x) =>
+        x.task.toLowerCase().match(val.toLowerCase()) ||
+        x.time.toLowerCase().match(val.toLowerCase())
+    );
+    setFilteredData(updatedData);
+    setTotal(
+      updatedData?.reduce((acc, item) => acc + item.time, 0)
+    );
+  };
   const columns = [
     { name: "SNo", cell: (row, index) => index + 1, sortable: true },
     {
@@ -65,9 +76,19 @@ function Timesheet() {
   const DeleteAll = async (e) => {
     e.preventDefault();
     try {
+<<<<<<< HEAD
       const response = await AxiosInstance.delete(
         `/api/user/timeline/delete/${userId}`
       );
+=======
+
+      const response = await AxiosInstance.put(`/api/user/timeline/email/${userId}`)
+
+      const response = await AxiosInstance.delete(
+        `/api/user/timeline/delete/${userId}`
+      );
+
+>>>>>>> a81116f894abdcbea577dffdab5b302d5ff0f0e3
       if (response.status === 200) {
         alert("Email sent successfully");
       }
@@ -75,9 +96,46 @@ function Timesheet() {
       alert(error.response.data.msg);
     }
   };
+<<<<<<< HEAD
+=======
+
+
+    };
+    // try {
+
+    //   const response = await AxiosInstance.delete(`/api/user/timeline/delete/${userId}`)
+    //   if (response.status === 200) {
+    //     alert("Email sent successfully")
+    //   }
+
+
+    // } catch (error) {
+    //   alert(error.response.data.msg);
+
+    // };
+  }
+
+>>>>>>> a81116f894abdcbea577dffdab5b302d5ff0f0e3
 
   useEffect(() => {
     setFilteredData(data);
+    setTotal(
+      data?.reduce((acc, item) => acc +Number(item.time), 0)
+    );
+
+  const addTime = (time, timeToadd) => {
+    var timeToAddArr = timeToadd.split(":");
+    var minutes = 60 * parseInt(timeToAddArr[0]) + parseInt(timeToAddArr[1]);
+    return time + minutes;
+  };
+  useEffect(() => {
+    setFilteredData(data);
+    const totalMinutes = data?.reduce(
+      (acc, item) => addTime(acc, item.time),
+      0
+    );
+    setTotalTime(`${parseInt(totalMinutes / 60)}:${totalMinutes % 60}`);
+
   }, [data]);
 
   return (
@@ -112,6 +170,10 @@ function Timesheet() {
                 // onSearch={onSearch}
                 title="COUPON CODES LIST"
               />
+
+
+              <div className="text-white">Total time : {totalTime}</div>
+
               <DownloadTableIcon fileData={data} fileName="Timesheet" />
             </div>
           </div>
@@ -125,6 +187,7 @@ function Timesheet() {
         )}
       </section>
 
+<<<<<<< HEAD
       <div className="w-full px-4 mb-12 mx-auto">
         <div className="flex flex-wrap ">
           <div className="p-2 w-full flex items-center justify-center">
@@ -148,6 +211,24 @@ function Timesheet() {
               >
                 Send Mail
               </button>
+=======
+      <div class="w-full px-4 mb-12 mx-auto">
+        <div class="flex flex-wrap ">
+          <div class="p-2 w-full">
+            <div class="relative">
+              <label for="message" class="leading-7 text-md text-gray-900">
+                Send Email To
+              </label>
+              <input
+                type="text"
+                id="email"
+                // value={email}
+                // onChange={(e) => setEmail(e.target.value)}
+                name="date"
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                required
+              />
+>>>>>>> a81116f894abdcbea577dffdab5b302d5ff0f0e3
             </div>
           </div>
         </div>

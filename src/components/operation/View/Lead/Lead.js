@@ -29,20 +29,46 @@ function Lead() {
   const columns = [
     {
       name: "Date",
-      selector: (row) => <button onClick={() => EditLead(row)}>{moment(row.date).format("DD/MM/YYYY")}</button>,
+      selector: (row) => row.date,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>
+          {moment(row.date).format("DD/MM/YYYY")}
+        </button>
+      ),
       sortable: true,
     },
-    // { name: "Date", selector: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
-    { name: "Company ", selector: (row) => <button onClick={() => EditLead(row)}>{row.company}</button>, sortable: true },
-    { name: "Person", selector: (row) => <button onClick={() => EditLead(row)}>{row.name}</button>, sortable: true },
+    {
+      name: "Company ",
+      selector: (row) => row.company,
+      format: (row) => (
+        <button onClick={() => EditLead(row)} key={row.company}>
+          {row.company}
+        </button>
+      ),
+      sortable: true,
+    },
+    {
+      name: "Person",
+      selector: (row) => row.name,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>{row.name}</button>
+      ),
+      sortable: true,
+    },
     {
       name: "Lead Status",
-      selector: (row) => <button onClick={() => EditLead(row)}>{row.status}</button>,
+      selector: (row) => row.status,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>{row.status}</button>
+      ),
       sortable: true,
     },
     {
       name: "Description",
-      selector: (row) => <button onClick={() => EditLead(row)}>{row.description}</button>,
+      selector: (row) => row.description,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>{row.description}</button>
+      ),
       sortable: true,
     },
     {
@@ -74,11 +100,6 @@ function Lead() {
     );
     setFilteredData(updatedData);
   };
-  const getData = async () => {
-    AxiosInstance.get(`/api/leads/get/user/${userId}`)
-      .then((data) => setData(data.data.data))
-      .catch((err) => console.log("errorr", err));
-  };
   const DeleteLead = async (row) => {
     try {
       const response = await AxiosInstance.delete(
@@ -94,8 +115,9 @@ function Lead() {
     }
   };
   useEffect(() => {
-    getData();
-    // FilterLead();
+    AxiosInstance.get(`/api/leads/get/user/${userId}`)
+      .then((data) => setData(data.data.data))
+      .catch((err) => console.log("errorr", err));
   }, []);
 
   useEffect(() => {
