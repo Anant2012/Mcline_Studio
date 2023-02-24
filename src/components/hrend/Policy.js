@@ -3,7 +3,7 @@ import React from 'react'
 function Policy() {
   return (
     <div className='w-3/4 mx-auto my-16'>
-        <h1 class="sm:text-3xl mx-auto text-center text-xl font-medium title-font mb-8">
+        <h1 className="sm:text-3xl mx-auto text-center text-xl font-medium title-font mb-8">
           Privacy and Policy
         </h1>
         <div className='text-md text-justify text-gray-700 my-4 leading-relaxed'>
