@@ -18,7 +18,7 @@ const AdminEditProfile = (props) => {
     const navigate = useNavigate();
 
     const onSubmitClick = () => {
-        navigate(`/hr/edit_profile`);
+        // navigate(`/hr/edit_profile`);
     };
     // const EditPersonalDetails = async (e) => {
     //     setIsDisabled(true);

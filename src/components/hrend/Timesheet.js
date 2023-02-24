@@ -12,7 +12,10 @@ function Timesheet() {
   const [data, setData] = useState();
   const [editRow, setEditRow] = useState();
   const [filteredData, setFilteredData] = useState(data);
+
+  const navigate = useNavigate();
   const [totalTime, setTotalTime] = useState(0);
+
 
   const toggleModal = () => setShowModal(!showModal);
   const handleAddClick = () => {
@@ -23,7 +26,18 @@ function Timesheet() {
     setEditRow(row);
     toggleModal();
   };
-
+  
+  const onSearch = (val) => {
+    const updatedData = data?.filter(
+      (x) =>
+        x.task.toLowerCase().match(val.toLowerCase()) ||
+        x.time.toLowerCase().match(val.toLowerCase())
+    );
+    setFilteredData(updatedData);
+    setTotal(
+      updatedData?.reduce((acc, item) => acc + item.time, 0)
+    );
+  };
   const columns = [
     { name: "SNo", cell: (row, index) => index + 1, sortable: true },
     {
@@ -62,9 +76,13 @@ function Timesheet() {
   const DeleteAll = async (e) => {
     e.preventDefault();
     try {
+
+      const response = await AxiosInstance.put(`/api/user/timeline/email/${userId}`)
+
       const response = await AxiosInstance.delete(
         `/api/user/timeline/delete/${userId}`
       );
+
       if (response.status === 200) {
         alert("Email sent successfully");
       }
@@ -72,6 +90,29 @@ function Timesheet() {
       alert(error.response.data.msg);
     }
   };
+
+
+    };
+    // try {
+
+    //   const response = await AxiosInstance.delete(`/api/user/timeline/delete/${userId}`)
+    //   if (response.status === 200) {
+    //     alert("Email sent successfully")
+    //   }
+
+
+    // } catch (error) {
+    //   alert(error.response.data.msg);
+
+    // };
+  }
+
+
+  useEffect(() => {
+    setFilteredData(data);
+    setTotal(
+      data?.reduce((acc, item) => acc +Number(item.time), 0)
+    );
 
   const addTime = (time, timeToadd) => {
     var timeToAddArr = timeToadd.split(":");
@@ -85,6 +126,7 @@ function Timesheet() {
       0
     );
     setTotalTime(`${parseInt(totalMinutes / 60)}:${totalMinutes % 60}`);
+
   }, [data]);
 
   return (
@@ -119,7 +161,10 @@ function Timesheet() {
                 // onSearch={onSearch}
                 title="COUPON CODES LIST"
               />
+
+
               <div className="text-white">Total time : {totalTime}</div>
+
               <DownloadTableIcon fileData={data} fileName="Timesheet" />
             </div>
           </div>
