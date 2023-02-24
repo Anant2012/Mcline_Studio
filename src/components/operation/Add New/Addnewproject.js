@@ -385,15 +385,9 @@ function Addnewproject() {
                       />
                     </div>
                   </div>
-<<<<<<< HEAD
-                  <div className="p-2 w-full sm:w-3/4">
-                    <div className="relative">
-                      <label for="projectName" className="leading-7 text-sm text-gray-600">
-=======
                   <div class="p-2 w-full sm:w-3/4">
                     <div class="relative">
                       <label for="projectName" class="leading-7 text-sm text-gray-600">
->>>>>>> a81116f894abdcbea577dffdab5b302d5ff0f0e3
                         Address
                       </label>
                       <input
