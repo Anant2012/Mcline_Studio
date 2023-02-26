@@ -10,6 +10,7 @@ export function handleLogIn({ user }, userRole) {
     localStorage.setItem("userId", JSON.stringify(user._id));
     localStorage.setItem("role", JSON.stringify(userRole));
     localStorage.setItem("status", JSON.stringify(user.status));
+    localStorage.setItem("totalLeaves", JSON.stringify(user.totalLeaves));
     dispatch(logInSuccess(user, userRole));
   };
 }
@@ -28,6 +29,7 @@ export function logOut() {
   localStorage.setItem("userId", null);
   localStorage.setItem("role", null);
   localStorage.setItem("status", null);
+  localStorage.setItem("totalLeaves", null);
   return {
     type: LOG_OUT,
   };
