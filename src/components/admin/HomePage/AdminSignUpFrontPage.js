@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import background from '../../auth/signup_banner.jpg';
+import background from './signup.gif';
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 
 const SignUp = (props) => {
@@ -12,9 +12,9 @@ const SignUp = (props) => {
 
   const styles = {
     backgroundImage: `url(${background})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    filter: 'grayscale(60%)'
+    backgroundSize: "contain",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
   };
 
   const AddUser = async (e) => {
@@ -45,9 +45,11 @@ const SignUp = (props) => {
 
   return (
     <>
-      <div className={`h-[700px] w-full sm:w-3/4 flex mx-auto sm:shadow-md  my-12 ${(props.adminLogin) ? "hidden" : "block"}`}>
-        <div className=" lg:w-1/2  flex  justify-center items-center" style={styles}>
-          <div className="w-3/4 backdrop-opacity-30 blur-[1px] h-3/4 mx-auto backdrop-grayscale-10 bg-slate-800/40"></div>
+    <div className={`h-[800px]  w-full sm:w-3/4 bg-gray-100 border-[1px] border-[#047EC1] flex mx-auto sm:shadow-md my-32  ${(props.adminLogin) ? "hidden" : "block"}`}>
+    <div
+          className="d-none lg:w-1/2  flex bg-white  justify-center items-center"
+          style={styles}
+        >
         </div>
         <div className='w-full lg:w-1/2 my-auto'>
           <form>

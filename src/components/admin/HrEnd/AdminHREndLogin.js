@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { handleLogIn } from "../../../Redux/actions";
-import background from "./undraw_Fingerprint_login_re_t71l.png";
+import background from "./AdminHR.gif";
 
 const AdminHREndLogin = (props) => {
   const [email, setEmail] = useState("");

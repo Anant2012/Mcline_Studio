@@ -20,12 +20,10 @@ const Table = ({
     const customStyles = {
         cells: {
             style: {
-                borderRightColor: "#d0d0d0",
+                borderRightColor: "#bae6fd",
                 borderRightStyle: "solid",
                 borderRightWidth: "1px",
                 justifyContent: "center",
-
-                
             },
         },
         contextMenu: {
@@ -45,24 +43,24 @@ const Table = ({
                 ":last-of-type": {
                     borderBottomStyle: "solid",
                     borderBottomWidth: "1px",
-                    borderBottomColor: "black",
+                    borderBottomColor: "#0ea5e9",
                 },
                 "&:nth-of-type(odd)": {
-                    backgroundColor: "#e2e4ff",
+                    backgroundColor: "#dbeafe",
                 },
             },
             highlightOnHoverStyle: {
                 color: "#095e88",
-                backgroundColor: "#b9beff",
+                backgroundColor: "#bfdbfe",
                 transitionDuration: "0.15s",
                 transitionProperty: "background-color",
-                borderBottomColor: "gray",
+                borderBottomColor: "#0ea5e9",
                 fontWeight: "bold",
             },
         },
         headCells: {
             style: {
-                borderRightColor: "#d0d0d0",
+                borderRightColor: "#bae6fd",
                 borderRightStyle: "solid",
                 borderRightWidth: "1px",
                 backgroundColor: "white",
@@ -71,18 +69,19 @@ const Table = ({
         },
         headRow: {
             style: {
-                borderTopColor: "#d0d0d0",
+                color: "#0369a1",
+                borderTopColor: "#0ea5e9",
                 borderTopStyle: "solid",
                 borderTopWidth: "1px",
                 backgroundColor: "#f4f4f4",
                 borderBottomWidth: "1px",
-                borderBottomColor: "black",
+                borderBottomColor: "#0ea5e9",
                 borderBottomStyle: "solid",
             },
         },
         pagination: {
             style: {
-                backgroundColor: "#e7e7e7"
+                backgroundColor: "#e5e7eb"
             }
         }
     };

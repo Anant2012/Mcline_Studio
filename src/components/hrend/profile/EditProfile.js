@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -95,43 +95,57 @@ const EditProfile = () => {
         getData();
     }, []);
 
-    return (
-        <>
+const imgBoxRef = useRef(null);
+const [showImage, setShowImage] = useState(0);
+function handleImageChange(event) {
+    console.log('uploaded');
+    imgBoxRef.current.style.backgroundImage = `url(${URL.createObjectURL(event.target.files[0])})`;
+    imgBoxRef.current.style.backgroundSize = "contain";
+    imgBoxRef.current.style.backgroundPosition =  "center";
+    imgBoxRef.current.style.backgroundRepeat = "no-repeat";
+    setShowImage(1);
+}
 
-            <div className="flex flex-col text-center w-full my-8">
-                <h1 className="sm:text-4xl text-3xl font-medium title-font text-gray-900">
-                    Fill your Details
-                </h1>
-            </div>
-            <div className="overflow-hidden bg-white w-11/12 sm:w-3/4 mx-auto shadow-md sm:rounded-lg border border-gray-300">
-                <div className="px-4 py-5 sm:px-6">
-                    <div className="flex justify-between items-center">
-                        <div>
-                            <div className="relative flex flex-row  items-center">
-                                <label for="date" className="text-sm font-medium mr-2 text-gray-500">
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="text"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    name="text"
-                                    className="w-3/4 sm:w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                />
-                            </div>
+return (
+    <>
+       
+        <div className="flex flex-col text-center w-full my-8">
+            <h1 className="sm:text-4xl text-3xl font-medium title-font text-gray-900">
+                Fill your Details
+            </h1>
+        </div>
+        <div className="overflow-hidden bg-white w-11/12 sm:w-3/4 mx-auto shadow-md sm:rounded-lg border border-gray-300">
+            <div className="px-4 py-5 sm:px-6">
+                <div className="flex justify-between items-center">
+                    <div>
+                        <div className="relative flex flex-row  items-center">
+                            <label for="date" className="text-sm font-medium mr-2 text-gray-500">
+                                Name
+                            </label>
+                            <input
+                                type="text"
+                                id="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                name="text"
+                                className="w-3/4 sm:w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                            />
+
                         </div>
 
-                        <div className="center h-full flex items-center justify-center">
-                            <div className="form-input w-[350px]  flex justify-end bg-white">
-                                <label for="file-ip-1" className=' block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white' onClick={(e) => {
-                                    e.preventDefault();
-                                    ProfileImageClick();
-                                    // console.log("Clicked");
-                                }}>Edit Image</label>
-                                <input className='file-upload-input hidden' id="imgBtn" type="file" accept="image/*" onChange={(e) => setProfileImg(e.target.files[0])}
-                                />
-                            </div>
+                    <div className="center h-full flex items-center justify-center">
+                        <div className='flex flex-col justify-center '>                        
+                        <div id="imgBox" ref={imgBoxRef} className={`${showImage?"block":"hidden"} mb-2 h-[150px] bg-transparent`}></div>
+                        <div className={`form-input w-[350px] flex ${showImage?"justify-center":"justify-end"} bg-white`}>
+                            <label for="file-ip-1" className=' block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white' onClick={(e) => {
+                                e.preventDefault();
+                                ProfileImageClick();
+                                // console.log("Clicked");
+                            }} >Upload Image</label>
+                            <input className='file-upload-input hidden' id="imgBtn" type="file" accept="image/*"  onChange={handleImageChange} 
+                            />
+
+                        </div>
                         </div>
                     </div>
                 </div>

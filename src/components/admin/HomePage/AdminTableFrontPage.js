@@ -11,7 +11,7 @@ function AdminTableFrontPage() {
         adminLogin={adminLogin}
         setAdminLogin={setAdminLogin}
       />
-      <AdminUserList setAdminLogin={setAdminLogin} />
+      <AdminUserList setAdminLogin={setAdminLogin} adminLogin={adminLogin}/>
     </>
   );
 }

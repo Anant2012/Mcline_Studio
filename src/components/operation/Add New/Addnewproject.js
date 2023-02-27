@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
-import background from './AddNewProject.jpg';
+import background1 from './AddNewProject1.png';
+import background2 from './AddNewProject2.png';
 import { useSelector } from "react-redux";
 function Addnewproject() {
   const { userId } = useSelector((state) => state);
@@ -29,10 +30,11 @@ function Addnewproject() {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const styles = {
-    backgroundImage: `url(${background})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    filter: 'grayscale(0%)'
+    backgroundImage: `url(${background1}), url(${background2})`,
+    // backgroundPosition: "bottom, top",
+    backgroundPosition: '50% 70%, 50% 20%',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat'
   };
 
   const AddProject = async (e) => {
@@ -100,7 +102,7 @@ function Addnewproject() {
   }
   return (
     <div className="flex flex-nowrap">
-      <div className=" bg-slate-700 m-2 rounded-lg hidden sm:block sm:w-1/4" style={styles}></div>
+      <div className=" bg-white my-2 ml-28 mr-2 rounded-lg hidden sm:block sm:w-1/4" style={styles}></div>
       <div className="flex w-full sm:w-3/4 justify-center item-center">
         <section className="text-gray-600 body-font relative">
           <div className="container px-5 py-20 mx-auto">
