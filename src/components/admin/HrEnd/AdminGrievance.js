@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table";
 
 function AdminGrievance() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  // const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -24,14 +24,15 @@ function AdminGrievance() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => <button onClick={() => EditGrievance(row)}>{row.user_id?.username}</button>, sortable: true, width: "300px" },
+    { name: "Username", selector: (row) => row.user_id.username, format: (row) => <button onClick={() => EditGrievance(row)}>{row.user_id?.username}</button>, sortable: true, width: "300px" },
     {
-      name: "Date", selector: (row) => <button onClick={() => EditGrievance(row)}>{moment(row.created_At).format('DD/MM/YYYY')}</button>, sortable: true, width: "200px"
+      name: "Date", selector: (row) => row.created_At, format: (row) => <button onClick={() => EditGrievance(row)}>{moment(row.created_At).format('DD/MM/YYYY')}</button>, sortable: true, width: "200px"
     },
-    { name: "Description", selector: (row) => <button onClick={() => EditGrievance(row)}>{row.grievance.reason}</button>, sortable: true,wrap:true },
+    { name: "Description", selector: (row) => row.grievance.reason, format: (row) => <button onClick={() => EditGrievance(row)}>{row.grievance.reason}</button>, sortable: true,wrap:true },
     {
       name: "Status",
-      selector: (row) => <button onClick={() => EditGrievance(row)}>{row.grievance.status}</button>, sortable: true, width: "200px"
+      selector: (row) => row.status,
+      format: (row) => <button onClick={() => EditGrievance(row)}>{row.grievance.status}</button>, sortable: true, width: "200px"
     },
     {
       name: "Action",

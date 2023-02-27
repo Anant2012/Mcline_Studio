@@ -37,6 +37,7 @@ function AdminEditLeaves() {
                 setDate_from(moment(data.data.data.leaves.date_from).format('YYYY-MM-DD'));
                 setDescription(data.data.data.leaves.description);
                 setLeave_status(data.data.data.leaves.status);
+                setPaid_leave(data.data.data.leaves.user_id?.paid_leave);
                 // alert("✅ Leaves Edited SuccesFully");
             }
             )
@@ -55,7 +56,8 @@ function AdminEditLeaves() {
                 name: username,
                 status: leave_status,
                 description: description,
-                remarks:remarks,
+                remarks: remarks,
+                totalLeaves:paid_leave,
             }
             const response = await AxiosInstance.patch(`api/admin/hr/leaves/${leaveId}`, data);
             // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);

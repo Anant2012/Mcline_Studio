@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const FillProfile = (props) => {
   const { userId } = useSelector((state) => state);
@@ -20,6 +21,7 @@ const FillProfile = (props) => {
   const [profileImg, setProfileImg] = useState();
 
   const [isDisabled, setIsDisabled] = useState(false);
+  const navigate = useNavigate();
 
   const AddPersonalDetails = async (e) => {
     // setIsDisabled(true);
@@ -48,6 +50,7 @@ const FillProfile = (props) => {
       if (response.status === 200) {
         alert("✅ Profile Added SuccesFully");
         // setIsDisabled(false);
+        navigate("/")
       }
     } catch (error) {
       alert(error.response.data.msg);
@@ -111,7 +114,7 @@ const FillProfile = (props) => {
                     className="file-upload-input hidden"
                     id="imgBtn"
                     type="file"
-                    accept="Image/"
+                    accept="image/*"
                     onChange={(e) => setProfileImg(e.target.files[0])}
                   />
                 </div>

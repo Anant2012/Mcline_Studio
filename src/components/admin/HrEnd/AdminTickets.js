@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
 
 function AdminTickets() {
-  const User_id = "63e9411577ce9c26f2babd4f";
+  // const User_id = "63e9411577ce9c26f2babd4f";
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -24,20 +24,20 @@ function AdminTickets() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => <button onClick={() => EditTicket(row)}>{row.user_id?.username}</button>, sortable: true },
+    { name: "Username", selector: (row) => row.user_id.username, format: (row) => <button onClick={() => EditTicket(row)}>{row.user_id?.username}</button>, sortable: true },
     {
-      name: "Date", selector: (row) => <button onClick={() => EditTicket(row)}>{moment(row.created_at).format('DD/MM/YYYY')}</button>, sortable: true
+      name: "Date", selector: (row) => row.created_at, format: (row) => <button onClick={() => EditTicket(row)}>{moment(row.created_at).format('DD/MM/YYYY')}</button>, sortable: true
     },
     {
-      name: "Has Issue With", selector: (row) => <button onClick={() => EditTicket(row)}>{(row.tickets.issued_item.map((data, index) => {
+      name: "Has Issue With", selector: (row) => row.tickets.issued_item, format: (row) => <button onClick={() => EditTicket(row)}>{(row.tickets.issued_item.map((data, index) => {
         return (<>{row.tickets.issued_item.length != index + 1 ? `${data}, ` : `${data}`}</>)
       }))}</button>, sortable: true, wrap: true
     },
 
-    { name: "Description", selector: (row) => <button onClick={() => EditTicket(row)}>{row.tickets.reason}</button>, sortable: true },
+    { name: "Description", selector: (row) => row.tickets.reason, format: (row) => <button onClick={() => EditTicket(row)}>{row.tickets.reason}</button>, sortable: true },
     {
-      name: "Status",
-      selector: (row) => <button onClick={() => EditTicket(row)}>{(row.status)}</button>, sortable: true
+      name: "Status", selector: (row) => row.status,
+      format: (row) => <button onClick={() => EditTicket(row)}>{(row.status)}</button>, sortable: true
     },
     {
       name: "Action",

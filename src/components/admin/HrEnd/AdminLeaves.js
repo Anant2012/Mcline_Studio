@@ -6,9 +6,9 @@ import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
-import { useSelector } from "react-redux";
+// import { useformat } from "react-redux";
 function AdminLeaves() {
-  const { userId } = useSelector((state) => state);
+  // const { userId } = useformat((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const navigate = useNavigate();
@@ -24,28 +24,29 @@ function AdminLeaves() {
     );
   };
   const columns = [
-    { name: "Username", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.user_id?.username}</button>, sortable: true },
-    { name: "Date To", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.leaves.date_to}</button>, sortable: true },
-    { name: "Date From", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.leaves.date_from}</button>, sortable: true },
-    { name: "Net Days", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.leaves.net_days}</button>, sortable: true },
-    { name: "Description", selector: (row) => <button onClick={() => EditLeaves(row)}>{row.leaves.description}</button>, sortable: true },
+    { name: "Username", selector:(row)=>row.user_id.username, format: (row) => <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>, sortable: true },
+    { name: "Date To", selector:(row)=>row.leaves.date_to, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.date_to}</button>, sortable: true },
+    { name: "Date From", selector:(row)=>row.leaves.date_from, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.date_from}</button>, sortable: true },
+    { name: "Net Days", selector:(row)=>row.leaves.net_days, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.net_days}</button>, sortable: true },
+    { name: "Description", selector:(row)=>row.leaves.description, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.description}</button>, sortable: true },
     {
       name: "Status",
-      selector: (row) => row.leaves.status, sortable: true
+      selector: (row) => row.status,
+      format: (row) => row.leaves.status, sortable: true
     },
     {
       name: "Action",
       selector: (row) => (
         <div style={{ display: "flex" }}>
-          <FaUserEdit onClick={() => EditLeaves(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
+          <FaUserEdit onClick={() => EditLead(row)} title="Edit" style={{ color: "blue", fontSize: "Large" }} />
           <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
         </div>
       ),
     },
   ];
 
-  const EditLeaves = (row) => {
-    // <EditLeaves leadId={row._id} />
+  const EditLead = (row) => {
+    // <EditLead leadId={row._id} />
     navigate(`/admin/hr/leaves/edit/${row._id}`);
     // console.log("lead",row._id)
   }
