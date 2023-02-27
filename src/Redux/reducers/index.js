@@ -5,6 +5,8 @@ const initialAuthState = {
   userId: JSON.parse(localStorage.getItem("userId")),
   role: JSON.parse(localStorage.getItem("role")),
   status: JSON.parse(localStorage.getItem("status")),
+  totalLeaves: JSON.parse(localStorage.getItem("totalLeaves")),
+
 };
 
 export default function AuthReducer(
@@ -18,6 +20,7 @@ export default function AuthReducer(
         userId: user._id,
         role: userRole,
         status: user.status,
+        totalLeaves: user.totalLeaves,
       };
     case LOG_OUT:
       return {
@@ -25,6 +28,7 @@ export default function AuthReducer(
         userId: null,
         role: null,
         status: "Inactive",
+        totalLeaves: "0",
       };
     default:
       return state;
