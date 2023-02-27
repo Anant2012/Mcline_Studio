@@ -96,5 +96,4 @@ const TimeSheetModal = ({ toggleModal, userId, row }) => {
   );
 };
 
-
 export default TimeSheetModal;

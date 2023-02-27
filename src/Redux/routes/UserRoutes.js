@@ -10,7 +10,6 @@ import Lead from "../../components/operation/View/Lead/Lead";
 import Leave from "../../components/hrend/Leave";
 import Tickets from "../../components/hrend/Tickets";
 import Grievance from "../../components/hrend/Grievance";
-import Policy from "../../components/hrend/Policy";
 
 import Project from "../../components/operation/View/Project/Project";
 import EditProfile from "../../components/hrend/profile/EditProfile";
@@ -20,6 +19,7 @@ import Timesheet from "../../components/hrend/Timesheet";
 import EditProject from "../../components/operation/View/Project/EditProject";
 
 import { PrivateRoute } from "./PrivateRoute";
+import Policy from "../../components/hrend/privacyAndPolicy/Policy";
 
 export const UserRoutes = [
     <Route exact path="/login" element={<Login />} />,
