@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import background from '../../Add New/AddNewBanner.jpg';
+import background from '../../Add New/Addnewlead.png';
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment/moment";

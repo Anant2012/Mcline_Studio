@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import background from './AddNewBanner.jpg';
+import background from './Addnewlead.png';
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useSelector } from "react-redux";
 
@@ -17,9 +17,9 @@ function Addnewlead() {
 
   const styles = {
     backgroundImage: `url(${background})`,
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
     backgroundPosition: 'center',
-    filter: 'grayscale(20%)'
+    backgroundRepeat: 'no-repeat'
   };
 
   const AddLead = async (e) => {
@@ -58,7 +58,7 @@ function Addnewlead() {
 
   return (
     <div className="flex flex-nowrap">
-      <div className=" bg-slate-700 m-2 rounded-lg hidden sm:block sm:w-1/4" style={styles}></div>
+      <div className=" bg-white my-2 ml-28 mr-2 rounded-lg hidden sm:block sm:w-1/4" style={styles}></div>
       <div className="flex w-full sm:w-3/4 justify-center item-center">
         <section className="text-gray-600 body-font relative">
           <div className="container px-5 py-20 mx-auto">

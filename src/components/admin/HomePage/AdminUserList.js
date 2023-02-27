@@ -91,7 +91,7 @@ function AdminUserList(props) {
 
   return (
     <>
-      <section className="text-gray-600 body-font">
+      <section className={`text-gray-600 body-font ${(props.adminLogin)?"block":"hidden"}`}>
         <div className="container px-5 py-20 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-4xl text-3xl font-medium title-font text-gray-900">

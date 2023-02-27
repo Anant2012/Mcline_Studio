@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { handleLogIn } from "../../../Redux/actions";
-import background from "./undraw_Mobile_login_re_9ntv.png";
+import background from "./loginAdmin.gif";
 
 const HomePageLogin = () => {
   const [email, setEmail] = useState("");

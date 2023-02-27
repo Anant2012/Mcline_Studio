@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -95,9 +95,22 @@ useEffect(() => {
     getData();
 }, []);
 
+
+
+const imgBoxRef = useRef(null);
+const [showImage, setShowImage] = useState(0);
+function handleImageChange(event) {
+    console.log('uploaded');
+    imgBoxRef.current.style.backgroundImage = `url(${URL.createObjectURL(event.target.files[0])})`;
+    imgBoxRef.current.style.backgroundSize = "contain";
+    imgBoxRef.current.style.backgroundPosition =  "center";
+    imgBoxRef.current.style.backgroundRepeat = "no-repeat";
+    setShowImage(1);
+}
+
 return (
     <>
-
+       
         <div className="flex flex-col text-center w-full my-8">
             <h1 className="sm:text-4xl text-3xl font-medium title-font text-gray-900">
                 Fill your Details
@@ -123,14 +136,17 @@ return (
                     </div>
 
                     <div className="center h-full flex items-center justify-center">
-                        <div className="form-input w-[350px]  flex justify-end bg-white">
+                        <div className='flex flex-col justify-center '>                        
+                        <div id="imgBox" ref={imgBoxRef} className={`${showImage?"block":"hidden"} mb-2 h-[150px] bg-transparent`}></div>
+                        <div className={`form-input w-[350px] flex ${showImage?"justify-center":"justify-end"} bg-white`}>
                             <label for="file-ip-1" className=' block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white' onClick={(e) => {
                                 e.preventDefault();
                                 ProfileImageClick();
                                 // console.log("Clicked");
-                            }}>Edit Image</label>
-                            <input className='file-upload-input hidden' id="imgBtn" type="file" accept="Image/" onChange={(e) => setProfileImg(e.target.files[0])}
+                            }} >Upload Image</label>
+                            <input className='file-upload-input hidden' id="imgBtn" type="file" accept="image/*"  onChange={handleImageChange} 
                             />
+                        </div>
                         </div>
                     </div>
                 </div>

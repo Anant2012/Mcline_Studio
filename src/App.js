@@ -12,7 +12,7 @@ import Lead from "./components/operation/View/Lead/Lead";
 import Leave from "./components/hrend/Leave";
 import Tickets from "./components/hrend/Tickets";
 import Grievance from "./components/hrend/Grievance";
-import Policy from "./components/hrend/Policy";
+import Policy from "./components/hrend/privacyAndPolicy/Policy";
 
 import Project from "./components/operation/View/Project/Project";
 import EditProfile from "./components/hrend/profile/EditProfile";
@@ -25,10 +25,13 @@ import { AdminRoutes } from "./Redux/routes/AdminRoutes";
 import { OperationRoutes } from "./Redux/routes/OperationRoutes";
 import { HRRoutes } from "./Redux/routes/HRRoutes";
 
+import ScrollToTop from "./ScrollToTop";
+
 function App() {
   return (
     <Router>
       <NavbarUser />
+      <ScrollToTop/>
       <Routes>
         <Route exact path="/" element={<FrontPage />} />
         <Route

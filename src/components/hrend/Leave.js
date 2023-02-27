@@ -1,5 +1,5 @@
 import React from "react";
-import background from "./leaveimg.jpg";
+import background from "./leave.png";
 import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
@@ -116,19 +116,19 @@ function Leave() {
 
   const styles = {
     backgroundImage: `url(${background})`,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     backgroundPosition: "center",
-    filter: "grayscale(20%)",
+    backgroundRepeat: "no-repeat"
   };
 
   return (
     <>
       <div className="flex flex-row">
         <div
-          className="d-none xl:w-1/4 m-2 bg-slate-700 rounded-lg"
+          className="d-none xl:w-1/4  my-2 mr-2 ml-28 rounded-lg"
           style={styles}
         ></div>
-        <section className="text-gray-600 w-full xl:w-3/4 body-font relative">
+        <section className="text-gray-600 w-full xl:w-3/4  body-font relative">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col text-center w-full mb-12">
               <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
