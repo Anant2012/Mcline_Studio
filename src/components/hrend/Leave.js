@@ -6,7 +6,7 @@ import Table from "../../constant/Table/Table";
 import moment from "moment";
 import { useSelector } from "react-redux";
 function Leave() {
-  const { userId } = useSelector((state) => state);
+  const { userId, totalLeaves } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [date_to, setDate_to] = useState("");
@@ -15,8 +15,10 @@ function Leave() {
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
-  const [totalLeaves, setTotalLeaves] = useState();
+  const [totalLeavesApp, setTotalLeavesApp] = useState();
+  // const [totalLeaves, setTotalLeaves] = useState("0");
 
+  console.log("sd",totalLeaves)
   const onSearch = (val) => {
     setFilteredData(
       data?.filter(
@@ -106,7 +108,7 @@ function Leave() {
 
   useEffect(() => {
     setFilteredData(data);
-    setTotalLeaves(
+    setTotalLeavesApp(
       data?.reduce(
         (prevVal, currVal) => prevVal + Number(currVal.leaves.net_days),
         0
@@ -253,6 +255,7 @@ function Leave() {
 
         <section className="text-gray-600 body-font mt-8">
           <div className="bg-[#0483c8] pb-2 pt-4">
+            Paid Leaves: {totalLeaves}
             <div className="container mx-auto w-full">
               <div>
                 <Table
