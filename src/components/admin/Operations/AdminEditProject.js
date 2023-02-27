@@ -125,6 +125,18 @@ function Addnewproject() {
             resource_rate: resource_rate,
             due_date: due_date
         }
+        if (moment(approvalDate) < moment()) {
+            if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(approvalDate).format("YYYY-MM-DD"))) {
+                alert("Invalid Approval Date");
+                return;
+            }
+        }
+        if (moment(submissionDate) < moment()) {
+            if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(submissionDate).format("YYYY-MM-DD"))) {
+                alert("Invalid Submission date");
+                return;
+            }
+        }
         try {
             const response = await AxiosInstance.patch(`/api/admin/operations/project/update/${projectId}`, data)
             if (response.status === 200) {

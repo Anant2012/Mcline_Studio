@@ -8,7 +8,9 @@ const AdminEditUser = (props) => {
   const URL = window.location.href;
   const params = useParams();
   const userId = params.userId;
+
   const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -63,6 +65,7 @@ const AdminEditUser = (props) => {
       );
       if (response.status === 200) {
         alert("✅User Edited SuccesFully");
+        navigate("/admin")
       }
       navigate("/admin");
     } catch (error) {

@@ -4,6 +4,8 @@ import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import background1 from './AddNewProject1.png';
 import background2 from './AddNewProject2.png';
 import { useSelector } from "react-redux";
+import moment from 'moment';
+
 function Addnewproject() {
   const { userId } = useSelector((state) => state);
   const [projectName, setProjectName] = useState("");
@@ -65,6 +67,18 @@ function Addnewproject() {
       email: email_to,
       email_cc: email_cc,
       company_name: company,
+    }
+    if (moment(approvalDate) < moment()) {
+      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(approvalDate).format("YYYY-MM-DD"))) {
+        alert("Invalid Approval Date");
+        return;
+      }
+    }
+    if (moment(submissionDate) < moment()) {
+      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(submissionDate).format("YYYY-MM-DD"))) {
+        alert("Invalid Submission Date");
+        return;
+      }
     }
     try {
       const response = await AxiosInstance.post(`/api/project/create`, data)

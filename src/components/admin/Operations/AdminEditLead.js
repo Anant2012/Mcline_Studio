@@ -50,6 +50,12 @@ function AdminEditLead() {
 
     const EditLead = async (e) => {
         e.preventDefault();
+        if (moment(date) < moment()) {
+            if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date).format("YYYY-MM-DD"))) {
+                alert("Invalid date");
+                return;
+            }
+        }
         try {
             const data = {
                 date: date,
