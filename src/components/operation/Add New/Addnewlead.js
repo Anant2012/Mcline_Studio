@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import background from './Addnewlead.png';
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useSelector } from "react-redux";
-
+import moment from "moment";
 
 function Addnewlead() {
   const { userId } = useSelector((state) => state);
@@ -34,6 +34,12 @@ function Addnewlead() {
       contact_no: contact_no,
       status: lead_status,
       description: description,
+    }
+    if (moment(date) < moment()) {
+      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date).format("YYYY-MM-DD"))) {
+        alert("Invalid date");
+        return;
+      }
     }
     try {
       const response = await AxiosInstance.post(`/api/leads/create`, data)
