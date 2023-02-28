@@ -19,7 +19,7 @@ import Timesheet from "../../components/hrend/Timesheet";
 import EditProject from "../../components/operation/View/Project/EditProject";
 
 import { PrivateRoute } from "./PrivateRoute";
-import Policy from "../../components/hrend/privacyAndPolicy/Policy";
+import Policy from "../../components/hrend/Policy";
 
 export const UserRoutes = [
     <Route exact path="/login" element={<Login />} />,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -67,6 +67,23 @@ const FillProfile = (props) => {
   //   // props.setProfileFilled(1);
   // }
 
+
+  const imgBoxRef = useRef(null);
+  const [showImage, setShowImage] = useState(0);
+  function handleImageChange(event) {
+    console.log("uploaded");
+    imgBoxRef.current.style.backgroundImage = `url(${URL.createObjectURL(
+      event.target.files[0]
+    )})`;
+    imgBoxRef.current.style.backgroundSize = "contain";
+    imgBoxRef.current.style.backgroundPosition = "center";
+    imgBoxRef.current.style.backgroundRepeat = "no-repeat";
+    setShowImage(1);
+  }
+
+
+
+
   return (
     <>
       <div className={`${props.viewFillProfile ? "block" : "hidden"}`}>
@@ -78,13 +95,14 @@ const FillProfile = (props) => {
         <div className="overflow-hidden bg-white w-11/12 sm:w-3/4 mx-auto shadow-md sm:rounded-lg border border-gray-300">
           <div className="px-4 py-5 sm:px-6">
             <div className="flex justify-between items-center">
+              
               <div>
                 <div className="relative flex flex-row  items-center">
                   <label
                     for="date"
                     className="text-sm font-medium mr-2 text-gray-500"
                   >
-                    Name
+                    Name<span className="text-red-600">*</span>
                   </label>
                   <input
                     type="text"
@@ -98,14 +116,26 @@ const FillProfile = (props) => {
               </div>
 
               <div className="center h-full flex items-center justify-center">
-                <div className="form-input w-[350px]  flex justify-end bg-white">
+              <div className="flex flex-col justify-center ">
+                <div
+                  id="imgBox"
+                  ref={imgBoxRef}
+                  className={`${
+                    showImage ? "block" : "hidden"
+                  } mb-2 h-[150px] bg-transparent`}
+                ></div>
+                <div
+                  className={`form-input w-[350px] flex ${
+                    showImage ? "justify-center" : "justify-end"
+                  } bg-white`}
+                >
                   <label
                     for="file-ip-1"
                     className=" block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white"
                     onClick={(e) => {
                       e.preventDefault();
                       ProfileImageClick();
-                      console.log("Clicked");
+                      // console.log("Clicked");
                     }}
                   >
                     Upload Image
@@ -115,16 +145,17 @@ const FillProfile = (props) => {
                     id="imgBtn"
                     type="file"
                     accept="image/*"
-                    onChange={(e) => setProfileImg(e.target.files[0])}
+                    onChange={handleImageChange}
                   />
                 </div>
               </div>
+            </div>
             </div>
           </div>
           <div className="border-t border-gray-300">
             <dl>
               <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Employee Code</dt>
+                <dt className="text-sm font-medium text-gray-500">Employee Code<span className="text-red-600">*</span></dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="text"
@@ -137,7 +168,7 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Designation</dt>
+                <dt className="text-sm font-medium text-gray-500">Designation<span className="text-red-600">*</span></dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="text"
@@ -150,7 +181,7 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Grade</dt>
+                <dt className="text-sm font-medium text-gray-500">Grade<span className="text-red-600">*</span></dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="text"
@@ -163,7 +194,7 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Joining Date</dt>
+                <dt class="text-sm font-medium text-gray-500">Joining Date<span className="text-red-600">*</span></dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="date"
@@ -190,7 +221,7 @@ const FillProfile = (props) => {
               </div>
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">
-                  Reporting Manager
+                  Reporting Manager<span className="text-red-600">*</span>
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
@@ -205,7 +236,7 @@ const FillProfile = (props) => {
               </div>
               <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
-                  Emergency Contact Number
+                  Emergency Contact Number<span className="text-red-600">*</span>
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
@@ -221,7 +252,7 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Blood Group</dt>
+                <dt className="text-sm font-medium text-gray-500">Blood Group<span className="text-red-600">*</span></dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="number"
@@ -235,7 +266,7 @@ const FillProfile = (props) => {
               </div>
               <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
-                  Personal Contact Number
+                  Personal Contact Number<span className="text-red-600">*</span>
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
@@ -250,7 +281,7 @@ const FillProfile = (props) => {
               </div>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
-                  Personal Email ID
+                  Personal Email ID<span className="text-red-600">*</span>
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
@@ -265,7 +296,7 @@ const FillProfile = (props) => {
               </div>
               <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
-                  Official Email ID
+                  Official Email ID<span className="text-red-600">*</span>
                 </dt>
                 <dd className="mt-1 t ext-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
@@ -279,7 +310,7 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Company ID</dt>
+                <dt className="text-sm font-medium text-gray-500">Company ID<span className="text-red-600">*</span></dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="text"

@@ -210,7 +210,7 @@ function Policy() {
         </li>
       </ul>
       <div className="mb-12 w-full mx-auto border-t-2"></div>
-      <div className="h-[700px]">
+      <div>
       <div class="mb-6 ">
         <div
           class={`${

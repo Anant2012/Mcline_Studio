@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom";
+import background from "./operationHomepage.gif";
 
 const AdminOperationFrontPage = () => {
+
+  const styles = {
+    backgroundImage: `url(${background})`,
+    backgroundSize: "contain",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat"
+  };
+
+
+
+
+
+
+
+
   return (
     <>
       <div className="flex flex-col text-center w-full mt-20">
@@ -12,11 +28,19 @@ const AdminOperationFrontPage = () => {
         </p>
       </div>
 
-      <section className="text-gray-600 w-full body-font">
-        <div className="container py-24 w-full mx-auto flex flex-wrap">
-          <div className="flex flex-wrap -m-4 mx-auto justify-center w-full">
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-24 mx-auto flex flex-wrap">
+          <div className="flex flex-wrap w-full -m-4">
+          <div className="p-4 flex justify-center items-center lg:w-1/2 md:w-full">
+            <div
+          className="w-full h-full flex bg-white  justify-center items-center"
+          style={styles}
+        >
+          
+        </div>
+            </div>
             <div className="p-4 lg:w-1/2 md:w-full">
-              <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
+              <div className="flex border-2 rounded-lg border-gray-200  border-opacity-50 p-8 sm:flex-row flex-col">
                 <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg
                     fill="none"
@@ -91,6 +115,7 @@ const AdminOperationFrontPage = () => {
                 </div>
               </div>
             </div>
+           
           </div>
         </div>
       </section>
