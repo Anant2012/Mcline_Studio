@@ -33,6 +33,7 @@ const AdminOperationLogin = (props) => {
   return (
     <div className="h-[500px]  w-full sm:w-3/4 bg-gray-100 border-[1px] border-[#047EC1] flex mx-auto sm:shadow-md my-32">
       <div className="w-full lg:w-1/2 my-auto">
+        <form onSubmit={LoginUser}>
         <div className="w-3/4 mx-auto">
           <h2 className="text-gray-900 text-2xl mb-1 font-medium title-font">
             Operation LogIn
@@ -68,11 +69,11 @@ const AdminOperationLogin = (props) => {
           </div>
           <button
             className="text-white bg-[#047EC1] border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg"
-            onClick={LoginUser}
           >
             LogIn
           </button>
-        </div>
+          </div>
+          </form>
       </div>
       <div
         className="d-none lg:w-1/2 flex bg-white justify-center items-center"

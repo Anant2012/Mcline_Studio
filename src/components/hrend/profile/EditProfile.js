@@ -49,13 +49,24 @@ const EditProfile = () => {
             const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)
             if (response.status === 200) {
                 alert("✅ Profile Edited SuccesFully");
-                navigate(`/hr/personaldetails`);
+                // navigate(`/hr/personaldetails`);
                 setIsDisabled(false);
             }
         } catch (error) {
             alert(error.response.data.msg);
 
         };
+        try {
+            const response = await AxiosInstance.put(`api/hr/update/user/${userId}`, profileImg)
+            if (response.status === 200) {
+                // alert("✅ ProfilePic Edited SuccesFully");
+                setIsDisabled(false);
+            }
+        } catch (error) {
+            alert(error.response.data.msg);
+
+        };
+        navigate(`/hr/personaldetails`);
     }
 
 
@@ -252,8 +263,8 @@ const EditProfile = () => {
                                 <dt className="text-sm font-medium text-gray-500">Blood Group</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                     <input
-                                        type="number"
-                                        id="number"
+                                        type="text"
+                                        id="text"
                                         value={blood_group}
                                         onChange={(e) => setBlood_group(e.target.value)}
                                         name="number"

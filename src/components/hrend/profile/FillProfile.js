@@ -224,8 +224,8 @@ const FillProfile = (props) => {
                 <dt className="text-sm font-medium text-gray-500">Blood Group</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
-                    type="number"
-                    id="number"
+                    type="text"
+                    id=""
                     value={blood_group}
                     onChange={(e) => setBlood_group(e.target.value)}
                     name="number"
@@ -256,6 +256,7 @@ const FillProfile = (props) => {
                   <input
                     type="email"
                     id="email"
+                    required
                     value={personal_email_id}
                     onChange={(e) => setPersonal_email_id(e.target.value)}
                     name="email"
@@ -271,6 +272,7 @@ const FillProfile = (props) => {
                   <input
                     type="email"
                     id="email"
+                    required
                     value={official_email_id}
                     onChange={(e) => setOfficial_email_id(e.target.value)}
                     name="email"
