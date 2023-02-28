@@ -64,7 +64,7 @@ function Addnewproject() {
       PO_number: po_no,
       bid: bid,
       hours: hours,
-      email: email_to,
+      email_to: email_to,
       email_cc: email_cc,
       company_name: company,
     }
@@ -167,7 +167,7 @@ function Addnewproject() {
                         Invoice Amount
                       </label>
                       <input
-                        type="text"
+                        type="number"
                         required
                         value={invoice_amount}
                         onChange={(e) => setInvoice_amount(e.target.value)}

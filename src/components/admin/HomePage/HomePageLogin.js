@@ -42,7 +42,6 @@ const HomePageLogin = () => {
         
       </div>
       <div className="w-full lg:w-1/2 my-auto">
-        <form onSubmit={LoginUser}>
         <div className="w-3/4 mx-auto">
           <h2 className="text-gray-900 text-2xl mb-1 font-medium title-font">
             Admin LogIn
@@ -80,11 +79,11 @@ const HomePageLogin = () => {
           </div>
           <button
             className="border-0 py-2 px-6 rounded text-lg flex  text-white bg-[#047EC1] focus:outline-none hover:bg-[#0473af]"
+            onClick={LoginUser}
           >
             LogIn
           </button>
-          </div>
-          </form>
+        </div>
       </div>
       
     </div>

@@ -17,6 +17,7 @@ const EditProfile = () => {
     const [reporting_manager, setReporting_manager] = useState("");
     const [emergency_contact_number, setEmergency_contact_number] = useState("");
     const [blood_group, setBlood_group] = useState("");
+    const [birth_date, setBirth_date] = useState("");
     const [personal_contact_number, setPersonal_contact_number] = useState("");
     const [personal_email_id, setPersonal_email_id] = useState("");
     const [extension, setExtension] = useState("");
@@ -45,6 +46,7 @@ const EditProfile = () => {
         formData.append("joining_date", joining_date);
         formData.append("extension", extension);
         formData.append("profile_image", profileImg);
+        // formData.append("birth", birth_date);
         try {
             const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)
             if (response.status === 200) {
@@ -91,6 +93,7 @@ const EditProfile = () => {
                 setExtension(response.data.data[0].personal_details.extension);
                 setJoining_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
                 setBlood_group(response.data.data[0].personal_details.blood_group);
+                setBirth_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
                 setEmergency_contact_number(response.data.data[0].personal_details.emergency_contact_number);
                 setName(response.data.data[0].personal_details.name);
                 setGrade(response.data.data[0].personal_details.grade);
@@ -260,11 +263,24 @@ const EditProfile = () => {
                                 </dd>
                             </div>
                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
+                                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                    <input
+                                        type="text"
+                                        id=""
+                                        value={birth_date}
+                                        onChange={(e) => setBirth_date(e.target.value)}
+                                        name="number"
+                                        className="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
+                                </dd>
+                            </div>
+                            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">Blood Group</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                     <input
                                         type="text"
-                                        id="text"
+                                        id=""
                                         value={blood_group}
                                         onChange={(e) => setBlood_group(e.target.value)}
                                         name="number"
@@ -272,7 +288,7 @@ const EditProfile = () => {
                                     />
                                 </dd>
                             </div>
-                            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">
                                     Personal Contact Number
                                 </dt>
@@ -287,12 +303,15 @@ const EditProfile = () => {
                                     />
                                 </dd>
                             </div>
-                            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt className="text-sm font-medium text-gray-500">Personal Email ID</dt>
+                            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt className="text-sm font-medium text-gray-500">
+                                    Personal Email ID
+                                </dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                     <input
                                         type="email"
                                         id="email"
+                                        required
                                         value={personal_email_id}
                                         onChange={(e) => setPersonal_email_id(e.target.value)}
                                         name="email"
@@ -300,12 +319,15 @@ const EditProfile = () => {
                                     />
                                 </dd>
                             </div>
-                            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt className="text-sm font-medium text-gray-500">Official Email ID</dt>
+                            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt className="text-sm font-medium text-gray-500">
+                                    Official Email ID
+                                </dt>
                                 <dd className="mt-1 t ext-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                     <input
                                         type="email"
                                         id="email"
+                                        required
                                         value={official_email_id}
                                         onChange={(e) => setOfficial_email_id(e.target.value)}
                                         name="email"
@@ -313,7 +335,7 @@ const EditProfile = () => {
                                     />
                                 </dd>
                             </div>
-                            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">Company ID</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                     <input

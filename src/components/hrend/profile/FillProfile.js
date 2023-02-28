@@ -12,6 +12,7 @@ const FillProfile = (props) => {
   const [reporting_manager, setReporting_manager] = useState("");
   const [emergency_contact_number, setEmergency_contact_number] = useState("");
   const [blood_group, setBlood_group] = useState("");
+  const [birth_date, setBirth_date] = useState("");
   const [personal_contact_number, setPersonal_contact_number] = useState("");
   const [personal_email_id, setPersonal_email_id] = useState("");
   const [official_email_id, setOfficial_email_id] = useState("");
@@ -41,6 +42,7 @@ const FillProfile = (props) => {
     formData.append("joining_date", joining_date);
     formData.append("extension", extension);
     formData.append("profile_image", profileImg);
+    // formData.append("profile_image", birth_date);
 
     try {
       const response = await AxiosInstance.post(
@@ -221,6 +223,19 @@ const FillProfile = (props) => {
                 </dd>
               </div>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                  <input
+                    type="text"
+                    id=""
+                    value={birth_date}
+                    onChange={(e) => setBirth_date(e.target.value)}
+                    name="number"
+                    className="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </dd>
+              </div>
+              <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Blood Group</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
@@ -233,7 +248,7 @@ const FillProfile = (props) => {
                   />
                 </dd>
               </div>
-              <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
                   Personal Contact Number
                 </dt>
@@ -248,7 +263,7 @@ const FillProfile = (props) => {
                   />
                 </dd>
               </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
                   Personal Email ID
                 </dt>
@@ -264,7 +279,7 @@ const FillProfile = (props) => {
                   />
                 </dd>
               </div>
-              <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
                   Official Email ID
                 </dt>
@@ -280,7 +295,7 @@ const FillProfile = (props) => {
                   />
                 </dd>
               </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Company ID</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
