@@ -8,11 +8,11 @@ import moment from "moment";
 import DownloadTableIcon from "../../common/DownloadTableIcon";
 
 function AdminLead() {
-  const User_id = "63e9411577ce9c26f2babd4f";
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState(data);
   const [startingDate, setStartingDate] = useState();
   const [endingDate, setEndingDate] = useState();
+  const [downloadData, setDownloadData] = useState([]);
 
   const navigate = useNavigate();
   const filterByDate = () => {
@@ -42,28 +42,52 @@ function AdminLead() {
     {
       name: "Username",
       selector: (row) => row.user_id.username,
-      format: (row) => <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>
+      ),
       sortable: true,
     },
     {
       name: "Date",
-      selector: (row) => row.moment(row.date).format('DD/MM/YYYY'),
-      format: (row) => <button onClick={() => EditLead(row)}>{moment(row.date).format("DD/MM/YYYY")}</button>,
+      selector: (row) => row.moment(row.date).format("DD/MM/YYYY"),
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>
+          {moment(row.date).format("DD/MM/YYYY")}
+        </button>
+      ),
       sortable: true,
     },
     // { name: "Date", format: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
-    { name: "Company ", selector: (row) => row.company, format: (row) => <button onClick={() => EditLead(row)}>{row.company}</button>, sortable: true },
-    { name: "Person", selector: (row) => row.name, format: (row) => <button onClick={() => EditLead(row)}>{row.name}</button>, sortable: true },
+    {
+      name: "Company ",
+      selector: (row) => row.company,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>{row.company}</button>
+      ),
+      sortable: true,
+    },
+    {
+      name: "Person",
+      selector: (row) => row.name,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>{row.name}</button>
+      ),
+      sortable: true,
+    },
     {
       name: "Lead Status",
       selector: (row) => row.status,
-      format: (row) => <button onClick={() => EditLead(row)}>{row.status}</button>,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>{row.status}</button>
+      ),
       sortable: true,
     },
     {
       name: "Description",
       selector: (row) => row.description,
-      format: (row) => <button onClick={() => EditLead(row)}>{row.description}</button>,
+      format: (row) => (
+        <button onClick={() => EditLead(row)}>{row.description}</button>
+      ),
       sortable: true,
     },
     {
@@ -89,11 +113,7 @@ function AdminLead() {
     navigate(`/admin/operation/edit/lead/${row._id}`);
     // console.log("lead",row._id)
   };
-  const getData = async () => {
-    AxiosInstance.get(`/api/admin/operations`)
-      .then((data) => setData(data.data.leads))
-      .catch((err) => console.log("errorr", err));
-  };
+
   const DeleteLead = async (row) => {
     try {
       const response = await AxiosInstance.delete(
@@ -121,16 +141,27 @@ function AdminLead() {
       }
     } catch (error) {
       alert(error.response.data.msg);
-
     }
   };
 
   useEffect(() => {
-    getData();
+    AxiosInstance.get(`/api/admin/operations`)
+      .then((data) => setData(data.data.leads))
+      .catch((err) => console.log("errorr", err));
   }, []);
 
   useEffect(() => {
     setFilteredData(data);
+    setDownloadData(
+      data?.map((item) => ({
+        Username: item.user_id.username,
+        Date: moment(item.date).format("DD/MM/YYYY"),
+        Company: item.company,
+        Person: item.name,
+        "Lead Status": item.status,
+        Description: item.description,
+      }))
+    );
   }, [data]);
 
   return (
@@ -187,7 +218,7 @@ function AdminLead() {
             onSearch={onSearch}
             title="Selling Product List"
           />
-          <DownloadTableIcon fileData={data} fileName="Lead" />
+          <DownloadTableIcon fileData={downloadData} fileName="Lead" />
         </div>
       </div>
     </section>
