@@ -18,6 +18,7 @@ const Project = () => {
   const [startingDate, setStartingDate] = useState();
   const [endingDate, setEndingDate] = useState();
   const [filterDate, setFilterDate] = useState();
+  const [downloadData, setDownloadData] = useState();
 
   const navigate = useNavigate();
 
@@ -39,21 +40,27 @@ const Project = () => {
     {
       name: "Project Code",
       selector: (row) => row.code,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.code}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.code}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Project Status",
-      selector:(row)=>row.status,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.status}</button>,
+      selector: (row) => row.status,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.status}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Company Name",
       selector: (row) => row.client_name,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.client_name}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.client_name}</button>
+      ),
       sortable: true,
       width: "160px",
     },
@@ -61,7 +68,9 @@ const Project = () => {
     {
       name: "Invoice Amount",
       selector: (row) => row.invoice_amount,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.invoice_amount}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.invoice_amount}</button>
+      ),
       sortable: true,
       width: "160px",
       wrap: true,
@@ -69,7 +78,9 @@ const Project = () => {
     {
       name: "Project",
       selector: (row) => row.project_name,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.project_name}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.project_name}</button>
+      ),
       sortable: true,
       width: "160px",
       wrap: true,
@@ -78,28 +89,40 @@ const Project = () => {
     {
       name: "Hours",
       selector: (row) => row.hours,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.hours}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.hours}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Bid",
       selector: (row) => row.bid,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.bid}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.bid}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Approval Date",
       selector: (row) => row.approval_date,
-      format: (row) => <button onClick={() => EditProject(row)}>{moment(row.approval_date).format("DD/MM/YYYY")}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>
+          {moment(row.approval_date).format("DD/MM/YYYY")}
+        </button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Submission Date",
       selector: (row) => row.submission_date,
-      format: (row) => <button onClick={() => EditProject(row)}>{moment(row.submission_date).format("DD/MM/YYYY")}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>
+          {moment(row.submission_date).format("DD/MM/YYYY")}
+        </button>
+      ),
       // format: (row) => moment(row.submission_date).format("DD/MM/YYYY"),
       sortable: true,
       width: "160px",
@@ -107,118 +130,144 @@ const Project = () => {
     {
       name: "P.O.No.",
       selector: (row) => row.PO_number,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.PO_number}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.PO_number}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Net Days",
       selector: (row) => row.net_days,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.net_days}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.net_days}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Type",
       selector: (row) => row.invoice_type,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.invoice_type}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.invoice_type}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Resource",
       selector: (row) => row.resource,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.resource}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.resource}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Email (to)",
       selector: (row) => row.email_to,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.email_to}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.email_to}</button>
+      ),
       sortable: true,
       width: "160px",
-      wrap: true
+      wrap: true,
     },
     {
       name: "Email (cc)",
       selector: (row) => row.email_cc,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.email_cc}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.email_cc}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Contact Person",
       selector: (row) => row.contact_person,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.contact_person}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.contact_person}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Phone No.",
       selector: (row) => row.phone,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.phone}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.phone}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Address",
       selector: (row) => row.address,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.address}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.address}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Description",
       selector: (row) => row.description,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.description}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.description}</button>
+      ),
       sortable: true,
       width: "340px",
     },
-    // {
-    //   name: "Reference",
-    //   format: (row) => <button onClick={() => EditProject(row)}>{row.username}</button>.reference,
-    //   sortable: true,
-    //   width: "160px",
-    // },
-    // {
-    //   name: "Comments",
-    //   format: (row) => <button onClick={() => EditProject(row)}>{row.username}</button>.comments,
-    //   sortable: true,
-    //   width: "160px",
-    // },
     {
       name: "Invoice Date",
       selector: (row) => row.invoice_date,
-      format: (row) => <button onClick={() => EditProject(row)}>{moment(row.invoice?.invoice_date).format("DD/MM/YYYY")}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>
+          {moment(row.invoice?.invoice_date).format("DD/MM/YYYY")}
+        </button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Number",
       selector: (row) => row.invoice_number,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.invoice.invoice_number}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>
+          {row.invoice.invoice_number}
+        </button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Due Date",
       selector: (row) => row.invoice.due_date,
-      format: (row) => <button onClick={() => EditProject(row)}>{moment(row.invoice.due_date).format("DD/MM/YYYY")}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>
+          {moment(row.invoice.due_date).format("DD/MM/YYYY")}
+        </button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Invoice Status",
       selector: (row) => row.invoice.status,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.invoice.status}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.invoice.status}</button>
+      ),
       sortable: true,
       width: "160px",
     },
     {
       name: "Payment Status",
       selector: (row) => row.invoice.payment_status,
-      format: (row) => <button onClick={() => EditProject(row)}>{row.invoice.payment_status}</button>,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>
+          {row.invoice.payment_status}
+        </button>
+      ),
       sortable: true,
       width: "160px",
     },
@@ -268,6 +317,34 @@ const Project = () => {
     setTotalPurchasedItems(
       data?.reduce((acc, item) => acc + Number(item.invoice_amount), 0)
     );
+    setDownloadData(
+      data?.map((item) => ({
+        "Project Code": item.code,
+        "Project Status": item.status,
+        "Company Name": item.client_name,
+        "Invoice Amount": item.invoice_amount,
+        Project: item.project_name,
+        Hours: item.hours,
+        Bid: item.bid,
+        "Approval Date": item.approval_date,
+        "Submission Date": item.submission_date,
+        "P.O.No.": item.PO_number,
+        "Net Days": item.net_days,
+        "Invoice type": item.invoice_type,
+        Resource: item.resource,
+        "Email (to)": item.email_to,
+        "Email (cc)": item.email_cc,
+        "Contact Person": item.contact_person,
+        "Phone No.": item.phone,
+        Address: item.address,
+        Description: item.description,
+        "Invoice Date": item.invoice_date,
+        "Invoice Number": item.invoice_number,
+        "Due Date": item.invoice.due_date,
+        "Invoice Status": item.invoice.status,
+        "Payment Status": item.invoice.payment_status,
+      }))
+    );
   }, [data]);
 
   return (
@@ -285,23 +362,15 @@ const Project = () => {
                 <div className="w-full sm:w-2/3 flex-col p-2 flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
                   <div className="grid grid-cols-6 grid-rows-3 gap-2">
                     <div className="col-span-6 text-lg">Filter</div>
-{/* 
-                    width: 120px;
-        height: 30px;
-        border: 1px solid #999;
-        font-size: 18px;
-        color: #1c87c9;
-        background-color: #eee;
-        border-radius: 5px;
-        box-shadow: 4px 4px #ccc; */}
-
                     <div className="my-auto items-center flex justify-center">
                       <select
                         className="h-[30px] cursor-pointer outline-0 w-[180px] border-[0px] text-base text-white bg-transparent "
                         onChange={(e) => setFilterDate(e.target.value)}
                       >
                         <option className="text-gray-600">Approval Date</option>
-                        <option className="text-gray-600">Submission Date</option>
+                        <option className="text-gray-600">
+                          Submission Date
+                        </option>
                       </select>
                     </div>
                     <div className="my-auto text-right">Date From</div>
@@ -376,7 +445,7 @@ const Project = () => {
                 Total Amount : {totalPurchasedItems}
               </div>
               <div>
-                <DownloadTableIcon fileData={data} fileName="Project" />
+                <DownloadTableIcon fileData={downloadData} fileName="Project" />
               </div>
             </div>
           </div>
