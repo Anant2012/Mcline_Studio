@@ -266,7 +266,7 @@ const EditProfile = () => {
                                 <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                     <input
-                                        type="text"
+                                        type="date"
                                         id=""
                                         value={birth_date}
                                         onChange={(e) => setBirth_date(e.target.value)}
