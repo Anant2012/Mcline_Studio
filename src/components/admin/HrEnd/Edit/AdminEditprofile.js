@@ -26,6 +26,8 @@ const AdminEditProfile = (props) => {
     const [official_email_id, setOfficial_email_id] = useState("");
     const [company_id, setCompany_id] = useState("");
     const [profileImg, setProfileImg] = useState();
+    const [birth_date, setBirth_date] = useState("");
+
     const navigate = useNavigate();
 
     const onSubmitClick = async (e) => {
@@ -44,6 +46,8 @@ const AdminEditProfile = (props) => {
         formData.append("official_email_id", official_email_id);
         formData.append("company_id", company_id);
         formData.append("profile_image", profileImg);
+        // formData.append("profile_image", birth_date);
+
         try {
             const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)
             if (response.status === 200) {
@@ -70,6 +74,7 @@ const AdminEditProfile = (props) => {
                 setDesignation(response.data.data[0].personal_details.designation);
                 setExtension(response.data.data[0].personal_details.extension);
                 setJoining_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
+                setBirth_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
                 setBlood_group(response.data.data[0].personal_details.blood_group);
                 setEmergency_contact_number(response.data.data[0].personal_details.emergency_contact_number);
                 setName(response.data.data[0].personal_details.name);
@@ -186,12 +191,18 @@ const AdminEditProfile = (props) => {
                             </dd>
                         </div>
                         <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
+                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                {data.joining_date}
+                            </dd>
+                        </div>
+                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Blood Group</dt>
                             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                 {data.blood_group}
                             </dd>
                         </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">
                                 Personal Contact Number
                             </dt>
@@ -199,7 +210,7 @@ const AdminEditProfile = (props) => {
                                 {data.personal_contact_number}
                             </dd>
                         </div>
-                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">
                                 Personal Email ID
                             </dt>
@@ -207,7 +218,7 @@ const AdminEditProfile = (props) => {
                                 {data.personal_email_id}
                             </dd>
                         </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">
                                 Official Email ID
                             </dt>
@@ -215,7 +226,7 @@ const AdminEditProfile = (props) => {
                                 {data.official_email_id}
                             </dd>
                         </div>
-                        <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Company ID</dt>
                             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                 {data.company_id}

@@ -85,7 +85,7 @@ function EditLead() {
                             </h1>
                             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
                         </div>
-                        <form>
+                        <form onSubmit={EditLead}>
                             <div className="w-3/4 mx-auto">
                                 <div className="flex flex-wrap -m-2">
                                     <div className="p-2 w-full sm:w-1/2">
@@ -207,7 +207,7 @@ function EditLead() {
                                         </div>
                                     </div>
                                     <div className="p-2 w-full">
-                                        <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={EditLead}>
+                                        <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                                             Submit
                                         </button>
                                     </div>
