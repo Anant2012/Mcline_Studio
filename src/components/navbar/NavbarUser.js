@@ -31,7 +31,8 @@ const NavbarUser = () => {
   };
 
   return (
-    <nav className="w-full bg-sky-100/75 shadow-md">
+    <>
+    <nav className="w-full bg-white shadow-md">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex flex-1 items-center sm:items-stretch justify-start">
@@ -62,6 +63,8 @@ const NavbarUser = () => {
         </div>
       </div>
     </nav>
+    <svg xmlns="http://www.w3.org/2000/svg" className="-z-10 absolute" viewBox="0 0 1440 320"><path fill="#047EC1" fill-opacity="0.05" d="M0,96L60,133.3C120,171,240,245,360,229.3C480,213,600,107,720,106.7C840,107,960,213,1080,261.3C1200,309,1320,299,1380,293.3L1440,288L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+    </>
   );
 };
 

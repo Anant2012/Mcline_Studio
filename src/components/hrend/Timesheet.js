@@ -138,7 +138,7 @@ function Timesheet() {
                 // onSearch={onSearch}
                 title="COUPON CODES LIST"
               />
-              <div className="text-white">Total time : {totalTime}</div>
+              <div className="text-white pl-4 ">Total Time : {totalTime}</div>
               <DownloadTableIcon fileData={data} fileName="Timesheet" />
             </div>
           </div>

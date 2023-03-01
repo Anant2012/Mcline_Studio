@@ -82,8 +82,9 @@ function Grievance() {
 
   return (
     <>
+    <svg xmlns="http://www.w3.org/2000/svg" className="absolute" viewBox="0 0 1440 320"><path fill="#047EC1" fill-opacity="0.05" d="M0,96L60,133.3C120,171,240,245,360,229.3C480,213,600,107,720,106.7C840,107,960,213,1080,261.3C1200,309,1320,299,1380,293.3L1440,288L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
       <div className="flex flex-row">
-        <div className="d-none xl:w-1/4 my-2 mr-2 ml-28 bg-white rounded-lg" style={styles}></div>
+        <div className="d-none xl:w-1/4 my-2 mr-2 ml-28 rounded-lg" style={styles}></div>
         <section className="text-gray-600 w-full xl:w-3/4 body-font relative">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col text-center w-full mb-12">
