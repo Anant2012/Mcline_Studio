@@ -73,6 +73,7 @@ const FillProfile = (props) => {
   const imgBoxRef = useRef(null);
   const [showImage, setShowImage] = useState(0);
   function handleImageChange(event) {
+    setProfileImg(event.target.files[0])
     console.log("uploaded");
     imgBoxRef.current.style.backgroundImage = `url(${URL.createObjectURL(
       event.target.files[0]
@@ -146,7 +147,8 @@ const FillProfile = (props) => {
                     className="file-upload-input hidden"
                     id="imgBtn"
                     type="file"
-                    accept="image/*"
+                      accept="image/*"
+                    // onChange={(e) => setProfileImg(e.target.files[0])}
                     onChange={handleImageChange}
                   />
                 </div>
@@ -255,7 +257,7 @@ const FillProfile = (props) => {
               </div>
               <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 
-                <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
+                <dt className="text-sm font-medium text-gray-500">Date of Birth<span className="text-red-600">*</span></dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
                     type="date"
