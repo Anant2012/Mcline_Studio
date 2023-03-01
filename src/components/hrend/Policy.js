@@ -6,15 +6,15 @@ function Policy() {
 
   return (
     <div className="w-3/4 mx-auto my-16">
-      <h1 className="sm:text-3xl mx-auto text-center text-xl font-medium title-font mb-8">
+      <h2 className="sm:text-3xl mx-auto text-center text-xl font-medium title-font mb-8">
         Privacy and Policy
-      </h1>
+      </h2>
       <ul
         class="mb-2 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
       >
         <li role="presentation" class="flex-auto text-center">
           <div
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 1
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -29,7 +29,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 2
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -44,7 +44,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 3
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -59,7 +59,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 4
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -74,7 +74,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 5
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -89,7 +89,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 6
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -99,12 +99,12 @@ function Policy() {
               setCategory(6);
             }}
           >
-            DATA
+            EMPLOYEE BEHAVIOUR
           </div>
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 7
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -114,103 +114,13 @@ function Policy() {
               setCategory(7);
             }}
           >
-            ATTIRE/DRESSING
+            OTHERS
           </div>
         </li>
 
-        <li role="presentation" class="flex-auto text-center">
-          <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
-              category === 8
-                ? "text-[#047EC1] border-[#047EC1]"
-                : " text-neutral-500  border-transparent"
-            }`}
-            onClick={(event) => {
-              event.preventDefault();
-              setCategory(8);
-            }}
-          >
-            SOCIAL MEDIA PERSONAL IDS
-          </div>
-        </li>
-        <li role="presentation" class="flex-auto text-center">
-          <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
-              category === 9
-                ? "text-[#047EC1] border-[#047EC1]"
-                : " text-neutral-500  border-transparent"
-            }`}
-            onClick={(event) => {
-              event.preventDefault();
-              setCategory(9);
-            }}
-          >
-            TIMING
-          </div>
-        </li>
-        <li role="presentation" class="flex-auto text-center">
-          <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
-              category === 10
-                ? "text-[#047EC1] border-[#047EC1]"
-                : " text-neutral-500  border-transparent"
-            }`}
-            onClick={(event) => {
-              event.preventDefault();
-              setCategory(10);
-            }}
-          >
-            EMPLOYEE BEHAVIOUR
-          </div>
-        </li>
-        <li role="presentation" class="flex-auto text-center">
-          <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
-              category === 11
-                ? "text-[#047EC1] border-[#047EC1]"
-                : " text-neutral-500  border-transparent"
-            }`}
-            onClick={(event) => {
-              event.preventDefault();
-              setCategory(11);
-            }}
-          >
-            SALARY
-          </div>
-        </li>
-        <li role="presentation" class="flex-auto text-center">
-          <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
-              category === 12
-                ? "text-[#047EC1] border-[#047EC1]"
-                : " text-neutral-500  border-transparent"
-            }`}
-            onClick={(event) => {
-              event.preventDefault();
-              setCategory(12);
-            }}
-          >
-            COMPANY ASSETS
-          </div>
-        </li>
-        <li role="presentation" class="flex-auto text-center">
-          <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-7 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
-              category === 13
-                ? "text-[#047EC1] border-[#047EC1]"
-                : " text-neutral-500  border-transparent"
-            }`}
-            onClick={(event) => {
-              event.preventDefault();
-              setCategory(13);
-            }}
-          >
-            RETIREMENT POLICIES
-          </div>
-        </li>
       </ul>
       <div className="mb-12 w-full mx-auto border-t-2"></div>
-      <div className="h-[700px]">
+      <div>
       <div class="mb-6 ">
         <div
           class={`${
@@ -445,100 +355,7 @@ function Policy() {
           } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
         >
           <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
-            <li>
-            During your tenure with the company, you are bound to hold the secrecy of the company documents or the data you handle.
-            </li>
-            <li>
-            You are bound to not share the company data with anyone else.
-            </li>
-            <li>
-            You are bound to not access company data from your personal device.
-            </li>
-            <li>
-            You are bound to not transfer the company data in any storage devices.
-            </li>
-            <li>
-            In case any breach of the data is found at your end, the company holds the right to terminate your employment and the company will go legal in this matter.
-            </li>
-          </ol>
-        </div>
-      </div>
-      <div class="mb-6 ">
-        <div
-          class={`${
-            category === 7 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
-        >
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
-            <li>
-            Dress appropriately – modest attire is typically the best choice.
-            </li>
-            <li>
-            You are bound to make your ID cards an essential part of your attire.
-            </li>
-            <li>
-            You are bound to follow the basic cleanliness etiquettes.
-            </li>
-            <li>
-            You are bound to follow basic hygiene etiquettes.
-            </li>
-          </ol>
-        </div>
-      </div>
-      <div class="mb-6 ">
-        <div
-          class={`${
-            category === 8 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
-        >
-         
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
-            <li>
-            Do not use company social media accounts for any personal use.
-            </li>
-            <li>
-            You are bound to not access your social media profiles on company phone or laptops.
-            </li>
-            <li>
-           You are bound to not use company laptop or phones for any personal use.
-            </li>
-            <li>
-            If you are found not following the above policies, the company holds the right to take actions against you.
-            </li>
-          </ol>
-        </div>
-      </div>
-      <div class="mb-6 ">
-        <div
-          class={`${
-            category === 9 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
-        >
-         
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
-            <li>
-            Be on time and complete your working hours.
-            </li>
-            <li>
-            And, avoid being out of office for more than 10 mins during office hours. (Lunch time is an exception)
-            </li>
-            <li>
-            Your office hours are set to be 9 hours. If there are 22 working days that means you are bounded to have a total of 198 hours of working in a month.
-            </li>
-            <li>
-            In case you are found not completing the working hours in a month, the HR department can take action against you.
-            </li>
-          </ol>
-        </div>
-      </div>
-      <div class="mb-6 ">
-        <div
-          class={`${
-            category === 10 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
-        >
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
-            <li>
+          <li>
             During you probation, you will be monitored in terms of your behavior and efforts to learn the work quickly.
             </li>
             <li>
@@ -571,15 +388,123 @@ function Policy() {
             <li>
             You cannot indulge in any business or non-business activities with company clients, associates of company clients, their vendors directly or indirectly after relieving the company for next 5 years. If you are found to be failed in doing so, then company holds the right to go legal against you.
             </li>
+
+
+
+
+
+
           </ol>
         </div>
       </div>
       <div class="mb-6 ">
         <div
           class={`${
-            category === 11 ? "block" : "hidden"
+            category === 7 ? "block" : "hidden"
           } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
         >
+          <h2 className="text-[#047EC1] mb-2 font-normal" >ATTIRE/DRESSING</h2>
+          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+            <li>
+            Dress appropriately – modest attire is typically the best choice.
+            </li>
+            <li>
+            You are bound to make your ID cards an essential part of your attire.
+            </li>
+            <li>
+            You are bound to follow the basic cleanliness etiquettes.
+            </li>
+            <li>
+            You are bound to follow basic hygiene etiquettes.
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="mb-6 ">
+        <div
+          class={`${
+            category === 7 ? "block" : "hidden"
+          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+        >
+         <h2 className="text-[#047EC1] mb-2 font-normal" >SOCIAL MEDIA PERSONAL IDS</h2>
+          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+            <li>
+            Do not use company social media accounts for any personal use.
+            </li>
+            <li>
+            You are bound to not access your social media profiles on company phone or laptops.
+            </li>
+            <li>
+           You are bound to not use company laptop or phones for any personal use.
+            </li>
+            <li>
+            If you are found not following the above policies, the company holds the right to take actions against you.
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="mb-6 ">
+        <div
+          class={`${
+            category === 7 ? "block" : "hidden"
+          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+        >
+         <h2 className="text-[#047EC1] mb-2 font-normal" >TIMING</h2>
+          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+            <li>
+            Be on time and complete your working hours.
+            </li>
+            <li>
+            And, avoid being out of office for more than 10 mins during office hours. (Lunch time is an exception)
+            </li>
+            <li>
+            Your office hours are set to be 9 hours. If there are 22 working days that means you are bounded to have a total of 198 hours of working in a month.
+            </li>
+            <li>
+            In case you are found not completing the working hours in a month, the HR department can take action against you.
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="mb-6 ">
+        <div
+          class={`${
+            category === 7 ? "block" : "hidden"
+          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+        >
+          <h2 className="text-[#047EC1] mb-2 font-normal" >DATA</h2>
+          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+            
+
+
+
+
+          <li>
+            During your tenure with the company, you are bound to hold the secrecy of the company documents or the data you handle.
+            </li>
+            <li>
+            You are bound to not share the company data with anyone else.
+            </li>
+            <li>
+            You are bound to not access company data from your personal device.
+            </li>
+            <li>
+            You are bound to not transfer the company data in any storage devices.
+            </li>
+            <li>
+            In case any breach of the data is found at your end, the company holds the right to terminate your employment and the company will go legal in this matter.
+            </li>
+          </ol>
+        </div>
+      </div>
+      
+      <div class="mb-6 ">
+        <div
+          class={`${
+            category === 7 ? "block" : "hidden"
+          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+        >
+          <h2 className="text-[#047EC1] mb-2 font-normal" >SALARY</h2>
          
           <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
@@ -600,10 +525,10 @@ function Policy() {
       <div class="mb-6 ">
         <div
           class={`${
-            category === 12 ? "block" : "hidden"
+            category === 7 ? "block" : "hidden"
           } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
         >
-         
+         <h2 className="text-[#047EC1] mb-2 font-normal" >COMPANY ASSETS</h2>
           <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             	The employees are bound to sign a ‘form of allotment’ containing the information about the company assets they will be allotted during their tenure with the company. The FOA states that they take the responsibility of every asset they are allotted.
@@ -629,10 +554,10 @@ function Policy() {
       <div class="mb-6 ">
         <div
           class={`${
-            category === 13 ? "block" : "hidden"
+            category === 7 ? "block" : "hidden"
           } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
         >
-         
+         <h2 className="text-[#047EC1] mb-2 font-normal" >RETIREMENT POLICIES</h2>
           <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             Employment in the company will stand terminated at the end of the financial year in which you attain the age of superannuation (60 years).

@@ -5,7 +5,7 @@ const FrontPage = () => {
   return (
     <>
       <div className="flex flex-col text-center w-full mt-20">
-        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+        <h1 className="sm:text-3xl  text-2xl font-medium title-font mb-4 text-gray-900">
           McLiner Access Portal
         </h1>
         <p className="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
@@ -17,7 +17,7 @@ const FrontPage = () => {
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
           <div className="flex flex-wrap -m-4">
             <div className="p-4 lg:w-1/2 md:w-full">
-              <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
+              <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 pt-8 pb-2 sm:flex-row flex-col">
                 <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg
                     fill="none"
@@ -32,10 +32,10 @@ const FrontPage = () => {
                   </svg>
                 </div>
                 <div className="flex-grow">
-                  <h2 className="text-gray-900 text-xl title-font font-medium mb-3">
+                  <h2 className="text-[#036396] text-xl title-font font-medium mb-3">
                     Operations
                   </h2>
-                  <p className="leading-relaxed text-sm text-base">
+                  <p className="leading-relaxed text-sm">
                     VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
                     Kinfolk bespoke try-hard cliche palo santo offal.
                   </p>
@@ -71,7 +71,7 @@ const FrontPage = () => {
                                 <Link to="/operation/addnew/lead">
                                   <button
                                     type="button"
-                                    className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-3"
+                                    className="inline-flex items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mr-3"
                                   >
                                     Lead
                                   </button>
@@ -79,7 +79,7 @@ const FrontPage = () => {
                                 <Link to="/operation/addnew/project">
                                   <button
                                     type="button"
-                                    className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-3"
+                                    className="inline-flex items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mr-3"
                                   >
                                     Project
                                   </button>
@@ -113,7 +113,7 @@ const FrontPage = () => {
                                 <Link to="/operation/view/lead">
                                   <button
                                     type="button"
-                                    className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-3"
+                                    className="inline-flex items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mr-3"
                                   >
                                     Lead
                                   </button>
@@ -121,7 +121,7 @@ const FrontPage = () => {
                                 <Link to="/operation/view/project">
                                   <button
                                     type="button"
-                                    className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-3"
+                                    className="inline-flex items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mr-3"
                                   >
                                     Project
                                   </button>
@@ -137,8 +137,8 @@ const FrontPage = () => {
               </div>
             </div>
             <div className="p-4 lg:w-1/2 md:w-full">
-              <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 h-[526px] sm:flex-row flex-col">
-                <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb]-500 flex-shrink-0">
+              <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 p-8 sm:flex-row flex-col">
+                <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg
                     fill="none"
                     stroke="#047EC1"
@@ -153,7 +153,7 @@ const FrontPage = () => {
                   </svg>
                 </div>
                 <div className="flex-grow">
-                  <h2 className="text-gray-900 text-xl title-font font-medium mb-3">
+                  <h2 className="text-[#036396] text-xl title-font font-medium mb-3">
                     HumanConnect
                   </h2>
                   <p className="leading-relaxed text-sm text-base">
@@ -191,7 +191,7 @@ const FrontPage = () => {
                                   <Link to="/hr/personaldetails">
                                     <button
                                       type="button"
-                                      className="inline-flex w-36 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                      className="inline-flex w-44 justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2"
                                     >
                                       Personal Details
                                     </button>
@@ -200,7 +200,7 @@ const FrontPage = () => {
                                   <Link to="/hr/leaves">
                                     <button
                                       type="button"
-                                      className="inline-flex w-36 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                      className="inline-flex w-44 justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2"
                                     >
                                       Leaves
                                     </button>
@@ -211,7 +211,7 @@ const FrontPage = () => {
                                   <Link to="/hr/tickets">
                                     <button
                                       type="button"
-                                      className="inline-flex w-36 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                                      className="inline-flex w-44 justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2  mt-3"
                                     >
                                       Tickets
                                     </button>
@@ -220,7 +220,7 @@ const FrontPage = () => {
                                   <Link to="/hr/grievance">
                                     <button
                                       type="button"
-                                      className="inline-flex w-36 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                                      className="inline-flex w-44 justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2  mt-3"
                                     >
                                       Grievance
                                     </button>
@@ -231,7 +231,7 @@ const FrontPage = () => {
                                   <Link to="/hr/timesheet">
                                     <button
                                       type="button"
-                                      className="inline-flex w-36 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                                      className="inline-flex w-44 justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2  mt-3"
                                     >
                                       Timesheet
                                     </button>
@@ -240,7 +240,7 @@ const FrontPage = () => {
                                   <Link to="/hr/directory">
                                     <button
                                       type="button"
-                                      className="inline-flex w-36 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                                      className="inline-flex w-44 justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mt-3"
                                     >
                                       Directory
                                     </button>
@@ -251,7 +251,7 @@ const FrontPage = () => {
                                   <Link to="/hr/policy">
                                     <button
                                       type="button"
-                                      className="inline-flex w-[300px] justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-3"
+                                      className="inline-flex w-[364px] justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mt-3"
                                     >
                                       Privacy and Policy
                                     </button>

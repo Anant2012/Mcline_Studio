@@ -255,8 +255,9 @@ function Leave() {
 
         <section className="text-gray-600 body-font mt-8">
           <div className="bg-[#0483c8] pb-2 pt-4">
-            Paid Leaves: {totalLeaves}
+            <span className="text-gray-50 w-full flex justify-end pr-6 text-base">Paid Leaves: {totalLeaves}</span>
             <div className="container mx-auto w-full">
+              
               <div>
                 <Table
                   columns={columns}
