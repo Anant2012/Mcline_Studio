@@ -20,13 +20,13 @@ const AdminHRFrontPage = (props) => {
   const columns = [
     { name: "Name", selector: (row) => row.user_id?.username, sortable: true },
     // { name: "Days", selector: (row) => row.leaves.net_days, sortable: true },
-    { name: "Reason", selector: (row) => row.leaves?.description, sortable: true },
+    { name: "Reason", selector: (row) => row.leaves?.description || row.tickes?.reason, sortable: true },
   ];
   const EditUser = (row) => {
     navigate(`/user/admin/edit_user/${row._id}`);
   };
   const getData = async () => {
-    AxiosInstance.get(`/api/admin/hr/leaves/top/five`)
+    AxiosInstance.get(`/api/admin/hr/top/five`)
       .then((data) =>
         setData(data.data.data)
       )

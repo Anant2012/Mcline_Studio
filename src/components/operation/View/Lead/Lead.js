@@ -12,6 +12,7 @@ function Lead() {
   const [filteredData, setFilteredData] = useState(data);
   const [startingDate, setStartingDate] = useState();
   const [endingDate, setEndingDate] = useState();
+  const [downloadData, setDownloadData] = useState([]);
   const navigate = useNavigate();
 
   const onSearch = (val) => {
@@ -122,6 +123,15 @@ function Lead() {
 
   useEffect(() => {
     setFilteredData(data);
+    setDownloadData(
+      data?.map((item) => ({
+        Date: moment(item.date).format("DD/MM/YYYY"),
+        Company: item.company,
+        Person: item.name,
+        "Lead Status": item.status,
+        Description: item.description,
+      }))
+    );
   }, [data]);
 
   return (
@@ -179,7 +189,7 @@ function Lead() {
               onSearch={onSearch}
               title="Selling Product List"
             />
-            <DownloadTableIcon fileData={data} fileName="Lead" />
+            <DownloadTableIcon fileData={downloadData} fileName="Lead" />
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import background1 from './AddNewProject1.png';
 import background2 from './AddNewProject2.png';
 import { useSelector } from "react-redux";
+import moment from 'moment';
+
 function Addnewproject() {
   const { userId } = useSelector((state) => state);
   const [projectName, setProjectName] = useState("");
@@ -62,9 +64,21 @@ function Addnewproject() {
       PO_number: po_no,
       bid: bid,
       hours: hours,
-      email: email_to,
+      email_to: email_to,
       email_cc: email_cc,
       company_name: company,
+    }
+    if (moment(approvalDate) < moment()) {
+      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(approvalDate).format("YYYY-MM-DD"))) {
+        alert("Invalid Approval Date");
+        return;
+      }
+    }
+    if (moment(submissionDate) < moment()) {
+      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(submissionDate).format("YYYY-MM-DD"))) {
+        alert("Invalid Submission Date");
+        return;
+      }
     }
     try {
       const response = await AxiosInstance.post(`/api/project/create`, data)
@@ -112,7 +126,7 @@ function Addnewproject() {
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Projects from Multiple Sources</p>
             </div>
-            <form>
+            <form onSubmit={AddProject}>
               <div className="w-3/4 mx-auto">
                 <div className="flex flex-wrap -m-2">
                   <div className="p-2 w-full sm:w-1/4">
@@ -153,7 +167,7 @@ function Addnewproject() {
                         Invoice Amount
                       </label>
                       <input
-                        type="text"
+                        type="number"
                         required
                         value={invoice_amount}
                         onChange={(e) => setInvoice_amount(e.target.value)}
@@ -455,7 +469,7 @@ function Addnewproject() {
                     </div>
                   </div>
                   <div className="p-2 w-full">
-                    <button onClick={AddProject} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
+                    <button disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
                   </div>
                 </div>
               </div>
