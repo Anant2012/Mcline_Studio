@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import background from './Addnewlead.png';
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useSelector } from "react-redux";
-
+import moment from "moment";
 
 function Addnewlead() {
   const { userId } = useSelector((state) => state);
@@ -34,6 +34,12 @@ function Addnewlead() {
       contact_no: contact_no,
       status: lead_status,
       description: description,
+    }
+    if (moment(date) < moment()) {
+      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date).format("YYYY-MM-DD"))) {
+        alert("Invalid date");
+        return;
+      }
     }
     try {
       const response = await AxiosInstance.post(`/api/leads/create`, data)
@@ -68,7 +74,7 @@ function Addnewlead() {
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leads from Multiple Sources</p>
             </div>
-            <form>
+            <form onSubmit={AddLead}>
               <div className="w-3/4 mx-auto">
                 <div className="flex flex-wrap -m-2">
                   <div className="p-2 w-full sm:w-1/2">
@@ -189,7 +195,7 @@ function Addnewlead() {
                     </div>
                   </div>
                   <div className="p-2 w-full">
-                    <button onClick={AddLead} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
+                    <button disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
                   </div>
                 </div>
               </div>

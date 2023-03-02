@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import background from "./login.gif";
+import background from "./undraw_My_password_re_ydq7.png";
 import { handleLogIn } from "../../Redux/actions";
 import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 

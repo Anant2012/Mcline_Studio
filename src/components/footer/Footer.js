@@ -42,7 +42,7 @@ function Footer() {
 
       <div className="md:w-1/2 w-full px-4">
         <div className='flex justify-end mt-[10px] w-full items-center'>
-          <img src={`${background}`} className="max-w-[400px] flex h-auto" alt="..." />
+          <img src={`${background}`} className="max-w-[300px] flex h-auto" alt="..." />
           </div>
       </div>
       

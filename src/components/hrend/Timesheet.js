@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
 import { FaUserEdit } from "react-icons/fa";
@@ -17,6 +16,7 @@ function Timesheet() {
   const [totalTime, setTotalTime] = useState(0);
   const [total, setTotal] = useState("00:00");
   const [email, setEmail] = useState("");
+  const [downloadData, setDownloadData] = useState([]);
 
   const navigate = useNavigate();
 
@@ -63,18 +63,19 @@ function Timesheet() {
       .catch((err) => console.log("errorr", err));
   }, [showModal]);
 
-  // };
-
   const DeleteAll = async (e) => {
     e.preventDefault();
     const data = {
       email_cc: email,
-    }
+    };
     try {
-      const response = await AxiosInstance.put(`/api/user/timeline/email/${userId}`,data)
+      const response = await AxiosInstance.put(
+        `/api/user/timeline/email/${userId}`,
+        data
+      );
       if (response.status === 200) {
         alert("Email sent successfully");
-        setEmail("")
+        setEmail("");
       }
     } catch (error) {
       alert(error.response.data.msg);
@@ -85,7 +86,7 @@ function Timesheet() {
       );
       if (response.status === 200) {
         // alert("Email sent successfully");
-        navigate("/")
+        navigate("/");
       }
     } catch (error) {
       alert(error.response.data.msg);
@@ -104,6 +105,9 @@ function Timesheet() {
       0
     );
     setTotalTime(`${parseInt(totalMinutes / 60)}:${totalMinutes % 60}`);
+    setDownloadData(
+      data?.map((item) => ({ task: item.task, time: item.time }))
+    );
   }, [data]);
 
   return (
@@ -138,8 +142,8 @@ function Timesheet() {
                 // onSearch={onSearch}
                 title="COUPON CODES LIST"
               />
-              <div className="text-white pl-4 ">Total Time : {totalTime}</div>
-              <DownloadTableIcon fileData={data} fileName="Timesheet" />
+              <div className="text-white pl-4">Total time : {totalTime}</div>
+              <DownloadTableIcon fileData={downloadData} fileName="Timesheet" />
             </div>
           </div>
         </div>
