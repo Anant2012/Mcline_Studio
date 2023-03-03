@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 const FrontPage = () => {
   return (
     <>
-      <div className="flex flex-col text-center w-full mt-20">
-        <h1 className="sm:text-3xl  text-2xl font-medium title-font mb-4 text-gray-900">
-          McLiner Access Portal
+
+
+      <div className="flex flex-col text-center w-full mt-40">
+        <h1 className="sm:text-4xl  text-3xl font-medium title-font mb-4 text-gray-900">
+          
+        <span className="text-[#036396]">McLine </span>Access Portal
         </h1>
-        <p className="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
+        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
           Creating a Productive and Organized Environment
         </p>
       </div>

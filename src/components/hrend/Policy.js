@@ -14,7 +14,7 @@ function Policy() {
       >
         <li role="presentation" class="flex-auto text-center">
           <div
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 1
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -29,7 +29,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 2
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -44,7 +44,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 3
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -59,7 +59,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 4
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -74,7 +74,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 5
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -89,7 +89,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 6
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -104,7 +104,7 @@ function Policy() {
         </li>
         <li role="presentation" class="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-neutral-100 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 7
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -287,7 +287,7 @@ function Policy() {
         <div
           class={`${
             category === 4 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
           <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import background from "../../auth/signup_banner.jpg";
+import background from "./signup.gif";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";

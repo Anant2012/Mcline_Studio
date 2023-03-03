@@ -19,11 +19,12 @@ const AdminOperationFrontPage = () => {
 
   return (
     <>
-      <div className="flex flex-col text-center w-full mt-20">
-        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-          McLiner Admin Access Portal
+      <div className="flex flex-col text-center w-full mt-40">
+        <h1 className="sm:text-4xl  text-3xl font-medium title-font mb-4 text-gray-900">
+          
+        <span className="text-[#036396]">McLine </span>Access Portal
         </h1>
-        <p className="lg:w-2/3 mx-auto leading-relaxed text-sm text-base">
+        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
           Creating a Productive and Organized Environment
         </p>
       </div>
@@ -39,8 +40,9 @@ const AdminOperationFrontPage = () => {
           
         </div>
             </div>
+
             <div className="p-4 lg:w-1/2 md:w-full">
-              <div className="flex border-2 rounded-lg border-gray-200  border-opacity-50 p-8 sm:flex-row flex-col">
+            <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 pt-8 pb-2 sm:flex-row flex-col">
                 <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg
                     fill="none"
@@ -55,10 +57,10 @@ const AdminOperationFrontPage = () => {
                   </svg>
                 </div>
                 <div className="flex-grow">
-                  <h2 className="text-gray-900 text-xl title-font font-medium ">
+                <h2 className="text-[#036396] text-xl title-font font-medium mb-3">
                     Operations
                   </h2>
-                  <p className="leading-relaxed text-sm text-base">
+                  <p className="leading-relaxed text-sm">
                     VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
                     Kinfolk bespoke try-hard cliche palo santo offal.
                   </p>
@@ -92,7 +94,7 @@ const AdminOperationFrontPage = () => {
                                 <Link to="/admin/operation/view/lead">
                                   <button
                                     type="button"
-                                    className="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-3"
+                                    className="inline-flex w-28 justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2"
                                   >
                                     Lead
                                   </button>
@@ -100,7 +102,7 @@ const AdminOperationFrontPage = () => {
                                 <Link to="/admin/operation/view/project">
                                   <button
                                     type="button"
-                                    className="inline-flex w-28 justify-center items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    className="inline-flex w-28 justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mt-3"
                                   >
                                     Project
                                   </button>
