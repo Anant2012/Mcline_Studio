@@ -20,29 +20,20 @@ const AdminHRFrontPage = (props) => {
   const columns = [
     { name: "Name", selector: (row) => row.user_id?.username, sortable: true },
     // { name: "Days", selector: (row) => row.leaves.net_days, sortable: true },
-<<<<<<< HEAD
     {
       name: "Reason",
       selector: (row) => row.leaves?.description,
       sortable: true,
     },
-=======
-    { name: "Reason", selector: (row) => row.leaves?.description || row.tickes?.reason, sortable: true },
->>>>>>> 28737e2d205e707d660072600e15d7bb81aa67d1
   ];
   const EditUser = (row) => {
     navigate(`/user/admin/edit_user/${row._id}`);
   };
   const getData = async () => {
-<<<<<<< HEAD
-    AxiosInstance.get(`/api/admin/hr/leaves/top/five`)
-      .then((data) => setData(data.data.data))
-=======
     AxiosInstance.get(`/api/admin/hr/top/five`)
       .then((data) =>
         setData(data.data.data)
       )
->>>>>>> 28737e2d205e707d660072600e15d7bb81aa67d1
       .catch((err) => console.log("errorr", err));
   };
 
