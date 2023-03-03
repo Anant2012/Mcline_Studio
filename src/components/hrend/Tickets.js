@@ -36,7 +36,7 @@ function Tickets() {
       })), sortable: true, wrap: true
     },
 
-    { name: "Description", selector: (row) => row.tickets.reason, sortable: true },
+    { name: "Description", selector: (row) => row.tickets.reason, sortable: true, wrap: true },
     {
       name: "Status",
       selector: (row) => (row.status), sortable: true

@@ -34,7 +34,7 @@ function AdminTickets() {
       }))}</button>, sortable: true, wrap: true
     },
 
-    { name: "Description", selector: (row) => row.tickets.reason, format: (row) => <button onClick={() => EditTicket(row)}>{row.tickets.reason}</button>, sortable: true },
+    { name: "Description", selector: (row) => row.tickets.reason, format: (row) => <button onClick={() => EditTicket(row)}>{row.tickets.reason}</button>, sortable: true, wrap: true },
     {
       name: "Status", selector: (row) => row.status,
       format: (row) => <button onClick={() => EditTicket(row)}>{(row.status)}</button>, sortable: true

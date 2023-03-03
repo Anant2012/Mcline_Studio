@@ -28,7 +28,7 @@ function AdminLeaves() {
     { name: "Date To", selector:(row)=>row.leaves.date_to, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.date_to}</button>, sortable: true },
     { name: "Date From", selector:(row)=>row.leaves.date_from, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.date_from}</button>, sortable: true },
     { name: "Net Days", selector:(row)=>row.leaves.net_days, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.net_days}</button>, sortable: true },
-    { name: "Description", selector:(row)=>row.leaves.description, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.description}</button>, sortable: true },
+    { name: "Description", selector: (row) => row.leaves.description, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.description}</button>, sortable: true, wrap: true },
     {
       name: "Status",
       selector: (row) => row.status,
