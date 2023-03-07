@@ -31,7 +31,7 @@ function AdminLead() {
         (x) =>
           x.company.toLowerCase().match(val.toLowerCase()) ||
           x.name.toLowerCase().match(val.toLowerCase()) ||
-          x.user_id.username.toLowerCase().match(val.toLowerCase()) ||
+          x.user_id?.username.toLowerCase().match(val.toLowerCase()) ||
           x.status.toLowerCase().match(val.toLowerCase()) ||
           x.description.toString().match(val.toLowerCase()) ||
           x.date.toString().match(val.toLowerCase())
@@ -41,7 +41,7 @@ function AdminLead() {
   const columns = [
     {
       name: "Username",
-      selector: (row) => row.user_id.username,
+      selector: (row) => row.user_id?.username,
       format: (row) => (
         <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>
       ),
@@ -154,7 +154,7 @@ function AdminLead() {
     setFilteredData(data);
     setDownloadData(
       data?.map((item) => ({
-        Username: item.user_id.username,
+        Username: item.user_id?.username,
         Date: moment(item.date).format("DD/MM/YYYY"),
         Company: item.company,
         Person: item.name,
