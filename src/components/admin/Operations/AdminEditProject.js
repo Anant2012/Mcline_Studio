@@ -234,7 +234,7 @@ function Addnewproject() {
                                     <div className="p-2 w-full sm:w-1/4">
                                         <div className="relative">
                                             <label for="person" className="leading-7 text-sm text-gray-600">
-                                                Person
+                                               Contact Person
                                             </label>
                                             <input
                                                 type="text"
@@ -544,7 +544,7 @@ function Addnewproject() {
                                     <div className="p-2 w-full sm:w-1/4">
                                         <div className="relative">
                                             <label for="projectName" className="leading-7 text-sm text-gray-600">
-                                                Contact Person
+                                               Reference
                                             </label>
                                             <input
                                                 type="text"
