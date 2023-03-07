@@ -53,7 +53,7 @@ const AdminHRFrontPage = (props) => {
     <>
       <div className="flex flex-col text-center w-full mt-40">
         <h1 className="sm:text-4xl  text-3xl font-medium title-font mb-4 text-gray-900">
-          <span className="text-[#036396]">McLine </span>Access Portal
+          <span className="text-[#036396]">McLiner </span>Access Portal
         </h1>
         <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
           Creating a Productive and Organized Environment
@@ -163,9 +163,9 @@ const AdminHRFrontPage = (props) => {
               </div>
             </div>
           </div> */}
-            <div className="border-2 m-4 flex w-full rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 py-4">
-              <div className="w-1/2 text-[#047EC1] my-auto pl-8 text-xl">Manage HR End</div>
-              <div className="w-1/2 flex sm:flex-row flex-col  justify-between items-center">
+          <div className="border-2 m-4 flex w-full rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 py-4">
+            <div className="w-1/2 text-[#047EC1] my-auto pl-8 text-xl">Manage HR End</div>
+            <div className="w-1/2 flex sm:flex-row flex-col  justify-between items-center">
               <Link to="/admin/hr/profiles">
                 <button
                   type="button"

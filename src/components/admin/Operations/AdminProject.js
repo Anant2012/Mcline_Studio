@@ -207,7 +207,7 @@ function AdminProject() {
       width: "160px",
     },
     {
-      name: "Contact Person",
+      name: "Reference",
       selector: (row) => row.contact_person,
       format: (row) => (
         <button onClick={() => EditProject(row)}>{row.contact_person}</button>
