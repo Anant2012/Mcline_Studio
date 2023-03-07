@@ -42,7 +42,7 @@ const FillProfile = (props) => {
     formData.append("joining_date", joining_date);
     formData.append("extension", extension);
     formData.append("profile_image", profileImg);
-    // formData.append("profile_image", birth_date);
+    formData.append("DOB", birth_date);
 
     try {
       const response = await AxiosInstance.post(

@@ -47,7 +47,7 @@ const EditProfile = () => {
         formData.append("joining_date", joining_date);
         formData.append("extension", extension);
         formData.append("profile_image", profileImg);
-        // formData.append("birth", birth_date);
+        formData.append("DOB", birth_date);
         try {
             const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)
             if (response.status === 200) {
@@ -110,7 +110,7 @@ const EditProfile = () => {
                 setExtension(response.data.data[0].personal_details.extension);
                 setJoining_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
                 setBlood_group(response.data.data[0].personal_details.blood_group);
-                setBirth_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
+                setBirth_date(moment(response.data.data[0].personal_details.DOB).format('YYYY-MM-DD'));
                 setEmergency_contact_number(response.data.data[0].personal_details.emergency_contact_number);
                 setName(response.data.data[0].personal_details.name);
                 setGrade(response.data.data[0].personal_details.grade);

@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Table from "../../../constant/Table/Table"
+import AdminEditLeaves from "./Edit/AdminEditLeaves";
 // import { useformat } from "react-redux";
 function AdminLeaves() {
   // const { userId } = useformat((state) => state);
@@ -24,15 +25,15 @@ function AdminLeaves() {
     );
   };
   const columns = [
-    { name: "Username", selector:(row)=>row.user_id.username, format: (row) => <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>, sortable: true },
-    { name: "Date To", selector:(row)=>row.leaves.date_to, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.date_to}</button>, sortable: true },
-    { name: "Date From", selector:(row)=>row.leaves.date_from, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.date_from}</button>, sortable: true },
-    { name: "Net Days", selector:(row)=>row.leaves.net_days, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.net_days}</button>, sortable: true },
+    { name: "Username", selector:(row)=>row.user_id.username, format: (row) => <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>, sortable: true ,width:"140px"},
+    { name: "Date To", selector:(row)=>row.leaves.date_to, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.date_to}</button>, sortable: true,width:"140px" },
+    { name: "Date From", selector:(row)=>row.leaves.date_from, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.date_from}</button>, sortable: true,width:"140px" },
+    { name: "Net Days", selector: (row) => row.leaves.net_days, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.net_days}</button>, sortable: true, width: "140px" },
     { name: "Description", selector: (row) => row.leaves.description, format: (row) => <button onClick={() => EditLead(row)}>{row.leaves.description}</button>, sortable: true, wrap: true },
     {
       name: "Status",
       selector: (row) => row.status,
-      format: (row) => row.leaves.status, sortable: true
+      format: (row) => row.leaves.status, sortable: true,width:"140px"
     },
     {
       name: "Action",
@@ -42,13 +43,15 @@ function AdminLeaves() {
           <MdDelete onClick={() => DeleteLead(row)} title="Delete" style={{ color: "red", marginLeft: "10px", fontSize: "Large" }} />
         </div>
       ),
+       width: "110px"
     },
   ];
 
   const EditLead = (row) => {
     // <EditLead leadId={row._id} />
     navigate(`/admin/hr/leaves/edit/${row._id}`);
-    // console.log("lead",row._id)
+    // <AdminEditLeaves userId={row.user_id._id} />
+    // console.log("lead", row.user_id._id)
   }
   const getData = async () => {
     AxiosInstance.get(`/api/admin/hr/leaves`)
