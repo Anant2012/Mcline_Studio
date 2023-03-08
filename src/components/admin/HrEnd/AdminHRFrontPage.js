@@ -22,12 +22,12 @@ const AdminHRFrontPage = () => {
 
       <section className="text-gray-600  body-font">
 
-        <div className="container px-5 py-24 w-full justify-center mx-auto flex flex-wrap">
-          <div className="border-2 m-4 flex w-full rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 py-4">
-            <div className="w-1/2 text-[#047EC1] my-auto pl-8 text-xl">
-              Manage HR End
-            </div>
-            <div className="w-1/2 flex sm:flex-row flex-col  justify-between items-center">
+       
+        <div className="container  px-0 sm:px-5 py-24 w-full justify-center mx-auto flex flex-wrap">
+            <div className="border-2 m-4 flex flex-col sm:flex-row w-full rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 py-4">
+              <div className="w-full text-center sm:text-left sm:w-1/2 text-[#047EC1] my-auto pl-0 sm:pl-8 text-xl">Manage HR End</div>
+              <div className="w-full sm:w-1/2 mt-3 sm:mt-0 gap-2 mx-auto flex sm:flex-row flex-wrap  justify-between items-center">
+
 
               <Link to="/admin/hr/profiles">
                 <button
