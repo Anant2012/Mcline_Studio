@@ -2,18 +2,26 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ViewProfile from "./ViewProfile";
 import FillProfile from "./FillProfile";
+import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 
 function PersonalDetails() {
   const [profileFilled, setProfileFilled] = useState(1);
-  const { status } = useSelector((state) => state);
+  const [status, setStatus] = useState("");
+  const { userId } = useSelector((state) => state);
+
   const onEditClick = () => {
     setProfileFilled(0);
   };
-
+ 
   useEffect(() => {
+    AxiosInstance.get(`/api/user/get/user/${userId}`)
+      .then((res) => setStatus(res.data.data.status))
+      .catch((err) => console.log(err));
+    
     setProfileFilled(status === "active" ? 1 : 0);
   }, [status]);
-
+  
+console.log(status,"efg")
   return (
     <>
       <FillProfile

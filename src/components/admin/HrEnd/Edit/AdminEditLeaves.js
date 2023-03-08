@@ -5,6 +5,7 @@ import moment from "moment";
 import background from "../../../../assets/images/AddNewBanner.jpg"
 import { useNavigate } from "react-router-dom";
 function AdminEditLeaves() {
+    // console.log("hjk",userId)
     const URL = window.location.href;
     const params = useParams();
     const leaveId = params.leaveId;
@@ -37,8 +38,17 @@ function AdminEditLeaves() {
                 setDate_from(moment(data.data.data.leaves.date_from).format('YYYY-MM-DD'));
                 setDescription(data.data.data.leaves.description);
                 setLeave_status(data.data.data.leaves.status);
-                setPaid_leave(data.data.data.leaves.user_id?.paid_leave);
+                setRemarks(data.data.data.leaves.remarks);
                 // alert("✅ Leaves Edited SuccesFully");
+            }
+            )
+            .catch((err) => {
+                console.log("errorr", err);
+                alert(err.response.data.msg);
+            });
+            AxiosInstance.get(`/api/admin/hr/leaves/${leaveId}`)
+            .then((data) => {
+                setPaid_leave(data.data.data.leaves.user_id?.paid_leave);
             }
             )
             .catch((err) => {
@@ -59,16 +69,34 @@ function AdminEditLeaves() {
                 remarks: remarks,
                 totalLeaves:paid_leave,
             }
+            const data1 = {
+                leaves:paid_leave,
+            }
+            // const response1 = await AxiosInstance.patch(`api/admin/hr/leaves/total/${userId}`, data1);
             const response = await AxiosInstance.patch(`api/admin/hr/leaves/${leaveId}`, data);
             // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
             if (response.status === 200) {
                 alert("✅Leave updated successfully!!");
-                navigate('/admin/hr/leaves')
+                // navigate('/admin/hr/leaves')
             }
         } catch (err) {
             console.log(err);
             alert("Something went wrong!!");
         }
+        try {
+            const data = {
+                leaves:paid_leave,
+            }
+            const response = await AxiosInstance.patch(`api/admin/hr/leaves/total/${leaveId}`, data);
+            // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
+            if (response.status === 200) {
+                alert("✅Total Leave updated successfully!!");
+            }
+        } catch (err) {
+            console.log(err);
+            alert("Something went wrong!!");
+        }
+        navigate('/admin/hr/leaves')
     }
 
     useEffect(() => {
@@ -87,7 +115,7 @@ function AdminEditLeaves() {
                             </h1>
                             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Capturing Leaves from Multiple Sources</p>
                         </div>
-                        <form onSubmit={EditLeave}>
+                        {/* <form onSubmit={EditLeave}> */}
                             <div className="w-3/4 mx-auto">
                                 <div className="flex flex-wrap -m-2">
                                     <div className="p-2 w-full sm:w-1/2">
@@ -216,13 +244,13 @@ function AdminEditLeaves() {
                                         </div>
                                     </div>
                                     <div className="p-2 w-full">
-                                        <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" >
+                                        <button onClick={EditLeave} className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" >
                                             Submit
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        {/* </form> */}
                     </div>
                 </section>
             </div>

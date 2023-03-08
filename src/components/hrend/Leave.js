@@ -42,6 +42,7 @@ function Leave() {
       name: "Description",
       selector: (row) => row.leaves.description,
       sortable: true,
+      wrap: true 
     },
     {
       name: "Remarks",

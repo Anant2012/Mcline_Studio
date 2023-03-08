@@ -74,7 +74,7 @@ const AdminEditProfile = (props) => {
                 setDesignation(response.data.data[0].personal_details.designation);
                 setExtension(response.data.data[0].personal_details.extension);
                 setJoining_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
-                setBirth_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
+                setBirth_date(moment(response.data.data[0].personal_details.DOB).format('YYYY-MM-DD'));
                 setBlood_group(response.data.data[0].personal_details.blood_group);
                 setEmergency_contact_number(response.data.data[0].personal_details.emergency_contact_number);
                 setName(response.data.data[0].personal_details.name);

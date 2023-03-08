@@ -21,8 +21,8 @@ const AdminOperationFrontPage = () => {
     <>
       <div className="flex flex-col text-center w-full mt-40">
         <h1 className="sm:text-4xl  text-3xl font-medium title-font mb-4 text-gray-900">
-          
-        <span className="text-[#036396]">McLine </span>Access Portal
+
+          <span className="text-[#036396]">McLiner </span>Access Portal
         </h1>
         <p className="lg:w-2/3 w-11/12 mx-auto leading-relaxed text-base">
           Creating a Productive and Organized Environment
@@ -30,19 +30,21 @@ const AdminOperationFrontPage = () => {
       </div>
 
       <section className="text-gray-600 body-font">
-        <div className="container px-2 sm:px-5 py-24 mx-auto flex flex-wrap">
-          <div className="flex flex-wrap w-full ">
-          <div className="p-4 flex justify-center items-center lg:w-1/2 md:w-full">
-            <div
-          className="w-full h-full flex bg-white  justify-center items-center"
-          style={styles}
-        >
-          
-        </div>
+
+        <div className="container px-5 py-24 mx-auto flex flex-wrap">
+          <div className="flex flex-wrap w-full -m-4">
+            <div className="p-4 flex justify-center items-center lg:w-1/2 md:w-full">
+              <div
+                className="w-full h-full flex bg-white  justify-center items-center"
+                style={styles}
+              >
+
+              </div>
             </div>
 
-            <div className="sm:p-4 lg:w-1/2 w-full ">
-            <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 pt-8 pb-2 sm:flex-row flex-col">
+            <div className="p-4 lg:w-1/2 md:w-full">
+              <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 pt-8 pb-2 sm:flex-row flex-col">
+
                 <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg
                     fill="none"
@@ -57,7 +59,7 @@ const AdminOperationFrontPage = () => {
                   </svg>
                 </div>
                 <div className="flex-grow">
-                <h2 className="text-[#036396] text-xl title-font font-medium mb-3">
+                  <h2 className="text-[#036396] text-xl title-font font-medium mb-3">
                     Operations
                   </h2>
                   <p className="leading-relaxed text-sm">
@@ -117,7 +119,7 @@ const AdminOperationFrontPage = () => {
                 </div>
               </div>
             </div>
-           
+
           </div>
         </div>
       </section>
