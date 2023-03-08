@@ -127,7 +127,7 @@ function Leave() {
     <>
       <div className="flex flex-row">
         <div
-          className="d-none xl:w-1/4  my-2 mr-2 ml-28 rounded-lg"
+          className="hidden sm:block xl:w-1/4  my-2 mr-2 ml-28 rounded-lg"
           style={styles}
         ></div>
         <section className="text-gray-600 w-full xl:w-3/4  body-font relative">
@@ -155,7 +155,7 @@ function Leave() {
                       value={date_to}
                       onChange={(e) => setDate_to(e.target.value)}
                       name="date_to"
-                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 sm:py-1 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required
                     />
                   </div>
@@ -171,7 +171,7 @@ function Leave() {
                       value={date_from}
                       onChange={(e) => setDate_from(e.target.value)}
                       name="date_from"
-                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 sm:py-1 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       required
                     />
                   </div>

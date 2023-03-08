@@ -537,9 +537,9 @@ function EditProject() {
                                             />
                                         </div>
                                     </div>
-                                    <div class="p-2 w-full sm:w-3/4">
-                                        <div class="relative">
-                                            <label for="projectName" class="leading-7 text-sm text-gray-600">
+                                    <div className="p-2 w-full sm:w-3/4">
+                                        <div className="relative">
+                                            <label for="projectName" className="leading-7 text-sm text-gray-600">
                                                 Address
                                             </label>
                                             <input

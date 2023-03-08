@@ -136,7 +136,7 @@ function Lead() {
 
   return (
     <section className="text-gray-600 body-font">
-      <div className="container px-5 py-20 mx-auto">
+      <div className="container px-1 sm:px-5 py-20 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
           <h1 className="sm:text-4xl text-3xl font-medium title-font text-gray-900">
             View Lead
@@ -146,7 +146,7 @@ function Lead() {
           <div className="bg-[#0483c8] pb-2 pt-4">
             <div className="lg:w-7/8 w-full mx-auto">
               <div className="flex mx-4 flex-wrap ">
-                <div className="w-full flex-col sm:flex-row p-2 flex item-center flex text-white justify-end bg-[#0483c8] rounded ">
+                <div className="w-full flex-col sm:flex-row p-2 gap-3  item-center flex text-white justify-end bg-[#0483c8] rounded ">
                   <div className="my-auto px-4 py-3 title-font tracking-wider font-medium text-md decoration-white">
                     Filter:
                   </div>
@@ -174,7 +174,7 @@ function Lead() {
                   <div className="my-auto">
                     <button
                       onClick={filterByDate}
-                      className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
+                      className="text-white  font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
                     >
                       Find
                     </button>

@@ -73,18 +73,18 @@ const AdminProfile = () => {
   return (
     <>
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-20 mx-auto">
+        <div className="container px-1 sm:px-5 py-20 mx-auto">
           <div>
             <div className="bg-[#0483c8] pb-2 pt-4">
               <div className="flex flex-wrap mx-auto">
-                <div className="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-[#0483c8] rounded-full ">
-                  <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">
+                <div className="w-full flex-row  p-2   item-center flex text-white justify-end bg-[#0483c8] rounded-full ">
+                  <h1 className="h-full  flex text-left w-full pl-2 sm:pl-8 items-center title-font text-xl">
                     Profiles
                   </h1>
-                  <div className="flex flex-row justify-center pr-8 items-center relative">
+                  <div className="flex flex-row justify-center sm:pr-8 items-center relative">
                     <label
                       for="name"
-                      className="my-auto px-4 pr py-3 title-font tracking-wider  text-sm decoration-white"
+                      className="my-auto w-14 mr-2  py-3 title-font tracking-wider  text-sm decoration-white"
                     >
                       Search
                     </label>

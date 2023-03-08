@@ -69,12 +69,12 @@ function AdminUserList(props) {
           </div>
           <div className="bg-indigo-500 pb-2 pt-4">
             <div class="flex flex-wrap mx-4">
-              <div class="w-full flex-col sm:flex-row p-2  flex item-center flex text-white justify-end bg-indigo-500 rounded ">
+              <div class="w-full flex-col sm:flex-row p-2   item-center flex text-white justify-end bg-indigo-500 rounded ">
                 <h1 className="h-full  flex text-left w-full pl-8 items-center title-font text-xl">
                   Hr List
                 </h1>
                 <div class="flex flex-row justify-center pr-8 items-center relative">
-                  <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded-full text-sm mr-3"  onClick={handleAddClick}>
+                  <button className="text-white text-sm font-medium bg-indigo-800 border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-indigo-700 rounded-full  mr-3"  onClick={handleAddClick}>
                     Add
                   </button>
                 </div>
