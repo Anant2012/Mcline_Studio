@@ -33,7 +33,7 @@ const HomePageLogin = () => {
 
   return (
     <div
-      className="h-[500px]  w-full sm:w-3/4 bg-gray-100 border-[1px] border-[#047EC1] flex mx-auto sm:shadow-md my-32"
+      className="h-[500px]   w-11/12  sm:w-3/4 bg-gray-100 border-[1px] border-[#047EC1] flex mx-auto sm:shadow-md my-32"
     >
       <div
         className="d-none lg:w-1/2  bg-white flex  justify-center items-center"

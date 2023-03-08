@@ -5,16 +5,16 @@ function Policy() {
   const [category, setCategory] = useState(1);
 
   return (
-    <div className="w-3/4 mx-auto my-16">
+    <div className="w-11/12 sm:w-3/4 mx-auto my-16">
       <h2 className="sm:text-3xl mx-auto text-center text-xl font-medium title-font mb-8">
         Privacy and Policy
       </h2>
       <ul
-        class="mb-2 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
+        className="mb-2 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
       >
-        <li role="presentation" class="flex-auto text-center">
+        <li role="presentation" className="flex-auto text-center">
           <div
-            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            className={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 1
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -27,9 +27,9 @@ function Policy() {
             LEAVE POLICY
           </div>
         </li>
-        <li role="presentation" class="flex-auto text-center">
+        <li role="presentation" className="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            className={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 2
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -42,9 +42,9 @@ function Policy() {
             RESIGNATION POLICIES
           </div>
         </li>
-        <li role="presentation" class="flex-auto text-center">
+        <li role="presentation" className="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            className={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 3
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -57,9 +57,9 @@ function Policy() {
             TERMINATION POLICIES
           </div>
         </li>
-        <li role="presentation" class="flex-auto text-center">
+        <li role="presentation" className="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            className={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 4
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -72,9 +72,9 @@ function Policy() {
             ONBOARDING POLICIES
           </div>
         </li>
-        <li role="presentation" class="flex-auto text-center">
+        <li role="presentation" className="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            className={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 5
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -87,9 +87,9 @@ function Policy() {
             OFFBOARDING POLICIES
           </div>
         </li>
-        <li role="presentation" class="flex-auto text-center">
+        <li role="presentation" className="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            className={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 6
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -102,9 +102,9 @@ function Policy() {
             EMPLOYEE BEHAVIOUR
           </div>
         </li>
-        <li role="presentation" class="flex-auto text-center">
+        <li role="presentation" className="flex-auto text-center">
           <div 
-            class={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
+            className={`cursor-pointer hover:bg-[#047EC1]/5 my-2 block border-x-0 border-t-0 border-b-2 px-4 pt-4 pb-3.5 text-xs font-medium uppercase leading-tighthover:isolate ${
               category === 7
                 ? "text-[#047EC1] border-[#047EC1]"
                 : " text-neutral-500  border-transparent"
@@ -121,13 +121,13 @@ function Policy() {
       </ul>
       <div className="mb-12 w-full mx-auto border-t-2"></div>
       <div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 1 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             There are no leaves during your probation period. And, the probation period is for 6 months.
             </li>
@@ -170,13 +170,13 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 2 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             During your probation period, your notice period will be 2 weeks.
             </li>
@@ -210,19 +210,19 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 3 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             The company holds the right to terminate you in the following conditions: 
-            <div class="mb-6 ">
+            <div className="mb-6 ">
         
          
-          <ul class="marker:text-[#047EC1] mt-3 list-disc pl-5 space-y-3 text-slate-500">
+          <ul className="marker:text-[#047EC1] mt-3 list-disc pl-5 space-y-3 text-slate-500">
             <li>
             You are found damaging or bringing any harm to company assets
             </li>
@@ -283,13 +283,13 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 4 ? "block" : "hidden"
           } opacity-100 transition-opacity duration-150 ease-linear`}
         >
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             Once the interview is cleared, the desired candidate will get an email from HR stating the offer to join McLine Studios.
             </li>
@@ -311,13 +311,13 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 5 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             In case you are willing to resign, it is advised that you should discuss this matter with your reporting lead.
             </li>
@@ -348,13 +348,13 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 6 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
           <li>
             During you probation, you will be monitored in terms of your behavior and efforts to learn the work quickly.
             </li>
@@ -397,14 +397,14 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 7 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
           <h2 className="text-[#047EC1] mb-2 font-normal" >ATTIRE/DRESSING</h2>
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             Dress appropriately – modest attire is typically the best choice.
             </li>
@@ -420,14 +420,14 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 7 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
          <h2 className="text-[#047EC1] mb-2 font-normal" >SOCIAL MEDIA PERSONAL IDS</h2>
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             Do not use company social media accounts for any personal use.
             </li>
@@ -443,14 +443,14 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 7 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
          <h2 className="text-[#047EC1] mb-2 font-normal" >TIMING</h2>
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             Be on time and complete your working hours.
             </li>
@@ -466,14 +466,14 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 7 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
           <h2 className="text-[#047EC1] mb-2 font-normal" >DATA</h2>
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             
 
 
@@ -498,15 +498,15 @@ function Policy() {
         </div>
       </div>
       
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 7 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
           <h2 className="text-[#047EC1] mb-2 font-normal" >SALARY</h2>
          
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             	You are bound to open accounts in specified banks as directed by the company.
             </li>
@@ -522,14 +522,14 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 7 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
          <h2 className="text-[#047EC1] mb-2 font-normal" >COMPANY ASSETS</h2>
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             	The employees are bound to sign a ‘form of allotment’ containing the information about the company assets they will be allotted during their tenure with the company. The FOA states that they take the responsibility of every asset they are allotted.
             </li>
@@ -551,14 +551,14 @@ function Policy() {
           </ol>
         </div>
       </div>
-      <div class="mb-6 ">
+      <div className="mb-6 ">
         <div
-          class={`${
+          className={`${
             category === 7 ? "block" : "hidden"
-          } opacity-0 opacity-100 transition-opacity duration-150 ease-linear`}
+          } opacity-100 transition-opacity duration-150 ease-linear`}
         >
          <h2 className="text-[#047EC1] mb-2 font-normal" >RETIREMENT POLICIES</h2>
-          <ol class="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
+          <ol className="marker:text-[#047EC1] list-decimal pl-5 space-y-3 text-slate-500">
             <li>
             Employment in the company will stand terminated at the end of the financial year in which you attain the age of superannuation (60 years).
             </li>

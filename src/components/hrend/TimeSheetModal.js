@@ -40,7 +40,7 @@ const TimeSheetModal = ({ toggleModal, userId, row }) => {
   return (
     <div
       className="
-      fade fixed top-1 left-1/2 w-1/2 -translate-x-1/2  h-full outline-none overflow-x-hidden overflow-y-auto"
+      fade fixed top-1 left-1/2 w-full sm:w-1/2 -translate-x-1/2  h-full outline-none overflow-x-hidden overflow-y-auto"
     >
       <div className="relative w-auto pointer-events-none">
         <div className="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
@@ -54,13 +54,13 @@ const TimeSheetModal = ({ toggleModal, userId, row }) => {
             ></button>
           </div>
           <div className="relative p-4">
-            <div className="relative mb-4 w-3/4 mx-auto flex">
+            <div className="relative mb-4 w-11/12 sm:w-3/4 mx-auto flex">
               <input
                 type="text"
                 name="text"
                 value={task}
                 onChange={(e) => setTask(e.target.value)}
-                className="w-3/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mr-1"
+                className="w-3/5 sm:w-3/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mr-1"
                 placeholder="Task"
               />
               <input
@@ -68,7 +68,7 @@ const TimeSheetModal = ({ toggleModal, userId, row }) => {
                 name="text"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                class="w-1/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ml-1"
+                className="w-2/5 sm:w-1/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ml-1"
                 placeholder="Time (Hrs:Mins)"
               />
             </div>

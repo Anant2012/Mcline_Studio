@@ -97,7 +97,7 @@ function Tickets() {
     <>
 
       <div className="flex flex-row">
-        <div className="d-none xl:w-1/4 my-2 mr-2 ml-28 rounded-lg" style={styles}></div>
+        <div className="hidden sm:block xl:w-1/4 my-2 mr-2 ml-28 rounded-lg" style={styles}></div>
         <section className="text-gray-600 w-full xl:w-3/4 body-font relative">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col text-center w-full mb-12">

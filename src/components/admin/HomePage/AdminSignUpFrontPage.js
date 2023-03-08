@@ -45,7 +45,7 @@ const SignUp = (props) => {
 
   return (
     <>
-    <div className={`h-[800px]  w-full sm:w-3/4 bg-gray-100 border-[1px] border-[#047EC1] flex mx-auto sm:shadow-md my-32  ${(props.adminLogin) ? "hidden" : "block"}`}>
+    <div className={`h-[800px]   w-11/12  sm:w-3/4 bg-gray-100 border-[1px] border-[#047EC1] flex mx-auto sm:shadow-md my-32  ${(props.adminLogin) ? "hidden" : "block"}`}>
     <div
           className="d-none lg:w-1/2  flex bg-white  justify-center items-center"
           style={styles}

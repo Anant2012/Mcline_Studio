@@ -6,20 +6,20 @@ const FrontPage = () => {
     <>
 
 
-      <div className="flex flex-col text-center w-full mt-40">
+      <div className="flex flex-col text-center justify-center items-center mt-40">
         <h1 className="sm:text-4xl  text-3xl font-medium title-font mb-4 text-gray-900">
 
           <span className="text-[#036396]">McLiner </span>Access Portal
         </h1>
-        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+        <p className="w-full px-2 lg:w-2/3 mx-auto leading-relaxed text-base">
           Creating a Productive and Organized Environment
         </p>
       </div>
 
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
-          <div className="flex flex-wrap -m-4">
-            <div className="p-4 lg:w-1/2 md:w-full">
+          <div className="flex flex-wrap -m-4 ">
+            <div className="p-0 sm:p-4 lg:w-1/2 w-full">
               <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 pt-8 pb-2 sm:flex-row flex-col">
                 <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg
@@ -139,7 +139,7 @@ const FrontPage = () => {
                 </div>
               </div>
             </div>
-            <div className="p-4 lg:w-1/2 md:w-full">
+            <div className="p-0 pt-20 sm:p-4 lg:w-1/2 w-full">
               <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 p-8 sm:flex-row flex-col">
                 <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg
@@ -190,7 +190,7 @@ const FrontPage = () => {
                                 Choose Option
                               </p>
                               <div className="flex mt-2 flex-col">
-                                <div className="flex flex-row gap-3 ">
+                                <div className="flex flex-col sm:flex-row gap-3 ">
                                   <Link to="/hr/personaldetails">
                                     <button
                                       type="button"
@@ -210,7 +210,7 @@ const FrontPage = () => {
                                   </Link>
                                 </div>
 
-                                <div className="flex flex-row gap-3 ">
+                                <div className="flex flex-col sm:flex-row sm:gap-3 ">
                                   <Link to="/hr/tickets">
                                     <button
                                       type="button"
@@ -230,7 +230,7 @@ const FrontPage = () => {
                                   </Link>
                                 </div>
 
-                                <div className="flex flex-row gap-3 ">
+                                <div className="flex flex-col sm:flex-row sm:gap-3 ">
                                   <Link to="/hr/timesheet">
                                     <button
                                       type="button"
@@ -250,11 +250,11 @@ const FrontPage = () => {
                                   </Link>
                                 </div>
 
-                                <div className="flex flex-row gap-3 w-full">
+                                <div className="flex flex-col gap-3 w-full">
                                   <Link to="/hr/policy">
                                     <button
                                       type="button"
-                                      className="inline-flex w-[364px] justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mt-3"
+                                      className="inline-flex w-44 sm:w-[364px] justify-center items-center rounded-md border border-[#047EC1] bg-white px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base font-medium text-[#047EC1] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#047EC1] focus:ring-offset-2 mt-3"
                                     >
                                       Privacy and Policy
                                     </button>
