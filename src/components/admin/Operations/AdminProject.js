@@ -326,6 +326,11 @@ function AdminProject() {
             title="Edit"
             style={{ color: "blue", fontSize: "Large" }}
           />
+          <MdDelete
+            onClick={() => DeleteProject(row)}
+            title="Delete"
+            style={{ color: "red", marginLeft: "10px", fontSize: "Large" }}
+          />
         </div>
       ),
     },

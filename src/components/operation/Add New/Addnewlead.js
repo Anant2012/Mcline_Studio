@@ -3,8 +3,9 @@ import background from './Addnewlead.png';
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useSelector } from "react-redux";
 import moment from "moment";
-
+import { useNavigate } from "react-router-dom";
 function Addnewlead() {
+  const navigate = useNavigate();
   const { userId } = useSelector((state) => state);
   const [date, setDate] = useState("");
   const [person, setPerson] = useState("");
@@ -46,6 +47,7 @@ function Addnewlead() {
       if (response.status === 200) {
         alert("✅ Lead Added SuccesFully");
         setIsDisabled(false);
+        navigate("/");
       }
       setDate("");
       setCompany("");
@@ -134,7 +136,7 @@ function Addnewlead() {
                         Contact Number
                       </label>
                       <input
-                        type="tel"
+                        type="number"
                         required
                         value={contact_no}
                         onChange={(e) => setContact_no(e.target.value)}
