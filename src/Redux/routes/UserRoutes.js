@@ -20,6 +20,7 @@ import EditProject from "../../components/operation/View/Project/EditProject";
 
 import { PrivateRoute } from "./PrivateRoute";
 import Policy from "../../components/hrend/Policy";
+import DirectoryTableDetails from "../../components/hrend/DireactoryTableDetails";
 
 export const UserRoutes = [
     <Route exact path="/login" element={<Login />} />,
@@ -148,6 +149,15 @@ export const UserRoutes = [
           element={
             <PrivateRoute>
               <DirectoryTable />
+            </PrivateRoute>
+          }
+        />,
+        <Route
+          exact
+          path="/hr/directory/:userId"
+          element={
+            <PrivateRoute>
+              <DirectoryTableDetails />
             </PrivateRoute>
           }
         />,

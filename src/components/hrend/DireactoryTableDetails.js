@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
+import { AxiosInstance } from "../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment";
 
-const DirectoryTableDetails = (props) => {
+const DirectoryTableDetails = () => {
     // const { userId } = useSelector((state) => state);
     const URL = window.location.href;
     const params = useParams();
@@ -66,20 +66,6 @@ const DirectoryTableDetails = (props) => {
                             </dd>
                         </div>
 
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Grade</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                <input
-                                    type="text"
-                                    id="text"
-                                    value={grade}
-                                    onChange={(e) => setGrade(e.target.value)}
-
-                                    name="text"
-                                    className="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                />
-                            </dd>
-                        </div>
                         <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Grade</dt>
                             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
