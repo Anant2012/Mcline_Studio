@@ -76,7 +76,7 @@ const SignUp = (props) => {
                 <br />
                 <input onChange={(e) => setRole([...role, "user"])} type="checkbox" className='mr-1' /><span className="leading-7 text-sm text-gray-600">User</span>
                 <br />
-                <input onChange={(e) => setRole([...role, "operations"])} type="checkbox" className='mr-1' /><span className="leading-7 text-sm text-gray-600">Operation</span>
+                <input onChange={(e) => setRole([...role, "operation"])} type="checkbox" className='mr-1' /><span className="leading-7 text-sm text-gray-600">Operation</span>
                 <br />
                 <input onChange={(e) => setRole([...role, "hr"])} type="checkbox" className='mr-1' /><span className="leading-7 text-sm text-gray-600">HR</span>
               </div>

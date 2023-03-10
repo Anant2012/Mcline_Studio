@@ -17,7 +17,7 @@ export const AdminRoutes = [
   />,
   <Route
     exact
-    path="/admin/operation/edit/user/:userId"
+    path="/admin/edit/user/:userId"
     element={
       <PrivateAdminRoute>
         <AdminEditUser />

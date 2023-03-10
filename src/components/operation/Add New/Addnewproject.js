@@ -180,7 +180,7 @@ function Addnewproject() {
                   <div className="p-2 w-full sm:w-1/4">
                     <div className="relative">
                       <label for="person" className="leading-7 text-sm text-gray-600">
-                       Conatct Person
+                       Contact Person
                       </label>
                       <input
                         type="text"
@@ -308,7 +308,7 @@ function Addnewproject() {
                   <div className="p-2 w-full sm:w-1/4">
                     <div className="relative">
                       <label for="projectName" className="leading-7 text-sm text-gray-600">
-                        Invoive Type
+                        Invoice Type
                       </label>
                       <input
                         type="text"

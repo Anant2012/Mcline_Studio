@@ -46,15 +46,7 @@ function AdminEditLeaves() {
                 console.log("errorr", err);
                 alert(err.response.data.msg);
             });
-            AxiosInstance.get(`/api/admin/hr/leaves/${leaveId}`)
-            .then((data) => {
-                setPaid_leave(data.data.data.leaves.user_id?.paid_leave);
-            }
-            )
-            .catch((err) => {
-                console.log("errorr", err);
-                alert(err.response.data.msg);
-            });
+            
     }
 
     const EditLeave = async (e) => {

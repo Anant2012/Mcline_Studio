@@ -31,7 +31,7 @@ const DirectoryTableDetails = () => {
     }, []);
 
     return (
-        <div>
+        <div style={{marginBottom:"15px"}}>
             <div className="overflow-hidden bg-white w-3/4 mx-auto mt-12 shadow-md sm:rounded-lg border border-gray-300">
                 <div className="px-4 py-5 sm:px-6">
                     <div className="flex justify-between items-center">
