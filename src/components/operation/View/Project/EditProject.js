@@ -34,7 +34,7 @@ function EditProject() {
     const [address, setAddress] = useState("");
     // const [reference, setReference] = useState("");
     const [resource, setResource] = useState("");
-    // const [comment, setComment] = useState("");
+    const [comment, setComment] = useState("xyz");
     const [invoice_number, setInvoice_number] = useState("");
     const [invoice_date, setInvoice_date] = useState("");
     const [due_date, setDue_date] = useState("");
@@ -116,6 +116,7 @@ function EditProject() {
             email_to: email_to,
             email_cc: email_cc,
             company_name: company,
+            // comments: comment
         }
         try {
             const response = await AxiosInstance.put(`/api/project/update/${projectId}`, data)
@@ -202,7 +203,6 @@ function EditProject() {
                                             </label>
                                             <input
                                                 type="text"
-                                                required
                                                 value={invoice_amount}
                                                 onChange={(e) => setInvoice_amount(e.target.value)}
                                                 id="person"
@@ -342,7 +342,7 @@ function EditProject() {
                                     <div className="p-2 w-full sm:w-1/4">
                                         <div className="relative">
                                             <label for="projectName" className="leading-7 text-sm text-gray-600">
-                                                Invoive Type
+                                                Invoice Type
                                             </label>
                                             <input
                                                 type="text"
