@@ -96,6 +96,7 @@ function Grievance() {
                 gentrify.
               </p>
             </div>
+            <form onSubmit={AddGrievance}>
             <div className="w-full xl:w-3/5 mx-auto">
               <div className="flex flex-wrap -m-2">
                 <div className="p-2 w-full">
@@ -107,7 +108,7 @@ function Grievance() {
                       Send Email To
                     </label>
                     <input
-                      type="text"
+                      type="email"
                       id="date_to"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -132,11 +133,12 @@ function Grievance() {
                   </div>
                 </div>
                 <div className="p-2 w-full">
-                  <button onClick={AddGrievance} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
+                  <button disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
                 </div>
 
               </div>
             </div>
+          </form>
           </div>
         </section>
       </div>

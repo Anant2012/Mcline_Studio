@@ -75,7 +75,7 @@ function EditProject() {
                 setEmail_to(data.data.data.email_to)
                 setEmail_cc(data.data.data.email_cc)
                 setInvoice_type(data.data.data.invoice_type)
-                // setInvoice_amount(data.data.data.invoice_amount)
+                setInvoice_amount(data.data.data.invoice_amount)
                 setInvoice_status(data.data.data.invoice.status)
                 setPayment_status(data.data.data.invoice.payment_status)
                 setInvoice_number(data.data.data.invoice.invoice_number);

@@ -34,7 +34,7 @@ function AdminEditLeaves() {
         setDate_from(moment(data.leaves.date_from).format("YYYY-MM-DD"));
         setDescription(data.leaves.description);
         setLeave_status(data.leaves.status);
-        setPaid_leave(data.leaves.user_id?.paid_leave);
+        setPaid_leave(data.leaves.user_id?.totalLeaves);
         setUserId(data.user_id._id);
       })
       .catch((err) => {
