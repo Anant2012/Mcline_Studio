@@ -25,6 +25,8 @@ const EditProfile = () => {
     const [official_email_id, setOfficial_email_id] = useState("");
     const [company_id, setCompany_id] = useState("");
     const [profileImg, setProfileImg] = useState();
+    const [pic, setPic] = useState(false);
+
 
 
     const [isDisabled, setIsDisabled] = useState(false);
@@ -51,29 +53,34 @@ const EditProfile = () => {
         try {
             const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)
             if (response.status === 200) {
-                alert("✅ Profile Edited SuccesFully");
-                // navigate(`/hr/personaldetails`);
-                setIsDisabled(false);
+//  abc
             }
         } catch (error) {
             alert(error.response.data.msg);
 
         };
-        try {
-            const response = await AxiosInstance.put(`api/hr/update/user/${userId}`, profileImg)
-            if (response.status === 200) {
-                // alert("✅ ProfilePic Edited SuccesFully");
-                setIsDisabled(false);
-            }
-        } catch (error) {
-            alert(error.response.data.msg);
+        if (pic) {
+            const data = new FormData();
+            data.append("profile_image", profileImg);
+            try {
+                const response = await AxiosInstance.put(`api/hr/update/user/avatar/${userId}`, data)
+                if (response.status === 200) {
+                    // alert("✅ ProfilePic Edited SuccesFully");
+                    setIsDisabled(false);
+                }
+            } catch (error) {
+                // alert(error.response.data.msg);
 
-        };
+            };
+        }
+        alert("✅ Profile Edited SuccesFully");
         navigate(`/hr/personaldetails`);
+        setPic(false);
     }
 
 
     const ProfileImageClick = () => {
+        setPic(true);
         const imgBtn = document.querySelector("#imgBtn");
         imgBtn.click();
     };
@@ -86,6 +93,7 @@ const EditProfile = () => {
     const imgBoxRef = useRef(null);
     const [showImage, setShowImage] = useState(0);
     function handleImageChange(event) {
+        setProfileImg(event.target.files[0])
         console.log("uploaded");
         imgBoxRef.current.style.backgroundImage = `url(${URL.createObjectURL(
             event.target.files[0]
@@ -378,9 +386,9 @@ const EditProfile = () => {
                         </dl>
                     </div>
                 </div>
-                <div className="w-full flex justify-center">
-                    <button onClick={EditPersonalDetails} className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
-                </div>
+            </div>
+            <div className="w-full flex justify-center">
+                <button onClick={EditPersonalDetails} className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
             </div>
         </>
     );

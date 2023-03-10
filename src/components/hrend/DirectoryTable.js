@@ -121,7 +121,7 @@ const DirectoryTable = () => {
                                 DOB
                               </div>
                               <div className="text-xs text-gray-800 font-medium">
-                                March 08, 2023
+                                {data.personal_details?.DOB}
                               </div>
                             </div>
                           </div>
