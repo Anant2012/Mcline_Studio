@@ -25,11 +25,11 @@ function Footer() {
 
 
               <nav className="list-none mt-4 leading-loose">
-                {/* <li>
-                  <a className="text-gray-700  hover:text-gray-600 cursor-pointer"><i className="fa-solid fa-envelope mr-4"></i>info@mclinestudios.net</a>
-                </li> */}
                 <li>
-                  <a className="text-gray-700 hover:text-gray-600 cursor-pointer"><i className="fa-solid fa-envelope mr-4"></i>hr@mclinestudios.net</a>
+                  <a className="text-gray-700  hover:text-gray-600 cursor-pointer"><i className="fa-solid fa-envelope mr-4"></i>hr@mclinestudios.net</a>
+                </li>
+                <li>
+                  <a className="text-gray-700 hover:text-gray-600 cursor-pointer"><i className="fa-solid fa-phone mr-4"></i>+91 96253 60726</a>
                 </li>
                 <li>
 

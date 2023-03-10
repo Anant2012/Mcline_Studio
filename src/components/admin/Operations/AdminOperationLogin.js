@@ -22,7 +22,7 @@ const AdminOperationLogin = (props) => {
     const data = { email, password };
     AxiosInstance.post("/api/user/signin", data)
       .then(({ data }) => {
-        if (data.user.role.includes("operations")) {
+        if (data.user.role.includes("operation")) {
           dispatch(handleLogIn(data, "operations"));
           navigate("/admin/operation");
         } else alert("User can not log in as operations");

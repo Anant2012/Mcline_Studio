@@ -59,7 +59,7 @@ function AdminUserList(props) {
 
   const EditLead = (row) => {
     // <EditLead leadId={row._id} />
-    navigate(`/admin/operation/edit/user/${row._id}`);
+    navigate(`/admin/edit/user/${row._id}`);
     // console.log("lead",row._id)
   };
   const getData = async () => {

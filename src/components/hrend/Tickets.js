@@ -109,7 +109,7 @@ function Tickets() {
                 gentrify.
               </p>
             </div>
-            <form>
+            <form onSubmit={AddTicket}>
               <div className="w-full xl:w-3/5 mx-auto">
                 <div className="flex flex-wrap -m-2">
                   <div className="p-2 w-full sm:w-1/3">
@@ -212,7 +212,7 @@ function Tickets() {
                   </div>
 
                   <div className="p-2 w-full">
-                    <button onClick={AddTicket} disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
+                    <button disabled={isDisabled} style={{ cursor: isDisabled ? "not-allowed" : "pointer" }} className="flex mx-auto text-white bg-[#047EC1] border-0 py-2 px-8 focus:outline-none hover:bg-[#0473af] rounded text-lg">Submit</button>
                   </div>
                 </div>
               </div>

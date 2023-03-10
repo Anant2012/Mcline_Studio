@@ -14,7 +14,7 @@ function Timesheet() {
   const [editRow, setEditRow] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [totalTime, setTotalTime] = useState(0);
-  const [total, setTotal] = useState("00:00");
+  // const [total, setTotal] = useState("00:00");
   const [email, setEmail] = useState("");
   const [downloadData, setDownloadData] = useState([]);
 
@@ -67,6 +67,7 @@ function Timesheet() {
     e.preventDefault();
     const data = {
       email_cc: email,
+      total_time:totalTime,
     };
     try {
       const response = await AxiosInstance.put(
