@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Table from "../../constant/Table/Table";
@@ -25,6 +25,7 @@ const AdminProfile = () => {
     );
   };
   const columns = [
+
 
     { name: "Name", selector: (row) => row.personal_details.name, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
     { name: "Grade", selector: (row) => row.personal_details.grade, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.employee_code}</button>, sortable: true },
@@ -93,6 +94,7 @@ const AdminProfile = () => {
                   columns={columns}
                   data={filteredData}
                   onSearch={onSearch}
+                  numOfRowsByDefault={20}
                   title="COUPON CODES LIST"
                 />
               </div>
