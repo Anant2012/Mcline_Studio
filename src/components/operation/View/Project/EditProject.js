@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { AxiosInstance } from '../../../../AxiosInstance/AxiosInstance';
 import background from '../../../../assets/images/AddNewProject.jpg';
 import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
+
 import moment from 'moment';
 // import { useSelector } from "react-redux";
 function EditProject() {
@@ -11,7 +13,7 @@ function EditProject() {
     const URL = window.location.href;
     const params = useParams();
     const projectId = params.projectId;
-
+    const navigate = useNavigate();
     const { userId } = useSelector((state) => state);
     const [projectName, setProjectName] = useState("");
     const [person, setPerson] = useState("");
@@ -123,6 +125,7 @@ function EditProject() {
             if (response.status === 200) {
                 alert("✅ Project Updated SuccesFully");
                 setIsDisabled(false);
+                navigate("operation/view/project")
             }
             // setCode("");
         } catch (error) {

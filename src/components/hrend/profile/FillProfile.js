@@ -18,7 +18,7 @@ const FillProfile = (props) => {
   const [official_email_id, setOfficial_email_id] = useState("");
   const [extension, setExtension] = useState("");
   const [joining_date, setJoining_date] = useState("");
-  const [company_id, setCompany_id] = useState("");
+  const [company_id, setCompany_id] = useState("1");
   const [profileImg, setProfileImg] = useState();
 
   const [isDisabled, setIsDisabled] = useState(false);
@@ -95,6 +95,7 @@ const FillProfile = (props) => {
             Fill your Details
           </h1>
         </div>
+        <form onSubmit={AddPersonalDetails}>
         <div className="overflow-hidden bg-white w-11/12 sm:w-3/4 mx-auto shadow-md sm:rounded-lg border border-gray-300">
           <div className="px-4 py-5 sm:px-6">
             <div className="flex justify-between items-center">
@@ -109,7 +110,8 @@ const FillProfile = (props) => {
                   </label>
                   <input
                     type="text"
-                    id="text"
+                      id="text"
+                      required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     name="text"
@@ -203,6 +205,7 @@ const FillProfile = (props) => {
                   <input
                     type="date"
                     id="text"
+                     required
                     value={joining_date}
                     onChange={(e) => setJoining_date(e.target.value)}
                     name="text"
@@ -231,6 +234,7 @@ const FillProfile = (props) => {
                   <input
                     type="text"
                     id="text"
+                     required
                     value={reporting_manager}
                     onChange={(e) => setReporting_manager(e.target.value)}
                     name="text"
@@ -246,6 +250,7 @@ const FillProfile = (props) => {
                   <input
                     type="number"
                     id="number"
+                     required
                     value={emergency_contact_number}
                     onChange={(e) =>
                       setEmergency_contact_number(e.target.value)
@@ -262,6 +267,7 @@ const FillProfile = (props) => {
                   <input
                     type="date"
                     id=""
+                     required
                     value={birth_date}
                     onChange={(e) => setBirth_date(e.target.value)}
                     name="number"
@@ -276,6 +282,7 @@ const FillProfile = (props) => {
                   <input
                     type="text"
                     id=""
+                     required
                     value={blood_group}
                     onChange={(e) => setBlood_group(e.target.value)}
                     name="number"
@@ -291,6 +298,7 @@ const FillProfile = (props) => {
                   <input
                     type="number"
                     id="number"
+                     required
                     value={personal_contact_number}
                     onChange={(e) => setPersonal_contact_number(e.target.value)}
                     name="number"
@@ -331,7 +339,7 @@ const FillProfile = (props) => {
                 </dd>
               </div>
 
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              {/* <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Company ID<span className="text-red-600">*</span></dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                   <input
@@ -343,20 +351,21 @@ const FillProfile = (props) => {
                     className="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </dd>
-              </div>
+              </div> */}
             </dl>
           </div>
         </div>
         <div className="w-full flex justify-center">
           <button
-            onClick={AddPersonalDetails}
+            // onClick={AddPersonalDetails}
             disabled={isDisabled}
             style={{ cursor: isDisabled ? "not-allowed" : "pointer" }}
             className="mx-auto w-11/12 sm:w-3/4 text-white bg-[#047EC1] mt-4 mb-12 border-0 py-2 px-6 focus:outline-none hover:bg-[#0473af] rounded text-lg"
           >
             Submit
           </button>
-        </div>
+          </div>
+        </form>
       </div>
     </>
   );

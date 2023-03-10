@@ -12,10 +12,10 @@ const AdminProfile = () => {
       data?.filter(
         (x) =>
           x.personal_details.name.toLowerCase().match(val.toLowerCase()) ||
-          x.personal_details.employee_code
+          x.personal_details.grade
             .toLowerCase()
             .match(val.toLowerCase()) ||
-          x.personal_details.company_id
+          x.personal_details.reporting_manager
             .toLowerCase()
             .match(val.toLowerCase()) ||
           x.personal_details.official_email_id
@@ -25,57 +25,18 @@ const AdminProfile = () => {
     );
   };
   const columns = [
-    {
-      name: "Username",
-      selector: (row) => row.personal_details.name,
-      format: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.name}
-        </button>
-      ),
-      sortable: true,
-    },
-    {
-      name: "Employee Code",
-      selector: (row) => row.personal_details.employee_code,
-      format: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.employee_code}
-        </button>
-      ),
-      sortable: true,
-    },
-    {
-      name: "Email",
-      selector: (row) => row.personal_details.official_email_id,
-      format: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.official_email_id}
-        </button>
-      ),
-      sortable: true,
-    },
-    {
-      name: "Reporting Manager",
-      selector: (row) => row.personal_details.reporting_manager,
-      format: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.reporting_manager}
-        </button>
-      ),
-      sortable: true,
-    },
+
+
+    { name: "Name", selector: (row) => row.personal_details.name, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
+    { name: "Grade", selector: (row) => row.personal_details.grade, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.employee_code}</button>, sortable: true },
+    { name: "Email", selector: (row) => row.personal_details.official_email_id, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.official_email_id}</button>, sortable: true },
+    { name: "Reporting Manager", selector: (row) => row.personal_details.reporting_manager, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.reporting_manager}</button>, sortable: true },
     // { name: "Description", format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
 
     {
-      name: "DOB",
-      selector: (row) => row.personal_details.reporting_manager,
-      format: (row) => (
-        <button onClick={() => EditLeaves(row)}>
-          {row.personal_details.DOB}
-        </button>
-      ),
-      sortable: true,
+      name: "Contact No.",
+      selector: (row) => row.personal_details.personal_contact_number, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.personal_contact_number}</button>, sortable: true
+      
     },
   ];
 

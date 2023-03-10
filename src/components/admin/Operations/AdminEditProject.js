@@ -4,14 +4,14 @@ import { AxiosInstance } from '../../../AxiosInstance/AxiosInstance';
 import background from '../../../assets/images/AddNewProject.jpg';
 import { useParams } from "react-router";
 import moment from 'moment';
+import { useNavigate } from "react-router-dom";
 
 function Addnewproject() {
 
     const URL = window.location.href;
     const params = useParams();
     const projectId = params.projectId;
-
-    const user_id = "63e9411577ce9c26f2babd4f";
+    const navigate = useNavigate();
     const [projectName, setProjectName] = useState("");
     const [person, setPerson] = useState("");
     const [company, setCompany] = useState("");
@@ -37,6 +37,7 @@ function Addnewproject() {
     // const [comment, setComment] = useState("");
     const [invoice_number, setInvoice_number] = useState("");
     const [invoice_date, setInvoice_date] = useState("");
+    const [invoice_amount, setInvoice_amount] = useState("");
     const [due_date, setDue_date] = useState("");
     const [invoice_status, setInvoice_status] = useState("");
     const [username, setUsername] = useState("");
@@ -79,6 +80,7 @@ function Addnewproject() {
                 setResource_rate(data.data.data.invoice.resource_rate)
                 setPayment_status(data.data.data.invoice.payment_status)
                 setInvoice_number(data.data.data.invoice.invoice_number)
+                setInvoice_amount(data.data.data.invoice_amount)
                 setInvoice_date(moment(data.data.data.approval_date).format('YYYY-MM-DD'))
                 setDue_date(moment(data.data.data.approval_date).format('YYYY-MM-DD'))
                 setapprovalDate(moment(data.data.data.approval_date).format('YYYY-MM-DD'));
@@ -104,7 +106,7 @@ function Addnewproject() {
             approval_date: approvalDate,
             submission_date: submissionDate,
             // comments: comment,
-            // reference: reference,
+            invoice_amount: invoice_amount,
             address: address,
             phone: Phone_no,
             contact_person: contact_person,
@@ -125,23 +127,13 @@ function Addnewproject() {
             resource_rate: resource_rate,
             due_date: due_date
         }
-        if (moment(approvalDate) < moment()) {
-            if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(approvalDate).format("YYYY-MM-DD"))) {
-                alert("Invalid Approval Date");
-                return;
-            }
-        }
-        if (moment(submissionDate) < moment()) {
-            if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(submissionDate).format("YYYY-MM-DD"))) {
-                alert("Invalid Submission date");
-                return;
-            }
-        }
+
         try {
             const response = await AxiosInstance.patch(`/api/admin/operations/project/update/${projectId}`, data)
             if (response.status === 200) {
                 alert("✅ Project Updated SuccesFully");
                 setIsDisabled(false);
+                navigate("/admin/operation/view/project")
             }
             // setCode("");
         } catch (error) {
@@ -174,7 +166,6 @@ function Addnewproject() {
                                             </label>
                                             <input
                                                 type="text"
-                                                required
                                                 value={username}
                                                 onChange={(e) => setUsername(e.target.value)}
                                                 id="date"
@@ -227,6 +218,22 @@ function Addnewproject() {
                                                 onChange={(e) => setSubmissionDate(e.target.value)}
                                                 id="date"
                                                 name="date"
+                                                className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="p-2 w-full sm:w-1/4">
+                                        <div className="relative">
+                                            <label for="person" className="leading-7 text-sm text-gray-600">
+                                               Invoice Amount
+                                            </label>
+                                            <input
+                                                type="text"
+                                                required
+                                                value={invoice_amount}
+                                                onChange={(e) => setInvoice_amount(e.target.value)}
+                                                id="person"
+                                                name="person"
                                                 className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                             />
                                         </div>
@@ -398,7 +405,7 @@ function Addnewproject() {
                                                 Invoice Date
                                             </label>
                                             <input
-                                                type="text"
+                                                type="date"
                                                 required
                                                 value={invoice_date}
                                                 onChange={(e) => setInvoice_date(e.target.value)}
@@ -416,7 +423,7 @@ function Addnewproject() {
                                             </label>
                                             <input
                                                 type="text"
-                                                required
+                                              
                                                 value={invoice_number}
                                                 onChange={(e) => setInvoice_number(e.target.value)}
                                                 id="projectName"
@@ -449,7 +456,7 @@ function Addnewproject() {
                                                 Due date
                                             </label>
                                             <input
-                                                type="text"
+                                                type="date"
                                                 required
                                                 value={due_date}
                                                 onChange={(e) => setDue_date(e.target.value)}
