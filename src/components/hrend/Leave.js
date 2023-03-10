@@ -6,7 +6,7 @@ import Table from "../../constant/Table/Table";
 import moment from "moment";
 import { useSelector } from "react-redux";
 function Leave() {
-  const { userId, totalLeaves } = useSelector((state) => state);
+  const { userId } = useSelector((state) => state);
   const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [date_to, setDate_to] = useState("");
@@ -15,8 +15,8 @@ function Leave() {
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
-  const [totalLeavesApp, setTotalLeavesApp] = useState();
-  // const [totalLeaves, setTotalLeaves] = useState("0");
+  // const [totalLeavesApp, setTotalLeavesApp] = useState();
+  const [totalLeaves, setTotalLeaves] = useState("0");
 
   console.log("sd",totalLeaves)
   const onSearch = (val) => {
@@ -101,6 +101,10 @@ function Leave() {
     AxiosInstance.get(`/api/hr/get/leaves/${userId}`)
       .then((data) => setData(data.data.data))
       .catch((err) => console.log("errorr", err));
+    
+    AxiosInstance.get(`/api/hr/user/total/leaves/${userId}`)
+      .then((data) =>setTotalLeaves(data.data.data.totalLeaves))
+      .catch((err) => console.log("errorr", err));
   };
 
   useEffect(() => {
@@ -109,12 +113,6 @@ function Leave() {
 
   useEffect(() => {
     setFilteredData(data);
-    setTotalLeavesApp(
-      data?.reduce(
-        (prevVal, currVal) => prevVal + Number(currVal.leaves.net_days),
-        0
-      )
-    );
   }, [data]);
 
   const styles = {
