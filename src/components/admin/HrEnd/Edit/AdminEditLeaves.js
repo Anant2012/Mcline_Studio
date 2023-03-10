@@ -47,6 +47,7 @@ function AdminEditLeaves() {
       });
   };
 
+
   useEffect(() => {
     AxiosInstance.get(`/api/admin/hr/leaves/${leaveId}`)
       .then(({ data: { data } }) => {
@@ -62,6 +63,70 @@ function AdminEditLeaves() {
         alert(err.response.data.msg);
       });
   }, []);
+
+    const getLeave = async (e) => {
+        AxiosInstance.get(`/api/admin/hr/leaves/${leaveId}`)
+            .then((data) => {
+                console.log(moment(data.data.data.leaves.date_to).format('YYYY-MM-DD'), "hjk")
+                setUsername(data.data.data.user_id.username)
+                // setDate_to(data.data.data.leaves.date_to);
+                setDate_to(moment(data.data.data.leaves.date_to).format('YYYY-MM-DD'));
+                setDate_from(moment(data.data.data.leaves.date_from).format('YYYY-MM-DD'));
+                setDescription(data.data.data.leaves.description);
+                setLeave_status(data.data.data.leaves.status);
+                setRemarks(data.data.data.leaves.remarks);
+                // alert("✅ Leaves Edited SuccesFully");
+            }
+            )
+            .catch((err) => {
+                console.log("errorr", err);
+                alert(err.response.data.msg);
+            });
+            
+    }
+
+    const EditLeave = async (e) => {
+        e.preventDefault();
+        try {
+            const data = {
+                date_to: date_to,
+                date_from: date_from,
+                name: username,
+                status: leave_status,
+                description: description,
+                remarks: remarks,
+                totalLeaves:paid_leave,
+            }
+            const data1 = {
+                leaves:paid_leave,
+            }
+            // const response1 = await AxiosInstance.patch(`api/admin/hr/leaves/total/${userId}`, data1);
+            const response = await AxiosInstance.patch(`api/admin/hr/leaves/${leaveId}`, data);
+            // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
+            if (response.status === 200) {
+                alert("✅Leave updated successfully!!");
+                // navigate('/admin/hr/leaves')
+            }
+        } catch (err) {
+            console.log(err);
+            alert("Something went wrong!!");
+        }
+        try {
+            const data = {
+                leaves:paid_leave,
+            }
+            const response = await AxiosInstance.patch(`api/admin/hr/leaves/total/${leaveId}`, data);
+            // const response = await axios.patch(`https://mc-line2.onrender.com/api/admin/hr/ticket/${ticketId}`, data);
+            if (response.status === 200) {
+                alert("✅Total Leave updated successfully!!");
+            }
+        } catch (err) {
+            console.log(err);
+            alert("Something went wrong!!");
+        }
+        navigate('/admin/hr/leaves')
+    }
+
 
   console.log(">>>> userId", userId);
 
