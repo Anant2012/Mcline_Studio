@@ -25,11 +25,30 @@ const Project = () => {
   const onSearch = (val) => {
     const updatedData = data?.filter(
       (x) =>
-        x.client_name.toLowerCase().match(val.toLowerCase()) ||
-        x.code.toLowerCase().match(val.toLowerCase()) ||
+        x.client_name?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.code?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.status?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.invoice_amount?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.project_name?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.hours?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.bid?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.approval_date.toLowerCase().match(val.toLowerCase()) ||
+        x.submission_date.toLowerCase().match(val.toLowerCase()) ||
+        x.PO_number?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.net_days.toLowerCase().match(val.toLowerCase()) ||
+        x.invoice_type.toLowerCase().match(val.toLowerCase()) ||
+        x.email_to.toLowerCase().match(val.toLowerCase()) ||
         x.resource.toLowerCase().match(val.toLowerCase()) ||
-        // x.description.toString().match(val.toLowerCase()) ||
-        x.invoice_amount.toString().match(val.toLowerCase())
+        x.email_cc.toLowerCase().match(val.toLowerCase()) ||
+        x.contact_person.toLowerCase().match(val.toLowerCase()) ||
+        x.phone.toLowerCase().match(val.toLowerCase()) ||
+        x.address.toLowerCase().match(val.toLowerCase()) ||
+        x.description.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.invoice_date?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.invoice_number?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.invoice.due_date.toLowerCase().match(val.toLowerCase()) ||
+        x.invoice.status.toLowerCase().match(val.toLowerCase()) ||
+        x.invoice.payment_status.toLowerCase().match(val.toLowerCase())
     );
     setFilteredData(updatedData);
     setTotalPurchasedItems(
@@ -361,7 +380,9 @@ const Project = () => {
               <div className="flex mx-4 flex-wrap ">
                 <div className="w-full sm:w-2/3 flex-col p-2  item-center flex text-white justify-end bg-[#0483c8] rounded ">
                   <div className="grid grid-cols-6 grid-rows-3 gap-2">
-                    <div className="col-span-6 text-lg text-center sm:text-left">Filter</div>
+                    <div className="col-span-6 text-lg text-center sm:text-left">
+                      Filter
+                    </div>
                     <div className="my-auto col-span-6 sm:col-span-1 items-center flex justify-center">
                       <select
                         className="h-[30px] cursor-pointer outline-0 w-[180px] border-[0px] text-base text-white bg-transparent "
@@ -373,7 +394,9 @@ const Project = () => {
                         </option>
                       </select>
                     </div>
-                    <div className="my-auto col-span-3 sm:col-span-1 text-center sm:text-right">Date From</div>
+                    <div className="my-auto col-span-3 sm:col-span-1 text-center sm:text-right">
+                      Date From
+                    </div>
                     <div className="my-auto col-span-3 sm:col-span-1 text-center">
                       <input
                         type="date"
@@ -381,7 +404,9 @@ const Project = () => {
                         className="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 py-1 sm:py-0 leading-8 transition-colors duration-200 ease-in-out"
                       />
                     </div>
-                    <div className="my-auto col-span-3 sm:col-span-1 text-center sm:text-right">Date To</div>
+                    <div className="my-auto col-span-3 sm:col-span-1 text-center sm:text-right">
+                      Date To
+                    </div>
                     <div className="my-auto col-span-3 sm:col-span-1 text-center">
                       <input
                         type="date"
@@ -414,7 +439,9 @@ const Project = () => {
                         className="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
                       />
                     </div>
-                    <div className="my-auto col-span-3 sm:col-span-1 text-center sm:text-right">Invoice Amount To</div>
+                    <div className="my-auto col-span-3 sm:col-span-1 text-center sm:text-right">
+                      Invoice Amount To
+                    </div>
                     <div className="my-auto col-span-3 sm:col-span-1 text-center sm:text-right">
                       <input
                         type="number"
