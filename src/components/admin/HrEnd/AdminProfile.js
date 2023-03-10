@@ -18,7 +18,7 @@ const AdminProfile = () => {
           x.personal_details.employee_code
             .toLowerCase()
             .match(val.toLowerCase()) ||
-          x.personal_details.company_id
+          x.personal_details.reporting_manager
             .toLowerCase()
             .match(val.toLowerCase()) ||
           x.personal_details.official_email_id

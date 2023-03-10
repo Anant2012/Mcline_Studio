@@ -3,14 +3,14 @@ import background from '../../Add New/Addnewlead.png';
 import { AxiosInstance } from "../../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment/moment";
-
+import { useNavigate } from "react-router-dom";
 
 function EditLead() {
     const URL = window.location.href;
     const params = useParams();
     const leadId = params.leadId;
     // console.log("Lead", leadId);
-
+    const navigate = useNavigate();
     const [date, setDate] = useState("");
     const [person, setPerson] = useState("");
     const [company, setCompany] = useState("");
@@ -62,6 +62,7 @@ function EditLead() {
             const response = await AxiosInstance.put(`/api/leads/update/${leadId}`, data);
             if (response.status === 200) {
                 alert("✅Lead updated successfully!!");
+                navigate("operation/view/lead")
             }
         } catch (err) {
             console.log(err);

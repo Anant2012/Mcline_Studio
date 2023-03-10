@@ -24,7 +24,7 @@ const AdminEditProfile = (props) => {
     const [extension, setExtension] = useState("");
     const [joining_date, setJoining_date] = useState("");
     const [official_email_id, setOfficial_email_id] = useState("");
-    const [company_id, setCompany_id] = useState("");
+    const [company_id, setCompany_id] = useState("0");
     const [profileImg, setProfileImg] = useState();
     const [birth_date, setBirth_date] = useState("");
 
@@ -68,7 +68,7 @@ const AdminEditProfile = (props) => {
                 setPersonal_contact_number(response.data.data[0].personal_details.personal_contact_number);
                 setPersonal_email_id(response.data.data[0].personal_details.personal_email_id);
                 setOfficial_email_id(response.data.data[0].personal_details.official_email_id);
-                setCompany_id(response.data.data[0].personal_details.company_id);
+                // setCompany_id(response.data.data[0].personal_details.company_id);
                 setEmployee_code(response.data.data[0].personal_details.employee_code);
                 setReporting_manager(response.data.data[0].personal_details.reporting_manager)
                 setDesignation(response.data.data[0].personal_details.designation);
@@ -226,12 +226,12 @@ const AdminEditProfile = (props) => {
                                 {data.official_email_id}
                             </dd>
                         </div>
-                        <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        {/* <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Company ID</dt>
                             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                                 {data.company_id}
                             </dd>
-                        </div>
+                        </div> */}
                     </dl>
                 </div>
             </div>

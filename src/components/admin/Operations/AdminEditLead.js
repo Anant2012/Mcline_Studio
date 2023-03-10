@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useParams } from "react-router";
 import moment from "moment/moment";
-import background from "../../../assets/images/AddNewBanner.jpg"
+import background from "../../../assets/images/AddNewBanner.jpg";
+import { useNavigate } from "react-router-dom";
 
 function AdminEditLead() {
     const URL = window.location.href;
     const params = useParams();
     const leadId = params.leadId;
     // console.log("Lead", leadId);
-
+    const navigate = useNavigate();
     const [date, setDate] = useState("");
     const [username, setUsername] = useState("");
     const [person, setPerson] = useState("");
@@ -50,12 +51,6 @@ function AdminEditLead() {
 
     const EditLead = async (e) => {
         e.preventDefault();
-        if (moment(date) < moment()) {
-            if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date).format("YYYY-MM-DD"))) {
-                alert("Invalid date");
-                return;
-            }
-        }
         try {
             const data = {
                 date: date,
@@ -69,6 +64,7 @@ function AdminEditLead() {
             const response = await AxiosInstance.patch(`/api/admin/operations/leads/update/${leadId}`, data);
             if (response.status === 200) {
                 alert("✅Lead updated successfully!!");
+                navigate("/admin/operation/view/lead")
             }
         } catch (err) {
             console.log(err);

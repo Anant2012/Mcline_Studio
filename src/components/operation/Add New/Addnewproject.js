@@ -5,9 +5,12 @@ import background1 from './AddNewProject1.png';
 import background2 from './AddNewProject2.png';
 import { useSelector } from "react-redux";
 import moment from 'moment';
+import { useNavigate } from "react-router-dom";
 
 function Addnewproject() {
   const { userId } = useSelector((state) => state);
+  const navigate = useNavigate();
+
   const [projectName, setProjectName] = useState("");
   const [person, setPerson] = useState("");
   const [company, setCompany] = useState("");
@@ -85,6 +88,7 @@ function Addnewproject() {
       if (response.status === 201) {
         alert("✅ Project Added SuccesFully");
         setIsDisabled(false);
+        navigate("/")
       }
       // setCode("");
       setProject_status("");

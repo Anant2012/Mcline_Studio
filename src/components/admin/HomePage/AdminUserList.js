@@ -15,10 +15,15 @@ function AdminUserList(props) {
     // to do
   };
   const onSearch = (val) => {
-    const updatedData = data.filter((x) =>
-      x.username.toLowerCase().match(val.toLowerCase())
+    setFilteredData(
+      data?.filter(
+        (x) =>
+          x.username.toLowerCase().match(val.toLowerCase()) ||
+          x.email().match(val.toLowerCase()) ||
+          x.phone.description.toLowerCase().match(val.toLowerCase()) ||
+          x.role.reason.toLowerCase().match(val.toLowerCase())
+      )
     );
-    setFilteredData(updatedData);
   };
   const columns = [
     { name: "Name" , selector: (row) => <button onClick={() => EditLead(row)}>{row.username}</button>, sortable: true },
