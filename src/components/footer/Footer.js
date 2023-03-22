@@ -21,9 +21,7 @@ function Footer() {
           <div className="md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-gray-800 tracking-widest text-xl mb-3">ABOUT</h2>
             <nav className="list-none mb-10 text-gray-700 text-justify w-full md:w-3/4">
-              Architecture provides an opportunity to improve the conditions for people, communities, society, businesses and the environment.
-
-
+              Architecture has the power to shape communities and contribute to a more equitable and inclusive society. With a team of talented and experienced professionals, we bring a wealth of expertise and creativity to every project we undertake.
               <nav className="list-none mt-4 leading-loose">
                 <li>
                   <a className="text-gray-700  hover:text-gray-600 cursor-pointer"><i className="fa-solid fa-envelope mr-4"></i>hr@mclinestudios.net</a>
