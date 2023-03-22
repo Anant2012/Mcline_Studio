@@ -39,8 +39,7 @@ const FrontPage = () => {
                     Operations
                   </h2>
                   <p className="leading-relaxed text-sm">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    Streamline your data management with ease
                   </p>
                   <div className="p-2 sm:w-1/2 w-full">
                     <section className="text-gray-600 body-font">
@@ -160,8 +159,7 @@ const FrontPage = () => {
                     HumanConnect
                   </h2>
                   <p className="leading-relaxed text-sm text-base">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    A Platform to Building Trust & Embracing Open Communication Channels
                   </p>
                   <div className="p-2 sm:w-1/2 w-full">
                     <section className="text-gray-600 body-font">

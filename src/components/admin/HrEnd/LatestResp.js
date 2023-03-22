@@ -54,9 +54,9 @@ const SingleItem = ({ data }) => {
         </div>
         <div className="pr-5">
           <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-            {data?.grievance && "User filed a Grievance"}
-            {data?.leaves && "User applied a Leave"}
-            {data?.tickets && "User raised a Ticket"}
+            {data?.grievance && `${data.user.username} filed a Grievance`}
+            {data?.leaves && `${data.user.username} applied a Leave`}
+            {data?.tickets && `${data.user.username} raised a Ticket`}
           </h3>
           <p class="mb-1 text-base font-normal text-gray-500 dark:text-gray-400">
             {data?.grievance?.reason}

@@ -15,7 +15,7 @@ const AdminHRFrontPage = () => {
           <span className="text-[#036396]">McLiner </span>Access Portal
         </h1>
         <p className="w-11/12 lg:w-2/3 mx-auto leading-relaxed text-base">
-          Creating a Productive and Organized Environment
+          A Platform to Building Trust & Embracing Open Communication Channels
         </p>
       </div>
 
