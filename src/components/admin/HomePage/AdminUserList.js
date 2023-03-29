@@ -26,13 +26,13 @@ function AdminUserList(props) {
     );
   };
   const columns = [
-    { name: "Name" , selector: (row) => <button onClick={() => EditLead(row)}>{row.username}</button>, sortable: true },
-    { name: "Email", selector: (row) => <button onClick={() => EditLead(row)}>{row.email}</button>, sortable: true },
-    { name: "Phone", selector: (row) => <button onClick={() => EditLead(row)}>{row.phone}</button>, sortable: true },
-    { name: "Password", selector: (row) => <button onClick={() => EditLead(row)}>{row.password}</button>, sortable: true },
+    { name: "Name" ,selector: (row)=>row.username, format: (row) => <button onClick={() => EditLead(row)}>{row.username}</button>, sortable: true },
+    { name: "Email",selector: (row)=>row.email, format: (row) => <button onClick={() => EditLead(row)}>{row.email}</button>, sortable: true },
+    { name: "Phone",selector: (row)=>row.phone, format: (row) => <button onClick={() => EditLead(row)}>{row.phone}</button>, sortable: true },
+    { name: "Password",selector: (row)=>row.password, format: (row) => <button onClick={() => EditLead(row)}>{row.password}</button>, sortable: true },
     {
-      name: "Role",
-      selector: (row) =>
+      name: "Role",selector: (row)=>row.role,
+      format: (row) =>
         row.role.map((data, index) => {
           return <>{row.role.length != index + 1 ? `${data}, ` : `${data}`}</>;
         }),
@@ -40,7 +40,7 @@ function AdminUserList(props) {
     },
     {
       name: "Action",
-      selector: (row) => (
+      format: (row) => (
         <div style={{ display: "flex" }}>
           <FaUserEdit
             onClick={() => EditLead(row)}

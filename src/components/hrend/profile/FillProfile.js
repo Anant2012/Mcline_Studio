@@ -41,7 +41,7 @@ const FillProfile = (props) => {
     formData.append("company_id", company_id);
     formData.append("joining_date", joining_date);
     formData.append("extension", extension);
-    formData.append("profile_image", profileImg);
+    // formData.append("profile_image", profileImg);
     formData.append("DOB", birth_date);
 
     try {

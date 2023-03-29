@@ -36,6 +36,7 @@ function Lead() {
           {moment(row.date).format("DD/MM/YYYY")}
         </button>
       ),
+      width:"200px",
       sortable: true,
     },
     {
@@ -46,6 +47,7 @@ function Lead() {
           {row.company}
         </button>
       ),
+      width:"350px",
       sortable: true,
     },
     {
@@ -54,6 +56,7 @@ function Lead() {
       format: (row) => (
         <button onClick={() => EditLead(row)}>{row.name}</button>
       ),
+      width:"200px",
       sortable: true,
     },
     {
@@ -62,6 +65,7 @@ function Lead() {
       format: (row) => (
         <button onClick={() => EditLead(row)}>{row.status}</button>
       ),
+      width:"140px",
       sortable: true,
     },
     {
@@ -70,7 +74,9 @@ function Lead() {
       format: (row) => (
         <button onClick={() => EditLead(row)}>{row.description}</button>
       ),
+      width:"250px",
       sortable: true,
+      // wrap:true,
     },
     {
       name: "Action",
@@ -83,6 +89,7 @@ function Lead() {
           />
         </div>
       ),
+      width:"140px",
     },
   ];
 
