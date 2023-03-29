@@ -48,7 +48,7 @@ const EditProfile = () => {
         formData.append("company_id", company_id);
         formData.append("joining_date", joining_date);
         formData.append("extension", extension);
-        formData.append("profile_image", profileImg);
+        // formData.append("profile_image", profileImg);
         formData.append("DOB", birth_date);
         try {
             const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)

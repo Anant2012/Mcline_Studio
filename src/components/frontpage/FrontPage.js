@@ -39,7 +39,7 @@ const FrontPage = () => {
                     Operations
                   </h2>
                   <p className="leading-relaxed text-sm">
-                    Streamline your data management with ease
+                    Streamline Your Data Management With Ease
                   </p>
                   <div className="p-2 sm:w-1/2 w-full">
                     <section className="text-gray-600 body-font">
