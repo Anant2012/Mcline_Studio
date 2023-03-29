@@ -41,7 +41,7 @@ const FillProfile = (props) => {
     formData.append("company_id", company_id);
     formData.append("joining_date", joining_date);
     formData.append("extension", extension);
-    // formData.append("profile_image", profileImg);
+    formData.append("profile_image", profileImg);
     formData.append("DOB", birth_date);
 
     try {
@@ -133,7 +133,8 @@ const FillProfile = (props) => {
                   className={`form-input w-[350px] flex ${
                     showImage ? "justify-center" : "justify-end"
                   } bg-white`}
-                >
+                    >
+                      
                   <label
                     for="file-ip-1"
                     className=" block w-1/2 leading-10 text-center bg-[#1172c2] text-[15px] uppercase font-semibold cursor-pointer rounded-[5px] text-white"
