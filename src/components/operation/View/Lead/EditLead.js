@@ -62,7 +62,7 @@ function EditLead() {
             const response = await AxiosInstance.put(`/api/leads/update/${leadId}`, data);
             if (response.status === 200) {
                 alert("✅Lead updated successfully!!");
-                navigate("operation/view/lead")
+                navigate("/operation/view/lead")
             }
         } catch (err) {
             console.log(err);
