@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
+import moment from "moment/moment";
 
 const ViewProfile = (props) => {
   const { userId } = useSelector((state) => state);
@@ -70,7 +71,7 @@ const ViewProfile = (props) => {
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Joining Date</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                {data.joining_date}
+                {moment(data.joining_date).format("DD-MM-YYYY")}
               </dd>
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -92,7 +93,7 @@ const ViewProfile = (props) => {
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                {data.joining_date}
+                {moment(data.DOB).format("DD-MM-YYYY")}
               </dd>
             </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
