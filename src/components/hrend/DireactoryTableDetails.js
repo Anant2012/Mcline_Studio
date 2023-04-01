@@ -46,7 +46,7 @@ const DirectoryTableDetails = () => {
 
                         <img
                             className="h-16 w-16 sm:h-24 sm:w-24 rounded-full"
-                            src={`https://mc-line2.onrender.com/${data.profile_image}`}
+                            src={`${data.profile_image}`}
                             alt=""
                         />
                     </div>

@@ -101,7 +101,7 @@ const DirectoryTable = () => {
                                                     <div className="w-1/2 flex justify-end">
                                                         <img
                                                             className="h-14 w-14 rounded-full"
-                                                            src={`https://mc-line2.onrender.com/${data.personal_details.profile_image}`}
+                                                            src={`${data.personal_details.profile_image}`}
                                                             alt=""
                                                         />
                                                     </div>
