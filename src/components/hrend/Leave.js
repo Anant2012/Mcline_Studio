@@ -136,8 +136,7 @@ function Leave() {
                 Leaves
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-                gentrify.
+                Please ensure you are filling the correct information while applying leaves
               </p>
             </div>
             <form onSubmit={AddLeave}>

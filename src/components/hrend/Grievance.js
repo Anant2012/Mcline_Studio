@@ -92,8 +92,7 @@ function Grievance() {
                 Grievance
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-                gentrify.
+                Please let us know your concern in a descriptive form.
               </p>
             </div>
             <form onSubmit={AddGrievance}>

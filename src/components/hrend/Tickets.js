@@ -105,8 +105,7 @@ function Tickets() {
                 Tickets
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-                gentrify.
+                Please ensure to write proper description about your issue
               </p>
             </div>
             <form onSubmit={AddTicket}>
@@ -205,6 +204,7 @@ function Tickets() {
                         id="message"
                         name="message"
                         value={description}
+                        placeholder="Please ensure to write proper description about your issue"
                         onChange={(e) => setDescription(e.target.value)}
                         className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 sm:h-40 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                       ></textarea>
