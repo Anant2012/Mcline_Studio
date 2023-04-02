@@ -92,8 +92,7 @@ function Grievance() {
                 Grievance
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-                gentrify.
+                Please let us know your concern in a descriptive form.
               </p>
             </div>
             <form onSubmit={AddGrievance}>
@@ -126,8 +125,7 @@ function Grievance() {
                     <textarea
                       id="message"
                       name="message"
-                        value={statement}
-                        placeholder="Please ensure to write proper description about your issue"
+                      value={statement}
                       onChange={(e) => setStatement(e.target.value)}
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     ></textarea>

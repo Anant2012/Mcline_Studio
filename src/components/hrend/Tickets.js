@@ -105,8 +105,7 @@ function Tickets() {
                 Tickets
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-                gentrify.
+                Please ensure to write proper description about your issue
               </p>
             </div>
             <form onSubmit={AddTicket}>
