@@ -40,7 +40,7 @@ function AdminUserList(props) {
     },
     {
       name: "Action",
-      format: (row) => (
+      selector: (row) => (
         <div style={{ display: "flex" }}>
           <FaUserEdit
             onClick={() => EditLead(row)}
