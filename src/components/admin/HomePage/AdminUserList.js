@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { AxiosInstance } from "../../../AxiosInstance/AxiosInstance";
 import { useSelector } from "react-redux";
+
 function AdminUserList(props) {
   const { userId } = useSelector((state) => state);
   const navigate = useNavigate();
@@ -19,9 +20,8 @@ function AdminUserList(props) {
       data?.filter(
         (x) =>
           x.username.toLowerCase().match(val.toLowerCase()) ||
-          x.email().toLowerCase().match(val.toLowerCase()) ||
-          x.phone.description.toLowerCase().match(val.toLowerCase()) ||
-          x.role.reason.toLowerCase().match(val.toLowerCase())
+          x.email.toLowerCase().match(val.toLowerCase()) ||
+          x.phone.toLowerCase().match(val.toLowerCase()) 
       )
     );
   };
