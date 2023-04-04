@@ -25,6 +25,7 @@ function Timesheet() {
     setEditRow();
     toggleModal();
   };
+  
   const handleEditClick = (row) => {
     setEditRow(row);
     toggleModal();
