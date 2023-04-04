@@ -15,6 +15,7 @@ const AdminEditProfile = (props) => {
     const [name, setName] = useState("");
     const [employee_code, setEmployee_code] = useState("");
     const [designation, setDesignation] = useState("");
+    const [department, setDepartment] = useState("");
     const [grade, setGrade] = useState("");
     const [reporting_manager, setReporting_manager] = useState("");
     const [emergency_contact_number, setEmergency_contact_number] = useState("");
@@ -37,6 +38,7 @@ const AdminEditProfile = (props) => {
         formData.append("name", name);
         formData.append("employee_code", employee_code);
         formData.append("designation", designation);
+        formData.append("department", department);
         formData.append("grade", grade);
         formData.append("reporting_manager", reporting_manager);
         formData.append("emergency_contact_number", emergency_contact_number);
@@ -72,6 +74,7 @@ const AdminEditProfile = (props) => {
                 setEmployee_code(response.data.data[0].personal_details.employee_code);
                 setReporting_manager(response.data.data[0].personal_details.reporting_manager)
                 setDesignation(response.data.data[0].personal_details.designation);
+                setDepartment(response.data.data[0].personal_details.department);
                 setExtension(response.data.data[0].personal_details.extension);
                 setJoining_date(moment(response.data.data[0].personal_details.joining_date).format('YYYY-MM-DD'));
                 setBirth_date(moment(response.data.data[0].personal_details.DOB).format('YYYY-MM-DD'));
@@ -126,6 +129,20 @@ const AdminEditProfile = (props) => {
                             </dd>
                         </div>
 
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Department</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                <input
+                                    type="text"
+                                    id="text"
+                                    value={department}
+                                    onChange={(e) => setDepartment(e.target.value)}
+                                    
+                                    name="text"
+                                    class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                />
+                            </dd>
+                        </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">Grade</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
@@ -193,7 +210,7 @@ const AdminEditProfile = (props) => {
                         <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
                             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                {data.joining_date}
+                                {moment(data.DOB).format("DD-MM-YYYY")}
                             </dd>
                         </div>
                         <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

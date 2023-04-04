@@ -18,10 +18,12 @@ function Footer() {
       <p className="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
     </div> */}
         <div className="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
-          <div className="md:w-1/2 w-full px-4">
+          <div className="md:w-1/1 w-full px-4">
             <h2 className="title-font font-medium text-gray-800 tracking-widest text-xl mb-3">ABOUT</h2>
             <nav className="list-none mb-10 text-gray-700 text-justify w-full md:w-4/4">
-              Architecture has the power to shape communities and contribute to a more equitable and inclusive society. With a team of talented and experienced professionals, we bring a wealth of expertise and creativity to every project we undertake.
+              The McLiner portal is an online platform that allows employees to perform various tasks related to their work. They can add projects and leads, view the latest projects and leads, and apply for leaves through the portal. In addition, employees can raise tickets to report issues they are facing and submit their daily timesheets to report their work progress.
+              <br></br>
+              The portal is a centralized platform for employees to manage their work-related activities and keep track of their progress. It streamlines HR processes and enables employees to communicate effectively with their colleagues and superiors
               <nav className="list-none mt-4 leading-loose">
                 <li>
                   <a className="text-gray-700  hover:text-gray-600 cursor-pointer"><i className="fa-solid fa-envelope mr-4"></i>hr@mclinestudios.net</a>
@@ -40,11 +42,11 @@ function Footer() {
 
 
 
-          <div className="md:w-1/2 w-full px-4">
+          {/* <div className="md:w-1/2 w-full px-4">
             <div className='flex justify-end mt-[10px] w-full items-center'>
               <img src={`${background}`} className="max-w-[300px] flex h-auto" alt="..." />
             </div>
-          </div>
+          </div> */}
 
           {/* <div className="lg:w-1/4 md:w-1/2 flex justify-center  w-full px-4">
         <nav className="list-none mb-10">
