@@ -30,16 +30,24 @@ function AdminProject() {
       alert("Select all filters");
       return;
     }
-    const updatedData = data.filter(
-      (x) => x[prop] >= startingComp && x[prop] <= endingComp
-    );
+    const updatedData = data.filter((x) => {
+      if (prop === "due_date") {
+        return (
+          x["invoice"][prop] >= startingComp && x["invoice"][prop] <= endingComp
+        );
+      }
+      return x[prop] >= startingComp && x[prop] <= endingComp;
+    });
     setFilteredData(updatedData);
   };
   const onSearch = (val) => {
     const updatedData = data?.filter(
       (x) =>
         x.client_name?.toString().toLowerCase().match(val.toLowerCase()) ||
-        x.user_id?.username?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.user_id?.username
+          ?.toString()
+          .toLowerCase()
+          .match(val.toLowerCase()) ||
         x.code?.toString().toLowerCase().match(val.toLowerCase()) ||
         x.status?.toString().toLowerCase().match(val.toLowerCase()) ||
         x.invoice_amount?.toString().toLowerCase().match(val.toLowerCase()) ||
@@ -556,13 +564,19 @@ function AdminProject() {
                       <div className="my-auto col-span-6 sm:col-span-1 items-center flex justify-center">
                         <select
                           className="h-[30px] cursor-pointer outline-0 w-[180px] border-[0px] text-base text-white bg-transparent "
-                          onChange={(e) => setFilterDate(e.target.value)}
-                        >
-                          <option className="text-gray-600">
+                          onChange={(e) => setFilterDate(e.target.value)}>
+                          <option
+                            className="text-gray-600"
+                            value="approval_date">
                             Approval Date
                           </option>
-                          <option className="text-gray-600">
+                          <option
+                            className="text-gray-600"
+                            value="submission_date">
                             Submission Date
+                          </option>
+                          <option className="text-gray-600" value="due_date">
+                            Due Date
                           </option>
                         </select>
                       </div>
@@ -588,15 +602,8 @@ function AdminProject() {
                       </div>
                       <div className="my-auto col-span-6 sm:col-span-1 text-center">
                         <button
-                          onClick={() =>
-                            filterByProperty(
-                              filterDate === "Approval Date"
-                                ? "approval_date"
-                                : "submission_date"
-                            )
-                          }
-                          className="text-white font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
-                        >
+                          onClick={() => filterByProperty(filterDate)}
+                          className="text-white font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap">
                           Find
                         </button>
                       </div>
@@ -624,8 +631,7 @@ function AdminProject() {
                       <div className="my-auto text-center col-span-6 sm:col-span-1">
                         <button
                           onClick={() => filterByProperty("invoice_amount")}
-                          className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 mr-3 whitespace-nowrap"
-                        >
+                          className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 mr-3 whitespace-nowrap">
                           Find
                         </button>
                       </div>
