@@ -39,7 +39,7 @@ function AdminProject() {
     const updatedData = data?.filter(
       (x) =>
         x.client_name?.toString().toLowerCase().match(val.toLowerCase()) ||
-        x.user_id.username?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.user_id?.username?.toString().toLowerCase().match(val.toLowerCase()) ||
         x.code?.toString().toLowerCase().match(val.toLowerCase()) ||
         x.status?.toString().toLowerCase().match(val.toLowerCase()) ||
         x.invoice_amount?.toString().toLowerCase().match(val.toLowerCase()) ||
@@ -74,7 +74,8 @@ function AdminProject() {
   const columns = [
     {
       name: "User Name",
-      selector: (row) => (
+      selector: (row) => row.user_id?.username,
+      format: (row) => (
         <button onClick={() => EditProject(row)}>
           {row.user_id?.username}
         </button>

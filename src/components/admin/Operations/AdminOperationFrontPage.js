@@ -25,7 +25,7 @@ const AdminOperationFrontPage = () => {
           <span className="text-[#036396]">McLiner </span>Access Portal
         </h1>
         <p className="lg:w-2/3 w-11/12 mx-auto leading-relaxed text-base">
-          Streamline Your Data Management With Ease
+          Driving Operational Excellence: The Role of the Operations Team
         </p>
       </div>
 

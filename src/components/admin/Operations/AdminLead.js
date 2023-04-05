@@ -46,6 +46,7 @@ function AdminLead() {
         <button onClick={() => EditLead(row)}>{row.user_id?.username}</button>
       ),
       sortable: true,
+      width:"200px"
     },
     {
       name: "Date",
@@ -56,6 +57,7 @@ function AdminLead() {
         </button>
       ),
       sortable: true,
+      width:"200px"
     },
     // { name: "Date", format: (row) => row.moment(date).format('MM/DD/YYYY'), sortable: true },
     {
@@ -65,6 +67,7 @@ function AdminLead() {
         <button onClick={() => EditLead(row)}>{row.company}</button>
       ),
       sortable: true,
+      width:"250px"
     },
     {
       name: "Person",
@@ -73,6 +76,7 @@ function AdminLead() {
         <button onClick={() => EditLead(row)}>{row.name}</button>
       ),
       sortable: true,
+      width:"200px"
     },
     {
       name: "Lead Status",
@@ -81,6 +85,7 @@ function AdminLead() {
         <button onClick={() => EditLead(row)}>{row.status}</button>
       ),
       sortable: true,
+      width:"200px"
     },
     {
       name: "Description",
@@ -89,6 +94,7 @@ function AdminLead() {
         <button onClick={() => EditLead(row)}>{row.description}</button>
       ),
       sortable: true,
+      width:"300px"
     },
     {
       name: "Action",
@@ -106,6 +112,7 @@ function AdminLead() {
           />
         </div>
       ),
+      width:"160px"
     },
   ];
 

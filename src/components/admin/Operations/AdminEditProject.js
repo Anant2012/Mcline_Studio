@@ -98,7 +98,7 @@ function Addnewproject() {
         const data = {
             user_id: "63e9411577ce9c26f2babd4f",
             // code: code,
-            project_status: project_status,
+            status: project_status,
             client_name: company,
             person: person,
             description: description,
