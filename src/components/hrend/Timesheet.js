@@ -30,19 +30,31 @@ function Timesheet() {
     setEditRow(row);
     toggleModal();
   };
-
+ 
+  // const onSearch = (val) => {
+  //   setFilteredData(
+  //     data?.filter(
+  //       (x) =>
+  //         x.tickets.reason.toLowerCase().match(val.toLowerCase()) ||
+  //         x.row.created_at.reason.toLowerCase().match(val.toLowerCase())
+  //     )
+  //   );
+  // };
   const columns = [
-    { name: "SNo", cell: (row, index) => index + 1, sortable: true },
+    { name: "SNo", cell: (row, index) => index + 1, sortable: true,
+  width:"200px" },
     {
       name: "Task",
       selector: (row) => row.task,
       sortable: true,
       wrap: true,
+      width:"600px"
     },
     {
       name: "Time",
       selector: (row) => row.time,
       sortable: true,
+      width:"200px"
     },
     {
       name: "Action",
@@ -55,6 +67,7 @@ function Timesheet() {
           />
         </div>
       ),
+      width:"200px"
     },
   ];
 
