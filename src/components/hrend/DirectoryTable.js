@@ -12,9 +12,15 @@ const AdminProfile = () => {
       data?.filter(
         (x) =>
           x.personal_details.name.toLowerCase().match(val.toLowerCase()) ||
-          x.personal_details.grade.toLowerCase().match(val.toLowerCase()) ||
-          x.personal_details.reporting_manager.toLowerCase().match(val.toLowerCase()) ||
-          x.personal_details.official_email_id.toLowerCase().match(val.toLowerCase())
+          x.personal_details.employee_code
+            .toLowerCase()
+            .match(val.toLowerCase()) ||
+          x.personal_details.reporting_manager
+            .toLowerCase()
+            .match(val.toLowerCase()) ||
+          x.personal_details.official_email_id
+            .toLowerCase()
+            .match(val.toLowerCase())
       )
     );
   };
