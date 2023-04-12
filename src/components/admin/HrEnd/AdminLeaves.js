@@ -17,7 +17,7 @@ function AdminLeaves() {
     setFilteredData(
       data?.filter(
         (x) =>
-          x.user_id.username.toLowerCase().match(val.toLowerCase()) ||
+          x.user_id?.username.toLowerCase().match(val.toLowerCase()) ||
           x.leaves.date_from.toLowerCase().match(val.toLowerCase()) ||
           x.leaves.description.toLowerCase().match(val.toLowerCase()) ||
           x.leaves.status.toLowerCase().match(val.toLowerCase())

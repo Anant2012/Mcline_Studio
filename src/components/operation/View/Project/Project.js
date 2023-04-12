@@ -203,9 +203,9 @@ const Project = () => {
     },
     {
       name: "Contact Person",
-      selector: (row) => row.contact_person,
+      selector: (row) => row.person,
       format: (row) => (
-        <button onClick={() => EditProject(row)}>{row.contact_person}</button>
+        <button onClick={() => EditProject(row)}>{row.person}</button>
       ),
       sortable: true,
       width: "160px",
@@ -224,6 +224,15 @@ const Project = () => {
       selector: (row) => row.address,
       format: (row) => (
         <button onClick={() => EditProject(row)}>{row.address}</button>
+      ),
+      sortable: true,
+      width: "160px",
+    },
+    {
+      name: "Refrence",
+      selector: (row) => row.contact_person,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.contact_person}</button>
       ),
       sortable: true,
       width: "160px",

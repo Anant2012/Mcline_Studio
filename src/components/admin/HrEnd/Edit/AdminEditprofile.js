@@ -43,6 +43,7 @@ const AdminEditProfile = (props) => {
         formData.append("reporting_manager", reporting_manager);
         formData.append("emergency_contact_number", emergency_contact_number);
         formData.append("blood_group", blood_group);
+        formData.append("extension", extension);
         formData.append("personal_contact_number", personal_contact_number);
         formData.append("personal_email_id", personal_email_id);
         formData.append("official_email_id", official_email_id);
@@ -54,7 +55,7 @@ const AdminEditProfile = (props) => {
             const response = await AxiosInstance.put(`/api/hr/update/user/${userId}`, formData)
             if (response.status === 200) {
                 alert("✅ Profile Edited SuccesFully");
-                navigate(`/hr/personaldetails`);
+                navigate(`/admin/hr/profiles`);
                 // setIsDisabled(false);
             }
         } catch (error) {
@@ -117,9 +118,17 @@ const AdminEditProfile = (props) => {
                 <div className="border-t border-gray-300">
                     <dl>
                         <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-500">Employee Code</dt>
-                            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                {data.employee_code}
+                            <dt class="text-sm font-medium text-gray-500">Employee Code</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                <input
+                                    type="text"
+                                    id="text"
+                                    value={employee_code}
+                                    onChange={(e) => setEmployee_code(e.target.value)}
+
+                                    name="text"
+                                    class="w-3/4 sm:w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                />
                             </dd>
                         </div>
                         <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

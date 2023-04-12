@@ -58,6 +58,7 @@ function Addnewlead() {
       setLead_Status("");
       setIsDisabled(false);
     } catch (error) {
+      setIsDisabled(false);
       alert(error.response.data.msg);
 
     };
