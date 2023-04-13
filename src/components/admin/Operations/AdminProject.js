@@ -68,7 +68,7 @@ function AdminProject() {
         x.invoice.resource_cost.toLowerCase().match(val.toLowerCase()) ||
         x.description.toString().toLowerCase().match(val.toLowerCase()) ||
         x.invoice_date?.toString().toLowerCase().match(val.toLowerCase()) ||
-        x.invoice_number?.toString().toLowerCase().match(val.toLowerCase()) ||
+        x.invoice.invoice_number?.toString().toLowerCase().match(val.toLowerCase()) ||
         x.invoice.due_date.toLowerCase().match(val.toLowerCase()) ||
         x.invoice.status.toLowerCase().match(val.toLowerCase()) ||
         x.invoice.payment_status.toLowerCase().match(val.toLowerCase()) ||
@@ -191,6 +191,15 @@ function AdminProject() {
       width: "160px",
     },
     {
+      name: "Contact Person",
+      selector: (row) => row.person,
+      format: (row) => (
+        <button onClick={() => EditProject(row)}>{row.person}</button>
+      ),
+      sortable: true,
+      width: "160px",
+    },
+    {
       name: "Net Days",
       selector: (row) => row.net_days,
       format: (row) => (
@@ -307,7 +316,7 @@ function AdminProject() {
     },
     {
       name: "Invoice Number",
-      selector: (row) => row.invoice_number,
+      selector: (row) => row.invoice.invoice_number,
       format: (row) => (
         <button onClick={() => EditProject(row)}>
           {row.invoice.invoice_number}
@@ -433,118 +442,6 @@ function AdminProject() {
 
   return (
     <>
-      {/* <section className="text-gray-600 body-font">
-        <div className="container px-5 py-20 mx-auto">
-          <div className="flex flex-col text-center w-full mb-12">
-            <h1 className="sm:text-4xl text-3xl font-medium title-font text-gray-900">
-              View Project
-            </h1>
-          </div>
-          <div>
-            <div className="bg-[#0483c8] pb-2 pt-4">
-              <div className="lg:w-7/8 w-full mx-auto">
-                <div className="flex mx-4 flex-wrap ">
-                  <div className="w-full sm:w-2/3 flex-col p-2  item-center flex text-white justify-end bg-[#0483c8] rounded ">
-                    <div className="grid grid-cols-6 grid-rows-3 gap-2">
-                      <div className="col-span-6 text-lg">Filter</div>
-
-                      <div className="my-auto items-center flex justify-center">
-                        <select
-                          className="h-[30px] cursor-pointer outline-0 w-[180px] border-[0px] text-base text-white bg-transparent "
-                          onChange={(e) => setFilterDate(e.target.value)}
-                        >
-                          <option className="text-gray-600">
-                            Approval Date
-                          </option>
-                          <option className="text-gray-600">
-                            Submission Date
-                          </option>
-                        </select>
-                      </div>
-                      <div className="my-auto text-right">Date From</div>
-                      <div className="my-auto">
-                        <input
-                          type="date"
-                          onChange={(e) => setStartingDate(e.target.value)}
-                          className="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
-                      <div className="my-auto text-right">Date To</div>
-                      <div className="my-auto">
-                        <input
-                          type="date"
-                          onChange={(e) => setEndingDate(e.target.value)}
-                          className="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
-                      <div className="my-auto">
-                        <button
-                          onClick={() =>
-                            filterByProperty(
-                              filterDate === "Approval Date"
-                                ? "approval_date"
-                                : "submission_date"
-                            )
-                          }
-                          className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
-                        >
-                          Find
-                        </button>
-                      </div>
-
-                      <div className="my-auto col-span-2 text-right whitespace-nowrap">
-                        Invoice Amount From
-                      </div>
-                      <div className="my-auto">
-                        <input
-                          type="number"
-                          onChange={(e) => setStartingAmout(e.target.value)}
-                          className="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
-                      <div className="my-auto text-right">
-                        Invoice Amount To
-                      </div>
-                      <div className="my-auto">
-                        <input
-                          type="number"
-                          onChange={(e) => setEndingAmount(e.target.value)}
-                          className="w-full bg-gray-100 bg-opacity-5 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-5 focus:ring-2 focus:ring-indigo-200 text-base outline-none px-2 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
-                      <div className="my-auto">
-                        <button
-                          onClick={() => filterByProperty("invoice_amount")}
-                          className="text-white text-sm font-medium bg-[#03527d] border-0 py-2 px-4 sm:px-6 focus:outline-none hover:bg-[#024264] rounded ml-3 text-sm mr-3 whitespace-nowrap"
-                        >
-                          Find
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <Table
-                columns={columns}
-                data={filteredData}
-                onSearch={onSearch}
-                title="Selling Product List"
-              />
-              <div className="flex flex-row justify-between w-full justify-center items-center">
-                <div className="ml-4 text-slate-100 text-md font-normal">
-                  Total Amount : {totalPurchasedItems}
-                </div>
-                <div>
-                  <DownloadTableIcon
-                    fileData={downloadData}
-                    fileName="Project"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <section className="text-gray-600 body-font">
         <div className="container px-1 sm:px-5 py-20 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">

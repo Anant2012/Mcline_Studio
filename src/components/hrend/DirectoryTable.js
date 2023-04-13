@@ -12,9 +12,18 @@ const AdminProfile = () => {
       data?.filter(
         (x) =>
           x.personal_details.name.toLowerCase().match(val.toLowerCase()) ||
-          x.personal_details.grade.toLowerCase().match(val.toLowerCase()) ||
-          x.personal_details.reporting_manager.toLowerCase().match(val.toLowerCase()) ||
-          x.personal_details.official_email_id.toLowerCase().match(val.toLowerCase())
+          x.personal_details.employee_code
+            .toLowerCase()
+            .match(val.toLowerCase()) ||
+          x.personal_details.grade
+            .toLowerCase()
+            .match(val.toLowerCase()) ||
+          x.personal_details.reporting_manager
+            .toLowerCase()
+            .match(val.toLowerCase()) ||
+          x.personal_details.official_email_id
+            .toLowerCase()
+            .match(val.toLowerCase())
       )
     );
   };
@@ -23,6 +32,7 @@ const AdminProfile = () => {
 
     { name: "Name", selector: (row) => row.personal_details.name, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },
     { name: "Employee Code", selector: (row) => row.personal_details.employee_code, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.employee_code}</button>, sortable: true },
+    { name: "Grade", selector: (row) => row.personal_details.grade, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.grade}</button>, sortable: true },
     { name: "Email", selector: (row) => row.personal_details.official_email_id, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.official_email_id}</button>, sortable: true },
     { name: "Reporting Manager", selector: (row) => row.personal_details.reporting_manager, format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.reporting_manager}</button>, sortable: true },
     // { name: "Description", format: (row) => <button onClick={() => EditLeaves(row)}>{row.personal_details.name}</button>, sortable: true },

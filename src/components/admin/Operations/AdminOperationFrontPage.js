@@ -63,8 +63,7 @@ const AdminOperationFrontPage = () => {
                     Operations
                   </h2>
                   <p className="leading-relaxed text-sm">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    Streamline your workflows, allowing you to get your projects & leads completed seamlessly.
                   </p>
                   <div className="p-2 sm:w-1/2 w-full">
                     <section className="text-gray-600 body-font">

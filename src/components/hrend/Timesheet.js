@@ -42,19 +42,19 @@ function Timesheet() {
   // };
   const columns = [
     { name: "SNo", cell: (row, index) => index + 1, sortable: true,
-  width:"200px" },
+  width:"15%" },
     {
       name: "Task",
       selector: (row) => row.task,
       sortable: true,
       wrap: true,
-      width:"600px"
+      width:"60%"
     },
     {
       name: "Time",
       selector: (row) => row.time,
       sortable: true,
-      width:"200px"
+      width:"10%"
     },
     {
       name: "Action",
@@ -67,7 +67,7 @@ function Timesheet() {
           />
         </div>
       ),
-      width:"200px"
+      width:"15%"
     },
   ];
 
