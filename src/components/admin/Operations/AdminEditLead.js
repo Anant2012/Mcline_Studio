@@ -204,6 +204,7 @@ function AdminEditLead() {
                                                 <option value="Cold" className="leading-7 text-sm text-gray-600">Cold</option>
                                                 <option value="Hot" className="leading-7 text-sm text-gray-600">Hot</option>
                                                 <option value="Warm" className="leading-7 text-sm text-gray-600">Warm</option>
+                                                <option value="Converted" className="leading-7 text-sm text-gray-600">Converted</option>
                                             </select>
                                         </div>
                                     </div>

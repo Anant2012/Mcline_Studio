@@ -137,6 +137,7 @@ function Addnewproject() {
             }
             // setCode("");
         } catch (error) {
+            setIsDisabled(false);
             alert(error.response.data.msg);
 
         };

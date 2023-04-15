@@ -57,18 +57,18 @@ function Leave() {
   ];
 
   const AddLeave = async (e) => {
-    if (moment(date_from) < moment()) {
-      alert("Date Should be Greater than today");
-      return;
-    }
-    if (moment(date_to) < moment()) {
-      alert("Date Should be Greater than today");
-      return;
-    }
-    // if (moment(date_to) > moment(date_from)) {
-    //   alert("Invalid date");
+    // if (moment(date_from) < moment()) {
+    //   alert("Date Should be Greater than today");
     //   return;
     // }
+    // if (moment(date_to) < moment()) {
+    //   alert("Date Should be Greater than today");
+    //   return;
+    // }
+    // // if (moment(date_to) > moment(date_from)) {
+    // //   alert("Invalid date");
+    // //   return;
+    // // }
     e.preventDefault();
     setIsDisabled(true);
     const data = {

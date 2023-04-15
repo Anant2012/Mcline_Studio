@@ -36,12 +36,12 @@ function Addnewlead() {
       status: lead_status,
       description: description,
     }
-    if (moment(date) < moment()) {
-      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date).format("YYYY-MM-DD"))) {
-        alert("Invalid date");
-        return;
-      }
-    }
+    // if (moment(date) < moment()) {
+    //   if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(date).format("YYYY-MM-DD"))) {
+    //     alert("Invalid date");
+    //     return;
+    //   }
+    // }
     try {
       const response = await AxiosInstance.post(`/api/leads/create`, data)
       if (response.status === 200) {
@@ -175,6 +175,7 @@ function Addnewlead() {
                         <option value="Cold" className="leading-7 text-sm text-gray-600">Cold</option>
                         <option value="Hot" className="leading-7 text-sm text-gray-600">Hot</option>
                         <option value="Warm" className="leading-7 text-sm text-gray-600">Warm</option>
+                        <option value="Converted" className="leading-7 text-sm text-gray-600">Converted</option>
                       </select>
                     </div>
                   </div>
