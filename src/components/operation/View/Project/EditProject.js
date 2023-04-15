@@ -103,7 +103,7 @@ function EditProject() {
             project_name: projectName,
             approval_date: approvalDate,
             submission_date: submissionDate,
-            // comments: comment,
+            comments: comment,
             invoice_amount:invoice_amount,
             // reference: reference,
             address: address,
@@ -129,6 +129,7 @@ function EditProject() {
             }
             // setCode("");
         } catch (error) {
+            setIsDisabled(false);
             alert(error.response.data.msg);
 
         };

@@ -71,18 +71,18 @@ function Addnewproject() {
       email_cc: email_cc,
       company_name: company,
     }
-    if (moment(approvalDate) < moment()) {
-      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(approvalDate).format("YYYY-MM-DD"))) {
-        alert("Invalid Approval Date");
-        return;
-      }
-    }
-    if (moment(submissionDate) < moment()) {
-      if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(submissionDate).format("YYYY-MM-DD"))) {
-        alert("Invalid Submission Date");
-        return;
-      }
-    }
+    // if (moment(approvalDate) < moment()) {
+    //   if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(approvalDate).format("YYYY-MM-DD"))) {
+    //     alert("Invalid Approval Date");
+    //     return;
+    //   }
+    // }
+    // if (moment(submissionDate) < moment()) {
+    //   if (!moment(moment().format("YYYY-MM-DD")).isSame(moment(submissionDate).format("YYYY-MM-DD"))) {
+    //     alert("Invalid Submission Date");
+    //     return;
+    //   }
+    // }
     try {
       const response = await AxiosInstance.post(`/api/project/create`, data)
       if (response.status === 201) {
