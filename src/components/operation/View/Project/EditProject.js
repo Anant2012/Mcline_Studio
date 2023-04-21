@@ -79,7 +79,7 @@ function EditProject() {
                 setInvoice_status(data.data.data.invoice.status)
                 setPayment_status(data.data.data.invoice.payment_status)
                 setInvoice_number(data.data.data.invoice.invoice_number);
-                setInvoice_date(moment(data.data.data.invoice.invoice_date).format('YYYY-MM-DD'));
+                setInvoice_date(moment(data.data.data.invoice.date).format('YYYY-MM-DD'));
                 setDue_date(moment(data.data.data.invoice.due_date).format('YYYY-MM-DD'));
                 setapprovalDate(moment(data.data.data.approval_date).format('YYYY-MM-DD'));
                 // alert("✅ Lead Edited SuccesFully");
@@ -94,7 +94,7 @@ function EditProject() {
         e.preventDefault();
         setIsDisabled(true);
         const data = {
-            userId: "63e9411577ce9c26f2babd4f",
+            // userId: "63e9411577ce9c26f2babd4f",
             // code: code,
             project_status: project_status,
             client_name: company,
@@ -125,7 +125,7 @@ function EditProject() {
             if (response.status === 200) {
                 alert("✅ Project Updated SuccesFully");
                 setIsDisabled(false);
-                navigate("operation/view/project")
+                navigate("/operation/view/project")
             }
             // setCode("");
         } catch (error) {

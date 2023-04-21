@@ -72,8 +72,8 @@ function Addnewproject() {
                 setNet_days(data.data.data.net_days)
                 // setReference(data.data.data.reference)
                 setResource(data.data.data.resource)
-                setEmail_to(data.data.data.resource)
-                setEmail_cc(data.data.data.resource)
+                setEmail_to(data.data.data.email_to)
+                setEmail_cc(data.data.data.email_cc)
                 setInvoice_type(data.data.data.invoice_type)
                 setInvoice_status(data.data.data.invoice.status)
                 setResource_cost(data.data.data.invoice.resource_cost)
@@ -81,8 +81,8 @@ function Addnewproject() {
                 setPayment_status(data.data.data.invoice.payment_status)
                 setInvoice_number(data.data.data.invoice.invoice_number)
                 setInvoice_amount(data.data.data.invoice_amount)
-                setInvoice_date(moment(data.data.data.approval_date).format('YYYY-MM-DD'))
-                setDue_date(moment(data.data.data.approval_date).format('YYYY-MM-DD'))
+                setInvoice_date(moment(data.data.data.invoice.date).format('YYYY-MM-DD'))
+                setDue_date(moment(data.data.data.invoice.due_date).format('YYYY-MM-DD'))
                 setapprovalDate(moment(data.data.data.approval_date).format('YYYY-MM-DD'));
                 // alert("✅ Lead Edited SuccesFully");
             }
@@ -119,7 +119,7 @@ function Addnewproject() {
             email_to: email_to,
             email_cc: email_cc,
             company_name: company,
-            invoice_date: invoice_date,
+            date: invoice_date,
             invoice_number: invoice_number,
             invoice_status: invoice_status,
             payment_status: payment_status,

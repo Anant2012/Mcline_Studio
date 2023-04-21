@@ -63,7 +63,7 @@ function AdminGrievance() {
       const response = await AxiosInstance.delete(`/api/admin/hr/greviances/${row._id}`);
       if (response.status === 200) {
         alert("✅Grievance deleted successfully!!");
-        window.location.reload()
+        // window.location.reload()
       }
     } catch (err) {
       console.log(err);

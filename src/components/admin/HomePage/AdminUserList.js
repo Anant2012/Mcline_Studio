@@ -74,7 +74,7 @@ function AdminUserList(props) {
       );
       if (response.status === 200) {
         alert("✅User deleted successfully!!");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (err) {
       console.log(err);

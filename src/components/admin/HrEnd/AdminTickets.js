@@ -65,7 +65,7 @@ function AdminTickets() {
       const response = await AxiosInstance.delete(`/api/admin/hr/ticket/${row._id}`);
       if (response.status === 200) {
         alert("✅Ticket deleted successfully!!");
-        window.location.reload()
+        // window.location.reload()
       }
     } catch (err) {
       console.log(err);

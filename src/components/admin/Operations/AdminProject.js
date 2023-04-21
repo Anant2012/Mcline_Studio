@@ -391,7 +391,7 @@ function AdminProject() {
       );
       if (response.status === 200) {
         alert("✅Project deleted successfully!!");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (err) {
       console.log(err);
@@ -431,7 +431,7 @@ function AdminProject() {
         Description: item.description,
         "Resource Cost": item.invoice.resource_cost,
         "Resource Rate": item.invoice.resource_rate,
-        "Invoice Date": item.invoice_date,
+        "Invoice Date": item.invoice.date,
         "Invoice Number": item.invoice_number,
         "Due Date": item.invoice.due_date,
         "Invoice Status": item.invoice.status,

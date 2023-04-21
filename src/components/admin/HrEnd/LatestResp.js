@@ -58,7 +58,7 @@ const SingleItem = ({ data }) => {
             {data?.leaves && `${data.user.username} applied a Leave`}
             {data?.tickets && `${data.user.username} raised a Ticket`}
           </h3>
-          <p class="mb-1 text-base font-normal text-gray-500 dark:text-gray-400">
+          <p class="mb-1 text-base font-normal text-gray-500 dark:text-gray-400 overflow-hidden whitespace-nowrap">
             {data?.grievance?.reason}
             {data?.leaves?.description}
             {data?.tickets?.reason}
