@@ -115,7 +115,7 @@ function Lead() {
       );
       if (response.status === 200) {
         alert("✅Review deleted successfully!!");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (err) {
       console.log(err);

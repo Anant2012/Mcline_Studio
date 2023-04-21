@@ -65,7 +65,7 @@ function AdminLeaves() {
       const response = await AxiosInstance.delete(`/api/admin/hr/leaves/${row._id}`);
       if (response.status === 200) {
         alert("✅Leaves deleted successfully!!");
-        window.location.reload()
+        // window.location.reload()
       }
     } catch (err) {
       console.log(err);

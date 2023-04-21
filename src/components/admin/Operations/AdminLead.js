@@ -128,7 +128,7 @@ function AdminLead() {
       );
       if (response.status === 200) {
         alert("✅Lead deleted successfully!!");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (err) {
       console.log(err);
