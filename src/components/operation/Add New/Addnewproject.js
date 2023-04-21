@@ -172,7 +172,7 @@ function Addnewproject() {
                         Invoice Amount
                       </label>
                       <input
-                        type="number"
+                        type="text"
                         required
                         value={invoice_amount}
                         onChange={(e) => setInvoice_amount(e.target.value)}

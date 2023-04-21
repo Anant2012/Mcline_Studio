@@ -305,10 +305,10 @@ function AdminProject() {
     },
     {
       name: "Invoice Date",
-      selector: (row) => row.invoice.date,
+      selector: (row) => row.invoice?.date,
       format: (row) => (
         <button onClick={() => EditProject(row)}>
-          {moment(row.invoice?.invoice_date).format("DD/MM/YYYY")}
+          {moment(row.invoice?.date).format("DD/MM/YYYY")}
         </button>
       ),
       sortable: true,
