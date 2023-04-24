@@ -67,6 +67,7 @@ const TimeSheetModal = ({ toggleModal, userId, row }) => {
                 type="time"
                 name="text"
                 value={time}
+                step="3600" min="00:00" max="23:59" pattern="[0-2][0-9]:[0-5][0-9]"
                 onChange={(e) => setTime(e.target.value)}
                 className="w-2/5 sm:w-1/4 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ml-1"
                 placeholder="Time (Hrs:Mins)"
