@@ -11,7 +11,7 @@ const LatestResp = () => {
       .catch((err) => console.log("errorr", err));
   }, []);
   return (
-    <ol class="items-center sm:flex">
+    <ol class="items-center flex flex-col w-full py-8">
       {data.map((itemData, index) => (
         <SingleItem data={itemData} key={index} />
       ))}
@@ -29,7 +29,7 @@ const SingleItem = ({ data }) => {
   };
   return (
     <>
-      <li class="relative mb-6 sm:mb-0 md:w-56 md:h-56">
+      <li class="relative mb-6 sm:mb-0 w-full md:h-56">
         <div class="absolute w-3 h-3 bg-[#047EC1] rounded-full mt-2 -left-4 border border-white dark:border-gray-900 dark:bg-gray-700 md:hidden"></div>
         <time class="text-xs font-normal leading-none text-gray-400 dark:text-gray-500">
           {moment(data.createdAt).fromNow()}

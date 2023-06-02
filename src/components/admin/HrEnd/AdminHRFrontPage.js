@@ -64,10 +64,10 @@ const AdminHRFrontPage = () => {
             </div>
           </div>
 
-          <div className="border-2 m-4 flex flex-col gap-5 md:flex-row w-full rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 py-4">
-            <div className="text-[#047EC1] md:pl-8 text-xl">Timeline</div>
-            <div className="w-full flex justify-end pl-4">
-              <LatestResp />
+          <div className="border-2 m-4 w-full rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 py-4">
+            <div className="text-[#047EC1] md:pl-8 text-xl py-4">Timeline</div>
+            <div className="w-full flex justify-center px-4 flex-col">
+                <LatestResp />
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@ const FrontPage = () => {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
           <div className="flex flex-wrap -m-4 ">
-            <div className="p-0 sm:p-4 lg:w-1/2 w-full">
+            <div className="p-0 sm:p-4 xl:w-1/2 w-full">
               <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 px-8 pt-8 pb-2 sm:flex-row flex-col">
                 <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg
@@ -138,7 +138,7 @@ const FrontPage = () => {
                 </div>
               </div>
             </div>
-            <div className="p-0 pt-20 sm:p-4 lg:w-1/2 w-full">
+            <div className="p-0 pt-20 sm:p-4 xl:w-1/2 w-full">
               <div className="flex border-2 rounded-lg border-[#047EC1] shadow-md bg-sky-50/5 border-opacity-50 p-8 sm:flex-row flex-col">
                 <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-[#d0edfb] text-[#d0edfb] flex-shrink-0">
                   <svg

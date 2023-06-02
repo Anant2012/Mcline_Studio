@@ -33,7 +33,7 @@ function Footer() {
                 </li>
                 <li>
 
-                  <a className="text-gray-700  hover:text-gray-600 cursor-pointer whitespace-nowrap"><i className="fa-sharp fa-solid fa-location-dot mr-4"></i>103, Ist Floor, DLF City Centre Mall, Shalimar Bagh, New Delhi - 110088</a>
+                  <a className="text-gray-700  hover:text-gray-600 cursor-pointer md:whitespace-nowrap"><i className="fa-sharp fa-solid fa-location-dot mr-4"></i>103, Ist Floor, DLF City Centre Mall, Shalimar Bagh, New Delhi - 110088</a>
 
                 </li>
               </nav>
